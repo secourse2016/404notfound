@@ -1,0 +1,68 @@
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar-default {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+
+}
+
+video#bgvid {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(polina.jpg) no-repeat;
+  background-size: cover;
+}
+.navbar-default .navbar-nav>li>a {
+  color: white;
+}
+.nav-wrapper{
+  padding: 10px;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 96%, from(rgba(50, 50, 50, 0.68)), color-stop(0.2, rgba(51, 51, 51, 0.62)), to(rgba(80, 80, 80, 0)));
+
+}
+
+.video-overlay{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -99;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  background-size: cover;
+}
+
+.main-content{
+  padding: 12px;
+}
+.small-text{
+  font-size: 1.2rem;
+}
+#main-text{
+  color: #dfdfdf;
+  font-weight: bold;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 60vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
