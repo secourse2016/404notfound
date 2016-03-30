@@ -90,3 +90,12 @@ h6.panel-title {
 .jumbotron{
   width: 1050px;
 }
+
+
+.row{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#second{
+font-size: 50;
+}
