@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="airBerlinApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Airberlin</title>
+
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./css/app.css" media="screen" title="no title" charset="utf-8">
+
+    <script src="./bower_components/angular/angular.min.js" charset="utf-8"></script>
+    <script src="./bower_components/angular-bootstrap/ui-bootstrap.min.js" charset="utf-8"></script>
+    <script src="./bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
+    <script src="./js/app.js" charset="utf-8"></script>
+    <script src="./js/routes.js" charset="utf-8"></script>
+    <script src="./js/controllers/mainController.js" charset="utf-8"></script>
+    <script src="./js/controllers/flightsController.js" charset="utf-8"></script>
+    <script src="./js/controllers/flightController.js" charset="utf-8"></script>
+    <script src="./js/controllers/passengerDetailsController.js" charset="utf-8"></script>
+    <script src="./js/controllers/seatingController.js" charset="utf-8"></script>
+    <script src="./js/controllers/paymentController.js" charset="utf-8"></script>
+    <script src="./js/controllers/confirmationController.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <!-- poster="polina.jpg" -->
+    <video autoplay loop muted controls="false" id="bgvid">
+      <source src="./static/vids/video.webm" type="video/webm">
+      <!-- <source src="polina.mp4" type="video/mp4"> -->
+    </video>
+
+    <div class="video-overlay"></div>
+
+    <div class="nav-wrapper">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ng-href="/">
+              <img style="max-width:100px; margin-top: -7px;" src="./static/imgs/logo.png"></a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+              <!-- <li class="active"><a href="#">Home</a></li> -->
+              <li>
+                <a ng-href="/"></a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#">About</a>
+              </li>
+              <li>
+                <a href="#">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </nav>
+    </div>
+
+    <div class="container">
+      <div ng-view></div>
+    </div>
+
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./static/js/typeit.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+    </script>
+  </body>
+</html>

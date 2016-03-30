@@ -1,0 +1,141 @@
+<div class="row vertical-center">
+  <div class="col-lg-6">
+    <div class="row">
+      <h1 id="main-text"></h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-4">
+        <!-- <button type="button" class="btn btn-primary btn-lg ">View Offers</button> -->
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 >Book Now</h4>
+      </div>
+      <div class="panel-body">
+
+        <form class="form-horizontal">
+          <div class="form-group">
+            <div class="col-lg-12">
+              <div class="input-group">
+                <span class="input-group-addon">From</span>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Pick Date</button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-12">
+              <div class="input-group">
+                <span class="input-group-addon">To</span>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" disabled type="button">Pick Date</button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-4">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Number of Adults
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">1 Adult</a>
+                  </li>
+                  <li>
+                    <a href="#">2 Adults</a>
+                  </li>
+                  <li>
+                    <a href="#">3 Adults</a>
+                  </li>
+
+                </ul>
+              </div>
+              <br>
+              <span class="small-text">12+ years</span>
+            </div>
+            <div class="col-lg-4">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Number of Children
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">0 Child</a>
+                  </li>
+                  <li>
+                    <a href="#">1 Child</a>
+                  </li>
+                  <li>
+                    <a href="#">2 Children</a>
+                  </li>
+                  <li>
+                    <a href="#">3 Children</a>
+                  </li>
+
+                </ul>
+              </div>
+              <br>
+              <span class="small-text">2-11 years</span>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Number of Infants
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">0 Infant</a>
+                  </li>
+                  <li>
+                    <a href="#">1 Infants</a>
+                  </li>
+
+                </ul>
+              </div>
+              <br>
+              <span class="small-text">Under 2 years</span>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-6">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                  One Way
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                  Round Trip
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-lg-offset-4">
+            <button type="button" class="btn btn-primary btn-lg " ng-click="goToFlights()">Search for flights</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
