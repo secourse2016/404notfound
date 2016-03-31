@@ -13,14 +13,6 @@
       <!-- Start from here -->
 
 
-       <style>
-
-.jumbotron{
-  width: 1050px;
-}
-
-       </style>
-
       <div class="container">
       <div class="jumbotron">
         <div class="row">
@@ -74,11 +66,11 @@
 
         <div class="input-group">
        <span class="input-group-addon" id="basic-addon1">First Name</span>
-       <input type="text" class="form-control" placeholder="ex. Jack" aria-describedby="basic-addon1">
+       <input type="text" class="form-control" ng-model="passenger.firstName" placeholder="ex. Jack" aria-describedby="basic-addon1">
        <span class="input-group-addon" id="basic-addon2">Middle Name</span>
-       <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+       <input type="text" class="form-control" ng-model="passenger.middleName" placeholder="" aria-describedby="basic-addon1">
        <span class="input-group-addon" id="basic-addon1">Last Name</span>
-       <input type="text" class="form-control" placeholder="ex. Smith" aria-describedby="basic-addon1">
+       <input type="text" class="form-control" placeholder="ex. Smith" ng-model="passenger.lastName" aria-describedby="basic-addon1">
 
       </div>
       </div>
