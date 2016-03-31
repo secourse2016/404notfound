@@ -33,19 +33,25 @@
 
                   <div class="row">
 
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                       <h3>13:00 CAI</h3>
                       <h5>Cairo International Airport</h5>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-4" ng-controller="flightsCtrl">
+
                       <h5>4h 10m</h5>
-                      <a data-target="#aircraftModel, #operatorAirline" data-toggle="collapse">More details</a>
-                      <h5 id="aircraftModel" class="collapse">Airbus A320</h5>
-                      <h5 id="operatorAirline" class="collapse">Operated by: Lufthansa</h5>
+
+                      <button type="button" class="btn btn-link" ng-click="isCollapsed = !isCollapsed">More details</button>
+
+                      <div uib-collapse="isCollapsed">
+                        <h5>Airbus A320</h5>
+                        <h5>Operated by Lufthansa</h5>
+                      </div>
+
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                       <h3>16:10 TXL</h3>
                       <h5>Berlin Tegel Airport</h5>
                     </div>
