@@ -84,4 +84,18 @@ h5.panel-title {
 }
 h6.panel-title {
     font-size: 10px;
-} 
+}
+
+/*This is just a workaround we will fix the whole thing later*/
+/*.jumbotron{
+  width: 1050px;
+}*/
+
+
+.row{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#second{
+font-size: 50;
+}

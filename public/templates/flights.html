@@ -1,17 +1,95 @@
 <!-- @abdelrahman-maged -->
+
 <div class="col-lg-12">
+
   <div class="panel panel-default">
+
     <div class="panel-heading clearfix">
-      <h3 class="panel-title pull-left" style="padding-top: 10.5px;">{{title}}</h3>
+
+      <div class="btn-group pull-left">
+        <button ng-click="goBack()" class="btn btn-primary btn-lg">{{buttonTextBk}}</button>
+      </div>
+
+      <h3 class="panel-title pull-left" style="padding-top: 10.5px;">{{ title}}</h3>
+
       <div class="btn-group pull-right">
-        <button ng-click="goNext()" class="btn btn-primary btn-lg">{{buttonText}}</button>
+        <button ng-click="goNext()" class="btn btn-primary btn-lg">{{buttonTextNxt}}</button>
       </div>
     </div>
+
     <div class="panel-body">
 
+        <div class="container">
 
-      <!-- Start from here -->
+        <div class="jumbotron">
+
+          <table class="table table-bordered table-striped table-hover">
+
+            <tbody class="text-center">
+
+              <tr>
+
+                <td class="vert-align">
+
+                  <div class="row">
+
+                    <div class="col-md-4">
+                      <h3>13:00 CAI</h3>
+                      <h5>Cairo International Airport</h5>
+                    </div>
+
+                    <div class="col-md-4" ng-controller="flightsCtrl">
+
+                      <h5>4h 10m</h5>
+
+                      <button type="button" class="btn btn-link" ng-click="isCollapsed = !isCollapsed">More details</button>
+
+                      <div uib-collapse="isCollapsed">
+                        <h5>Airbus A320</h5>
+                        <h5>Operated by Lufthansa</h5>
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+                      <h3>16:10 TXL</h3>
+                      <h5>Berlin Tegel Airport</h5>
+                    </div>
+
+                  </div>
+
+                </td>
+
+                <td>
+
+                  <h4>Economy</h4>
+                  <h4>&euro;300</h4>
+                  <h6 class="text-warning">0 seats left</h6>
+                  <button type="button" class="btn btn-lg btn-primary" disabled="true">Book</button>
+
+                </td>
+
+                <td>
+
+                  <h4>Business</h4>
+                  <h4>&euro;400</h4>
+                  <h6 class="text-success">3 seats left</h6>
+                  <button type="button" class="btn btn-lg btn-primary">Book</button>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
 
     </div>
+
   </div>
+
 </div>
