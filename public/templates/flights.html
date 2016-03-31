@@ -27,33 +27,33 @@
 
             <tbody class="text-center">
 
-              <tr>
+              <tr ng-repeat="flight in flights">
 
                 <td class="vert-align">
 
                   <div class="row">
 
                     <div class="col-md-4">
-                      <h3>13:00 CAI</h3>
-                      <h5>Cairo International Airport</h5>
+                      <h3>{{flight.departureUTC}} {{flight.refOriginAirport}}</h3>
+                      <h5>{{flight.refOriginAirportName}}</h5>
                     </div>
 
                     <div class="col-md-4" ng-controller="flightsCtrl">
 
-                      <h5>4h 10m</h5>
+                      <h5>{{flight.duration}}</h5>
 
                       <button type="button" class="btn btn-link" ng-click="isCollapsed = !isCollapsed">More details</button>
 
                       <div uib-collapse="isCollapsed">
-                        <h5>Airbus A320</h5>
-                        <h5>Operated by Lufthansa</h5>
+                        <h5>{{flight.refAircraftModel}}</h5>
+                        <h5>Operated by {{flight.operatorAirline}}</h5>
                       </div>
 
                     </div>
 
                     <div class="col-md-4">
-                      <h3>16:10 TXL</h3>
-                      <h5>Berlin Tegel Airport</h5>
+                      <h3>{{flight.arrivalUTC}} {{flight.refDestinationAirport}}</h3>
+                      <h5>{{flight.refDestinationAirportName}}</h5>
                     </div>
 
                   </div>
@@ -63,17 +63,17 @@
                 <td>
 
                   <h4>Economy</h4>
-                  <h4>&euro;300</h4>
-                  <h6 class="text-warning">0 seats left</h6>
-                  <button type="button" class="btn btn-lg btn-primary" disabled="true">Book</button>
+                  <h4>&euro;{{flight.economyFare}}</h4>
+                  <h6 class="text-success">{{flight.emptyEconomySeatsCount}} seats left</h6>
+                  <button type="button" class="btn btn-lg btn-primary">Book</button>
 
                 </td>
 
                 <td>
 
                   <h4>Business</h4>
-                  <h4>&euro;400</h4>
-                  <h6 class="text-success">3 seats left</h6>
+                  <h4>&euro;{{flight.businessFare}}</h4>
+                  <h6 class="text-success">{{flight.emptyBusinessSeatsCount}} seats left</h6>
                   <button type="button" class="btn btn-lg btn-primary">Book</button>
 
                 </td>
