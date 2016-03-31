@@ -13,10 +13,7 @@ App.config(['$routeProvider','$locationProvider',
         templateUrl: 'templates/flight.html',
         controller: 'exitFlightCtrl'
       })
-      // .when('/reentry-flight', {
-      //   templateUrl: 'templates/flight.html',
-      //   controller: 'reEntryFlightCtrl'
-      // })
+    
       .when('/passenger-details', {
         templateUrl: 'templates/passenger-details.html',
         controller: 'passengerDetailsCtrl'
