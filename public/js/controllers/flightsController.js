@@ -11,12 +11,13 @@ App.controller('flightsCtrl',function($scope,$location){
       $location.path('/');
   }
 
-  $scope.flights = [
+  // array received from factory
+  var flights = [
     {
       "number": "1000",
       "departureUTC": "2016-04-01T07:00:00Z",
       "arrivalUTC": "2016-04-01T09:00:00Z",
-      "duration": 2.0,
+      "duration": 120,
       "status": "On Time",
       "refAircraftTailNumber": "D-AAAA",
       "refAircraftModel": "Airbus A330", // nonexistent in flight schema, needed however in view
@@ -38,5 +39,23 @@ App.controller('flightsCtrl',function($scope,$location){
       "seatmap": null
     }
   ];
+
+  // formatting data to be presentable
+  for (i = 0; i < flights.length; i++) {
+
+    var departureDate = new Date(flights[i].departureUTC);
+    flights[i].departureUTC = departureDate.toUTCString();
+
+    var arrivalDate = new Date(flights[i].arrivalUTC);
+    flights[i].arrivalUTC = arrivalDate.toUTCString();
+
+    var hours = flights[i].duration / 60;
+    var minutes = flights[i].duration % 60;
+
+    flights[i].duration = hours + "h " + minutes + "m"
+
+  }
+
+  $scope.flights = flights;
 
 });
