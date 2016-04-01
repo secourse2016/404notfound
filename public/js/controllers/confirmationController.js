@@ -22,7 +22,10 @@ App.controller('confirmationCtrl', function($scope, $location) {
 
   $('#quotes-text').typeIt({
     strings: [
-      '"Travel and change of place impart new vigor to the mind."-Seneca', "But you will enjoy it....", "Bgd bgd hamada...", "Msh mesada2? ta3ala garab....."
+      '"Travel and change of place impart new vigor to the mind."-Seneca',
+       '“Traveling tends to magnify all human emotions.” — Peter Hoeg',
+       '“Traveling – it leaves you speechless, then turns you into a storyteller.” - Ibn Battuta', 
+      ' “We travel, some of us forever, to seek other places, other lives, other souls.” – Anais Nin'
     ],
     speed: 80,
     breakLines: false,
