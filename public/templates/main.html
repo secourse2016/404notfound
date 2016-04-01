@@ -22,9 +22,12 @@
               <div class="input-group">
                 <span class="input-group-addon">From</span>
                 <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Pick Date</button>
-                </span>
+
+                <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                <button type="button" class="btn btn-default" ng-click="open2()">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+
               </div>
             </div>
           </div>
@@ -37,6 +40,7 @@
                 <span class="input-group-btn">
                   <button class="btn btn-default" disabled type="button">Pick Date</button>
                 </span>
+
               </div>
             </div>
           </div>
