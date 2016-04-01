@@ -1,4 +1,6 @@
 <!-- @yassmine -->
+
+ <div ng-controller="passengerDetailsCtrl"></div>
 <div class="col-lg-12">
   <div class="panel panel-default">
     <div class="panel-heading clearfix">
@@ -82,24 +84,24 @@
        <span class="input-group-addon" id="basic-addon2">Middle Name</span>
        <input type="text" class="form-control" ng-model="passenger.middleName" placeholder="" aria-describedby="basic-addon1">
        <span class="input-group-addon" id="basic-addon1">Last Name</span>
-       <input type="text" class="form-control" placeholder="ex. Smith" ng-model="passenger.lastName" aria-describedby="basic-addon1">
+       <input type="text" class="form-control" placeholder="ex. Dawson" ng-model="passenger.lastName" aria-describedby="basic-addon1">
 
       </div>
       </div>
       <div class="row">
       <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Passport Number</span>
-      <input type="text" class="form-control" placeholder="ex. A308641" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="ex. A308641" ng-model="passenger.passportNumber" aria-describedby="basic-addon1">
       <span class="input-group-addon" id="basic-addon1">Phone Number</span>
-      <input type="text" class="form-control" placeholder="ex. +20127628918" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="ex. +20127628918" ng-model = "passenger.phoneNumber" aria-describedby="basic-addon1">
       </div>
       </div>
       <div class="row">
       <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">Email</span>
-        <input type="text" class="form-control" placeholder="ex. jacksmith@example.com" aria-describedby="basic-addon1">
+        <input type="text" class="form-control" placeholder="ex. jackdawson@example.com" aria-describedby="basic-addon1">
         <span class="input-group-addon" id="basic-addon1">Repeat Email</span>
-        <input type="text" class="form-control" placeholder="ex. jacksmith@example.com" aria-describedby="basic-addon1">
+        <input type="text" class="form-control" placeholder="ex. jackdawson@example.com" ng-model = "passenger.email" aria-describedby="basic-addon1">
       </div>
       </div>
       <div class="row">
