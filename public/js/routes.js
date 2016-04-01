@@ -32,6 +32,12 @@ App.config(['$routeProvider','$locationProvider',
       .when('/confirmation', {
         templateUrl: 'templates/confirmation.html',
         controller: 'confirmationCtrl'
+      })
+      .when('/contact-us', {
+        templateUrl: 'templates/contact-us.html',
+      })
+      .when('/about', {
+        templateUrl: 'templates/about.html',
       });
 
       // $locationProvider.html5Mode(true);
