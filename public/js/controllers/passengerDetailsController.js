@@ -17,12 +17,12 @@ App.controller('passengerDetailsCtrl',function($scope,$location) {
 
 
     $scope.passenger = {
-      firstName: passenger.firstName,
-      middleName: passenger.middleName,
-      lastName: passenger.lastName,
-      passportNumber: passenger.passportNumber,
-      phoneNumber: passenger.phoneNumber,
-      email: passenger.email
+    //  firstName: passenger.firstName,
+    //   middleName: passenger.middleName,
+    //   lastName: passenger.lastName,
+    //   passportNumber: passenger.passportNumber,
+    //   phoneNumber: passenger.phoneNumber,
+    //   email: passenger.email
       //i couldn't extract the value of the country nor the title.
 
      };
