@@ -2,7 +2,6 @@
 App.controller('flightsCtrl', function($scope, $location) {
 
   $scope.title = "Choose a Flight";
-  $scope.buttonTextNxt = "Next";
   $scope.buttonTextBk = "Back";
   $scope.isCollapsed = true;
 
