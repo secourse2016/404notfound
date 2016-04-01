@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./css/app.css" media="screen" title="no title" charset="utf-8">
 
     <script src="./bower_components/angular/angular.min.js" charset="utf-8"></script>
-    <script src="./bower_components/angular-bootstrap/ui-bootstrap.min.js" charset="utf-8"></script>
+    <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
     <script src="./bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
     <script src="./js/app.js" charset="utf-8"></script>
     <script src="./js/routes.js" charset="utf-8"></script>
@@ -24,7 +24,7 @@
     <script src="./js/controllers/paymentController.js" charset="utf-8"></script>
     <script src="./js/controllers/confirmationController.js" charset="utf-8"></script>
   </head>
-  <body>
+  <body ng-controller="parentCtrl">
 
     <!-- poster="polina.jpg" -->
     <video autoplay loop muted controls="false" id="bgvid">
@@ -34,51 +34,14 @@
 
     <div class="video-overlay"></div>
 
-    <div class="nav-wrapper">
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" ng-href="/">
-              <img style="max-width:100px; margin-top: -7px;" src="./static/imgs/logo.png"></a>
-          </div>
+  <div ng-include="'/templates/nav.html'"></div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav">
-              <!-- <li class="active"><a href="#">Home</a></li> -->
-              <li>
-                <a ng-href="/"></a>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a href="#">About</a>
-              </li>
-              <li>
-                <a href="#">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-      </nav>
-    </div>
+      <div class="container" style="height:100%">
+        <div ng-view></div>
+      </div>
 
-    <div class="container">
-      <div ng-view></div>
-    </div>
-
-    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="./static/js/typeit.min.js" charset="utf-8"></script>
-    <script type="text/javascript">
-
-    </script>
-  </body>
-</html>
+      <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+      <script src="./static/js/typeit.min.js" charset="utf-8"></script>
+      <script type="text/javascript"></script>
+    </body>
+  </html>
