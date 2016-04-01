@@ -9,7 +9,7 @@ App.controller('flightsCtrl', function($scope, $location) {
   $scope.goNext = function() {
     $location.path('/exit-flight');
   }
-  
+
   $scope.goBack = function() {
     $location.path('/');
   }
