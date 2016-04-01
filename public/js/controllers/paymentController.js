@@ -1,14 +1,14 @@
 // @mirna
-App.controller('paymentCtrl',function($scope,$location){
+App.controller('paymentCtrl', function($scope, $location) {
   $scope.title = "Choose your payment option";
-  
+
   $scope.buttonTextNxt = "Pay!";
   $scope.buttonTextBk = "Back";
-  $scope.goNext = function(){
-      $location.path('/confirmation');
+  $scope.goNext = function() {
+    $location.path('/confirmation');
   }
-  $scope.goBack = function(){
-      $location.path('/seating');
+  $scope.goBack = function() {
+    $location.path('/seating');
   }
 
 

@@ -19,4 +19,13 @@ App.controller('confirmationCtrl', function($scope, $location) {
     wifi: "true",
     name: "ahmed"
   }
+
+  $('#quotes-text').typeIt({
+    strings: [
+      '"Travel and change of place impart new vigor to the mind."-Seneca', "But you will enjoy it....", "Bgd bgd hamada...", "Msh mesada2? ta3ala garab....."
+    ],
+    speed: 80,
+    breakLines: false,
+    loop: true
+  });
 });
