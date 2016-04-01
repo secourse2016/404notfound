@@ -16,5 +16,14 @@ App.controller('passengerDetailsCtrl',function($scope,$location) {
     // the resulting object ready to be sent to the server
 
 
-    $scope.passenger = {};
+    $scope.passenger = {
+      firstName: passenger.firstName,
+      middleName: passenger.middleName,
+      lastName: passenger.lastName,
+      passportNumber: passenger.passportNumber,
+      phoneNumber: passenger.phoneNumber,
+      email: passenger.email
+      //i couldn't extract the value of the country nor the title.
+
+     };
 });

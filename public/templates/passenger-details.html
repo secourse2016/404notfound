@@ -40,7 +40,7 @@
              Title
              <span class="caret"></span>
            </button>
-           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
           <li><a href="#">Mr</a></li>
           <li><a href="#">Mrs</a></li>
           <li><a href="#">Ms</a></li>
@@ -89,9 +89,9 @@
       <div class="row">
       <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Passport Number</span>
-      <input type="text" class="form-control" placeholder="ex. A308641" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="ex. A308641" ng-model="passenger.passportNumber" aria-describedby="basic-addon1">
       <span class="input-group-addon" id="basic-addon1">Phone Number</span>
-      <input type="text" class="form-control" placeholder="ex. +20127628918" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="ex. +20127628918" ng-model = "passenger.phoneNumber" aria-describedby="basic-addon1">
       </div>
       </div>
       <div class="row">
@@ -99,14 +99,14 @@
         <span class="input-group-addon" id="basic-addon1">Email</span>
         <input type="text" class="form-control" placeholder="ex. jacksmith@example.com" aria-describedby="basic-addon1">
         <span class="input-group-addon" id="basic-addon1">Repeat Email</span>
-        <input type="text" class="form-control" placeholder="ex. jacksmith@example.com" aria-describedby="basic-addon1">
+        <input type="text" class="form-control" placeholder="ex. jacksmith@example.com" ng-model = "passenger.email" aria-describedby="basic-addon1">
       </div>
       </div>
       <div class="row">
 
           <div class="input-group">
             <span class="input-group-addon">
-              <input type="checkbox" aria-label="..." style="float: left;">
+              <input type="checkbox" aria-label="..." style="float: left;" ng-model = "passenger.verify">
             </span> I verify the information provided matches the passport information.
           </div><!-- /input-group -->
 
