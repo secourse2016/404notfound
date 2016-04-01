@@ -32,7 +32,6 @@
           <br>
           <h3>Card information:</h3>
 
-
           <form class="form-horizontal">
 
             <div class="form-group">
@@ -55,13 +54,8 @@
             </div>
           </form>
 
-
-
-
-
-
           <div class="row">
-            <div id="first" class="col-lg-3">
+            <div id="first" class="col-sm-4">
 
               <b>
                 Expire Date:
@@ -69,62 +63,19 @@
 
             </div>
 
-            <div id="second" class="col-lg-2">
+            <div id="second" class="col-sm-8">
 
-              <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Month
+              <div class="btn-group " uib-dropdown is-open="status2.isopen">
+                <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+                  {{monthsBtnText}}
                   <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
                   <li>
-                    <a href="#">January</a>
-                  </li>
-                  <li>
-                    <a href="#">February</a>
-                  </li>
-                  <li>
-                    <a href="#">March</a>
-                  </li>
-                  <li>
-                    <a href="#">April</a>
-                  </li>
-                  <li>
-                    <a href="#">May</a>
-                  </li>
-                  <li>
-                    <a href="#">June</a>
-                  </li>
-                  <li>
-                    <a href="#">July</a>
-                  </li>
-                  <li>
-                    <a href="#">August</a>
-                  </li>
-                  <li>
-                    <a href="#">September</a>
-                  </li>
-                  <li>
-                    <a href="#">October</a>
-                  </li>
-                  <li>
-                    <a href="#">November</a>
-                  </li>
-                  <li>
-                    <a href="#">December</a>
+                    <a ng-repeat="month in months" ng-click="changeMonth(month)">{{month}}</a>
                   </li>
                 </ul>
-
               </div>
-
-            </div>
-
-            <!-- <div class="col-lg-1">
-        /
-      </div> -->
-
-            <div id="third" class="col-lg-2">
-
               <div class="btn-group " uib-dropdown is-open="status3.isopen">
                 <button type="button" class="btn btn-default" uib-dropdown-toggle>
                   {{yearsBtnText}}
@@ -136,77 +87,27 @@
                   </li>
                 </ul>
               </div>
-              <!-- <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  Year
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                  <li>
-                    <a href="#">2016</a>
-                  </li>
-                  <li>
-                    <a href="#">2017</a>
-                  </li>
-                  <li>
-                    <a href="#">2018</a>
-                  </li>
-                  <li>
-                    <a href="#">2019</a>
-                  </li>
-                  <li>
-                    <a href="#">2020</a>
-                  </li>
-                  <li>
-                    <a href="#">2021</a>
-                  </li>
-                  <li>
-                    <a href="#">2022</a>
-                  </li>
-                  <li>
-                    <a href="#">2023</a>
-                  </li>
-                  <li>
-                    <a href="#">2024</a>
-                  </li>
-                  <li>
-                    <a href="#">2025</a>
-                  </li>
-                  <li>
-                    <a href="#">2026</a>
-                  </li>
-                  <li>
-                    <a href="#">2027</a>
-                  </li>
-                  <li>
-                    <a href="#">2028</a>
-                  </li>
-                  <li>
-                    <a href="#">2029</a>
-                  </li>
-                  <li>
-                    <a href="#">2030</a>
-                  </li>
-                </ul>
-              </div>
+            </div>
 
-            </div> -->
-            <b>
-              *</b>
+
+
+            <div id="third" class="col-sm-4">
+
+
+            </div>
           </div>
 
         </div>
 
         <div class="col-lg-6">
-          <!-- <p class="col-lg-4">Your booking costs $400 in total
-      </p> -->
 
           <ul class="nav nav-pills nav-stacked">
             <li class="active">
-              <a href="#">
+              <a >
+
+                Your booking total cost 
                 <span class="badge pull-right">
-                  <span class="glyphicon glyphicon-usd"></span>4200</span>
-                Your booking total cost</a>
+                  <span class="glyphicon glyphicon-usd"></span>4200</span></a>
             </li>
           </ul>
 
