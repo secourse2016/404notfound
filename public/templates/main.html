@@ -1,6 +1,6 @@
 <div class="container vertical-center">
   <div class="col-md-6 col-sm-12">
-    <div class="row changing-text" >
+    <div class="row changing-text">
       <h1 id="main-text"></h1>
     </div>
     <div class="row">
@@ -10,25 +10,12 @@
     </div>
   </div>
 
-  <div class="col-md-6 col-sm-12" >
+  <div class="col-md-6 col-sm-12">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 >Book Now</h4>
       </div>
       <div class="panel-body">
-
-        <!--
-        <form class="form-inline">
-          <div class="form-group">
-            <label class="sr-only">Email</label>
-            <p class="form-control-static">email@example.com</p>
-          </div>
-          <div class="form-group">
-            <label for="inputPassword2" class="sr-only">Password</label>
-            <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-default">Confirm identity</button>
-        </form> -->
 
         <form class="form-horizontal">
 
@@ -36,9 +23,9 @@
             <div class="col-lg-12">
               <div class="input-group">
                 <span class="input-group-addon">From</span>
-                <input type="text" class="form-control">
+                <input name="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
                 <span class="input-group-btn">
-                  <input style="display:none" type="text" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                  <input style="display:none" type="text" uib-datepicker-popup ng-model="exitDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
                   <button type="button" class="btn btn-default" ng-click="open2()">
                     <i class="glyphicon glyphicon-calendar"></i>
                   </button>
@@ -52,13 +39,7 @@
             <div class="col-lg-12">
               <div class="input-group">
                 <span class="input-group-addon">To</span>
-                <input type="text" class="form-control">
-                <!-- <span class="input-group-btn">
-                  <input disabled style="display:none" type="text" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="false" close-text="Close"/>
-                  <button disabled type="button" class="btn btn-default" ng-click="open2()">
-                    <i class="glyphicon glyphicon-calendar"></i>
-                  </button>
-                </span> -->
+                <input name="desAirports" type="text" placeholder="Flying To" ng-model="selectedDest" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
 
               </div>
             </div>
@@ -67,7 +48,7 @@
           <div class="form-group">
             <div class="col-xs-4">
               <div class="btn-group" uib-dropdown is-open="status1.isopen">
-                <button type="button" class="btn btn-default" uib-dropdown-toggle>
+                <button disabled type="button" class="btn btn-default" uib-dropdown-toggle>
                   {{adultBtnText}}
                   <span class="caret"></span>
                 </button>
@@ -84,7 +65,7 @@
             <div class="col-xs-4">
               <div class="text-center">
                 <div class="btn-group" uib-dropdown is-open="status2.isopen">
-                  <button type="button" class="btn btn-default" uib-dropdown-toggle>
+                  <button disabled type="button" class="btn btn-default" uib-dropdown-toggle>
                     {{childrenBtnText}}
                     <span class="caret"></span>
                   </button>
@@ -140,7 +121,7 @@
           </div>
 
           <div class="col-lg-4 col-lg-offset-4">
-            <button type="button" class="btn btn-primary btn-lg " ng-click="goToFlights()">Search for flights</button>
+            <button type="button" class="btn btn-primary btn-lg " ng-disabled="buttonState()" ng-click="goToFlights()">Search for flights</button>
           </div>
 
         </form>

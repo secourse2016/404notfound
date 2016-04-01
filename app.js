@@ -26,7 +26,7 @@ app.get('/api/flight',function(req,res){
   fs.readFile('./mockdata/flights.json', 'utf8', function (err, data) {
     if (err) throw err;
     obj = JSON.parse(data);
-    res.send(obj[0]);
+    res.send([obj[0],obj[2],obj[3],obj[7]]);
   });
 })
 
