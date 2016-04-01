@@ -11,6 +11,8 @@ App.controller('paymentCtrl',function($scope,$location){
       $location.path('/seating');
   }
 
-
   //mirna nty gaya thazary l sprint deh bs khoshy ma3a Ahmed fel seatings bta3to
+  //mehtaga dependency superDuper
+
+  //var price=superDuper.getPrice();
 });
