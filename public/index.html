@@ -14,6 +14,8 @@
     <script src="./bower_components/angular/angular.min.js" charset="utf-8"></script>
     <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
     <script src="./bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
+    <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
+
     <script src="./js/app.js" charset="utf-8"></script>
     <script src="./js/routes.js" charset="utf-8"></script>
     <script src="./js/factories.js" charset="utf-8"></script>
@@ -35,11 +37,9 @@
 
     <div class="video-overlay"></div>
 
-    <div ng-include="'/templates/nav.html'"></div>
 
-    <div class="container" style="height:100%">
-      <div ng-view></div>
-    </div>
+      <div  class="page {{ pageClass }}"  ng-view></div>
+      <div ng-include="'/templates/nav.html'"></div>
 
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./static/js/typeit.min.js" charset="utf-8"></script>

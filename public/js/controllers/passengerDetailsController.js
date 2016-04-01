@@ -1,5 +1,6 @@
 // @yassmine
 App.controller('passengerDetailsCtrl',function($scope,$location) {
+      $scope.pageClass = 'page-passnger';
     $scope.title = "Fill in your details";
 
     $scope.buttonTextNxt = "Next";

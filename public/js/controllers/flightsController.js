@@ -1,6 +1,6 @@
 // @abdelrahman-maged
 App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
-
+    $scope.pageClass = 'page-flights';
   $scope.title = "Choose a Flight";
   $scope.buttonTextNxt = "Next";
   $scope.buttonTextBk = "Back";

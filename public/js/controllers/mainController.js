@@ -1,4 +1,5 @@
 App.controller('mainCtrl', function($scope, $location, api) {
+      $scope.pageClass = 'page-main';
   $('#main-text').typeIt({
     strings: [
       "We as a company care about nothing but money....", "But you will enjoy it....", "Bgd bgd hamada...", "Msh mesada2? ta3ala garab....."
