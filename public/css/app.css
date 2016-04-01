@@ -85,7 +85,11 @@ h5.panel-title {
 h6.panel-title {
     font-size: 10px;
 }
+p.theQoute {
+  font-size: 10px;
+  font-style: italic;
 
+}
 /*This is just a workaround we will fix the whole thing later*/
 /*.jumbotron{
   width: 1050px;
