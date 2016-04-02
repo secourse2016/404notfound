@@ -2673,7 +2673,9 @@
         "hasScreen": false,
         "refBookingID": null,
         "refPassengerID": null
-    }, {
+    }
+  ]
+}, {
     "tailNumber": "D-BBBB",
     "model": "Airbus A330",
     "economySeatCount": 320,
