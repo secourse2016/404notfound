@@ -1,142 +1,88 @@
 <!-- @yassmine -->
-
-<<<<<<< HEAD
-
-=======
- <div ng-controller="passengerDetailsCtrl"></div>
->>>>>>> 9f545cb34c1ee638f8db9a58f5d275dce1bb8575
 <div class="col-lg-12">
   <div ng-controller="passengerDetailsCtrl">
-  <div class="panel panel-default">
-    <div class="panel-heading clearfix">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
 
-      <div class="col-xs-2">
-        <button ng-click="goBack()" class="btn btn-primary btn-lg pull-left">{{buttonTextBk}}</button>
+        <div class="col-xs-2">
+          <button ng-click="goBack()" class="btn btn-primary btn-lg pull-left">{{buttonTextBk}}</button>
+        </div>
+
+        <div class="col-xs-8">
+          <div class="center">
+            <h3 class="panel-title center">{{title}}</h3>
+
+          </div>
+        </div>
+
+        <div class="col-xs-2 ">
+          <button ng-click="goNext()" class="btn btn-primary btn-lg pull-right">{{buttonTextNxt}}</button>
+        </div>
+
       </div>
+      <div class="panel-body">
 
-      <div class="col-xs-8">
-        <div class="center">
-          <h3 class="panel-title center">{{title}}</h3>
+        <!-- Start from here -->
+
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="input-group">
+              <div class="btn-group " uib-dropdown is-open="status2.isopen">
+                <button type="button" class="btn btn-default" uib-dropdown-toggle>
+                  {{titlesBtnText}}
+                  <span class="caret"></span>
+                </button>
+                <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                  <li>
+                    <a ng-repeat="title in titles" ng-click="changeTitle(title)">{{title}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">First Name</span>
+              <input type="text" class="form-control" ng-model="firstName" placeholder="ex. Jack" aria-describedby="basic-addon1">
+              <span class="input-group-addon" id="basic-addon2">Middle Name</span>
+              <input type="text" class="form-control" ng-model="middleName" placeholder="" aria-describedby="basic-addon1">
+              <span class="input-group-addon" id="basic-addon1">Last Name</span>
+              <input type="text" class="form-control" placeholder="ex. Dawson" ng-model="lastName" aria-describedby="basic-addon1">
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">Passport Number</span>
+              <input type="text" class="form-control" placeholder="ex. A308641" ng-model="passportNumber" aria-describedby="basic-addon1">
+              <span class="input-group-addon" id="basic-addon1">Nationality</span>
+              <input name="originAirports" type="text" placeholder="ex. Egyptian" ng-model="nationality" uib-typeahead="country.name for country in countries | filter:$viewValue | limitTo:10" class="form-control">
+              <span class="input-group-addon" id="basic-addon1">Phone Number</span>
+              <input type="text" class="form-control" placeholder="ex. +20127628918" ng-model="phoneNumber" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">Email</span>
+              <input type="text" class="form-control" placeholder="ex. jackdawson@example.com" ng-model="email1" aria-describedby="basic-addon1">
+              <span class="input-group-addon" id="basic-addon1">Repeat Email</span>
+              <input type="text" class="form-control" placeholder="ex. jackdawson@example.com" ng-model="emailver" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <label>
+                <input type="checkbox" style="margin-right: 8px" ng-model="check">I verify the information provided matches the passport information.
+              </label>
+            </div>
+          </div>
 
         </div>
       </div>
 
-      <div class="col-xs-2 ">
-        <button ng-click="goNext()" class="btn btn-primary btn-lg pull-right">{{buttonTextNxt}}</button>
-      </div>
-
-    </div>
-    <div class="panel-body">
-
-
-      <!-- Start from here -->
-
-
-      <div class="container">
-        <div class="col-lg-11 col-md-9 col-sm-7 col-xs-5">
-
-
-      <div class="jumbotron">
-        <div class="row">
-          <div class="col-lg-12"></div>
-          <div class="col-lg-12  col-md-10 col-sm-8 col-xs-6" >
-
-
-        <div class="row">
-
-          <div class="col-lg-2">
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-             Title
-             <span class="caret"></span>
-           </button>
-           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a href="#">Mr</a></li>
-          <li><a href="#">Mrs</a></li>
-          <li><a href="#">Ms</a></li>
-          <li><a href="#">Dr</a></li>
-        </ul>
-
-
-
-      </div>
-      </div>
-      <div class="col-lg-2">
-
-
-
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="Country" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-             Choose Your Country
-             <span class="caret"></span>
-           </button>
-           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a href="#">USA</a></li>
-          <li><a href="#">Egypt</a></li>
-          <li><a href="#">Japan</a></li>
-          <li><a href="#">Germany</a></li>
-        </ul>
-
-
-
-      </div>
-
-      </div>
-      </div>
-
-      <div class="row">
-<div class="col-lg-12 col-md-10 col-sm-8 col-xs-4">
-
-
-        <div class="input-group">
-       <span class="input-group-addon" id="basic-addon1">First Name</span>
-       <input type="text" class="form-control" ng-model="firstName"  placeholder="ex. Jack" aria-describedby="basic-addon1">
-       <span class="input-group-addon" id="basic-addon2">Middle Name</span>
-       <input type="text" class="form-control" ng-model="middleName"  placeholder="" aria-describedby="basic-addon1">
-       <span class="input-group-addon" id="basic-addon1">Last Name</span>
-       <input type="text" class="form-control" placeholder="ex. Dawson" ng-model="lastName"  aria-describedby="basic-addon1">
-</div>
-      </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12 col-md-10 col-sm-8 col-xs-4">
-      <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">Passport Number</span>
-      <input type="text" class="form-control" placeholder="ex. A308641" ng-model="passportNumber"  aria-describedby="basic-addon1">
-      <span class="input-group-addon" id="basic-addon1">Phone Number</span>
-      <input type="text" class="form-control" placeholder="ex. +20127628918" ng-model = "phoneNumber" aria-describedby="basic-addon1">
-      </div>
-    </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12 col-md-10 col-sm-8 col-xs-4">
-      <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">Email</span>
-        <input type="text" class="form-control" placeholder="ex. jackdawson@example.com" ng-model = "email1"  aria-describedby="basic-addon1">
-        <span class="input-group-addon" id="basic-addon1">Repeat Email</span>
-        <input type="text" class="form-control" placeholder="ex. jackdawson@example.com" ng-model = "emailver" aria-describedby="basic-addon1">
-      </div>
-    </div>
-      </div>
-      <div class="row">
-
-          <div>
-            <input type="checkbox"  aria-label="..." style="float: left;" ng-model="check"> I verify the information provided matches the passport information.
-          </div><!-- /input-group -->
-
-
-      </div><!-- /.row -->
-
-
-      </div>
-      </div>
-      </div>
-      </div>
-
-
-
-
-  </div>
     </div>
   </div>
 </div>

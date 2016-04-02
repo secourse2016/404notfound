@@ -12,8 +12,14 @@ app.get('/api/airports',function(req,res){
     obj = JSON.parse(data);
     res.send(obj);
   });
-})
-
+});
+app.get('/api/countries',function(req,res){
+  fs.readFile('./mockdata/countries.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    obj = JSON.parse(data);
+    res.send(obj);
+  });
+});
 app.get('/api/flights',function(req,res){
   fs.readFile('./mockdata/flights.json', 'utf8', function (err, data) {
     if (err) throw err;
