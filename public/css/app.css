@@ -55,12 +55,13 @@ video#bgvid {
   font-weight: bold;
 }
 .vertical-center {
-  min-height: 100%;
+  /*min-height: 60%;*/
   /* Fallback for browsers do NOT support vh unit */
-  min-height: 60vh;
+  /*min-height: 60vh;*/
   /* These two lines are counted as one :-)       */
-  display: flex;
-  align-items: center;
+  /*display: flex;*/
+  /*align-items: center;*/
+      margin-top: 60px;
 }
 h1.panel-title {
   font-size: 36px;
@@ -80,7 +81,11 @@ h5.panel-title {
 h6.panel-title {
   font-size: 10px;
 }
+p.theQoute {
+  font-size: 10px;
+  font-style: italic;
 
+}
 /*This is just a workaround we will fix the whole thing later*/
 
 
@@ -99,4 +104,13 @@ h6.panel-title {
 h3.panel-title{
   text-align: center;
 margin-top: 10px;
+}
+
+.changing-text{
+  display: flex;
+      justify-content: center;
+      flex-direction: column;
+      height: 347px;
+      padding: 30px;
+
 }
