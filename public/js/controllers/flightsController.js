@@ -33,7 +33,7 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
     "duration": 120,
     "status": "On Time",
     "refAircraftTailNumber": "D-AAAA",
-    "refAircraftModel": "Airbus A330", // nonexistent in flight schema, needed however in view
+    "refAircraftModel": null,
     "operatorAirline": "Air Berlin",
     "refOriginAirport": "CAI",
     "refOriginAirportName": null,
@@ -57,7 +57,7 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
     "duration": 120,
     "status": "On Time",
     "refAircraftTailNumber": "D-AAAA",
-    "refAircraftModel": "Airbus A330", // nonexistent in flight schema, needed however in view
+    "refAircraftModel": null,
     "operatorAirline": "Air Berlin",
     "refOriginAirport": "CAI",
     "refOriginAirportName": null,
@@ -91,6 +91,27 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
 
         if(airports[j].iata === flights[i].refDestinationAirport)
           flights[i].refDestinationAirportName = airports[j].name;
+
+      }
+
+    }
+
+  }, function myError(response) {
+    console.log(response.statusText);
+  });
+
+  var aircrafts = [];
+
+  api.getAircrafts().then(function mySuccess(response) {
+
+    aircrafts = response.data;
+
+    for (var i = 0; i < flights.length; i++) {
+
+      for (var j = 0; j < aircrafts.length; j++) {
+
+        if(aircrafts[j].tailNumber === flights[i].refAircraftTailNumber)
+          flights[i].refAircraftModel = aircrafts[j].model;
 
       }
 

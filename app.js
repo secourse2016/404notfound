@@ -30,6 +30,14 @@ app.get('/api/flight',function(req,res){
   });
 })
 
+app.get('/api/aircrafts',function(req,res){
+  fs.readFile('./mockdata/aircrafts.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    obj = JSON.parse(data);
+    res.send(obj);
+  });
+})
+
 app.use('/', express.static('public'));
 
 app.listen(8080, function() {
