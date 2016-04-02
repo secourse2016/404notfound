@@ -1,7 +1,7 @@
 App.controller('mainCtrl', function($scope, $location, api) {
   $('#main-text').typeIt({
     strings: [
-      "We as a company care about nothing but money....", "But you will enjoy it....", "Bgd bgd hamada...", "Msh mesada2? ta3ala garab....."
+      "Simple, convenient, instant confirmation.", "Destinations all around the globe.", "Experience authentic hospitality.", "Time to get enchanted."
     ],
     speed: 120,
     breakLines: false,
