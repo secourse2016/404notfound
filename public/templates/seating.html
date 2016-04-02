@@ -1,92 +1,68 @@
-<!-- @ahmed-essmat -->
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+<!-- @ahmed-essmat -->
+<style media="screen">
+  .seatOcu{
+    background-color: red !important;
+  }
+</style>
 <div class="col-lg-12">
   <div class="panel panel-default">
     <div class="panel-heading clearfix">
       <h3 class="panel-title pull-left" style="padding-top: 10.5px;">{{title}}</h3>
       <div class="btn-group pull-right">
-        <button ng-click="goNext()" class="btn btn-primary btn-lg">{{buttonText}}</button>
+        <button  ng-click="goNext()" class="btn btn-primary btn-lg">{{buttonText}}</button>
       </div>
     </div>
     <div class="panel-body">
+<div class="row">
+  <div  >
+      <ANY ng-repeat="y in bob">
 
-<div>
-            <!-- <div class="center-div"> -->
-                  <!-- <div class="jumbotron"> -->
+
+
+
             <div class="row">
-            <div class="col-lg-12">
-        <div ng-app="" ng-init="names=['Jani','Hege','Kai','ahmed','merna','a','ab','abp','abo','abi','abu','aby','abt','abr','abe','abx','abs','aba']">
-            <ANY ng-repeat="x in names">
+
+<div class="col-xs-4 ">
 
 
-
-
-                  <div class="row">
-
-      <div class="col-lg-4">
-
-
-      <div ng-app="" ng-init="name=['Jani','Hege','Kai']">
-        <ANY ng-repeat="x in name">
-        <button type="button" id="A1" class="btn btn-default btn-lg" style="background-color:lightgreen"></button>
-      </ANY>
-      </div>
-      </div>
-
-      <div class="col-lg-4">
-
-
-      <div ng-app="" ng-init="nam=['Jani','Hege','Kai','ahmed','merna']">
-        <ANY ng-repeat="x in nam">
-        <button type="button" id="A1" class="btn btn-default btn-lg" style="background-color:lightgreen"></button>
-      </ANY>
-      </div>
-      </div>
-
-      <div class="col-lg-4">
-
-
-      <div ng-app="" ng-init="na=['Jani','Hege','Kai']">
-        <ANY ng-repeat="x in na">
-        <button type="button" id="A1" class="btn btn-default btn-lg" style="background-color:lightgreen"></button>
-      </ANY>
-      </div>
-      </div>
-
-
-            </ANY>
-        </div>
-
-      </div>
-      </div>
-
-      <!-- </div> -->
-      <!-- </div> -->
-      </div>
-
-      <!-- Start from here -->
+<div  class="pull-right" >
+  <ANY ng-repeat="x in array1">
+  <button type="button" ng-click="alert(x+''+y)" class="btn btn-default btn-lg {{searchColor(x+ '' + y)}}" style="background-color:lightgreen">{{x +''+ y}}</button>
+</ANY>
+</div>
 </div>
 
+<div class="col-xs-4 text-center">
+
+
+<div >
+  <ANY ng-repeat="x in array2">
+  <button type="button" class="btn btn-default btn-lg" style="background-color:lightgreen">{{x +''+ y}}</button>
+</ANY>
+</div>
+</div>
+
+<div class="col-xs-4">
+
+
+<div >
+  <ANY ng-repeat="x in array3">
+  <button type="button" class="btn btn-default btn-lg" style="background-color:lightgreen">{{x +''+ y}}</button>
+</ANY>
+</div>
+</div>
+
+
+      </ANY>
   </div>
-    </div>
+
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</body>
-</html>
+
+
+</div>
+      <!-- Start from here -->
+
+    </div>
+  </div>
+</div>
