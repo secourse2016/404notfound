@@ -19,6 +19,12 @@ App.factory('api', function($http) {
         url: '/api/flight'
       })
     },
+    getAircrafts: function() {
+      return $http({
+        method: 'GET',
+        url: '/api/aircrafts'
+      })
+    },
     setFlight: function(flight){
       chosenFlight = flight;
     },
