@@ -206,6 +206,11 @@ h3.panel-title {
     width: 44px;
     background-color: lightgreen
 }
+
+.btn-lg, .btn-group-lg>.btn{
+  padding: 14px 22px;
+
+}
 @media (max-width:767px) {
     .navbar-default .navbar-collapse, .navbar-default .navbar-form {
         background-color: rgba(0, 0, 0, 0.329412);
