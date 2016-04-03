@@ -24,16 +24,28 @@
               <div class="input-group">
                 <span class="input-group-addon">From</span>
                 <input name="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
-                <span class="input-group-btn">
-                  <input style="display:none" type="text" uib-datepicker-popup ng-model="exitDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
-                  <button type="button" class="btn btn-default" ng-click="open2()">
-                    <i class="glyphicon glyphicon-calendar"></i>
-                  </button>
-                </span>
+
 
               </div>
             </div>
           </div>
+
+
+
+          <div class="form-group">
+            <div class="col-lg-12">
+              <div class="input-group">
+                <span class="input-group-addon">Departure Date</span>
+                  <input type="text" class="form-control" uib-datepicker-popup ng-model="exitDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                  <span class="input-group-addon btn btn-default" ng-click="open2()">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </span>
+                  <!-- <button type="button" class="btn btn-default input-group-addon" ng-click="open2()">
+                  </button> -->
+              </div>
+            </div>
+          </div>
+
 
           <div class="form-group">
             <div class="col-lg-12">
@@ -112,7 +124,7 @@
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                  <input disabled type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                   Round Trip
                 </label>
               </div>

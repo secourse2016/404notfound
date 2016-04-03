@@ -12,7 +12,7 @@ App.controller('mainCtrl', function($scope, $location, api) {
   $scope.goToFlights = function() {
     $location.path('/flights').search('origin', $scope.selectedOrigin).search('destination',$scope.selectedDest).search('exitDate',$scope.exitData);
   };
-
+  $location.url($location.path());
   setUpDate($scope);
 
   $scope.children = ['0 children', '1 child', '2 children', '3 children', '4 children'];
@@ -43,8 +43,16 @@ App.controller('mainCtrl', function($scope, $location, api) {
   $scope.selectedOrigin = undefined;
   $scope.selectedDest = undefined;
 
+  function airporsContains(iata) {
+    for (var i = 0; i < $scope.airports.length; i++) {
+      if(iata == $scope.airports[i]['iata'])
+        return true;
+    }
+    return false;
+  }
+
   $scope.buttonState = function(){
-    return !$scope.selectedOrigin || !$scope.selectedDest || !$scope.exitData;
+    return !$scope.selectedOrigin || !$scope.selectedDest || !$scope.exitData || $scope.selectedDest == $scope.selectedOrigin || !airporsContains($scope.selectedOrigin ) || !airporsContains($scope.selectedDest);
   }
 });
 
