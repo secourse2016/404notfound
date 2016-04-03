@@ -1,16 +1,103 @@
 <!-- @abdelrhman-essam -->
+<div class="container">
+
 <div class="col-lg-12">
   <div class="panel panel-default">
     <div class="panel-heading clearfix">
-      <h3 class="panel-title pull-left" style="padding-top: 10.5px;">{{title}}</h3>
-      <div class="btn-group pull-right">
-        <button  ng-click="goNext()" class="btn btn-primary btn-lg">{{buttonText}}</button>
+
+      <div class="col-xs-2">
+        <button ng-click="goBack()" class="btn btn-primary btn-lg pull-left">{{buttonTextBk}}</button>
       </div>
+
+      <div class="col-xs-8">
+        <div class="center">
+          <h3 class="panel-title center">{{title}}</h3>
+
+        </div>
+      </div>
+
+      <div class="col-xs-2 ">
+        <button ng-click="goNext()" class="btn btn-primary btn-lg pull-right">{{buttonTextNxt}}</button>
+      </div>
+
     </div>
     <div class="panel-body">
 
       <!-- Start from here -->
-
+      <div class="page-header">
+        <h1>
+          <p>
+            Thank you</p>
+        </h1>
+        <p class="theQoute">
+          <p id="quotes-text"></p>
+        </p>
+      </div>
+      <div class="col-lg-8">
+        <di class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-lg-5">
+              <div class="row">
+                <p class="glyphicon glyphicon-user"></p>
+                Name:
+              </div>
+              <div class="row">
+                <p></p>
+              </div>
+              <div class="row">
+                <div class="glyphicon glyphicon-phone"></div>
+                Phone:
+              </div>
+              <div class="row">
+                <p></p>
+              </div>
+              <div class="row">
+                <div class="glyphicon glyphicon-envelope"></div>
+                E-mail:</div>
+              <div class="row">
+                <p></p>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="row">
+                <p class="glyphicon glyphicon-certificate"></p>
+                Flight number:
+              </div>
+              <div class="row">
+                <p></p>
+              </div>
+              <div class="row">
+                <div class="glyphicon glyphicon-plane"></div>
+                Departure:
+              </div>
+              <div class="row">
+                <p></p>
+              </div>
+              <div class="row">
+                <div class="glyphicon glyphicon-road"></div>
+                Arrival:
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-default">Print ticket</button>
+        </div>
+        <div class="col-lg-4">
+          <div class="row">
+            <a href="#" class="icoFacebook" title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </div>
+          <div class="row">
+            <a href="#" class="icoTwitter" title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </div>
+          <div class="row">
+            <a href="#" class="icoGoogle" title="Google +">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
