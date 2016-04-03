@@ -9,6 +9,12 @@ body {
   border: none;
   border-radius: 0;
 }
+#logo{
+  max-width:120px; margin-top: -7px;
+}
+#logo:hover{
+  cursor: pointer;
+}
 video#bgvid {
   position: fixed;
   top: 50%;
