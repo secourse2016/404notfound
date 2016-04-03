@@ -73,7 +73,7 @@
     "seatmap": null
   }, {
     "number": "1003",
-    "departureUTC": "2016-04-02T22:00:00Z",
+    "departureUTC": "2016-04-02T20:00:00Z",
     "arrivalUTC": "2016-04-03T06:45:00Z",
     "duration": 525,
     "status": "On Time",

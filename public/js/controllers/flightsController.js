@@ -1,5 +1,5 @@
 // @abdelrahman-maged
-App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
+App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
 
   $scope.title = "Choose a Flight";
   $scope.buttonTextNxt = "Next";
@@ -17,11 +17,15 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
     $location.path('/');
   }
 
-  var origin = $routeParams.origin;
-  var destination = $routeParams.destination;
-  var exitDate = $routeParams.exitDate;
+  // var origin = $routeParams.origin;
+  // var destination = $routeParams.destination;
+  // var exitDate = new Date($routeParams.exitDate * 1000);
 
-  if(!origin || !destination || !exitDate) {
+  var origin = "TXL";
+  var destination = "JFK";
+  var exitDate = new Date(1459555200 * 1000);
+
+  if (!origin || !destination || !exitDate) {
     $location.path('/');
   }
 
@@ -30,7 +34,6 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
   api.getAll().then(function mySuccess(response) {
 
     flights = response.data;
-    $scope.flights = flights;
 
     // formatting data to be presentable
     for (i = 0; i < flights.length; i++) {
@@ -48,6 +51,20 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
 
     }
 
+    // throwing away flights not fitting constraints
+    function checkConstraints(flight) {
+
+      var flightDate = new Date(flight.departureUTC);
+
+      return flight.refOriginAirport === origin && flight.refDestinationAirport === destination
+              && flightDate.getDay() === exitDate.getDay()
+              && flightDate.getMonth() === exitDate.getMonth()
+              && flightDate.getFullYear() === exitDate.getFullYear();
+
+    }
+
+    $scope.flights = flights.filter(checkConstraints);
+
   }, function myError(response) {
     console.log(response.statusText);
   });
@@ -62,10 +79,10 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
 
       for (var j = 0; j < airports.length; j++) {
 
-        if(airports[j].iata === flights[i].refOriginAirport)
+        if (airports[j].iata === flights[i].refOriginAirport)
           flights[i].refOriginAirportName = airports[j].name;
 
-        if(airports[j].iata === flights[i].refDestinationAirport)
+        if (airports[j].iata === flights[i].refDestinationAirport)
           flights[i].refDestinationAirportName = airports[j].name;
 
       }
@@ -86,7 +103,7 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
 
       for (var j = 0; j < aircrafts.length; j++) {
 
-        if(aircrafts[j].tailNumber === flights[i].refAircraftTailNumber)
+        if (aircrafts[j].tailNumber === flights[i].refAircraftTailNumber)
           flights[i].refAircraftModel = aircrafts[j].model;
 
       }
