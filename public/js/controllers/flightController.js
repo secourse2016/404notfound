@@ -10,11 +10,11 @@ App.controller('exitFlightCtrl',function($scope,$location,api){
   $scope.goBack = function(){
       $location.path('/flights');
   }
-​
-  // if(!api.getChosenFlight()){
-  //   $location.path('/flights');
-  // }
-​
+// ​
+//   // if(!api.getChosenFlight()){
+//   //   $location.path('/flights');
+//   // }
+// ​
 var flight=  {
     "number": "1000",
     "departureUTC": "2016-04-01T07:00:00Z",
@@ -62,18 +62,12 @@ var facilities = ["Smoking areas available", "Wi-Fi availability",
 
  var departureDate = new Date(flight.departureUTC);
      flight.departureUTC = departureDate.toUTCString();
-​
 var arrivalDate = new Date(flight.arrivalUTC);
      flight.arrivalUTC = arrivalDate.toUTCString();
-​
-​
-​
 var aircrafthasSmoking;
 var aircrafthasWifi;
 var aircraftModel;
-​
 var aircrafts = [];
-​
 api.getAircrafts().then(function mySucces(response) {
   aircrafts = response.data;
   for (var i = 0; i < aircrafts.length; i++) {
@@ -87,7 +81,6 @@ api.getAircrafts().then(function mySucces(response) {
 }, function myError(response) {
   console.log(response.statusText);
 });
-​
 //  {
 //   "tailNumber": "D-AAAA",
 //   "model": "Airbus A330",
@@ -96,8 +89,6 @@ api.getAircrafts().then(function mySucces(response) {
 //   "hasWifi": true,
 //   "hasSmoking": false
 // };
-​
-
 var refOriginAirportName;
 var refDestinationAirportName;
  var airports = [];
@@ -116,18 +107,9 @@ var refDestinationAirportName;
   }, function myError(response) {
     console.log(response.statusText);
   });
-​
-
-​
-​
-
-​
-​
 var businessOrEcon ="";
 var fare = 0;
-​
 if(booking.isEconomy){
-​
   businessOrEcon = "Economy";
   fare = flight.economyFare;
 }
@@ -135,26 +117,17 @@ else{
   businessOrEcon = "Business";
   fare = flight.businessFare;
 }
-​
 var facilitiesResult = [];
-​
-​
 if(aircrafthasSmoking)
   facilitiesResult.push( facilities[0]);
-​
 if(aircrafthasWifi)
   facilitiesResult.push( facilities[1]);
-​
 if(booking.isEconomy = false){
-​
   facilitiesResult.push( facilities[2]);
   facilitiesResult.push( facilities[3]);
   facilitiesResult.push( facilities[4]);
 }
 facilitiesResult.push( facilities[5]);
-​
-​
-​
 $scope.flight = flight;
 $scope.businessOrEcon = businessOrEcon ;
 $scope.fare = fare;
@@ -164,6 +137,4 @@ $scope.refOriginAirportName=refOriginAirportName;
 $scope.aircrafthasSmoking = aircrafthasSmoking;
 $scope.aircrafthasWifi = aircrafthasWifi;
 $scope.aircraftModel = aircraftModel;
-​
-​
 });
