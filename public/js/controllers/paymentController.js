@@ -1,5 +1,6 @@
 // @mirna
 App.controller('paymentCtrl', function($scope, $location) {
+      $scope.pageClass = 'page-payment';
   $scope.title = "Choose your payment option";
 
   $scope.buttonTextNxt = "Pay!";

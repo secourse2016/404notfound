@@ -61,7 +61,7 @@ video#bgvid {
   /* These two lines are counted as one :-)       */
   /*display: flex;*/
   /*align-items: center;*/
-      margin-top: 60px;
+  margin-top: 60px;
 }
 h1.panel-title {
   font-size: 36px;
@@ -84,8 +84,8 @@ h6.panel-title {
 p.theQoute {
   font-size: 10px;
   font-style: italic;
-
 }
+
 /*This is just a workaround we will fix the whole thing later*/
 
 
@@ -100,17 +100,60 @@ p.theQoute {
 #second {
   font-size: 50;
 }
-
-h3.panel-title{
+h3.panel-title {
   text-align: center;
-margin-top: 10px;
+  margin-top: 10px;
+}
+.changing-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 347px;
+  padding: 30px;
 }
 
-.changing-text{
-  display: flex;
-      justify-content: center;
-      flex-direction: column;
-      height: 347px;
-      padding: 30px;
+/*nganimate changes*/
 
+
+.page        {
+    bottom:0;
+    padding-top:100px;
+    position:absolute;
+    top:0;
+    min-width: 100%;
+}
+
+@keyframes slideOutLeft {
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slideInLeft {
+  to {
+    transform: translateX(-100%);
+  }
+}
+/* slide in from the bottom */
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+ .ng-enter {
+  animation: slideInUp 0.5s both ease-in;
+  z-index: 8888;
+}
+.ng-leave {
+  animation: slideOutLeft 0.5s both ease-in;
+  z-index: 9999;
+}
+
+
+.no-animate {
+   -webkit-transition: none !important;
+   transition: none !important;
 }

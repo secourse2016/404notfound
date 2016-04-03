@@ -1,5 +1,6 @@
 // @ahmed-essmat
 App.controller('seatingCtrl',function($scope,$location){
+      $scope.pageClass = 'page-seating';
   $scope.title = "Where would you like to sit?";
 
   $scope.buttonTextNxt = "Next";

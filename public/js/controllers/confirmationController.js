@@ -1,5 +1,6 @@
 // @abdelrhman-essam
 App.controller('confirmationCtrl', function($scope, $location) {
+      $scope.pageClass = 'page-confirmation';
   $scope.title = "Confirm your flight";
 
   $scope.buttonTextNxt = "Confirm?";
@@ -24,7 +25,7 @@ App.controller('confirmationCtrl', function($scope, $location) {
     strings: [
       '"Travel and change of place impart new vigor to the mind."-Seneca',
        '“Traveling tends to magnify all human emotions.” — Peter Hoeg',
-       '“Traveling – it leaves you speechless, then turns you into a storyteller.” - Ibn Battuta', 
+       '“Traveling – it leaves you speechless, then turns you into a storyteller.” - Ibn Battuta',
       ' “We travel, some of us forever, to seek other places, other lives, other souls.” – Anais Nin'
     ],
     speed: 80,

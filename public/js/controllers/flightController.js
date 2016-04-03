@@ -1,5 +1,6 @@
 // @Nabila
 App.controller('exitFlightCtrl',function($scope,$location){
+      $scope.pageClass = 'page-flight';
   $scope.title = "Flight Details";
   $scope.buttonTextNxt = "Next";
   $scope.buttonTextBk = "Back";
