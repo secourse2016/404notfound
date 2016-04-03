@@ -1,16 +1,4 @@
 // @yassmine
-<<<<<<< HEAD
-App.controller('passengerDetailsCtrl',function($scope,$location) {
-      $scope.pageClass = 'page-passnger';
-    $scope.title = "Fill in your details";
-
-    $scope.buttonTextNxt = "Next";
-    $scope.buttonTextBk = "Back";
-    $scope.goNext = function(){
-      ///before you leave the page make sure that the passenger object is complete otherwise show alert("Fill in all data");
-      console.log($scope.passenger);
-        $location.path('/seating');
-=======
 App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   $scope.title = "Fill in your details";
 
@@ -81,7 +69,6 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
     }
     if (complete == true) {
       $location.path('/seating');
->>>>>>> ade3f43e120f81c4ffaeb1c08f2fa4304457ce3c
     }
 
   }
