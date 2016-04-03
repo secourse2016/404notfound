@@ -13,7 +13,7 @@ App.controller('seatingCtrl', function($scope, $location) {
     }
 
     var alphabits = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', "M", "N"];
-    var schema = [2, 5, 2, 50];
+    var schema = [3, 5, 3, 20];
 
     $scope.array1 = [];
 
@@ -66,7 +66,7 @@ App.controller('seatingCtrl', function($scope, $location) {
 
             "number": "D1",
 
-            "isEmpty": true,
+            "isEmpty": false,
 
             "isEconomy": false,
 
@@ -84,7 +84,7 @@ App.controller('seatingCtrl', function($scope, $location) {
 
             "number": "G1",
 
-            "isEmpty": true,
+            "isEmpty": false,
 
             "isEconomy": false,
 
@@ -101,20 +101,24 @@ App.controller('seatingCtrl', function($scope, $location) {
         }
     ]
     $scope.searchColor = function(text) {
-        for (var i = 0; i < seatmap.length; i++) {
-            if (seatmap[i]['number'] == text) {
-                if (seatmap[i]['isEmpty']) {
-                    return 'seatEmpty';
-                } else {
-                    return 'seatOcu';
-                }
-            }
-        }
+        if(!$scope.isEmpty(text))
+          return 'seatOcu';
+        else
+          return 'seatEmpty';
+    }
+    $scope.isEmpty = function(text){
+      for (var i = 0; i < seatmap.length; i++) {
+          if (seatmap[i]['number'] == text) {
+              return seatmap[i]['isEmpty']
+          }
+      }
+      return true;
     }
     console.log($scope.searchColor('D1'));
-    $scope.alert = function(text) {
-
-        alert(text);
-
+    $scope.selectSeat = function(seat) {
+        $scope.seat = seat;
     };
+    $scope.isEconomyText = function(){
+      return 'Economy';
+    }
 });

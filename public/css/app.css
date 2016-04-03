@@ -204,3 +204,8 @@ h3.panel-title {
 .seatOcu {
     background-color: red !important;
 }
+
+.seat{
+  width: 44px;
+  background-color:lightgreen
+}
