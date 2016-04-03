@@ -139,4 +139,11 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
 
   $scope.flights = flights;
 
+
+
+
+
+  $scope.selectFlight = function(flight,isEconomy){
+    console.log(flight,isEconomy)
+  }
 });

@@ -99,7 +99,7 @@
               <h4>Economy</h4>
               <h4>&euro;{{flight.economyFare}}</h4>
               <h6 class="text-success">{{flight.emptyEconomySeatsCount}} seats left</h6>
-              <button type="button" class="btn btn-lg btn-primary">Book</button>
+              <button type="button" ng-click="selectFlight(flight,true)" class="btn btn-lg btn-primary">Book</button>
 
             </td>
 
@@ -111,7 +111,7 @@
               <h4>Business</h4>
               <h4>&euro;{{flight.businessFare}}</h4>
               <h6 class="text-success">{{flight.emptyBusinessSeatsCount}} seats left</h6>
-              <button type="button" class="btn btn-lg btn-primary">Book</button>
+              <button type="button" ng-click="selectFlight(flight,false)" class="btn btn-lg btn-primary">Book</button>
 
             </td>
 
