@@ -1,25 +1,4 @@
 
-
-// @ahmed-essmat
-
-App.controller('seatingCtrl',function($scope,$location){
-
-  $scope.title = "Where would you like to sit?";
-
-  $scope.buttonText = "Next";
-
-  $scope.goNext = function(){
-
-      $location.path('/payment');
-
-  };
-
-  //ahmed you will get the whole flight object refer back to the schema to make sure you understand
-
-  //everything
-
-  // use this schema for now
-
   var alphabits =['A','B','C','D','E','F','G','H','I','J','K','L',"M","N"];
 
   var schema = [2,5,2,50];
@@ -32,15 +11,6 @@ App.controller('seatingCtrl',function($scope,$location){
 
    $scope.bob = [];
 
-​
-
-​
-
-​
-
-​
-
-​
 
   for (var i = 0; i < schema[0]; i++) {
 
@@ -158,13 +128,9 @@ App.controller('seatingCtrl',function($scope,$location){
 
       }}
 
-​
 
 console.log($scope.searchColor('D1'));
 
-​
-
-​
 
   $scope.alert = function (text) {
 
@@ -172,6 +138,6 @@ console.log($scope.searchColor('D1'));
 
   };
 
-​
+
 
 });
