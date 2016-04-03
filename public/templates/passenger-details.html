@@ -1,7 +1,6 @@
 <!-- @yassmine -->
-<div class="container">
-
-<div class="col-lg-12">
+<div class="container page-panel">
+  <div class="col-lg-12 page-content">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
 
@@ -17,7 +16,7 @@
         </div>
 
         <div class="col-xs-2 ">
-          <button ng-click="goNext()" class="btn btn-primary btn-lg pull-right">{{buttonTextNxt}}</button>
+          <button ng-click="goNext()"  class="btn btn-primary btn-lg pull-right">{{buttonTextNxt}}</button>
         </div>
 
       </div>
@@ -59,8 +58,8 @@
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">Passport Number</span>
               <input type="text" class="form-control" placeholder="ex. A308641" ng-model="passportNumber" aria-describedby="basic-addon1">
-              <span class="input-group-addon" id="basic-addon1">Nationality</span>
-              <input name="originAirports" type="text" placeholder="ex. Egyptian" ng-model="nationality" uib-typeahead="country.name for country in countries | filter:$viewValue | limitTo:10" class="form-control">
+              <span class="input-group-addon" id="basic-addon1">Place Of Birth</span>
+              <input name="originAirports" type="text" placeholder="ex. Egypt" ng-model="nationality" uib-typeahead="country.name for country in countries | filter:$viewValue | limitTo:10" class="form-control">
               <span class="input-group-addon" id="basic-addon1">Phone Number</span>
               <input type="text" class="form-control" placeholder="ex. +20127628918" ng-model="phoneNumber" aria-describedby="basic-addon1">
             </div>

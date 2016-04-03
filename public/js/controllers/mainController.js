@@ -10,7 +10,7 @@ App.controller('mainCtrl', function($scope, $location, api) {
   });
 
   $scope.goToFlights = function() {
-    $location.path('/flights').search('origin', $scope.selectedOrigin).search('destination',$scope.selectedDest).search('exitDate',$scope.exitData);
+    $location.path('/flights').search('origin', $scope.selectedOrigin).search('destination',$scope.selectedDest).search('exitDate',($scope.exitData.getTime()/1000).toFixed(0));
   };
   $location.url($location.path());
   setUpDate($scope);

@@ -2,7 +2,7 @@ var express = require('express');
 var util = require('util');
 var app = express();
 var fs = require('fs');
-
+var port = process.env.PORT || 8080;
 
 
 
@@ -46,6 +46,6 @@ app.get('/api/aircrafts',function(req,res){
 
 app.use('/', express.static('public'));
 
-app.listen(8080, function() {
-  console.log('Example app listening on port 8080!');
+app.listen(port, '0.0.0.0', function(err) {
+  console.log("Started listening on %s",port);
 });

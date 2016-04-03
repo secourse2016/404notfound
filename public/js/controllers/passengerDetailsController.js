@@ -73,7 +73,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
       lastName: $scope.lastName,
       passportNumber: $scope.passportNumber,
       phoneNumber: $scope.phoneNumber,
-      email: $scope.email
+      email: $scope.email1
 
 
        };

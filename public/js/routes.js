@@ -42,7 +42,13 @@ App.config(['$routeProvider','$locationProvider',
       .when('/team', {
         templateUrl: 'templates/team.html',
       })
-    
+      .when('/offers', {
+        templateUrl: 'templates/offers.html',
+      })
+      .when('/services', {
+        templateUrl: 'templates/services.html',
+      })
+
       .otherwise(
         {
           templateUrl: 'templates/404.html',

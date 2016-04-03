@@ -1,5 +1,5 @@
 // @abdelrhman-essam
-App.controller('confirmationCtrl', function($scope, $location) {
+App.controller('confirmationCtrl', function($scope, $location,api) {
       $scope.pageClass = 'page-confirmation';
   $scope.title = "Confirm your flight";
 
@@ -12,15 +12,7 @@ App.controller('confirmationCtrl', function($scope, $location) {
     $location.path('/payment');
   }
 
-  //You shouldn't add much here for now
-  //you might expect passenger and booking data
-
-  // this is just a test
-  $scope.booking = {
-    wifi: "true",
-    name: "ahmed"
-  }
-
+  $scope.passenger = api.getPassenger();
   $('#quotes-text').typeIt({
     strings: [
       '"Travel and change of place impart new vigor to the mind."-Seneca',
