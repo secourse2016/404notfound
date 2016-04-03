@@ -38,7 +38,20 @@ App.config(['$routeProvider','$locationProvider',
       })
       .when('/about', {
         templateUrl: 'templates/about.html',
-      });
+      })
+      .when('/team', {
+        templateUrl: 'templates/team.html',
+      })
+      .when('', {
+        templateUrl: 'templates/main.html',
+        controller: 'mainCtrl'
+      })
+      .otherwise(
+        {
+          templateUrl: 'templates/404.html',
+          controller: '404Ctrl'
+        }
+      );
 
       // $locationProvider.html5Mode(true);
 

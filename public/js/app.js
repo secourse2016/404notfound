@@ -13,3 +13,9 @@ App = angular.module('airBerlinApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
   .config(function($animateProvider) {
     $animateProvider.classNameFilter(/page/);
   });
+
+App.controller('404Ctrl',function($scope,$location){
+  $scope.goToTeam = function(){
+    $location.path('/team');
+  }
+})
