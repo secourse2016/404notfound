@@ -200,11 +200,11 @@ h3.panel-title {
     display: block;
 }
 .seatOcu {
-    background-color: red !important;
+    background-color: #D24D57 !important;
 }
 .seat {
     width: 44px;
-    background-color: lightgreen
+    background-color: #18bc9c;
 }
 
 .btn-lg, .btn-group-lg>.btn{
