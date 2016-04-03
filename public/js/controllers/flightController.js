@@ -1,6 +1,6 @@
 // @Nabila
-App.controller('exitFlightCtrl',function($scope,$location){
-      $scope.pageClass = 'page-flight';
+App.controller('exitFlightCtrl',function($scope,$location,api){
+  $scope.pageClass = 'page-flight';
   $scope.title = "Flight Details";
   $scope.buttonTextNxt = "Next";
   $scope.buttonTextBk = "Back";
@@ -10,7 +10,11 @@ App.controller('exitFlightCtrl',function($scope,$location){
   $scope.goBack = function(){
       $location.path('/flights');
   }
-
+​
+  // if(!api.getChosenFlight()){
+  //   $location.path('/flights');
+  // }
+​
 var flight=  {
     "number": "1000",
     "departureUTC": "2016-04-01T07:00:00Z",
@@ -35,6 +39,9 @@ var flight=  {
     "buisnessSeatSchema": null,
     "seatmap": null
   };
+  //api.getChosenFlight();
+
+
   var booking = {
   "_id": "A235647925",
   "refPassengerID": ["C673482992G"],
@@ -47,33 +54,80 @@ var flight=  {
   "refReEntryFlightNumber": null,
   "receiptNumber": "054"
 };
-
-var aircraft = {
-  "tailNumber": "D-AAAA",
-  "model": "Airbus A330",
-  "economySeatCount": 320,
-  "businessSeatCount": 24,
-  "hasWifi": true,
-  "hasSmoking": false
-};
+//api.getBooking();
 
 var facilities = ["Smoking areas available", "Wi-Fi availability",
 "4 cultural cuisines", "Inflight entertainment", "Extra cozy sleeperette",
  "Screens to show your flight pattern, aircraft altitude and speed"];
 
-
  var departureDate = new Date(flight.departureUTC);
      flight.departureUTC = departureDate.toUTCString();
-
+​
 var arrivalDate = new Date(flight.arrivalUTC);
      flight.arrivalUTC = arrivalDate.toUTCString();
+​
+​
+​
+var aircrafthasSmoking;
+var aircrafthasWifi;
+var aircraftModel;
+​
+var aircrafts = [];
+​
+api.getAircrafts().then(function mySucces(response) {
+  aircrafts = response.data;
+  for (var i = 0; i < aircrafts.length; i++) {
+    if(aircrafts[i].tailNumber === flight.refAircraftTailNumber)
+    {
+    aircrafthasSmoking = aircrafts[i].hasSmoking;
+    aircrafthasWifi = aircrafts[i].hasWifi;
+    aircraftModel =aircrafts[i].model;
+}
+  }
+}, function myError(response) {
+  console.log(response.statusText);
+});
+​
+//  {
+//   "tailNumber": "D-AAAA",
+//   "model": "Airbus A330",
+//   "economySeatCount": 320,
+//   "businessSeatCount": 24,
+//   "hasWifi": true,
+//   "hasSmoking": false
+// };
+​
+
+var refOriginAirportName;
+var refDestinationAirportName;
+ var airports = [];
+  api.getAirports().then(function mySucces(response) {
+    airports = response.data;
+    for (var i = 0; i < airports.length; i++) {
+      if(airports[i].iata === flight.refOriginAirport){
+            refOriginAirportName = airports[i].name;
+      }
+      if(airports[i].iata === flight.refDestinationAirport){
+          refDestinationAirportName = airports[i].name;
+      }
 
 
+    }
+  }, function myError(response) {
+    console.log(response.statusText);
+  });
+​
+
+​
+​
+
+​
+​
 var businessOrEcon ="";
 var fare = 0;
-
+​
 if(booking.isEconomy){
-
+​
   businessOrEcon = "Economy";
   fare = flight.economyFare;
 }
@@ -81,31 +135,35 @@ else{
   businessOrEcon = "Business";
   fare = flight.businessFare;
 }
-
+​
 var facilitiesResult = [];
-
-
-if(aircraft.hasSmoking)
+​
+​
+if(aircrafthasSmoking)
   facilitiesResult.push( facilities[0]);
-
-if(aircraft.hasWifi)
+​
+if(aircrafthasWifi)
   facilitiesResult.push( facilities[1]);
-
+​
 if(booking.isEconomy = false){
-
+​
   facilitiesResult.push( facilities[2]);
   facilitiesResult.push( facilities[3]);
   facilitiesResult.push( facilities[4]);
 }
 facilitiesResult.push( facilities[5]);
-
-
-
+​
+​
+​
 $scope.flight = flight;
-$scope.aircraft = aircraft;
 $scope.businessOrEcon = businessOrEcon ;
 $scope.fare = fare;
 $scope.facilitiesResult = facilitiesResult;
-
-
+$scope.refDestinationAirportName =refDestinationAirportName;
+$scope.refOriginAirportName=refOriginAirportName;
+$scope.aircrafthasSmoking = aircrafthasSmoking;
+$scope.aircrafthasWifi = aircrafthasWifi;
+$scope.aircraftModel = aircraftModel;
+​
+​
 });
