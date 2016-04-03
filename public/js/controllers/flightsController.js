@@ -25,56 +25,32 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
     $location.path('/');
   }
 
-  // array received from factory
-  var flights = [{
-    "number": "1000",
-    "departureUTC": "2016-04-01T07:00:00Z",
-    "arrivalUTC": "2016-04-01T09:00:00Z",
-    "duration": 120,
-    "status": "On Time",
-    "refAircraftTailNumber": "D-AAAA",
-    "refAircraftModel": null,
-    "operatorAirline": "Air Berlin",
-    "refOriginAirport": "CAI",
-    "refOriginAirportName": null,
-    "refDestinationAirport": "TXL",
-    "refDestinationAirportName": null,
-    "boardingGate": "40",
-    "boardingPeriod": 45.0,
-    "boardingTerminal": "3",
-    "arrivalTerminal": "1",
-    "economyFare": 200.0,
-    "businessFare": 300.0,
-    "emptyEconomySeatsCount": 14,
-    "emptyBusinessSeatsCount": 20,
-    "economySeatSchema": null,
-    "buisnessSeatSchema": null,
-    "seatmap": null
-  }, {
-    "number": "1001",
-    "departureUTC": "2016-04-01T15:00:00Z",
-    "arrivalUTC": "2016-04-01T17:00:00Z",
-    "duration": 120,
-    "status": "On Time",
-    "refAircraftTailNumber": "D-AAAA",
-    "refAircraftModel": null,
-    "operatorAirline": "Air Berlin",
-    "refOriginAirport": "CAI",
-    "refOriginAirportName": null,
-    "refDestinationAirport": "TXL",
-    "refDestinationAirportName": null,
-    "boardingGate": "40",
-    "boardingPeriod": 45.0,
-    "boardingTerminal": "3",
-    "arrivalTerminal": "1",
-    "economyFare": 200.0,
-    "businessFare": 300.0,
-    "emptyEconomySeatsCount": 50,
-    "emptyBusinessSeatsCount": 24,
-    "economySeatSchema": null,
-    "buisnessSeatSchema": null,
-    "seatmap": null
-  }];
+  var flights = [];
+
+  api.getAll().then(function mySuccess(response) {
+
+    flights = response.data;
+    $scope.flights = flights;
+
+    // formatting data to be presentable
+    for (i = 0; i < flights.length; i++) {
+
+      var departureDate = new Date(flights[i].departureUTC);
+      flights[i].departureUTC = departureDate.toUTCString();
+
+      var arrivalDate = new Date(flights[i].arrivalUTC);
+      flights[i].arrivalUTC = arrivalDate.toUTCString();
+
+      var hours = Math.floor(flights[i].duration / 60);
+      var minutes = flights[i].duration % 60;
+
+      flights[i].duration = hours + "h " + minutes + "m";
+
+    }
+
+  }, function myError(response) {
+    console.log(response.statusText);
+  });
 
   var airports = [];
 
@@ -120,23 +96,5 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
   }, function myError(response) {
     console.log(response.statusText);
   });
-
-  // formatting data to be presentable
-  for (i = 0; i < flights.length; i++) {
-
-    var departureDate = new Date(flights[i].departureUTC);
-    flights[i].departureUTC = departureDate.toUTCString();
-
-    var arrivalDate = new Date(flights[i].arrivalUTC);
-    flights[i].arrivalUTC = arrivalDate.toUTCString();
-
-    var hours = flights[i].duration / 60;
-    var minutes = flights[i].duration % 60;
-
-    flights[i].duration = hours + "h " + minutes + "m"
-
-  }
-
-  $scope.flights = flights;
 
 });
