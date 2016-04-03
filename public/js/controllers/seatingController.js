@@ -1,177 +1,120 @@
-
-
 // @ahmed-essmat
+App.controller('seatingCtrl', function($scope, $location) {
+    $scope.pageClass = 'page-seating';
+    $scope.title = "Where would you like to sit?";
 
-App.controller('seatingCtrl',function($scope,$location){
+    $scope.buttonTextNxt = "Next";
+    $scope.buttonTextBk = "Back";
+    $scope.goNext = function() {
+        $location.path('/payment');
+    }
+    $scope.goBack = function() {
+        $location.path('/passenger-details');
+    }
 
-  $scope.title = "Where would you like to sit?";
+    var alphabits = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', "M", "N"];
+    var schema = [2, 5, 2, 50];
 
-  $scope.buttonText = "Next";
+    $scope.array1 = [];
 
-  $scope.goNext = function(){
+    $scope.array2 = [];
 
-      $location.path('/payment');
+    $scope.array3 = [];
 
-  };
+    $scope.bob = [];
 
-  //ahmed you will get the whole flight object refer back to the schema to make sure you understand
+    for (var i = 0; i < schema[0]; i++) {
+        $scope.array1.push(alphabits[0]);
+        alphabits.splice(0, 1);
+    }
 
-  //everything
+    for (var i = 0; i < schema[1]; i++) {
+        $scope.array2.push(alphabits[0]);
+        alphabits.splice(0, 1);
+    }
+    for (var i = 0; i < schema[2]; i++) {
+        $scope.array3.push(alphabits[0]);
+        alphabits.splice(0, 1);
+    }
 
-  // use this schema for now
+    for (var i = 0; i < schema[3]; i++) {
+        $scope.bob.push(i);
 
-  var alphabits =['A','B','C','D','E','F','G','H','I','J','K','L',"M","N"];
+    }
 
-  var schema = [2,5,2,50];
-
-   $scope.array1 = [];
-
-   $scope.array2 = [];
-
-   $scope.array3 = [];
-
-   $scope.bob = [];
-
-​
-
-​
-
-​
-
-​
-
-​
-
-  for (var i = 0; i < schema[0]; i++) {
-
-    $scope.array1.push(alphabits[0]);
-
-    alphabits.splice(0, 1);
-
-  }
-
-  for (var i = 0; i < schema[1]; i++) {
-
-    $scope.array2.push(alphabits[0]);
-
-    alphabits.splice(0, 1);
-
-  }for (var i = 0; i < schema[2]; i++) {
-
-    $scope.array3.push(alphabits[0]);
-
-    alphabits.splice(0, 1);
-
-  }
-
-  for (var i = 0; i < schema[3]; i++) {
-
-    $scope.bob.push(i);
-
-    // alphabits.splice(0, 1);
-
-  }
-
-  var seatmap = [
+    var seatmap = [
 
         {
 
-          "number": "A1",
+            "number": "A1",
 
-          "isEmpty": false,
+            "isEmpty": false,
 
-          "isEconomy": false,
+            "isEconomy": false,
 
-          "isAisle": false,
+            "isAisle": false,
 
-          "hasSmoking": false,
+            "hasSmoking": false,
 
-          "hasScreen": true,
+            "hasScreen": true,
 
-          "refBookingID": null,
+            "refBookingID": null,
 
-          "refPassengerID": null
-
-        }, {
-
-          "number": "D1",
-
-          "isEmpty": true,
-
-          "isEconomy": false,
-
-          "isAisle": true,
-
-          "hasSmoking": false,
-
-          "hasScreen": true,
-
-          "refBookingID": null,
-
-          "refPassengerID": null
+            "refPassengerID": null
 
         }, {
 
-          "number": "G1",
+            "number": "D1",
 
-          "isEmpty": true,
+            "isEmpty": true,
 
-          "isEconomy": false,
+            "isEconomy": false,
 
-          "isAisle": true,
+            "isAisle": true,
 
-          "hasSmoking": false,
+            "hasSmoking": false,
 
-          "hasScreen": true,
+            "hasScreen": true,
 
-          "refBookingID": null,
+            "refBookingID": null,
 
-          "refPassengerID": null
+            "refPassengerID": null
 
-        }]
+        }, {
 
-​
+            "number": "G1",
 
-​
+            "isEmpty": true,
 
-​
+            "isEconomy": false,
 
-  $scope.searchColor = function(text){
+            "isAisle": true,
 
-      for (var i = 0; i < seatmap.length; i++) {
+            "hasSmoking": false,
 
-        if(seatmap[i]['number'] == text){
+            "hasScreen": true,
 
-          if(seatmap[i]['isEmpty']){
+            "refBookingID": null,
 
-            return 'seatEmpty';
-
-            }
-
-            else{
-
-              return 'seatOcu';
-
-            }
+            "refPassengerID": null
 
         }
+    ]
+    $scope.searchColor = function(text) {
+        for (var i = 0; i < seatmap.length; i++) {
+            if (seatmap[i]['number'] == text) {
+                if (seatmap[i]['isEmpty']) {
+                    return 'seatEmpty';
+                } else {
+                    return 'seatOcu';
+                }
+            }
+        }
+    }
+    console.log($scope.searchColor('D1'));
+    $scope.alert = function(text) {
 
-      }}
+        alert(text);
 
-​
-
-console.log($scope.searchColor('D1'));
-
-​
-
-​
-
-  $scope.alert = function (text) {
-
-    alert(text);
-
-  };
-
-​
-
+    };
 });

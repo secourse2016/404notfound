@@ -1,133 +1,58 @@
 <!-- @ahmed-essmat -->
+<div class="container">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
 
-<style media="screen">
+                <div class="col-xs-2">
+                    <button ng-click="goBack()" class="btn btn-primary btn-lg pull-left">{{buttonTextBk}}</button>
+                </div>
 
-  .seatOcu{
+                <div class="col-xs-8">
+                    <div class="center">
+                        <h3 class="panel-title center">{{title}}</h3>
 
-    background-color: red !important;
+                    </div>
+                </div>
 
-  }
+                <div class="col-xs-2 ">
+                    <button ng-click="goNext()" class="btn btn-primary btn-lg pull-right">{{buttonTextNxt}}</button>
+                </div>
 
-</style>
+            </div>
+            <div class="panel-body">
 
-<div class="col-lg-12">
+                <div class="row">
+                    <div >
+                        <ANY ng-repeat="y in bob">
+                            <div class="row">
+                                <div class="col-xs-4 ">
+                                    <div class="pull-right">
+                                        <ANY ng-repeat="x in array1">
+                                            <button type="button" ng-click="alert(x+''+y)" class="btn btn-default btn-lg {{searchColor(x+ '' + y)}}" style="background-color:lightgreen">{{x +''+ y}}</button>
+                                        </ANY>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <div >
+                                        <ANY ng-repeat="x in array2">
+                                            <button type="button" class="btn btn-default btn-lg" style="background-color:lightgreen">{{x +''+ y}}</button>
+                                        </ANY>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div >
 
-  <div class="panel panel-default">
-
-    <div class="panel-heading clearfix">
-
-      <h3 class="panel-title pull-left" style="padding-top: 10.5px;">{{title}}</h3>
-
-      <div class="btn-group pull-right">
-
-        <button  ng-click="goNext()" class="btn btn-primary btn-lg">{{buttonText}}</button>
-
-      </div>
-
+                                        <ANY ng-repeat="x in array3">
+                                            <button type="button" class="btn btn-default btn-lg" style="background-color:lightgreen">{{x +''+ y}}</button>
+                                        </ANY>
+                                    </div>
+                                </div>
+                            </ANY>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="panel-body">
-
-<div class="row">
-
-  <div  >
-
-      <ANY ng-repeat="y in bob">
-
-​
-
-​
-
-​
-
-​
-
-            <div class="row">
-
-​
-
-<div class="col-xs-4 ">
-
-​
-
-​
-
-<div  class="pull-right" >
-
-  <ANY ng-repeat="x in array1">
-
-  <button type="button" ng-click="alert(x+''+y)" class="btn btn-default btn-lg {{searchColor(x+ '' + y)}}" style="background-color:lightgreen">{{x +''+ y}}</button>
-
-</ANY>
-
-</div>
-
-</div>
-
-​
-
-<div class="col-xs-4 text-center">
-
-​
-
-​
-
-<div >
-
-  <ANY ng-repeat="x in array2">
-
-  <button type="button" class="btn btn-default btn-lg" style="background-color:lightgreen">{{x +''+ y}}</button>
-
-</ANY>
-
-</div>
-
-</div>
-
-​
-
-<div class="col-xs-4">
-
-​
-
-​
-
-<div >
-
-  <ANY ng-repeat="x in array3">
-
-  <button type="button" class="btn btn-default btn-lg" style="background-color:lightgreen">{{x +''+ y}}</button>
-
-</ANY>
-
-</div>
-
-</div>
-
-​
-
-​
-
-      </ANY>
-
-  </div>
-
-​
-
-</div>
-
-​
-
-​
-
-</div>
-
-      <!-- Start from here -->
-
-​
-
-    </div>
-
-  </div>
-
 </div>

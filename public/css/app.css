@@ -199,3 +199,8 @@ h3.panel-title {
 .gif-overlay:hover .gif-overlay-text-wrapper{
   display: block;
 }
+
+
+.seatOcu {
+    background-color: red !important;
+}
