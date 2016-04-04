@@ -121,7 +121,7 @@ if(aircrafthasSmoking)
   facilitiesResult.push( facilities[0]);
 if(aircrafthasWifi)
   facilitiesResult.push( facilities[1]);
-if(booking.isEconomy = false){
+if(!booking.isEconomy){
   facilitiesResult.push( facilities[2]);
   facilitiesResult.push( facilities[3]);
   facilitiesResult.push( facilities[4]);
