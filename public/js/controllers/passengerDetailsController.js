@@ -85,9 +85,9 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   if(complete == false){
         if(($scope.firstName ==null)||($scope.middleName ==null)||($scope.lastName ==null)||($scope.phoneNumber ==null)||($scope.passportNumber ==null))
         {
-          alert("Please fill in data");
+          //alert("Please fill in data");
 
-          console.log(complete);
+          //console.log(complete);
 
         }
         else{
@@ -95,7 +95,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
           alert("The repeated email doesnt match the first email");
           else {
             if(($scope.check==null))
-            alert("Please check the box");
+        {}    //alert("Please check the box");
             else{
             complete = true;
           }

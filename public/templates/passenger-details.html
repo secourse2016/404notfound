@@ -25,7 +25,7 @@
         <!-- Start from here -->
 
         <div class="container-fluid">
-      <!--   alerts for each element <div class="alert alert-danger alert-dismissible" role="alert" ng-show=firstName==null>
+          <div class="alert alert-danger alert-dismissible" role="alert" ng-show=firstName==null>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>Attention! </strong>Please enter your first name.
         </div>
@@ -45,14 +45,18 @@
 </div><div class="alert alert-danger alert-dismissible" role="alert" ng-show=phoneNumber==null>
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <strong>Attention! </strong>Please enter your phone number.
-</div><div class="alert alert-danger alert-dismissible" role="alert" ng-show=email1!=emailver>
+</div><div class="alert alert-danger alert-dismissible" role="alert" ng-show=email1==null>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<strong>Attention! </strong>The email field cannot be empty.
+</div>
+<div class="alert alert-danger alert-dismissible" role="alert" ng-show=email1!=emailver>
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <strong>Attention! </strong>The entered emails do not match.
 </div>
 <div class="alert alert-danger alert-dismissible" role="alert" ng-show=check==null>
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <strong>Attention! </strong>Please verify the information you entered.
-</div> -->
+</div>
           <div class="row">
             <div class="input-group">
               <div class="btn-group " uib-dropdown is-open="status2.isopen">
