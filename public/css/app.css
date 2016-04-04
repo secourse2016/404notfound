@@ -244,8 +244,11 @@ background-size: cover !important;
 @media screen and (max-device-width: 800px) {
     html {
          background: url(../static/imgs/bg.jpg) #000 no-repeat center center fixed;
+         min-width: 100%;
+     min-height: 100%;
     }
     #bgvid {
         display: none;
     }
+        .nav-wrapper{background-color: black;}
 }
