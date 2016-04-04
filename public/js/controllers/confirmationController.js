@@ -20,7 +20,10 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
     $location.path('/passenger-details');
       return;
   }
+  $scope.goSocial = function () {
+    $location.path('/social');
 
+  }
   $scope.flight = api.getChosenFlight();
 
   $scope.passenger = api.getPassenger();
