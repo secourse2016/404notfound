@@ -1,0 +1,63 @@
+ [
+   {
+   "_id": "A235647925",
+   "refPassengerID": ["C673482992G"],
+   "exitDepartureUTC": "2016-04-01T07:00:00Z",
+   "reEntryDepartureUTC": null,
+   "issueDate": "2016-03-30T06:00:00Z",
+   "isEconomy": true,
+   "isOneWay": true,
+   "refExitFlightNumber": "1000",
+   "refReEntryFlightNumber": null,
+   "receiptNumber": "054"
+ } ,
+ {
+  "_id": "B63478682323",
+  "refPassengerID": ["S6348785G78"],
+  "exitDepartureUTC": "2016-04-01T15:00:00Z",
+  "reEntryDepartureUTC": null,
+  "issueDate": "2016-03-24T15:00:00Z",
+  "isEconomy": false,
+  "isOneWay": true,
+  "refExitFlightNumber": "1001",
+  "refReEntryFlightNumber": null,
+  "receiptNumber": "674"
+},
+{
+ "_id": "H3165879821A",
+ "refPassengerID": ["C23750034A7"],
+ "exitDepartureUTC": "2016-04-02T09:00:00Z",
+ "reEntryDepartureUTC": null,
+ "issueDate": "2016-02-30T18:00:00Z",
+ "isEconomy": false,
+ "isOneWay": true,
+ "refExitFlightNumber": "1002",
+ "refReEntryFlightNumber": null,
+ "receiptNumber": "043"
+},
+{
+ "_id": "D3456789M837",
+ "refPassengerID": ["C61728984A"],
+ "exitDepartureUTC": "2016-04-02T09:00:00Z",
+ "reEntryDepartureUTC": null,
+ "issueDate": "2016-03-30T18:00:00Z",
+ "isEconomy": true,
+ "isOneWay": true,
+ "refExitFlightNumber": "1002",
+ "refReEntryFlightNumber": null,
+ "receiptNumber": "056"
+},
+{
+ "_id": "B215367819D23",
+ "refPassengerID": ["A3267580157"],
+ "exitDepartureUTC": "2016-04-02T09:00:00Z",
+ "reEntryDepartureUTC": null,
+ "issueDate": "2016-02-26T18:00:00Z",
+ "isEconomy": false,
+ "isOneWay": true,
+ "refExitFlightNumber": "1003",
+ "refReEntryFlightNumber": null,
+ "receiptNumber": "078"
+}
+
+]
