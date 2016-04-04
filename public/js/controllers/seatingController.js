@@ -1,5 +1,5 @@
 // @ahmed-essmat
-App.controller('seatingCtrl', function($scope, $location) {
+App.controller('seatingCtrl', function($scope, $location,api) {
     $scope.pageClass = 'page-seating';
     $scope.title = "Where would you like to sit?";
 
@@ -12,6 +12,16 @@ App.controller('seatingCtrl', function($scope, $location) {
         $location.path('/passenger-details');
     }
 
+
+
+    if(!api.getChosenFlight() || !api.getBooking()){
+      $location.path('/flights');
+      return;
+    }
+    if(!api.getPassenger()){
+      $location.path('/passenger-details');
+        return;
+    }
     var alphabits = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', "M", "N"];
     var schema = [3, 5, 3, 20];
 
@@ -2648,11 +2658,9 @@ App.controller('seatingCtrl', function($scope, $location) {
         }
         return true;
     }
-    console.log($scope.searchColor('D1'));
     $scope.selectSeat = function(seat) {
         $scope.seat = seat;
     };
-    $scope.isEconomyText = function() {
-        return 'Economy';
-    }
+
+    $scope.isEconomyText = api.getCabinetClass();
 });

@@ -1,5 +1,5 @@
 // @mirna
-App.controller('paymentCtrl', function($scope, $location) {
+App.controller('paymentCtrl', function($scope, $location,api) {
       $scope.pageClass = 'page-payment';
   $scope.title = "Choose your payment option";
 
@@ -11,6 +11,21 @@ App.controller('paymentCtrl', function($scope, $location) {
   $scope.goBack = function() {
     $location.path('/seating');
   }
+
+
+  if(!api.getChosenFlight() || !api.getBooking()){
+    $location.path('/flights');
+    return;
+  }
+  if(!api.getPassenger()){
+    $location.path('/passenger-details');
+      return;
+  }
+
+  if(api.getCabinetClass() == 'Economy')
+    $scope.price = api.getChosenFlight().economyFare
+  else
+    $scope.price = api.getChosenFlight().businessFare
 
   $scope.years = ['2016','2017','2018','2019','2020','2021','2022','2023','2024'];
   $scope.yearsBtnText = $scope.years[0];

@@ -5,6 +5,12 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   $scope.buttonTextNxt = "Next";
   $scope.buttonTextBk = "Back";
 
+
+  if(!api.getChosenFlight() || !api.getBooking()){
+    $location.path('/flights');
+    return;
+  }
+
   $scope.titles = ['Mr', 'Mrs', 'Ms', 'Dr'];
   $scope.titlesBtnText = $scope.titles[0];
   $scope.changeTitle = function(text) {
@@ -78,7 +84,6 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
        };
     ///before you leave the page make sure that the passenger object is complete otherwise show alert("Fill in all data");
-    console.log($scope.passenger);
 
 
 
@@ -86,7 +91,6 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
         if(($scope.firstName ==null)||($scope.middleName ==null)||($scope.lastName ==null)||($scope.phoneNumber ==null)||($scope.passportNumber ==null))
         {
           alert("Please fill in data");
-          console.log(complete);
 
         }
         else{

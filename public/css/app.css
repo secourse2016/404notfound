@@ -27,7 +27,7 @@ video#bgvid {
     z-index: -100;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url(polina.jpg) no-repeat;
+    background: url(../static/imgs/bg.jpg) no-repeat;
     background-size: cover;
 }
 .navbar-nav {
@@ -229,4 +229,14 @@ h3.panel-title {
     padding-left: 4px;
     width: 100%;
     }
+}
+
+.about-img{
+  height: 260px !important;
+background-size: cover !important;
+}
+.thumbnail{
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
 }
