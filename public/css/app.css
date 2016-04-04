@@ -1,15 +1,14 @@
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-body{
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer;
+}
+body {
   font-family: 'Poppins', sans-serif;
 }
-
 .navbar-default {
   background-color: transparent;
   border: none;
   border-radius: 0;
-
 }
-
 video#bgvid {
   position: fixed;
   top: 50%;
@@ -27,13 +26,11 @@ video#bgvid {
 .navbar-default .navbar-nav>li>a {
   color: white;
 }
-.nav-wrapper{
+.nav-wrapper {
   padding: 10px;
   background-image: -webkit-gradient(linear, 0% 0%, 0% 96%, from(rgba(50, 50, 50, 0.68)), color-stop(0.2, rgba(51, 51, 51, 0.62)), to(rgba(80, 80, 80, 0)));
-
 }
-
-.video-overlay{
+.video-overlay {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -47,41 +44,117 @@ video#bgvid {
   background-color: rgba(0, 0, 0, 0.6);
   background-size: cover;
 }
-
-.main-content{
+.main-content {
   padding: 12px;
 }
-.small-text{
+.small-text {
   font-size: 1.2rem;
 }
-#main-text{
+#main-text {
   color: #dfdfdf;
   font-weight: bold;
 }
-
 .vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 60vh; /* These two lines are counted as one :-)       */
-
-  display: flex;
-  align-items: center;
+  /*min-height: 60%;*/
+  /* Fallback for browsers do NOT support vh unit */
+  /*min-height: 60vh;*/
+  /* These two lines are counted as one :-)       */
+  /*display: flex;*/
+  /*align-items: center;*/
+  margin-top: 60px;
 }
-
 h1.panel-title {
-    font-size: 36px;
+  font-size: 36px;
 }
 h2.panel-title {
-    font-size: 30px;
+  font-size: 30px;
 }
 h3.panel-title {
-    font-size: 24px;
+  font-size: 24px;
 }
 h4.panel-title {
-    font-size: 18px
+  font-size: 18px
 }
 h5.panel-title {
-    font-size: 14px
+  font-size: 14px
 }
 h6.panel-title {
-    font-size: 10px;
-} 
+  font-size: 10px;
+}
+p.theQoute {
+  font-size: 10px;
+  font-style: italic;
+}
+
+/*This is just a workaround we will fix the whole thing later*/
+
+}
+
+/*.jumbotron{
+  width: 1050px;
+}*/
+
+.row {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#second {
+  font-size: 50;
+}
+h3.panel-title {
+  text-align: center;
+  margin-top: 10px;
+}
+.changing-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 347px;
+  padding: 30px;
+}
+
+/*nganimate changes*/
+
+
+.page        {
+    bottom:0;
+    padding-top:100px;
+    position:absolute;
+    top:0;
+    min-width: 100%;
+}
+
+@keyframes slideOutLeft {
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slideInLeft {
+  to {
+    transform: translateX(-100%);
+  }
+}
+/* slide in from the bottom */
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+ .ng-enter {
+  animation: slideInUp 0.5s both ease-in;
+  z-index: 8888;
+}
+.ng-leave {
+  animation: slideOutLeft 0.5s both ease-in;
+  z-index: 9999;
+}
+
+
+.no-animate {
+   -webkit-transition: none !important;
+   transition: none !important;
+}
