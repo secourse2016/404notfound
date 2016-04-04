@@ -1,6 +1,6 @@
-<div class="row vertical-center">
-  <div class="col-lg-6">
-    <div class="row">
+<div class="container vertical-center">
+  <div class="col-md-6 col-sm-12">
+    <div class="row changing-text">
       <h1 id="main-text"></h1>
     </div>
     <div class="row">
@@ -9,7 +9,8 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-6">
+
+  <div class="col-md-6 col-sm-12">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 >Book Now</h4>
@@ -17,97 +18,98 @@
       <div class="panel-body">
 
         <form class="form-horizontal">
+
           <div class="form-group">
             <div class="col-lg-12">
               <div class="input-group">
                 <span class="input-group-addon">From</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Pick Date</button>
-                </span>
+                <input name="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
+
+
               </div>
             </div>
           </div>
+
+
+
+          <div class="form-group">
+            <div class="col-lg-12">
+              <div class="input-group">
+                <span class="input-group-addon">Departure Date</span>
+                  <input type="text" class="form-control" uib-datepicker-popup ng-model="exitDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                  <span class="input-group-addon btn btn-default" ng-click="open2()">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </span>
+                  <!-- <button type="button" class="btn btn-default input-group-addon" ng-click="open2()">
+                  </button> -->
+              </div>
+            </div>
+          </div>
+
 
           <div class="form-group">
             <div class="col-lg-12">
               <div class="input-group">
                 <span class="input-group-addon">To</span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" disabled type="button">Pick Date</button>
-                </span>
+                <input name="desAirports" type="text" placeholder="Flying To" ng-model="selectedDest" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
+
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <div class="col-lg-4">
-              <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Number of Adults
+            <div class="col-xs-4">
+              <div class="btn-group" uib-dropdown is-open="status1.isopen">
+                <button disabled type="button" class="btn btn-default" uib-dropdown-toggle>
+                  {{adultBtnText}}
                   <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu">
+                <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
                   <li>
-                    <a href="#">1 Adult</a>
+                    <a ng-repeat="adult in adults" ng-click="changeAdult(adult)">{{adult}}</a>
                   </li>
-                  <li>
-                    <a href="#">2 Adults</a>
-                  </li>
-                  <li>
-                    <a href="#">3 Adults</a>
-                  </li>
-
                 </ul>
               </div>
               <br>
               <span class="small-text">12+ years</span>
             </div>
-            <div class="col-lg-4">
-              <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Number of Children
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="#">0 Child</a>
-                  </li>
-                  <li>
-                    <a href="#">1 Child</a>
-                  </li>
-                  <li>
-                    <a href="#">2 Children</a>
-                  </li>
-                  <li>
-                    <a href="#">3 Children</a>
-                  </li>
 
-                </ul>
+            <div class="col-xs-4">
+              <div class="text-center">
+                <div class="btn-group" uib-dropdown is-open="status2.isopen">
+                  <button disabled type="button" class="btn btn-default" uib-dropdown-toggle>
+                    {{childrenBtnText}}
+                    <span class="caret"></span>
+                  </button>
+                  <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                    <li>
+                      <a ng-repeat="child in children" ng-click="changeChildren(child)">{{child}}</a>
+                    </li>
+                  </ul>
+                </div>
+                <br>
+                <span class="small-text">2-11 years</span>
               </div>
-              <br>
-              <span class="small-text">2-11 years</span>
+
             </div>
 
-            <div class="col-lg-4">
-              <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Number of Infants
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="#">0 Infant</a>
-                  </li>
-                  <li>
-                    <a href="#">1 Infants</a>
-                  </li>
-
-                </ul>
+            <div class="col-xs-4">
+              <div class="pull-right">
+                <div class="btn-group " uib-dropdown is-open="status3.isopen">
+                  <button type="button" class="btn btn-default" uib-dropdown-toggle>
+                    {{infantBtnText}}
+                    <span class="caret"></span>
+                  </button>
+                  <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                    <li>
+                      <a ng-repeat="infant in infants" ng-click="changeInfant(infant)">{{infant}}</a>
+                    </li>
+                  </ul>
+                </div>
+                <br>
+                <span class="small-text">Under 2 years</span>
               </div>
-              <br>
-              <span class="small-text">Under 2 years</span>
+
             </div>
 
           </div>
@@ -122,7 +124,7 @@
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                  <input disabled type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                   Round Trip
                 </label>
               </div>
@@ -131,11 +133,12 @@
           </div>
 
           <div class="col-lg-4 col-lg-offset-4">
-            <button type="button" class="btn btn-primary btn-lg " ng-click="goToFlights()">Search for flights</button>
+            <button type="button" class="btn btn-primary btn-lg " ng-disabled="buttonState()" ng-click="goToFlights()">Search for flights</button>
           </div>
 
         </form>
       </div>
     </div>
   </div>
+
 </div>
