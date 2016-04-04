@@ -1,13 +1,31 @@
 // @abdelrahman-maged
-App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
-    $scope.pageClass = 'page-flights';
+App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
+
+  $scope.pageClass = 'page-flights';
   $scope.title = "Choose a Flight";
   $scope.buttonTextNxt = "Next";
   $scope.buttonTextBk = "Back";
   $scope.isCollapsed = true;
+  $scope.isFlightSelected = false;
+  $scope.selectedBooking = {
+     "refPassengerID": null,
+     "exitDepartureUTC": null,
+     "reEntryDepartureUTC": null,
+     "issueDate": null,
+     "isEconomy": null,
+     "isOneWay": true,
+     "refExitFlightNumber": null,
+     "refReEntryFlightNumber": null,
+     "receiptNumber": null
+   };
 
   $scope.goNext = function() {
+
+    api.setFlight($scope.selectedFlight);
+    api.setBooking($scope.selectedBooking);
+
     $location.path('/exit-flight');
+
   }
 
   $scope.goBack = function() {
@@ -17,64 +35,58 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
     $location.path('/');
   }
 
-  var origin = $routeParams.origin;
-  var destination = $routeParams.destination;
-  var exitDate = $routeParams.exitDate;
+  // var origin = $routeParams.origin;
+  // var destination = $routeParams.destination;
+  // var exitDate = new Date($routeParams.exitDate * 1000);
 
-  if(!origin || !destination || !exitDate) {
+  var origin = "TXL";
+  var destination = "JFK";
+  var exitDate = new Date(1459555200 * 1000);
+
+  if (!origin || !destination || !exitDate) {
     $location.path('/');
   }
 
-  // array received from factory
-  var flights = [{
-    "number": "1000",
-    "departureUTC": "2016-04-01T07:00:00Z",
-    "arrivalUTC": "2016-04-01T09:00:00Z",
-    "duration": 120,
-    "status": "On Time",
-    "refAircraftTailNumber": "D-AAAA",
-    "refAircraftModel": null,
-    "operatorAirline": "Air Berlin",
-    "refOriginAirport": "CAI",
-    "refOriginAirportName": null,
-    "refDestinationAirport": "TXL",
-    "refDestinationAirportName": null,
-    "boardingGate": "40",
-    "boardingPeriod": 45.0,
-    "boardingTerminal": "3",
-    "arrivalTerminal": "1",
-    "economyFare": 200.0,
-    "businessFare": 300.0,
-    "emptyEconomySeatsCount": 14,
-    "emptyBusinessSeatsCount": 20,
-    "economySeatSchema": null,
-    "buisnessSeatSchema": null,
-    "seatmap": null
-  }, {
-    "number": "1001",
-    "departureUTC": "2016-04-01T15:00:00Z",
-    "arrivalUTC": "2016-04-01T17:00:00Z",
-    "duration": 120,
-    "status": "On Time",
-    "refAircraftTailNumber": "D-AAAA",
-    "refAircraftModel": null,
-    "operatorAirline": "Air Berlin",
-    "refOriginAirport": "CAI",
-    "refOriginAirportName": null,
-    "refDestinationAirport": "TXL",
-    "refDestinationAirportName": null,
-    "boardingGate": "40",
-    "boardingPeriod": 45.0,
-    "boardingTerminal": "3",
-    "arrivalTerminal": "1",
-    "economyFare": 200.0,
-    "businessFare": 300.0,
-    "emptyEconomySeatsCount": 50,
-    "emptyBusinessSeatsCount": 24,
-    "economySeatSchema": null,
-    "buisnessSeatSchema": null,
-    "seatmap": null
-  }];
+  var flights = [];
+
+  api.getAll().then(function mySuccess(response) {
+
+    flights = response.data;
+
+    // formatting data to be presentable
+    for (i = 0; i < flights.length; i++) {
+
+      var departureDate = new Date(flights[i].departureUTC);
+      flights[i].departureUTC = departureDate.toUTCString();
+
+      var arrivalDate = new Date(flights[i].arrivalUTC);
+      flights[i].arrivalUTC = arrivalDate.toUTCString();
+
+      var hours = Math.floor(flights[i].duration / 60);
+      var minutes = flights[i].duration % 60;
+
+      flights[i].duration = hours + "h " + minutes + "m";
+
+    }
+
+    // throwing away flights not fitting constraints
+    function checkConstraints(flight) {
+
+      var flightDate = new Date(flight.departureUTC);
+
+      return flight.refOriginAirport === origin
+              && flight.refDestinationAirport === destination
+              && flightDate.getDay() === exitDate.getDay()
+              && flightDate.getMonth() === exitDate.getMonth()
+              && flightDate.getFullYear() === exitDate.getFullYear();
+
+    }
+
+    $scope.flights = flights.filter(checkConstraints);
+
+  }, function myError(response) {
+    console.log(response.statusText);
+  });
 
   var airports = [];
 
@@ -86,10 +98,10 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
 
       for (var j = 0; j < airports.length; j++) {
 
-        if(airports[j].iata === flights[i].refOriginAirport)
+        if (airports[j].iata === flights[i].refOriginAirport)
           flights[i].refOriginAirportName = airports[j].name;
 
-        if(airports[j].iata === flights[i].refDestinationAirport)
+        if (airports[j].iata === flights[i].refDestinationAirport)
           flights[i].refDestinationAirportName = airports[j].name;
 
       }
@@ -110,7 +122,7 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
 
       for (var j = 0; j < aircrafts.length; j++) {
 
-        if(aircrafts[j].tailNumber === flights[i].refAircraftTailNumber)
+        if (aircrafts[j].tailNumber === flights[i].refAircraftTailNumber)
           flights[i].refAircraftModel = aircrafts[j].model;
 
       }
@@ -121,29 +133,16 @@ App.controller('flightsCtrl', function($scope, $location,$routeParams,api) {
     console.log(response.statusText);
   });
 
-  // formatting data to be presentable
-  for (i = 0; i < flights.length; i++) {
+  $scope.selectFlight = function(flight, isEconomy){
 
-    var departureDate = new Date(flights[i].departureUTC);
-    flights[i].departureUTC = departureDate.toUTCString();
+    $scope.isFlightSelected = true;
+    $scope.selectedFlight = flight;
 
-    var arrivalDate = new Date(flights[i].arrivalUTC);
-    flights[i].arrivalUTC = arrivalDate.toUTCString();
-
-    var hours = flights[i].duration / 60;
-    var minutes = flights[i].duration % 60;
-
-    flights[i].duration = hours + "h " + minutes + "m"
+    $scope.selectedBooking.exitDepartureUTC = flight.departureUTC;
+    $scope.selectedBooking.isEconomy = isEconomy;
+    $scope.selectedBooking.isOneWay = true;
+    $scope.selectedBooking.refExitFlightNumber = flight.number;
 
   }
 
-  $scope.flights = flights;
-
-
-
-
-
-  $scope.selectFlight = function(flight,isEconomy){
-    console.log(flight,isEconomy)
-  }
 });
