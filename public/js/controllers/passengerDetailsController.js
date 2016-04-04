@@ -51,7 +51,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   $location.path('/flights');
   alert("You have to choose a flight");
 }*/
-//The reverting to the flights page
+//This reverting always happens because the chosen flight is always null so the passenger details view doesnt appear
 
     $scope.passenger = {
       _id: "A938020", //not sure how it is generated
@@ -85,8 +85,9 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   if(complete == false){
         if(($scope.firstName ==null)||($scope.middleName ==null)||($scope.lastName ==null)||($scope.phoneNumber ==null)||($scope.passportNumber ==null))
         {
-          alert("Please fill in data");
-          console.log(complete);
+          //alert("Please fill in data");
+
+          //console.log(complete);
 
         }
         else{
@@ -94,7 +95,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
           alert("The repeated email doesnt match the first email");
           else {
             if(($scope.check==null))
-            alert("Please check the box");
+        {}    //alert("Please check the box");
             else{
             complete = true;
           }
