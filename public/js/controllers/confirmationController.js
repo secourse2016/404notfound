@@ -12,6 +12,17 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
     $location.path('/payment');
   }
 
+  if(!api.getChosenFlight() || !api.getBooking()){
+    $location.path('/flights');
+    return;
+  }
+  if(!api.getPassenger()){
+    $location.path('/passenger-details');
+      return;
+  }
+
+  $scope.flight = api.getChosenFlight();
+
   $scope.passenger = api.getPassenger();
   $('#quotes-text').typeIt({
     strings: [

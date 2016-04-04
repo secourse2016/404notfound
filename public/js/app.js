@@ -15,6 +15,9 @@ App = angular.module('airBerlinApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
     $scope.goServices = function() {
       $location.path('/services');
     }
+    $scope.goTeam = function(){
+      $location.path('/team');
+    }
   })
   .config(function($animateProvider) {
     $animateProvider.classNameFilter(/page/);

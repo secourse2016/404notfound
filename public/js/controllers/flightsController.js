@@ -23,7 +23,6 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
 
     api.setFlight($scope.selectedFlight);
     api.setBooking($scope.selectedBooking);
-
     $location.path('/exit-flight');
 
   }
@@ -142,7 +141,6 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
     $scope.selectedBooking.isEconomy = isEconomy;
     $scope.selectedBooking.isOneWay = true;
     $scope.selectedBooking.refExitFlightNumber = flight.number;
-
   }
 
 });

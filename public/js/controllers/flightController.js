@@ -10,8 +10,12 @@ App.controller('exitFlightCtrl',function($scope,$location,api){
   $scope.goBack = function(){
       $location.path('/flights');
   }
+
+
+
   if(!api.getChosenFlight() || !api.getBooking()){
     $location.path('/flights');
+    return;
   }
 var flight= api.getChosenFlight();
 // {
@@ -54,7 +58,7 @@ var flight= api.getChosenFlight();
 var facilities = ["Smoking areas available", "Wi-Fi availability",
 "4 cultural cuisines", "Inflight entertainment", "Extra cozy sleeperette",
  "Screens to show your flight pattern, aircraft altitude and speed"];
-console.log(flight.departureUTC);
+
 var departureDate = new Date(flight.departureUTC);
      flight.departureUTC = departureDate.toUTCString();
 var arrivalDate = new Date(flight.arrivalUTC);

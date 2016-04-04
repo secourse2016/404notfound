@@ -1,5 +1,5 @@
 App.factory('api', function($http) {
-  var chosenFlight,passengerData,bookingData;
+  var chosenFlight,passengerData,bookingData,cabinetClass;
   return {
     getAirports: function() {
       return $http({
@@ -31,7 +31,14 @@ App.factory('api', function($http) {
     setPassenger: function(passenger){
       passengerData = passenger;
     },
+    getCabinetClass: function(){
+      return cabinetClass;
+    },
     setBooking: function(booking){
+      if(booking.isEconomy)
+        cabinetClass = "Economy"
+      else
+      cabinetClass = "Business"
       bookingData = booking;
     },
     getPassenger: function(){
