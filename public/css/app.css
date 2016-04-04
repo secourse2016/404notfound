@@ -200,11 +200,16 @@ h3.panel-title {
     display: block;
 }
 .seatOcu {
-    background-color: red !important;
+    background-color: #D24D57 !important;
 }
 .seat {
     width: 44px;
-    background-color: lightgreen
+    background-color: #18bc9c;
+}
+
+.btn-lg, .btn-group-lg>.btn{
+  padding: 14px 22px;
+
 }
 @media (max-width:767px) {
     .navbar-default .navbar-collapse, .navbar-default .navbar-form {
