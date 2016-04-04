@@ -54,14 +54,14 @@ var flight= api.getChosenFlight();
 var facilities = ["Smoking areas available", "Wi-Fi availability",
 "4 cultural cuisines", "Inflight entertainment", "Extra cozy sleeperette",
  "Screens to show your flight pattern, aircraft altitude and speed"];
-
+console.log(flight.departureUTC);
 var departureDate = new Date(flight.departureUTC);
      flight.departureUTC = departureDate.toUTCString();
 var arrivalDate = new Date(flight.arrivalUTC);
      flight.arrivalUTC = arrivalDate.toUTCString();
 var aircrafthasSmoking;
 var aircrafthasWifi;
-var aircraftModel;
+// var aircraftModel;
 var aircrafts = [];
 api.getAircrafts().then(function mySucces(response) {
   aircrafts = response.data;
@@ -70,7 +70,7 @@ api.getAircrafts().then(function mySucces(response) {
     {
     aircrafthasSmoking = aircrafts[i].hasSmoking;
     aircrafthasWifi = aircrafts[i].hasWifi;
-    aircraftModel =aircrafts[i].model;
+    $scope.aircraftModel =aircrafts[i].model;
 }
   }
 }, function myError(response) {
@@ -84,17 +84,17 @@ api.getAircrafts().then(function mySucces(response) {
 //   "hasWifi": true,
 //   "hasSmoking": false
 // };
-var refOriginAirportName;
-var refDestinationAirportName;
+ $scope.refOriginAirportName;
+$scope.refDestinationAirportName;
  var airports = [];
   api.getAirports().then(function mySucces(response) {
     airports = response.data;
     for (var i = 0; i < airports.length; i++) {
       if(airports[i].iata === flight.refOriginAirport){
-            refOriginAirportName = airports[i].name;
+            $scope.refOriginAirportName = airports[i].name;
       }
       if(airports[i].iata === flight.refDestinationAirport){
-          refDestinationAirportName = airports[i].name;
+          $scope.refDestinationAirportName = airports[i].name;
       }
 
 
@@ -127,9 +127,9 @@ $scope.flight = flight;
 $scope.businessOrEcon = businessOrEcon ;
 $scope.fare = fare;
 $scope.facilitiesResult = facilitiesResult;
-$scope.refDestinationAirportName =refDestinationAirportName;
-$scope.refOriginAirportName=refOriginAirportName;
+// $scope.refDestinationAirportName =refDestinationAirportName;
+// $scope.refOriginAirportName=refOriginAirportName;
 $scope.aircrafthasSmoking = aircrafthasSmoking;
 $scope.aircrafthasWifi = aircrafthasWifi;
-$scope.aircraftModel = aircraftModel;
+// $scope.aircraftModel = aircraftModel;
 });
