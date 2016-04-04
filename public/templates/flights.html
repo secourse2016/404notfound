@@ -40,7 +40,7 @@
       </div>
 
       <div class="col-xs-2 ">
-        <button ng-click="goNext()" class="btn btn-primary btn-lg pull-right">{{buttonTextNxt}}</button>
+        <button ng-click="goNext()" ng-disabled="!isFlightSelected" class="btn btn-primary btn-lg pull-right">{{buttonTextNxt}}</button>
       </div>
 
     </div>

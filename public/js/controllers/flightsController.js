@@ -1,14 +1,31 @@
 // @abdelrahman-maged
 App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
-  
+
   $scope.pageClass = 'page-flights';
   $scope.title = "Choose a Flight";
   $scope.buttonTextNxt = "Next";
   $scope.buttonTextBk = "Back";
   $scope.isCollapsed = true;
+  $scope.isFlightSelected = false;
+  $scope.selectedBooking = {
+     "refPassengerID": null,
+     "exitDepartureUTC": null,
+     "reEntryDepartureUTC": null,
+     "issueDate": null,
+     "isEconomy": null,
+     "isOneWay": true,
+     "refExitFlightNumber": null,
+     "refReEntryFlightNumber": null,
+     "receiptNumber": null
+   };
 
   $scope.goNext = function() {
+
+    api.setFlight($scope.selectedFlight);
+    api.setBooking($scope.selectedBooking);
+
     $location.path('/exit-flight');
+
   }
 
   $scope.goBack = function() {
@@ -115,5 +132,17 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
   }, function myError(response) {
     console.log(response.statusText);
   });
+
+  $scope.selectFlight = function(flight, isEconomy){
+
+    $scope.isFlightSelected = true;
+    $scope.selectedFlight = flight;
+
+    $scope.selectedBooking.exitDepartureUTC = flight.departureUTC;
+    $scope.selectedBooking.isEconomy = isEconomy;
+    $scope.selectedBooking.isOneWay = true;
+    $scope.selectedBooking.refExitFlightNumber = flight.number;
+
+  }
 
 });
