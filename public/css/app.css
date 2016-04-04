@@ -240,3 +240,12 @@ background-size: cover !important;
   padding-right: 0;
   padding-top: 0;
 }
+
+@media screen and (max-device-width: 800px) {
+    html {
+         background: url(../static/imgs/bg.jpg) #000 no-repeat center center fixed;
+    }
+    #bgvid {
+        display: none;
+    }
+}
