@@ -2,6 +2,7 @@ var express = require('express');
 var util = require('util');
 var app = express();
 var fs = require('fs');
+var routes = require('./routes');
 var port = process.env.PORT || 8080;
 
 
