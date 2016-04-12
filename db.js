@@ -39,31 +39,31 @@ var seed = function(cb){
 //seeds the database collections with the json files
 };
 
-var getFlights = function (origin,destination) {
+exports.getFlights = function (origin,destination) {
   // view #2 will have to aquire flights from db with input params
   //from view #1 (date, arrival, depAirport, round/oneway)
 };
 
-var getAirport = function (iata) {
+exports.getAirport = function (iata) {
 // get airport (name) from db with the given iata
 };
 
-var getAircraft = function (tailNumber) {
+exports.getAircraft = function (tailNumber) {
 // get aircraft from db with the given tailNumber
 };
 
 
 // On Confirmation
 
-var postPassenger = function () {
+exports.postPassenger = function () {
 //post created passenger to db
 };
 
-var postBooking = function () {
+exports.postBooking = function () {
 //post created booking to db
 };
 
-var updateFlight = function () {
+exports.updateFlight = function () {
 //update the flight with the allocated seats
 };
 
