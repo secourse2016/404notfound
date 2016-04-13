@@ -1,89 +1,98 @@
-var mongo = require('mongodb');
-var Server = mongo.Server;
-var Db = mongo.Db;
-var assert = require('assert');
+// Dependancies
+var MongoClient = require('mongodb').MongoClient;
+// var mongoose = require('mongoose');
 
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-var DB = new Db('air-berlin', server);
+// Declarations
+var DB = null;
 
-var connect = function(cb) {
+// Connection URL
+var url = 'mongodb://localhost:27017/air-berlin';
 
-     cb(null,DB)
+// Execute
+connect(function(err, db) {
 
-    };
+  if (err)
+    throw new Error('Cannot connect to database.');
 
-connect( function(err, db) {
-
-    assert.equal(null, err);
-        db = DB;
-
-    });
-
-
-var db = function() {
-
-    if (DB === null) throw Error('DB Object has not yet been initialized');
-
-        return DB;
-
-};
-
-db.open(function(err, db) {
-
-//checks seeding of the database.. seed, if it wasn't.
+  else {
+    // seed
+  }
 
 });
 
+// Connects to database
+function connect(cb) {
 
-var seed = function(cb){
-//seeds the database collections with the json files
+  MongoClient.connect(url, function(err, db) {
+    DB = db;
+    cb(err, db);
+  });
+
 };
 
-exports.getFlights = function (origin,destination) {
+// DB getter
+function db() {
+
+  if (DB === null)
+    throw Error('DB Object has not yet been initialized.');
+
+  return DB;
+
+};
+
+var seed = function(cb) {
+  //seeds the database collections with the json files
+};
+
+exports.getFlights = function(origin, destination) {
   // view #2 will have to aquire flights from db with input params
   //from view #1 (date, arrival, depAirport, round/oneway)
 };
 
-exports.getAirport = function (iata) {
-// get airport (name) from db with the given iata
+exports.getAirport = function(iata) {
+  // get airport (name) from db with the given iata
 };
 
-exports.getAircraft = function (tailNumber) {
-// get aircraft from db with the given tailNumber
+exports.getAircraft = function(tailNumber) {
+  // get aircraft from db with the given tailNumber
 };
-
 
 // On Confirmation
 
-exports.postPassenger = function () {
-//post created passenger to db
+exports.postPassenger = function() {
+  //post created passenger to db
 };
 
-exports.postBooking = function () {
-//post created booking to db
+exports.postBooking = function() {
+  //post created booking to db
 };
 
-exports.updateFlight = function () {
-//update the flight with the allocated seats
+exports.updateFlight = function() {
+  //update the flight with the allocated seats
 };
 
+// Drops collections
+function clear(done) {
 
-var delete = function(){
-  //this function should drop/delete existent DB.
+  DB.listCollections().toArray().then(function(collections) {
+
+    collections.forEach(function(c) {
+      DB.collection(c.name).removeMany();
+    });
+
+    done();
+
+  }).catch(done);
+
 };
 
-
-var clearDB = function(done) {
-
-    DB.listCollections().toArray().then(function (collections) {
-
-        collections.forEach(function (c) {
-
-            DB.collection(c.name).removeMany();
-
-        });
-
-        done();
-
-    }).catch(done);
-};
+// Drops database
+// function deleteA(done) {
+//
+//   mongoose.connect(url, function() {
+//     mongoose.connection.db.dropDatabase();
+//   });
+//
+//   done();
+//
+// };
