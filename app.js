@@ -66,6 +66,26 @@ app.get('/api/aircrafts',function(req,res){
   });
 })
 
+// Initialize database
+db.init(function(err) {
+
+  if (err)
+    throw new Error('Error occurred. Cannot connect to Mongo.');
+
+  else {
+
+    db.seed(function(seeded) {
+
+      if (seeded)
+        console.log('Database not found. New database created & populated.');
+      else
+        console.log('Database found.');
+
+    });
+
+  }
+
+});
 
 app.listen(port, '0.0.0.0', function(err) {
   //db.init(function(err, db) {

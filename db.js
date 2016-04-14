@@ -19,13 +19,8 @@ var url = 'mongodb://localhost:27017/air-berlin';
 exports.init = function (cb) {
 
   MongoClient.connect(url, function(err, db) {
-    if (err){
-       cb(err);
-     }
-    console.log('connected to db');
     DB = db;
-    cb(null, db);
-
+    cb(err);
   });
 
 };
@@ -40,9 +35,82 @@ function db() {
 
 };
 
-var seed = function(cb) {
-  //seeds the database collections with the json files (airports/aircrafts/flights/countries)
-  // create collections for passengers and booking to insert in later on
+exports.seed = function(cb) {
+
+  /*seeds the database collections with the json files (airports/aircrafts/flights/countries)
+    & creates collections for passengers & booking to insert in later on */
+
+  // Populate airports
+  DB.collection('airports', {
+    strict: true
+  }, function(err, collection) {
+
+    if (err) {
+
+      DB.collection('airports', function(err, collection) {
+        collection.insert(airports, {
+          safe: true
+        }, function(err, result) {});
+      });
+
+      cb(true);
+
+    } else
+      cb(false);
+
+  });
+
+  // Populate aircrafts
+  DB.collection('aircrafts', {
+    strict: true
+  }, function(err, collection) {
+
+    if (err) {
+
+      DB.collection('aircrafts', function(err, collection) {
+        collection.insert(aircrafts, {
+          safe: true
+        }, function(err, result) {});
+      });
+
+    }
+
+  });
+
+  // Populate flights
+  DB.collection('flights', {
+    strict: true
+  }, function(err, collection) {
+
+    if (err) {
+
+      DB.collection('flights', function(err, collection) {
+        collection.insert(flights, {
+          safe: true
+        }, function(err, result) {});
+      });
+
+    }
+
+  });
+
+  // Populate countries
+  DB.collection('countries', {
+    strict: true
+  }, function(err, collection) {
+
+    if (err) {
+
+      DB.collection('countries', function(err, collection) {
+        collection.insert(countries, {
+          safe: true
+        }, function(err, result) {});
+      });
+
+    }
+
+  });
+
 };
 
 exports.getFlights = function(cb,origin, destination) {
