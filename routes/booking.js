@@ -12,7 +12,6 @@ router.post("/booking",function(req,res){
     db.postBooking(booking);
     var flightNumExit=booking.refExitFlightNumber;
     var flightNumEnter=booking.refReEntryFlightNumber;
-    
     res.send('Successfully booked!!')
 })
 

@@ -17,7 +17,7 @@ router.get('/flights/search/:origin/:destination/:departingDate',function (req,r
     }
       }
       res.send(approvedFlights)
-      res.send(req.params)
+    //  res.send(req.params)
 });
 
 
@@ -62,7 +62,7 @@ router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:
             }
               }
               res.send(approvedFlights2)
-              res.send(req.params)
+              // res.send(req.params)
 
 });
 
@@ -80,7 +80,7 @@ router.post('/flights/search/oneway',function (req,res) {
     }
       }
       res.send(appFlights)
-      res.send(req.body)
+    //  res.send(req.body)
 });
 
 
@@ -125,7 +125,7 @@ router.post('/flights/search/roundtrip', function(req, res) {
             }
               }
               res.send(approvedFlights2)
-              res.send(req.body)
+        //      res.send(req.body)
 
 })
 
