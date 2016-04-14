@@ -18,6 +18,7 @@ router.get('/aircrafts', function(req, res) {
 router.get('/aircrafts/:id', function(req, res) {
     // this the id that will be sent to you from the client
     var flightId = req.params.id;
+    res.send(db.getAircraft(flightId));
 })
 
 module.exports = router;
