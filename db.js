@@ -50,7 +50,7 @@ exports.getFlights = function(origin, destination) {
 };
 
 exports.getAirport = function(iata) {
-  // get airport (name) from db with the given iata
+  // get aivar originAirport=db.getAirport(origin);rport (name) from db with the given iata
 };
 
 exports.getAircraft = function(tailNumber) {
@@ -63,15 +63,15 @@ exports.getAircrafts = function() {
 
 // On Confirmation
 
-exports.postPassenger = function() {
+exports.postPassenger = function(passenger) {
   //post created passenger to db
 };
 
-exports.postBooking = function() {
+exports.postBooking = function(booking) {
   //post created booking to db
 };
 
-exports.updateFlight = function() {
+exports.updateFlight = function(seatNumber,flightNumber) {
   //update the flight with the allocated seats
 };
 
