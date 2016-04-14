@@ -5,7 +5,6 @@ var aircrafts = require('./mockdata/aircrafts.json');
 var flights = require('./mockdata/flights.json');
 var countries = require('./mockdata/countries.json');
 
-// var mongoose = require('mongoose');
 
 // Declarations
 var DB = null;
@@ -169,11 +168,7 @@ exports.close = function () {
 
 //Drops database
 exports.dropDB = function (done) {
-
-
   DB.dropDatabase();
-
-
   done();
 
 };

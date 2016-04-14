@@ -88,15 +88,5 @@ db.init(function(err) {
 });
 
 app.listen(port, '0.0.0.0', function(err) {
-  //db.init(function(err, db) {
-  //
-  //   if (err)
-  //     throw new Error('Cannot connect to database.');
-  //
-  //   else {
-  //     // seed
-  //   }
-  //
-  // });
   console.log("Started listening on %s",port);
 });
