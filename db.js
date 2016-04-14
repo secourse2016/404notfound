@@ -112,10 +112,34 @@ exports.seed = function(cb) {
 
 };
 
-exports.getFlights = function(cb,origin, destination) {
+exports.getFlights = function(cb,origin, destination, exitDate,reEntryDate, isOneway) {
   // view #2 will have to aquire flights from db with input params
   //from view #1 (date, arrival, depAirport, round/oneway)
+  if (isOneway){
+    DB.collection('flights').find({$and:[{
+      "refOriginAirport":origin},
+      {"refDestinationAirport":destination},
+      {"departureUTC":exitDate}]
+    }).toArray(function (err, flights) {
+      if(err) return cb(err);
+      cb(null,flights);
+    });
+  }
+  else{
+    DB.collection('flights').find({$or:[{$and:[{"refOriginAirport":origin},
+      {"refDestinationAirport":destination},
+      {"departureUTC":exitDate}]},
+      {$and:[{"refOriginAirport":destination},
+      {"refDestinationAirport":origin},
+      {"departureUTC":reEntryDate}]}]}).toArray(function (err, flights) {
+      if(err) return cb(err);
+      cb(null,flights);
+    });
+  }
+
 };
+
+
 
 exports.getAirport = function(cb,iata) {
   // get airport (name) from db with the given iata
