@@ -30,7 +30,15 @@ router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:
   var flights=db.getFlights (origin,destination);
   for(var i = 0;i<flights.length;i++){
     if (flights[i].departureUTC == departingDate || flights[i].arrivalUTC == returningDate) {
-      res.send(flights[i])
+      if(flightClass == 'Economy'){
+        if(flights[i].emptyEconomySeatsCount>1)
+          res.send(flights[i])
+      }
+      else{
+        if(flights[i].emptyBusinessSeatsCount>1)
+        res.send(flight[i])
+      }
+
       }
         }
   res.send(req.params)
