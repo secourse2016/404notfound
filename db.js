@@ -57,6 +57,10 @@ exports.getAircraft = function(tailNumber) {
   // get aircraft from db with the given tailNumber
 };
 
+exports.getAircrafts = function() {
+  // get all aircrafts from db
+};
+
 // On Confirmation
 
 exports.postPassenger = function(passenger) {
