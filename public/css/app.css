@@ -1,102 +1,102 @@
 .nav, .pagination, .carousel, .panel-title a {
-    cursor: pointer;
+  cursor: pointer;
 }
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .navbar-default {
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
 }
 #logo {
-    max-width: 120px;
-    margin-top: -7px;
+  max-width: 120px;
+  margin-top: -7px;
 }
 #logo:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 video#bgvid {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background: url(../static/imgs/bg.jpg) no-repeat;
-    background-size: cover;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(../static/imgs/bg.jpg) no-repeat;
+  background-size: cover;
 }
 .navbar-nav {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .navbar-default .navbar-nav>li>a:hover {
-    color: white;
+  color: white;
 }
 .navbar-default .navbar-nav>li>a {
-    color: white;
+  color: white;
 }
 .nav-wrapper {
-    padding: 10px;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 96%, from(rgba(50, 50, 50, 0.68)), color-stop(0.2, rgba(51, 51, 51, 0.62)), to(rgba(80, 80, 80, 0)));
+  padding: 10px;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 96%, from(rgba(50, 50, 50, 0.68)), color-stop(0.2, rgba(51, 51, 51, 0.62)), to(rgba(80, 80, 80, 0)));
 }
 .video-overlay {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -99;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.6);
-    background-size: cover;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -99;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  background-size: cover;
 }
 .main-content {
-    padding: 12px;
+  padding: 12px;
 }
 .small-text {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 #main-text {
-    color: #dfdfdf;
-    font-weight: bold;
+  color: #dfdfdf;
+  font-weight: bold;
 }
 .vertical-center {
-    /*min-height: 60%;*/
-    /* Fallback for browsers do NOT support vh unit */
-    /*min-height: 60vh;*/
-    /* These two lines are counted as one :-)       */
-    /*display: flex;*/
-    /*align-items: center;*/
-    margin-top: 60px;
+  /*min-height: 60%;*/
+  /* Fallback for browsers do NOT support vh unit */
+  /*min-height: 60vh;*/
+  /* These two lines are counted as one :-)       */
+  /*display: flex;*/
+  /*align-items: center;*/
+  margin-top: 60px;
 }
 h1.panel-title {
-    font-size: 36px;
+  font-size: 36px;
 }
 h2.panel-title {
-    font-size: 30px;
+  font-size: 30px;
 }
 h3.panel-title {
-    font-size: 24px;
+  font-size: 24px;
 }
 h4.panel-title {
-    font-size: 18px
+  font-size: 18px
 }
 h5.panel-title {
-    font-size: 14px
+  font-size: 14px
 }
 h6.panel-title {
-    font-size: 10px;
+  font-size: 10px;
 }
 p.theQoute {
-    font-size: 10px;
-    font-style: italic;
+  font-size: 10px;
+  font-style: italic;
 }
 
 /*This is just a workaround we will fix the whole thing later*/
@@ -107,148 +107,146 @@ p.theQoute {
 }*/
 
 .row {
-    margin-top: 30px;
-    margin-bottom: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 #second {
-    font-size: 50;
+  font-size: 50;
 }
 h3.panel-title {
-    text-align: center;
-    margin-top: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
 .changing-text {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 347px;
-    padding: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 347px;
+  padding: 30px;
 }
 
 /*nganimate changes*/
 
 .page {
-    bottom: 0;
-    padding-top: 100px;
-    position: absolute;
-    top: 0;
-    min-width: 100%;
+  bottom: 0;
+  padding-top: 100px;
+  position: absolute;
+  top: 0;
+  min-width: 100%;
 }
 @keyframes slideOutLeft {
-    to {
-        transform: translateX(-100%);
-    }
+  to {
+    transform: translateX(-100%);
+  }
 }
 @keyframes slideInLeft {
-    to {
-        transform: translateX(-100%);
-    }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 /* slide in from the bottom */
 
 @keyframes slideInUp {
-    from {
-        transform: translateY(100%);
-    }
-    to {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 .ng-enter {
-    animation: slideInUp 0.5s both ease-in;
-    z-index: 8888;
+  animation: slideInUp 0.5s both ease-in;
+  z-index: 8888;
 }
 .ng-leave {
-    animation: slideOutLeft 0.5s both ease-in;
-    z-index: 9999;
+  animation: slideOutLeft 0.5s both ease-in;
+  z-index: 9999;
 }
 .no-animate {
-    -webkit-transition: none !important;
-    transition: none !important;
+  -webkit-transition: none !important;
+  transition: none !important;
 }
 .gif-overlay {
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.28);
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.28);
 }
 .gif-overlay {
-    position: relative;
-    float: left;
+  position: relative;
+  float: left;
 }
 .gif-overlay img {
-    display: block;
+  display: block;
 }
 .gif-overlay:hover img {
-    opacity: .2;
-    cursor: pointer
+  opacity: .2;
+  cursor: pointer
 }
 .gif-overlay-text-wrapper {
-    display: none;
-    margin: auto;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    bottom: 0;
-    right: 0;
+  display: none;
+  margin: auto;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 .gif-overlay:hover .gif-overlay-text-wrapper {
-    display: block;
+  display: block;
 }
 .seatOcu {
-    background-color: #D24D57 !important;
+  background-color: #D24D57 !important;
 }
 .seat {
-    width: 44px;
-    background-color: #18bc9c;
+  width: 44px;
+  background-color: #18bc9c;
 }
-
-.btn-lg, .btn-group-lg>.btn{
+.btn-lg, .btn-group-lg>.btn {
   padding: 14px 22px;
-
 }
 @media (max-width:767px) {
-    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-        background-color: rgba(0, 0, 0, 0.329412);
-        margin-top: 15px;
-        border-color: #858585;
-    }
-    .page-panel{
-      padding-right: 0;
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    background-color: rgba(0, 0, 0, 0.329412);
+    margin-top: 15px;
+    border-color: #858585;
+  }
+  .page-panel {
+    padding-right: 0;
     padding-left: 0;
     margin-left: 0;
     margin-right: 0;
     width: 100%;
-    }
-    .page-content{
-      padding-right: 4px;
+  }
+  .page-content {
+    padding-right: 4px;
     padding-left: 4px;
     width: 100%;
-    }
+  }
 }
-
-.about-img{
+.about-img {
   height: 260px !important;
-background-size: cover !important;
+  background-size: cover !important;
 }
-.thumbnail{
+.thumbnail {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
 }
-
 @media screen and (max-device-width: 800px) {
-    html {
-         background: url(../static/imgs/bg.jpg) #000 no-repeat center center fixed;
-         min-width: 100%;
-     min-height: 100%;
-    }
-    #bgvid {
-        display: none;
-    }
-        .nav-wrapper{background-color: black;}
+  html {
+    background: url(../static/imgs/bg.jpg) #000 no-repeat center center fixed;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  #bgvid {
+    display: none;
+  }
+  .nav-wrapper {
+    background-color: black;
+  }
 }

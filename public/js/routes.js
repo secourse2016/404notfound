@@ -1,5 +1,5 @@
-App.config(['$routeProvider','$locationProvider',
-  function($routeProvider,$locationProvider) {
+App.config(['$routeProvider', '$locationProvider',
+  function($routeProvider, $locationProvider) {
     $routeProvider.
     when('/', {
         templateUrl: 'templates/main.html',
@@ -49,18 +49,16 @@ App.config(['$routeProvider','$locationProvider',
         templateUrl: 'templates/services.html',
       })
 
-      .otherwise(
-        {
-          templateUrl: 'templates/404.html',
-          controller: '404Ctrl'
-        }
-      );
+    .otherwise({
+      templateUrl: 'templates/404.html',
+      controller: '404Ctrl'
+    });
 
-      // $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
 
   }
+  
 ]);
-
 
 //
 // when('/phones/:phoneId', {

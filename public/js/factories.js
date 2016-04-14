@@ -1,6 +1,9 @@
 App.factory('api', function($http) {
-  var chosenFlight,passengerData,bookingData,cabinetClass;
+
+  var chosenFlight, passengerData, bookingData, cabinetClass;
+
   return {
+
     getAirports: function() {
       return $http({
         method: 'GET',
@@ -25,39 +28,41 @@ App.factory('api', function($http) {
         url: '/api/aircrafts'
       })
     },
-    setFlight: function(flight){
+    setFlight: function(flight) {
       chosenFlight = flight;
     },
-    setPassenger: function(passenger){
+    setPassenger: function(passenger) {
       passengerData = passenger;
     },
-    getCabinetClass: function(){
+    getCabinetClass: function() {
       return cabinetClass;
     },
-    setBooking: function(booking){
-      if(booking.isEconomy)
+    setBooking: function(booking) {
+      if (booking.isEconomy)
         cabinetClass = "Economy"
       else
-      cabinetClass = "Business"
+        cabinetClass = "Business"
       bookingData = booking;
     },
-    getPassenger: function(){
+    getPassenger: function() {
       return passengerData;
     },
-    getBooking: function(){
+    getBooking: function() {
       return bookingData;
     },
-    getChosenFlight: function(){
+    getChosenFlight: function() {
       return chosenFlight;
     },
-    getCountries: function(){
+    getCountries: function() {
       return $http({
         method: 'GET',
         url: '/api/countries'
       })
     },
-    submitBooking: function(){
+    submitBooking: function() {
       // this is the most important function here this is the one which will send data to the server
     }
+    
   };
+
 });
