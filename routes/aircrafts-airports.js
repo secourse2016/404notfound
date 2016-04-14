@@ -11,6 +11,7 @@ router.get('/airports', function(req, res) {
 
 // this should return all the aircrafts
 router.get('/aircrafts', function(req, res) {
+  res.send(db.getAircrafts());
 })
 
 // this should return one aircraft only specified in the id
