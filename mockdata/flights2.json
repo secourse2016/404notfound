@@ -312,5 +312,29 @@
   "economySeatSchema": null,
   "buisnessSeatSchema": null,
   "seatmap": null
+},{
+  "number": "1004",
+  "departureUTC": "2016-04-20T06:40:00Z",
+  "arrivalUTC": "2016-04-20T07:20:00Z",
+  "duration": 40,
+  "status": "On Time",
+  "refAircraftTailNumber": "D-CCCC",
+  "refAircraftModel": null,
+  "operatorAirline": "Air Berlin",
+  "refOriginAirport": "MIL",
+  "refOriginAirportName": null,
+  "refDestinationAirport": "ROM",
+  "refDestinationAirportName": null,
+  "boardingGate": "40",
+  "boardingPeriod": 45.0,
+  "boardingTerminal": "3",
+  "arrivalTerminal": "1",
+  "economyFare": 200.0,
+  "businessFare": 300.0,
+  "emptyEconomySeatsCount": 9,
+  "emptyBusinessSeatsCount": 6,
+  "economySeatSchema": null,
+  "buisnessSeatSchema": null,
+  "seatmap": null
 }
 ]
