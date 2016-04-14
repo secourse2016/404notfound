@@ -7,6 +7,7 @@ var router = express.Router();
 // update the selected seat and insert the booking object into the database
 router.post("/booking",function(req,res){
 
+  
 })
 
 module.exports = router;

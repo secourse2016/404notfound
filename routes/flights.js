@@ -28,8 +28,9 @@ router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:
   var returningDate = req.params.returningDate;
   var flightClass = req.params.class;
   var flights=db.getFlights (origin,destination);
+  res.send('outgoing Flights: ')
   for(var i = 0;i<flights.length;i++){
-    if (flights[i].departureUTC == departingDate || flights[i].arrivalUTC == returningDate) {
+    if (flights[i].departureUTC == departingDate)  {
       if(flightClass == 'Economy'){
         if(flights[i].emptyEconomySeatsCount>1)
           res.send(flights[i])
@@ -41,6 +42,20 @@ router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:
 
       }
         }
+        res.send('returning Flights: ')
+        for(var i = 0;i<flights.length;i++){
+          if (flights[i].arrivalUTC == returningDate)  {
+            if(flightClass == 'Economy'){
+              if(flights[i].emptyEconomySeatsCount>1)
+                res.send(flights[i])
+            }
+            else{
+              if(flights[i].emptyBusinessSeatsCount>1)
+              res.send(flight[i])
+            }
+
+            }
+              }
   res.send(req.params)
 
 });
@@ -70,11 +85,32 @@ router.post('/flights/search/roundtrip', function(req, res) {
   var returningDate = req.body.returningDate;
   var flightClass = req.body.class;
   var flights=db.getFlights (origin,destination);
+  res.send('outgoing Flights: ')
   for(var i = 0;i<flights.length;i++){
-    if (flights[i].departureUTC == departingDate || flights[i].arrivalUTC == returningDate) {
-      res.send(flights[i])
+    if (flights[i].departureUTC == departingDate) {
+      if(flightClass == 'Economy'){
+        if(flights[i].emptyEconomySeatsCount>1)
+        res.send(flights[i])
+      }else{
+        if(flights[i].emptyBusinessSeatsCount>1)
+        res.send(flights[i])
+      }
+
       }
         }
+        res.send('returning Flights: ')
+        for(var i = 0;i<flights.length;i++){
+          if (flights[i].arrivalUTC == returningDate) {
+            if(flightClass == 'Economy'){
+              if(flights[i].emptyEconomySeatsCount>1)
+              res.send(flights[i])
+            }else{
+              if(flights[i].emptyBusinessSeatsCount>1)
+              res.send(flights[i])
+            }
+
+            }
+              }
   res.send(req.body)
 
 })
