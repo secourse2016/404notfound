@@ -50,7 +50,7 @@ exports.getFlights = function(origin, destination) {
 };
 
 exports.getAirport = function(iata) {
-  // get airport (name) from db with the given iata
+  // get aivar originAirport=db.getAirport(origin);rport (name) from db with the given iata
 };
 
 exports.getAircraft = function(tailNumber) {
