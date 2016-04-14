@@ -6,7 +6,8 @@ var aircraftsAndAirports = require('./routes/aircrafts-airports.js');
 var flights = require('./routes/flights.js');
 var booking = require('./routes/booking.js');
 var port = process.env.PORT || 8080;
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var db = require('./db.js');
 
 
 
@@ -67,5 +68,15 @@ app.get('/api/aircrafts',function(req,res){
 
 
 app.listen(port, '0.0.0.0', function(err) {
+  //db.init(function(err, db) {
+  //
+  //   if (err)
+  //     throw new Error('Cannot connect to database.');
+  //
+  //   else {
+  //     // seed
+  //   }
+  //
+  // });
   console.log("Started listening on %s",port);
 });
