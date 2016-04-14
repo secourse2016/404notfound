@@ -15,7 +15,7 @@ App = angular.module('airBerlinApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
     $scope.goServices = function() {
       $location.path('/services');
     }
-    $scope.goTeam = function(){
+    $scope.goTeam = function() {
       $location.path('/team');
     }
   })
@@ -23,8 +23,8 @@ App = angular.module('airBerlinApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
     $animateProvider.classNameFilter(/page/);
   });
 
-App.controller('404Ctrl',function($scope,$location){
-  $scope.goToTeam = function(){
+App.controller('404Ctrl', function($scope, $location) {
+  $scope.goToTeam = function() {
     $location.path('/team');
   }
 })

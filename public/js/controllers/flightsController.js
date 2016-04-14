@@ -8,16 +8,16 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
   $scope.isCollapsed = true;
   $scope.isFlightSelected = false;
   $scope.selectedBooking = {
-     "refPassengerID": null,
-     "exitDepartureUTC": null,
-     "reEntryDepartureUTC": null,
-     "issueDate": null,
-     "isEconomy": null,
-     "isOneWay": true,
-     "refExitFlightNumber": null,
-     "refReEntryFlightNumber": null,
-     "receiptNumber": null
-   };
+    "refPassengerID": null,
+    "exitDepartureUTC": null,
+    "reEntryDepartureUTC": null,
+    "issueDate": null,
+    "isEconomy": null,
+    "isOneWay": true,
+    "refExitFlightNumber": null,
+    "refReEntryFlightNumber": null,
+    "receiptNumber": null
+  };
 
   $scope.goNext = function() {
 
@@ -78,7 +78,7 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
               && flightDate.getDay() === exitDate.getDay()
               && flightDate.getMonth() === exitDate.getMonth()
               && flightDate.getFullYear() === exitDate.getFullYear();
-
+              
     }
 
     $scope.flights = flights.filter(checkConstraints);
@@ -132,7 +132,7 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
     console.log(response.statusText);
   });
 
-  $scope.selectFlight = function(flight, isEconomy){
+  $scope.selectFlight = function(flight, isEconomy) {
 
     $scope.isFlightSelected = true;
     $scope.selectedFlight = flight;

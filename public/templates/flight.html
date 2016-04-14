@@ -19,94 +19,95 @@
         </div>
 
       </div>
-        <div class="panel-body">
+      <div class="panel-body">
 
 
 
-              <table class="table table-bordered table-striped ">
-                <tbody class="text-center">
-                  <tr>
-                    <td class="pull-center">
-                      <div class="row">
-  ​
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <h3>{{flight.refOriginAirport}}</h3>
-                        <h5>{{refOriginAirportName}}</h5>
-                        <h3>{{flight.departureUTC}}</h3>
-                        </div>
-  ​
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                           <h5>Operated by {{flight.operatorAirline}}</h5>
-                           <h5>Flight {{flight.number}}</h5>
-                           <h5>{{aircraftModel}}</h5>
-                           <h5>{{flight.duration}}</h5>
-                        </div>
-  ​
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
-                          <h3>{{flight.refDestinationAirport}}</h3>
-                          <h5>{{refDestinationAirportName}}</h5>
-                          <h3>{{flight.arrivalUTC}}</h3>
-                        </div>
-  ​
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
-            <table class="table table-bordered">
-                <tbody class="text-center">
-                  <tr>
-                    <td>
-                      <div class="row">
-                          <h4>Number of passengers</h4>
-                    </td>
-
-                    <td>
-                        <br/>
-                        <h4>1 passenger</h4>
-                      </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="row">
-                        <h4>Flying class</h4>
-                  </td>
-
-                  <td>
-                      <br/>
-                      <h4>{{businessOrEcon}}</h4>
-                    </div>
-                </td>
-              </tr>
-              <tr>
-                <td >
-                  <div class="row">
-                      <h4>Flight fare</h4>
-                </td>
-
-                <td>
-                    <br/>
-                    <h4>&euro;{{fare}}</h4>
+        <table class="table table-bordered table-striped ">
+          <tbody class="text-center">
+            <tr>
+              <td class="pull-center">
+                <div class="row">
+                  ​
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <h3>{{flight.refOriginAirport}}</h3>
+                    <h5>{{refOriginAirportName}}</h5>
+                    <h3>{{flight.departureUTC}}</h3>
                   </div>
+                  ​
+                  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <h5>Operated by {{flight.operatorAirline}}</h5>
+                    <h5>Flight {{flight.number}}</h5>
+                    <h5>{{aircraftModel}}</h5>
+                    <h5>{{flight.duration}}</h5>
+                  </div>
+                  ​
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <h3>{{flight.refDestinationAirport}}</h3>
+                    <h5>{{refDestinationAirportName}}</h5>
+                    <h3>{{flight.arrivalUTC}}</h3>
+                  </div>
+                  ​
+                </div>
               </td>
             </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-bordered">
+          <tbody class="text-center">
             <tr>
-              <td >
+              <td>
                 <div class="row">
-                    <h4>Flight facilities</h4>
+                  <h4>Number of passengers</h4>
               </td>
 
               <td>
-                  <br/>
-                  <li ng-repeat="facility in facilitiesResult"><h4>{{facility}}</h4></li>
+                <br/>
+                <h4>1 passenger</h4>
                 </div>
-            </td>
-          </tr>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="row">
+                  <h4>Flying class</h4>
+              </td>
 
-      </tbody>
-    </table>
+              <td>
+                <br/>
+                <h4>{{businessOrEcon}}</h4>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="row">
+                  <h4>Flight fare</h4>
+              </td>
+
+              <td>
+                <br/>
+                <h4>&euro;{{fare}}</h4>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="row">
+                  <h4>Flight facilities</h4>
+              </td>
+
+              <td>
+                <br/>
+                <li ng-repeat="facility in facilitiesResult">
+                  <h4>{{facility}}</h4></li>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
 
 
 
