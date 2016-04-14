@@ -59,15 +59,15 @@ exports.getAircraft = function(tailNumber) {
 
 // On Confirmation
 
-exports.postPassenger = function() {
+exports.postPassenger = function(passenger) {
   //post created passenger to db
 };
 
-exports.postBooking = function() {
+exports.postBooking = function(booking) {
   //post created booking to db
 };
 
-exports.updateFlight = function() {
+exports.updateFlight = function(seatNumber,flightNumber) {
   //update the flight with the allocated seats
 };
 
