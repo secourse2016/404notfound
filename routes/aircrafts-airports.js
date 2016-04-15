@@ -6,7 +6,7 @@ var airports = require('../mockdata/airports');
 
 // this route should return all the airports from json file
 router.get('/airports', function(req, res) {
-  res.send(airports);
+  res.send(db.getAirports());
 })
 
 // this should return all the aircrafts
