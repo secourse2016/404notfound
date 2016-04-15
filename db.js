@@ -112,7 +112,7 @@ exports.seed = function(cb) {
 
 };
 
-exports.getFlights = function(cb,origin, destination, exitDate,reEntryDate, isOneway) {
+exports.getFlights = function(origin, destination, exitDate,reEntryDate, isOneway,cb) {
   // view #2 will have to aquire flights from db with input params
   //from view #1 (date, arrival, depAirport, round/oneway)
   if (isOneway){
@@ -141,34 +141,72 @@ exports.getFlights = function(cb,origin, destination, exitDate,reEntryDate, isOn
 
 
 
-exports.getAirport = function(cb,iata) {
+exports.getAirport = function(iata, cb) {
   // get airport (name) from db with the given iata
+  DB.collection('airports').find({"iata":iata}).toArray(function (err,airport) {
+    if(err) return cb(err);
+    cb(null,airport);
+
+  });
 };
 
-exports.getAircraft = function(cb,tailNumber) {
+exports.getAircraft = function(tailNumber, cb) {
   // get aircraft from db with the given tailNumber
+  DB.collection('aircrafts').find({"tailNumber":tailNumber}).toArray(function (err,aircraft) {
+    if(err) return cb(err);
+    cb(null,aircraft);
+
+  });
 };
 
-exports.getAircrafts = function() {
+exports.getAircrafts = function(cb) {
   // get all aircrafts from db
+  DB.collection('aircrafts').find({}).toArray(function (err,aircrafts) {
+    if(err) return cb(err);
+    cb(null,aircrafts);
+
+  });
 };
 
 exports.getCountries = function (cb) {
   //gets all countries
+  DB.collection('countries').find({}).toArray(function (err,countries) {
+    if(err) return cb(err);
+    cb(null,countries);
+
+  });
 }
 
 // On Confirmation
 
-exports.postPassenger = function(cb) {
+exports.postPassenger = function(passenger, cb) {
   //post created passenger to db
+  DB.collection('passengers', function(err, collection) {
+    collection.insert(passenger, {safe: true}, cb(err, result));
+  });
+
 };
 
-exports.postBooking = function(cb) {
+exports.postBooking = function(booking, cb) {
   //post created booking to db
+  DB.collection('bookings', function(err, collection) {
+    collection.insert(booking, {safe: true}, cb(err,result));
+  });
 };
 
-exports.updateFlight = function(cb) {
+exports.updateFlight = function(flightNumber, seat, cb) {
   //update the flight with the allocated seats
+  // DB.collection('flights').find({"number":flightNumber}).toArray(function (err,flight) {
+  //   if(err) return cb(err);
+  //   for (var i = 0; i < flight.length; i++) {
+  //       if(flight.seatmap[i].number === seat.number){
+  //         flight.seatmap[i] = seat;
+  //       }
+  //   }
+  // });
+  
+    // DB.collection('flights').update({"number":flightNumber},$set:);
+
 };
 
 // Drops collections
