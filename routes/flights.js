@@ -20,6 +20,7 @@ router.get('/flights/search/:origin/:destination/:departingDate',function (req,r
 db.getFlights(origin,departingDate,null,true,function(err,flights)
 {
 if(!err){
+res.send('outgoingFlights: ');
 res.send(flights);
 
 }else{
