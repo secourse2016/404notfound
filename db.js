@@ -150,6 +150,14 @@ exports.getAirport = function(iata, cb) {
   });
 };
 
+exports.getAirports = function(cb) {
+  // get all airports from db
+  DB.collection('airports').find({}).toArray(function(err, airports) {
+    if (err) return cb(err);
+    cb(null, airports);
+  });
+};
+
 exports.getAircraft = function(tailNumber, cb) {
   // get aircraft from db with the given tailNumber
   DB.collection('aircrafts').find({"tailNumber":tailNumber}).toArray(function (err,aircraft) {
@@ -204,7 +212,7 @@ exports.updateFlight = function(flightNumber, seat, cb) {
   //       }
   //   }
   // });
-  
+
     // DB.collection('flights').update({"number":flightNumber},$set:);
 
 };
