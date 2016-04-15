@@ -20,7 +20,7 @@ exports.init = function(cb) {
 };
 
 // DB getter
-function db() {
+exports.db = function () {
   if (DB === null)
     throw Error('DB Object has not yet been initialized.');
   return DB;
@@ -129,7 +129,7 @@ exports.getFlights = function(origin, destination, exitDate, reEntryDate, isOnew
 };
 
 exports.getAirport = function(iata, cb) {
-  // get airport (name) from db with the given iata
+  // get airport from db with the given iata
   DB.collection('airports').find({
     "iata": iata
   }).toArray(function(err, airport) {
@@ -195,31 +195,31 @@ exports.postBooking = function(booking, cb) {
 exports.updateFlight = function(flightNumber, seat, cb) {
 
   //update the flight with the allocated seats
-  // DB.collection('flights').find({"number":flightNumber}).toArray(function (err,flight) {
-  //   if(err) return cb(err);
-  //   for (var i = 0; i < flight.length; i++) {
-  //       if(flight.seatmap[i].number === seat.number){
-  //         flight.seatmap[i] = seat;
-  //         break;
-  //       }
-  //   }
-  //   DB.collection('flights').update({"number":flightNumber},{$set:{"seatmap":flight.seatmap}});
-  //  });
+  DB.collection('flights').find({"number":flightNumber}).toArray(function (err,flight) {
+    if(err) return cb(err);
+    for (var i = 0; i < flight.length; i++) {
+        if(flight.seatmap[i].number === seat.number){
+          flight.seatmap[i] = seat;
+          break;
+        }
+    }
+    DB.collection('flights').update({"number":flightNumber},{$set:{"seatmap":flight.seatmap}});
+   });
 
-  DB.collection('flights').findAndModify(
-    {"number":flightNumber}, // query
-    {$set: {"seatmap":flight.seatmap}}, // replacement
-    function (err,flight) {
-      if(err) return cb(err);
-      else{
-          for (var i = 0; i < flight.length; i++) {
-            if(flight.seatmap[i].number === seat.number){
-              flight.seatmap[i] = seat;
-              break;
-            }
-          }
-      }
-    });
+  // DB.collection('flights').findAndModify(
+  //   {"number":flightNumber}, // query
+  //   {$set: {"seatmap":flight.seatmap}}, // replacement
+  //   function (err,flight) {
+  //     if(err) return cb(err);
+  //     else{
+  //         for (var i = 0; i < flight.length; i++) {
+  //           if(flight.seatmap[i].number === seat.number){
+  //             flight.seatmap[i] = seat;
+  //             break;
+  //           }
+  //         }
+  //     }
+  //   });
 
 };
 
