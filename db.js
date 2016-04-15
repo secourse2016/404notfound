@@ -200,11 +200,26 @@ exports.updateFlight = function(flightNumber, seat, cb) {
   //   for (var i = 0; i < flight.length; i++) {
   //       if(flight.seatmap[i].number === seat.number){
   //         flight.seatmap[i] = seat;
+  //         break;
   //       }
   //   }
-  // });
+  //   DB.collection('flights').update({"number":flightNumber},{$set:{"seatmap":flight.seatmap}});
+  //  });
 
-  // DB.collection('flights').update({"number":flightNumber},$set:);
+  DB.collection('flights').findAndModify(
+    {"number":flightNumber}, // query
+    {$set: {"seatmap":flight.seatmap}}, // replacement
+    function (err,flight) {
+      if(err) return cb(err);
+      else{
+          for (var i = 0; i < flight.length; i++) {
+            if(flight.seatmap[i].number === seat.number){
+              flight.seatmap[i] = seat;
+              break;
+            }
+          }
+      }
+    });
 
 };
 
