@@ -26,7 +26,7 @@ db.postPassenger(Passenger,function(err, cb){
 else{
   res.send('error occured while adding passenger');
 }
-})
+});
 db.postBooking(booking,function(err,cb ){
   if(!err){
   res.send('booking added succefully');
@@ -34,13 +34,15 @@ db.postBooking(booking,function(err,cb ){
 else{
   res.send('error occured while adding booking');
 }
-})
-db.updateFlight(flightNumber, seat,function(err,cb))
+});
+db.updateFlight(flightNumber, seat,function(err,cb){
    if(!err){
  res.send('seat added succefully');
 }
    else{
  res.send('error occured while adding seat');
-}})
+}
+});
+})
 
 module.exports = router;
