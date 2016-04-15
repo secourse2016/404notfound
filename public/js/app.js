@@ -1,4 +1,4 @@
-App = angular.module('airBerlinApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
+App = angular.module('airBerlinApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate','pascalprecht.translate'])
   .controller('parentCtrl', function($scope, $location) {
     $scope.goHome = function() {
       $location.path('/');
@@ -19,7 +19,8 @@ App = angular.module('airBerlinApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
       $location.path('/team');
     }
   })
-  .config(function($animateProvider) {
+  .config(function($animateProvider,$locationProvider,$translateProvider) {
+    //  $locationProvider.html5Mode(true);
     $animateProvider.classNameFilter(/page/);
   });
 

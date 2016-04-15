@@ -13,7 +13,7 @@
   <div class="col-md-6 col-sm-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 >Book Now</h4>
+        <h4 >{{"MAIN.BOOK_NOW" | translate}}</h4>
       </div>
       <div class="panel-body">
 
@@ -22,7 +22,7 @@
           <div class="form-group">
             <div class="col-lg-12">
               <div class="input-group">
-                <span class="input-group-addon">From</span>
+                <span class="input-group-addon" >{{'MAIN.FROM' | translate}}</span>
                 <input name="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
 
 
@@ -35,7 +35,7 @@
           <div class="form-group">
             <div class="col-lg-12">
               <div class="input-group">
-                <span class="input-group-addon">Departure Date</span>
+                <span class="input-group-addon">{{'MAIN.DEPARTURE_DATE' | translate}}</span>
                   <input type="text" class="form-control" uib-datepicker-popup ng-model="exitDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
                   <span class="input-group-addon btn btn-default" ng-click="open2()">
                     <i class="glyphicon glyphicon-calendar"></i>
@@ -50,7 +50,7 @@
           <div class="form-group">
             <div class="col-lg-12">
               <div class="input-group">
-                <span class="input-group-addon">To</span>
+                <span class="input-group-addon" >{{'MAIN.TO' | translate}}</span>
                 <input name="desAirports" type="text" placeholder="Flying To" ng-model="selectedDest" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
 
               </div>
@@ -71,7 +71,7 @@
                 </ul>
               </div>
               <br>
-              <span class="small-text">12+ years</span>
+              <span class="small-text">12+ {{'MAIN.YEARS' | translate}}</span>
             </div>
 
             <div class="col-xs-4">
@@ -88,7 +88,7 @@
                   </ul>
                 </div>
                 <br>
-                <span class="small-text">2-11 years</span>
+                <span class="small-text">2-11 {{'MAIN.YEARS' | translate}}</span>
               </div>
 
             </div>
@@ -107,7 +107,7 @@
                   </ul>
                 </div>
                 <br>
-                <span class="small-text">Under 2 years</span>
+                <span class="small-text">{{'MAIN.UNDER_2_YEARS' | translate}}</span>
               </div>
 
             </div>
@@ -119,13 +119,13 @@
               <div class="radio">
                 <label>
                   <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                  One Way
+                  {{'MAIN.ONE_WAY' | translate}}
                 </label>
               </div>
               <div class="radio">
                 <label>
                   <input disabled type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                  Round Trip
+                  {{'MAIN.ROUND_TRIP' | translate}}
                 </label>
               </div>
             </div>
@@ -133,7 +133,7 @@
           </div>
 
           <div class="col-lg-4 col-lg-offset-4">
-            <button type="button" class="btn btn-primary btn-lg " ng-disabled="buttonState()" ng-click="goToFlights()">Search for flights</button>
+            <button type="button" class="btn btn-primary btn-lg " ng-disabled="buttonState()" ng-click="goToFlights()">{{'MAIN.SEARCH_FOR_FLIGHTS' | translate}}</button>
           </div>
 
         </form>

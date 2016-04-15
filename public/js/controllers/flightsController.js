@@ -81,7 +81,7 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
 
     }
 
-    $scope.flights = flights.filter(checkConstraints);
+    $scope.flights = flights.filter(checkConstraints);;
 
   }, function myError(response) {
     console.log(response.statusText);
