@@ -6,7 +6,8 @@ var aircraftsAndAirports = require('./routes/aircrafts-airports.js');
 var flights = require('./routes/flights.js');
 var booking = require('./routes/booking.js');
 var port = process.env.PORT || 8080;
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var db = require('./db.js');
 
 
 
@@ -65,6 +66,26 @@ app.get('/api/aircrafts',function(req,res){
   });
 })
 
+// Initialize database
+db.init(function(err) {
+
+  if (err)
+    throw new Error('Error occurred. Cannot connect to Mongo.');
+
+  else {
+
+    db.seed(function(seeded) {
+
+      if (seeded)
+        console.log('Database not found. New database created & populated.');
+      else
+        console.log('Database found.');
+
+    });
+
+  }
+
+});
 
 app.listen(port, '0.0.0.0', function(err) {
   console.log("Started listening on %s",port);
