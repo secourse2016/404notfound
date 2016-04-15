@@ -143,18 +143,38 @@ exports.getFlights = function(cb,origin, destination, exitDate,reEntryDate, isOn
 
 exports.getAirport = function(cb,iata) {
   // get airport (name) from db with the given iata
+  DB.collection('airports').find({"iata":iata}).toArray(function (err,airport) {
+    if(err) return cb(err);
+    cb(null,airport);
+
+  });
 };
 
 exports.getAircraft = function(cb,tailNumber) {
   // get aircraft from db with the given tailNumber
+  DB.collection('aircrafts').find({"tailNumber":tailNumber}).toArray(function (err,aircraft) {
+    if(err) return cb(err);
+    cb(null,aircraft);
+
+  });
 };
 
-exports.getAircrafts = function() {
+exports.getAircrafts = function(cb) {
   // get all aircrafts from db
+  DB.collection('aircrafts').find({}).toArray(function (err,aircrafts) {
+    if(err) return cb(err);
+    cb(null,aircrafts);
+
+  });
 };
 
 exports.getCountries = function (cb) {
   //gets all countries
+  DB.collection('countries').find({}).toArray(function (err,countries) {
+    if(err) return cb(err);
+    cb(null,countries);
+
+  });
 }
 
 // On Confirmation
