@@ -8,7 +8,16 @@ router.get('/flights/search/:origin/:destination/:departingDate',function (req,r
   var origin = req.params.origin;
   var destination = req.params.destination;
   var departingDate = req.params.departingDate;
-  res.send(req.params)
+  var flights=db.getFlights (origin,destination);
+  for(var i = 0;i<flights.length;i++){
+    if (flights[i].departureUTC == departingDate) {
+      res.send(flights[i])
+      approvedFlights.push(flights[i])
+    }
+      }
+//  res.send(req.params)
+    res.send(approvedFlights)
+
 });
 
 
@@ -19,7 +28,43 @@ router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:
   var departingDate = req.params.departingDate;
   var returningDate = req.params.returningDate;
   var flightClass = req.params.class;
-  res.send(req.params)
+  var approvedFlights = [];
+  var approvedFlights2=[];
+     res.send('outgoing Flights: ')
+     for(var i = 0;i<flights.length;i++){
+       if (flights[i].departureUTC == departingDate)  {
+         if(flightClass == 'Economy'){
+           if(flights[i].emptyEconomySeatsCount>1)
+  //          res.send(flights[i])
+            approvedFlights.push(flights[i])
+         }
+         else{
+           if(flights[i].emptyBusinessSeatsCount>1)
+  //        res.send(flight[i])
+         approvedFlights.push(flights[i])
+         }
+
+         }
+           }
+           res.send(approvedFlights)
+           res.send('returning Flights: ')
+           for(var i = 0;i<flights.length;i++){
+             if (flights[i].arrivalUTC == returningDate)  {
+               if(flightClass == 'Economy'){
+                 if(flights[i].emptyEconomySeatsCount>1)
+  //                res.send(flights[i])
+                  approvedFlights2.push(flights[i])
+               }
+               else{
+                 if(flights[i].emptyBusinessSeatsCount>1)
+//                res.send(flight[i])
+               approvedFlights2.push(flights[i])
+               }
+
+               }
+                 }
+               res.send(approvedFlights2)
+  //             res.send(req.params)
 
 })
 
@@ -29,7 +74,17 @@ router.post('/flights/search/oneway',function (req,res) {
   var origin = req.body.origin;
   var destination = req.body.destination;
   var departingDate = req.body.departingDate;
-  res.send(req.body)
+    var appFlights=[];
+    var flights=db.getFlights (origin,destination);
+    for(var i = 0;i<flights.length;i++){
+      if (flights[i].departureUTC == departingDate) {
+    //      res.send(flights[i])
+       appFlights.push(flights[i])
+      }
+        }
+ //  res.send(req.body)
+       res.send(appFlights)
+ //      res.send(req.body)
 });
 
 
@@ -41,8 +96,48 @@ router.post('/flights/search/roundtrip', function(req, res) {
   var departingDate = req.body.departingDate;
   var returningDate = req.body.returningDate;
   var flightClass = req.body.class;
-  res.send(req.body)
+  var approvedFlights=[];
+  var approvedFlights2=[];
+  var flights=db.getFlights (origin,destination);
+  res.send('outgoing Flights: ')
+  for(var i = 0;i<flights.length;i++){
+    if (flights[i].departureUTC == departingDate) {
+      if(flightClass == 'Economy'){
+        if(flights[i].emptyEconomySeatsCount>1)
+//        res.send(flights[i])
+        approvedFlights.push(flights[i])
+      }else{
+        if(flights[i].emptyBusinessSeatsCount>1)
+//        res.send(flights[i])
+        approvedFlights.push(flights[i])
+      }
+
+      }
+        }
+        res.send(approvedFlights)
+        res.send('returning Flights: ')
+        for(var i = 0;i<flights.length;i++){
+          if (flights[i].arrivalUTC == returningDate) {
+            if(flightClass == 'Economy'){
+              if(flights[i].emptyEconomySeatsCount>1)
+//              res.send(flights[i])
+              approvedFlights2.push(flights[i])
+
+            }else{
+              if(flights[i].emptyBusinessSeatsCount>1)
+//              res.send(flights[i])
+              approvedFlights2.push(flights[i])
+
+            }
+
+            }
+              }
+//  res.send(req.body)
+              res.send(approvedFlights2)
+              res.send(req.body)
+
 
 })
 
 module.exports = router;
+
