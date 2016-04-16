@@ -11,11 +11,11 @@ var booking=req.body.booking;
 var flightNumber=booking.refExitFlightNumber;
 var seat = {
     number : req.body.seatNumber,
-    isEmpty  : "no",
-    isEconomy : "yes",
-    isAisle  : "yes",
-    hasSmoking  : "no",
-    hasScreen  : "yes",
+    isEmpty  : "false",
+    isEconomy : "true",
+    isAisle  : "true",
+    hasSmoking  : "false",
+    hasScreen  : "true",
     refBookingID  : booking._id,
     refPassengerID  : Passenger._id
 };
