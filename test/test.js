@@ -59,7 +59,7 @@ describe("getAircraft", function() {
 describe("getAircrafts", function() {
 
 
- var aircrafts1 = ["D-AAAA", "D-BBBB", "D-CCCC", "D-EEEE"];
+ var aircrafts1 = ["D-AAAA", "D-BBBB", "D-CCCC","D-DDDD", "D-EEEE"];
 
  it ("should make sure that the returned aircrafts match the aircrafts given to the function", function(){
 
@@ -68,6 +68,23 @@ describe("getAircrafts", function() {
 //add some cases
 
     assert (aircrafts1.length == aircrafts.length, "Returned number of aircrafts is not equal to the given number of aircrafts");
+
+      var found=false;
+    for (var i = 0; i<aircrafts1.length; i++)
+    {
+       found = false;
+        for(var j = 0; j<aircrafts.length; j++)
+        {
+          if(aircrafts1[i]==aircrafts[j])
+          {
+            found = true;
+            break;
+          }
+        }
+    }
+    assert(found,"Returned array of aircrafts doesn't match with the given array of aircrafts, the database is incomplete");
+
+
   });
 
 
@@ -81,9 +98,9 @@ describe("getCountries", function() {
 
 it("should make sure the returning object is an array", function(){
 
-   db.getCountries(function(){
+   db.getCountries(function(err, countries){
 //     check is array
-     //assert(countries, "The returned array is empty");
+     assert(countries.isArray([]), "The returned object is not an array");
    });
 
 
