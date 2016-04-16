@@ -40,40 +40,40 @@ router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:
   var returningDate = req.params.returningDate;
   var flightClass = req.params.class;
 
-  db.getFlights(origin,destination,departingDate,returningDate,true,function(err,flights)
+  db.getFlights(origin,destination,departingDate,returningDate,false,function(err,flights)
 {
   if(!err){
-      var approvedFlights=[];
-      var approvedFlights2=[];
-         for(var i = 0;i<flights.length;i++){
-            if(flights[i].departureUTC==departingDate){
-             if(flightClass == 'Economy'){
-               if(flights[i].emptyEconomySeatsCount>1)
-      //          res.send(flights[i])
-                approvedFlights.push(flights[i])
-             }
-             else{
-               if(flights[i].emptyBusinessSeatsCount>1)
-               approvedFlights.push(flights[i])
-             }
-
-           }else{
-             if(flightClass == 'Economy'){
-               if(flights[i].emptyEconomySeatsCount>1)
-      //          res.send(flights[i])
-                approvedFlights2.push(flights[i])
-             }
-             else{
-               if(flights[i].emptyBusinessSeatsCount>1)
-               approvedFlights2.push(flights[i])
-             }
-           }
-         }
-//          res.send('outgoingFlights: ');
-          res.send(approvedFlights);
+//       var approvedFlights=[];
+//       var approvedFlights2=[];
+//          for(var i = 0;i<flights.length;i++){
+//             if(flights[i].departureUTC==departingDate){
+//              if(flightClass == 'Economy'){
+//                if(flights[i].emptyEconomySeatsCount>1)
+//       //          res.send(flights[i])
+//                 approvedFlights.push(flights[i])
+//              }
+//              else{
+//                if(flights[i].emptyBusinessSeatsCount>1)
+//                approvedFlights.push(flights[i])
+//              }
+//
+//            }else{
+//              if(flightClass == 'Economy'){
+//                if(flights[i].emptyEconomySeatsCount>1)
+//       //          res.send(flights[i])
+//                 approvedFlights2.push(flights[i])
+//              }
+//              else{
+//                if(flights[i].emptyBusinessSeatsCount>1)
+//                approvedFlights2.push(flights[i])
+//              }
+//            }
+//          }
+// //          res.send('outgoingFlights: ');
+//           res.send(approvedFlights);
 //          res.send('returnFlights: ');
 //          res.send(approvedFlights2);
-
+res.send(flights);
 
   }else{
     consolse.log(err);
@@ -141,23 +141,24 @@ router.post('/flights/search/oneway',function (req,res) {
   //     res.send(appFlights)
  //      res.send(req.body)
 
- db.getFlights(origin,destination,departingDate,returningDate,true,function(err,flights)
+ db.getFlights(origin,destination,departingDate,null,true,function(err,flights)
 {
  if(!err){
-   res.send('outgoingFlights: ');
-     var approvedFlights=[];
-        for(var i = 0;i<flights.length;i++){
-            if(flightClass == 'Economy'){
-              if(flights[i].emptyEconomySeatsCount>1)
-     //          res.send(flights[i])
-               approvedFlights.push(flights[i])
-            }
-            else{
-              if(flights[i].emptyBusinessSeatsCount>1)
-              approvedFlights.push(flights[i])
-            }
-          }
-          res.send(approvedFlights);
+  //  res.send('outgoingFlights: ');
+  //    var approvedFlights=[];
+  //       for(var i = 0;i<flights.length;i++){
+  //           if(flightClass == 'Economy'){
+  //             if(flights[i].emptyEconomySeatsCount>1)
+  //    //          res.send(flights[i])
+  //              approvedFlights.push(flights[i])
+  //           }
+  //           else{
+  //             if(flights[i].emptyBusinessSeatsCount>1)
+  //             approvedFlights.push(flights[i])
+  //           }
+  //         }
+  //         res.send(approvedFlights);
+  res.send(flights);
 
  }else{
    consolse.log(err);
@@ -178,37 +179,37 @@ router.post('/flights/search/roundtrip', function(req, res) {
   db.getFlights(origin,destination,departingDate,returningDate,false,function(err,flights)
 {
   if(!err){
-      var approvedFlights=[];
-      var approvedFlights2=[];
-         for(var i = 0;i<flights.length;i++){
-            if(flights[i].departureUTC==departingDate){
-             if(flightClass == 'Economy'){
-               if(flights[i].emptyEconomySeatsCount>1)
-      //          res.send(flights[i])
-                approvedFlights.push(flights[i])
-             }
-             else{
-               if(flights[i].emptyBusinessSeatsCount>1)
-               approvedFlights.push(flights[i])
-             }
-
-           }else{
-             if(flightClass == 'Economy'){
-               if(flights[i].emptyEconomySeatsCount>1)
-      //          res.send(flights[i])
-                approvedFlights2.push(flights[i])
-             }
-             else{
-               if(flights[i].emptyBusinessSeatsCount>1)
-               approvedFlights2.push(flights[i])
-             }
-           }
-         }
-//          res.send('outgoingFlights: ');
-          res.send(approvedFlights);
+//       var approvedFlights=[];
+//       var approvedFlights2=[];
+//          for(var i = 0;i<flights.length;i++){
+//             if(flights[i].departureUTC==departingDate){
+//              if(flightClass == 'Economy'){
+//                if(flights[i].emptyEconomySeatsCount>1)
+//       //          res.send(flights[i])
+//                 approvedFlights.push(flights[i])
+//              }
+//              else{
+//                if(flights[i].emptyBusinessSeatsCount>1)
+//                approvedFlights.push(flights[i])
+//              }
+//
+//            }else{
+//              if(flightClass == 'Economy'){
+//                if(flights[i].emptyEconomySeatsCount>1)
+//       //          res.send(flights[i])
+//                 approvedFlights2.push(flights[i])
+//              }
+//              else{
+//                if(flights[i].emptyBusinessSeatsCount>1)
+//                approvedFlights2.push(flights[i])
+//              }
+//            }
+//          }
+// //          res.send('outgoingFlights: ');
+//           res.send(approvedFlights);
 //          res.send('returnFlights: ');
 //          res.send(approvedFlights2);
-
+res.send(flights);
 
   }else{
     consolse.log(err);
