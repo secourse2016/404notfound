@@ -17,14 +17,14 @@ router.get('/flights/search/:origin/:destination/:departingDate',function (req,r
 //       }
 // //  res.send(req.params)
 //     res.send(approvedFlights)
-db.getFlights(origin,departingDate,null,true,function(err,flights)
+db.getFlights(origin,destination,departingDate,null,true,function(err,flights)
 {
 if(!err){
-res.send('outgoingFlights: ');
+// res.send('outgoingFlights: ');
 res.send(flights);
 
 }else{
-  consolse.log(err);
+  console.log(err);
 }
 
 });
@@ -40,7 +40,7 @@ router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:
   var returningDate = req.params.returningDate;
   var flightClass = req.params.class;
 
-  db.getFlights(origin,departingDate,returningDate,true,function(err,flights)
+  db.getFlights(origin,destination,departingDate,returningDate,true,function(err,flights)
 {
   if(!err){
       var approvedFlights=[];
@@ -69,10 +69,10 @@ router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:
              }
            }
          }
-          res.send('outgoingFlights: ');
+//          res.send('outgoingFlights: ');
           res.send(approvedFlights);
-          res.send('returnFlights: ');
-          res.send(approvedFlights2);
+//          res.send('returnFlights: ');
+//          res.send(approvedFlights2);
 
 
   }else{
@@ -141,7 +141,7 @@ router.post('/flights/search/oneway',function (req,res) {
   //     res.send(appFlights)
  //      res.send(req.body)
 
- db.getFlights(origin,departingDate,returningDate,true,function(err,flights)
+ db.getFlights(origin,destination,departingDate,returningDate,true,function(err,flights)
 {
  if(!err){
    res.send('outgoingFlights: ');
@@ -175,7 +175,7 @@ router.post('/flights/search/roundtrip', function(req, res) {
   var departingDate = req.body.departingDate;
   var returningDate = req.body.returningDate;
   var flightClass = req.body.class;
-  db.getFlights(origin,departingDate,returningDate,false,function(err,flights)
+  db.getFlights(origin,destination,departingDate,returningDate,false,function(err,flights)
 {
   if(!err){
       var approvedFlights=[];
@@ -204,10 +204,10 @@ router.post('/flights/search/roundtrip', function(req, res) {
              }
            }
          }
-          res.send('outgoingFlights: ');
+//          res.send('outgoingFlights: ');
           res.send(approvedFlights);
-          res.send('returnFlights: ');
-          res.send(approvedFlights2);
+//          res.send('returnFlights: ');
+//          res.send(approvedFlights2);
 
 
   }else{
