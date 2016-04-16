@@ -36,6 +36,7 @@ exports.seed = function(cb) {
         strict: true
     }, function(err, collection) {
         if (err) {
+          dropDB(function() {});
             DB.collection('airports', function(err, collection) {
                 collection.insert(airports, {
                     safe: true
@@ -280,7 +281,7 @@ exports.clear = function(done) {
 };
 
 //Drops database
-exports.dropDB = function(done) {
+function dropDB(done) {
     DB.dropDatabase();
     done();
 };
