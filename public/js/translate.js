@@ -27,7 +27,7 @@
           TITLE: 'Einen Flug aussuchen',
           ECONOMY: 'Economy',
           BUSINESS: 'Business',
-          SEATS_LEFT: 'seats left',
+          SEATS_LEFT: 'freie Sitzplätze',
           MORE_DETAILS: 'Mehr Detais',
           BOOK: 'buchen',
           FLIGHT: 'Flug',
@@ -38,13 +38,13 @@
           ECONOMY: 'Economy',
           BUSINESS: 'Business',
           TITLE: 'Details des Flugs',
-          OPERATED_BY: 'Operated by',
-          NUMBER_OF_PASSENGERS: 'Number of passengers',
-          FLYING_CALSS: 'Flying class',
-          FLIGHT_FARE: 'Flight fare',
+          OPERATED_BY: 'betrieben von',
+          NUMBER_OF_PASSENGERS: 'Anzahl der Passagiere',
+          FLYING_CALSS: 'Beförderungsklassen',
+          FLIGHT_FARE: 'Flugpreis',
           FLIGHT_FAC: 'Dienstleistungen des Flugs',
-          PASSENGER : 'passenger',
-          PASSENGERS : 'passengers'
+          PASSENGER : 'Passagier',
+          PASSENGERS : 'Passagiere'
         },
         NAV: {
           NEXT: 'weiter',
