@@ -18,20 +18,16 @@ var seatNumber;
 db.postPassenger(Passenger,function(err, data){
   if(!err){
   passengerId = data._id;
-  res.send('Passenger added succefully');
+
 }
-else{
-  res.send('error occured while adding passenger');
-}
+
 });
 db.postBooking(booking,function(err,data ){
   if(!err){
     bookingId = data._id;
-  res.send('booking added succefully');
+
 }
-else{
-  res.send('error occured while adding booking');
-}
+
 });
 
 isEconomy= booking.isEconomy;
@@ -39,10 +35,10 @@ seatNumber=req.body.seatNumber;
 exitDate=booking.exitDepartureUTC;
 db.updateFlight(flightNumber, exitDate,isEconomy,seatNumber,passengerId,bookingId,function(err,data){
    if(!err){
- res.send('seat added succefully');
+ res.send('booking added succefully');
 }
    else{
- res.send('error occured while adding seat');
+ res.send('error occured while adding your booking');
 }
 });
 })
