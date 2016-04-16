@@ -1,21 +1,21 @@
-App.config(function($translateProvider) {
+  App.config(function($translateProvider) {
     $translateProvider.translations('en', {
         MAIN: {
-            BOOK_NOW: 'Book Now',
-            FROM: 'From',
-            DEPARTURE_DATE: 'Departure Date',
-            TO: 'To',
-            UNDER_2_YEARS: 'Under 2 years',
+            BOOK_NOW: 'Jetzt buchen',
+            FROM: 'von',
+            DEPARTURE_DATE: 'Hinflug',
+            TO: 'nach',
+            UNDER_2_YEARS: 'Jünger als 2 Jahren',
             ROUND_TRIP: 'Round Trip',
-            ONE_WAY: 'One Way',
-            SEARCH_FOR_FLIGHTS: 'Search for flights',
-            YEARS: "years",
-            CHILDREN: 'children',
-            CHILD: 'child',
-            ADULT: 'adult',
-            ADULTS: 'adults',
-            INFANTS: 'infants',
-            INFANT: 'infant',
+            ONE_WAY: 'Nur Hinflug',
+            SEARCH_FOR_FLIGHTS: 'Fluege suchen',
+            YEARS: "jahre",
+            CHILDREN: 'Kinder',
+            CHILD: 'Kind',
+            ADULT: 'Erwachsener',
+            ADULTS: 'Erwachsenen',
+            INFANTS: 'Babys',
+            INFANT: 'Baby',
             QUOTES_HOME: {
                 1: "Simple, convenient, instant confirmation.",
                 2: "Destinations all around the globe.",
@@ -24,36 +24,36 @@ App.config(function($translateProvider) {
             }
         },
         FLIGHTS: {
-          TITLE: 'Choose a Flight',
+          TITLE: 'Einen Flug aussuchen',
           ECONOMY: 'Economy',
           BUSINESS: 'Business',
           SEATS_LEFT: 'seats left',
-          MORE_DETAILS: 'More details',
-          BOOK: 'Book',
-          FLIGHT: 'Flight',
+          MORE_DETAILS: 'Mehr Detais',
+          BOOK: 'buchen',
+          FLIGHT: 'Flug',
           OPERATED_BY: 'Operated by'
         },
         FLIGHT: {
-          FLIGHT: "Flight",
+          FLIGHT: "Flug",
           ECONOMY: 'Economy',
           BUSINESS: 'Business',
-          TITLE: 'Flight Details',
+          TITLE: 'Detais des Flugs',
           OPERATED_BY: 'Operated by',
           NUMBER_OF_PASSENGERS: 'Number of passengers',
           FLYING_CALSS: 'Flying class',
           FLIGHT_FARE: 'Flight fare',
-          FLIGHT_FAC: 'Flight facilities',
+          FLIGHT_FAC: 'Dienstleistungen des Flugs',
           PASSENGER : 'passenger',
           PASSENGERS : 'passengers'
         },
         NAV: {
-          NEXT: 'Next',
-          BACK: 'Back',
-          SPECIAL_OFFERS: 'Special Offers',
-          SERVICES: 'Services',
-          OUR_TEAM: 'Our Team',
-          ABOUT: 'About',
-          CONTACT_US: 'Contact Us'
+          NEXT: 'Nächstens',
+          BACK: 'Zurück',
+          SPECIAL_OFFERS: 'Spezielle Angebote',
+          SERVICES: 'Dienstleistungen',
+          OUR_TEAM: 'Unser Team',
+          ABOUT: 'Über uns',
+          CONTACT_US: 'Unser Kontakt'
         }
 
     });
