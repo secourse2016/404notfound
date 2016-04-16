@@ -11,6 +11,9 @@ var booking=req.body.booking;
 var flightNumber=booking.refExitFlightNumber;
 var bookingId;
 var passengerId;
+var exitDate;
+var isEconomy;
+var seatNumber;
 
 db.postPassenger(Passenger,function(err, data){
   if(!err){
@@ -40,8 +43,10 @@ var seat = {
     refBookingID  : bookingId,
     refPassengerID  : passengerId
 };
-
-db.updateFlight(flightNumber, seat,function(err,data){
+isEconomy= booking.isEconomy;
+seatNumber=req.body.seatNumber;
+exitDate=booking.exitDepartureUTC;
+db.updateFlight(flightNumber, exitDate,isEconomy,seatNumber,passengerId,bookingId,function(err,data){
    if(!err){
  res.send('seat added succefully');
 }
