@@ -9,6 +9,27 @@ router.post("/booking",function(req,res){
 var Passenger= req.body.passenger;
 var booking=req.body.booking;
 var flightNumber=booking.refExitFlightNumber;
+var bookingId;
+var passengerId;
+
+db.postPassenger(Passenger,function(err, data){
+  if(!err){
+  passengerId = data._id;
+  res.send('Passenger added succefully');
+}
+else{
+  res.send('error occured while adding passenger');
+}
+});
+db.postBooking(booking,function(err,data ){
+  if(!err){
+    bookingId = data._id;
+  res.send('booking added succefully');
+}
+else{
+  res.send('error occured while adding booking');
+}
+});
 var seat = {
     number : req.body.seatNumber,
     isEmpty  : "false",
@@ -16,26 +37,11 @@ var seat = {
     isAisle  : "true",
     hasSmoking  : "false",
     hasScreen  : "true",
-    refBookingID  : booking._id,
-    refPassengerID  : Passenger._id
+    refBookingID  : bookingId,
+    refPassengerID  : passengerId
 };
-db.postPassenger(Passenger,function(err, cb){
-  if(!err){
-  res.send('Passenger added succefully');
-}
-else{
-  res.send('error occured while adding passenger');
-}
-});
-db.postBooking(booking,function(err,cb ){
-  if(!err){
-  res.send('booking added succefully');
-}
-else{
-  res.send('error occured while adding booking');
-}
-});
-db.updateFlight(flightNumber, seat,function(err,cb){
+
+db.updateFlight(flightNumber, seat,function(err,data){
    if(!err){
  res.send('seat added succefully');
 }
