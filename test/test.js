@@ -28,11 +28,13 @@ describe("getFlights", function() {
 //this one we should make sure that the returned airport matches the iata given to the function
 describe("getAirport", function() {
 
-var airport = "CAI";
+var iata = "CAI";
     it("should make sure that the returned airport matches the iata given to the function ", function() {
 
-        var element = db.getAirport(airport);
-       assert( element == airport, "Returned airport doesn't match with the given iata");
+        db.getAirport(iata, function(err, airport){
+          assert( iata == airport.iata, "Returned airport doesn't match with the given iata");
+        });
+
     })
 
 });
@@ -43,8 +45,10 @@ describe("getAircraft", function() {
   var tailNumber = "D-AAAA";
       it("should make sure that the returned tail number matches the tail number given to the function ", function() {
 
-          var element = db.getAircraft(tailNumber);
-         assert( element == tailNumber, "Returned tail number doesn't match with the given tail number");
+         db.getAircraft(tailNumber, function(err, aircraft){
+           assert( tailNumber == aircraft.tailNumber, "Returned tail number doesn't match with the given tail number");
+
+         });
       })
 
 
@@ -55,13 +59,19 @@ describe("getAircraft", function() {
 describe("getAircrafts", function() {
 
 
- var aircrafts = ["D-AAAA", "D-BBBB", "D-CCCC", "D-EEEE"];
+ var aircrafts1 = ["D-AAAA", "D-BBBB", "D-CCCC", "D-EEEE"];
 
  it ("should make sure that the returned aircrafts match the aircrafts given to the function", function(){
 
-   var elements = db.getAircrafts(aircrafts);
+  db.getAircrafts(aircrafts1, function(err, aircrafts){
 
-   assert (elements.length == aircrafts.length, "Returned number of aircrafts is not equal to the given number of aircrafts");
+//add some cases
+
+    assert (aircrafts1.length == aircrafts.length, "Returned number of aircrafts is not equal to the given number of aircrafts");
+  });
+
+
+
  })
 });
 
@@ -71,9 +81,12 @@ describe("getCountries", function() {
 
 it("should make sure the returning object is an array", function(){
 
-  var countries = db.getCountries();
+   db.getCountries(function(){
+//     check is array
+     //assert(countries, "The returned array is empty");
+   });
 
-  assert(countries.length>0, "The returned array is empty");
+
 
 })
 });
