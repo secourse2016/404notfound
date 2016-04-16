@@ -8,8 +8,8 @@
             UNDER_2_YEARS: 'Jünger als 2 Jahren',
             ROUND_TRIP: 'Round Trip',
             ONE_WAY: 'Nur Hinflug',
-            SEARCH_FOR_FLIGHTS: 'Fluege suchen',
-            YEARS: "jahre",
+            SEARCH_FOR_FLIGHTS: 'Flüge suchen',
+            YEARS: "Jahre",
             CHILDREN: 'Kinder',
             CHILD: 'Kind',
             ADULT: 'Erwachsener',
@@ -31,13 +31,13 @@
           MORE_DETAILS: 'Mehr Detais',
           BOOK: 'buchen',
           FLIGHT: 'Flug',
-          OPERATED_BY: 'Operated by'
+          OPERATED_BY: 'betrieben von'
         },
         FLIGHT: {
           FLIGHT: "Flug",
           ECONOMY: 'Economy',
           BUSINESS: 'Business',
-          TITLE: 'Detais des Flugs',
+          TITLE: 'Details des Flugs',
           OPERATED_BY: 'Operated by',
           NUMBER_OF_PASSENGERS: 'Number of passengers',
           FLYING_CALSS: 'Flying class',
@@ -47,7 +47,7 @@
           PASSENGERS : 'passengers'
         },
         NAV: {
-          NEXT: 'Nächstens',
+          NEXT: 'weiter',
           BACK: 'Zurück',
           SPECIAL_OFFERS: 'Spezielle Angebote',
           SERVICES: 'Dienstleistungen',
