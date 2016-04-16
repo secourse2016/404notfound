@@ -210,6 +210,7 @@ exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, p
     }).toArray(function(err, flight) {
         if (err) return cb(err);
         var i;
+        var found = false;
         console.log(flight[0].seatmap);
         for (i = 0; i < flight[0].seatmap.length; i++) {
             var seat = flight[0].seatmap[i];
@@ -217,13 +218,14 @@ exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, p
                 seat.refPassengerID = passengerID;
                 seat.refBookingID = bookingID;
                 seat.isEmpty = false;
+                found = true;
                 break;
             }
         }
 
         if (isEconomy) {
 
-            if (flight[0].emptyEconomySeatsCount != 0)
+            if (flight[0].emptyEconomySeatsCount != 0 && found)
                 DB.collection('flights').update({
                     $and: [{
                         "number": flightNumber
@@ -244,7 +246,7 @@ exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, p
 
         } else {
 
-            if (flight[0].emptyBusinessSeatsCount != 0)
+            if (flight[0].emptyBusinessSeatsCount != 0 && found)
                 DB.collection('flights').update({
                     $and: [{
                         "number": flightNumber
