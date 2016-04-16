@@ -89,43 +89,45 @@ exports.seed = function(cb) {
 exports.getFlights = function(origin, destination, exitDate, reEntryDate, isOneway, cb) {
   // view #2 will have to aquire flights from db with input params
   //from view #1 (date, arrival, depAirport, round/oneway)
-  if (isOneway) {
+
+  var result = {};
+
+  DB.collection('flights').find({
+    $and: [{
+      "refOriginAirport": origin
+    }, {
+      "refDestinationAirport": destination
+    }, {
+      "departureUTC": exitDate
+    }]
+  }).toArray(function(err, flights) {
+    
+    if (err) return cb(err);
+    result.outgoingFlights = flights;
+    
+    if (isOneway)
+      cb(null, result);
+      
+  });
+  
+  if (!isOneway) {
     DB.collection('flights').find({
       $and: [{
-        "refOriginAirport": origin
+        "refOriginAirport": destination
       }, {
-        "refDestinationAirport": destination
+        "refDestinationAirport": origin
       }, {
-        "departureUTC": exitDate
+        "departureUTC": reEntryDate
       }]
     }).toArray(function(err, flights) {
+      
       if (err) return cb(err);
-      cb(null, flights);
-    });
-  } else {
-    DB.collection('flights').find({
-      $or: [{
-        $and: [{
-          "refOriginAirport": origin
-        }, {
-          "refDestinationAirport": destination
-        }, {
-          "departureUTC": exitDate
-        }]
-      }, {
-        $and: [{
-          "refOriginAirport": destination
-        }, {
-          "refDestinationAirport": origin
-        }, {
-          "departureUTC": reEntryDate
-        }]
-      }]
-    }).toArray(function(err, flights) {
-      if (err) return cb(err);
-      cb(null, flights);
+      result.returnFlights = flights;
+      cb(null, result);
+      
     });
   }
+
 };
 
 exports.getAirport = function(iata, cb) {
