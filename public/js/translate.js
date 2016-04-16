@@ -6,7 +6,7 @@
             DEPARTURE_DATE: 'Hinflug',
             TO: 'nach',
             UNDER_2_YEARS: 'Jünger als 2 Jahren',
-            ROUND_TRIP: 'Round Trip',
+            ROUND_TRIP: 'Hin-und Rückfahrt',
             ONE_WAY: 'Nur Hinflug',
             SEARCH_FOR_FLIGHTS: 'Flüge suchen',
             YEARS: "Jahre",
@@ -17,10 +17,10 @@
             INFANTS: 'Babys',
             INFANT: 'Baby',
             QUOTES_HOME: {
-                1: "Simple, convenient, instant confirmation.",
-                2: "Destinations all around the globe.",
-                3: "Experience authentic hospitality.",
-                4: "Time to get enchanted."
+                1: "Einfach, praktisch, sofortige Bestätigung.",
+                2: "Reiseziehle überall auf der Welt.",
+                3: "Erlebe unsere Gastfreundschaft.",
+                4: "Es ist jetzt Zeit dir zu verzaubern."
             }
         },
         FLIGHTS: {
@@ -28,7 +28,7 @@
           ECONOMY: 'Economy',
           BUSINESS: 'Business',
           SEATS_LEFT: 'freie Sitzplätze',
-          MORE_DETAILS: 'Mehr Detais',
+          MORE_DETAILS: 'Mehr Details',
           BOOK: 'buchen',
           FLIGHT: 'Flug',
           OPERATED_BY: 'betrieben von'
@@ -48,7 +48,7 @@
         },
         NAV: {
           NEXT: 'weiter',
-          BACK: 'Zurück',
+          BACK: 'zurück',
           SPECIAL_OFFERS: 'Spezielle Angebote',
           SERVICES: 'Dienstleistungen',
           OUR_TEAM: 'Unser Team',
