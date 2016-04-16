@@ -181,7 +181,9 @@ exports.postPassenger = function(passenger, cb) {
   DB.collection('passengers', function(err, collection) {
     collection.insert(passenger, {
       safe: true
-    }, cb(err, result));
+    }, function (err,result) {
+      cb(err, result);
+    });
   });
 };
 
@@ -190,7 +192,9 @@ exports.postBooking = function(booking, cb) {
   DB.collection('bookings', function(err, collection) {
     collection.insert(booking, {
       safe: true
-    }, cb(err, result));
+    }, function (err,result) {
+      cb(err, result);
+    });
   });
 };
 
