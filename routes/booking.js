@@ -33,16 +33,7 @@ else{
   res.send('error occured while adding booking');
 }
 });
-var seat = {
-    number : req.body.seatNumber,
-    isEmpty  : "false",
-    isEconomy : "true",
-    isAisle  : "true",
-    hasSmoking  : "false",
-    hasScreen  : "true",
-    refBookingID  : bookingId,
-    refPassengerID  : passengerId
-};
+
 isEconomy= booking.isEconomy;
 seatNumber=req.body.seatNumber;
 exitDate=booking.exitDepartureUTC;
