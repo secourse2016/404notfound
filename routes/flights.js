@@ -25,6 +25,7 @@ res.send(flights);
 
 }else{
   console.log(err);
+  res.send(err);
 }
 
 });
