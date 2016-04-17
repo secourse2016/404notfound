@@ -47,7 +47,7 @@ exports.seed = function(cb) {
             cb(false);
     });
 
-    // Populate aircrafts
+        // Populate aircrafts
     DB.collection('aircrafts', {
         strict: true
     }, function(err, collection) {
@@ -60,8 +60,11 @@ exports.seed = function(cb) {
             // Feed seatmap from aircraft to flight
             flights.forEach(function(flight) {
               aircrafts.forEach(function(aircraft) {
-                if (aircraft.tailNumber === flight.refAircraftTailNumber)
+                if (aircraft.tailNumber === flight.refAircraftTailNumber){
                   flight.seatmap = aircraft.seatmap;
+                  flight.emptyEconomySeatsCount = aircraft.economySeatCount;
+                  flight.emptyBusinessSeatsCount = aircraft.businessSeatCount;
+                }
               });
             });
         }
