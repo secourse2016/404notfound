@@ -36,5 +36,12 @@ router.get('/aircrafts/:id', function(req, res) {
     });
 })
 
+// this route should return all the countries from the database
+router.get('/countries', function(req, res) {
+  db.getCountries(function(err, countries){
+    res.send(countries);
+  });
+})
+
 
 module.exports = router;
