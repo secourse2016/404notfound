@@ -17,7 +17,8 @@ App.controller('exitFlightCtrl',function($scope,$location,api){
     $location.path('/flights');
     return;
   }
-var flight= api.getChosenFlight();
+var outgoingFlight = api.getChosenOutGoingFlight();
+var returnFlight = api.getChosenReturningFlight();
 // {
 //     "number": "1000",
 //     "departureUTC": "2016-04-01T07:00:00Z",

@@ -28,9 +28,9 @@ router.get('/aircrafts', function(req, res) {
 })
 
 // this should return one aircraft only specified in the id
-router.get('/aircrafts/:id', function(req, res) {
+router.get('/aircrafts/:tailNumber', function(req, res) {
     // this the id that will be sent to you from the client
-    var tailNumber = req.params.id;
+    var tailNumber = req.params.tailNumber;
     db.getAircraft(tailNumber, function(err, aircraft){
       res.send(aircraft);
     });

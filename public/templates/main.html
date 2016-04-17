@@ -58,6 +58,21 @@
           </div>
 
           <div class="form-group">
+            <div class="col-lg-12">
+              <div class="input-group">
+                <span class="input-group-addon">Re-entry Date</span>
+                  <input ng-disabled="flight.type == 'one'" type="text" class="form-control" uib-datepicker-popup ng-model="returnDate" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                  <span class="input-group-addon btn btn-default" ng-click="open()">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                  </span>
+                  <!-- <button type="button" class="btn btn-default input-group-addon" ng-click="open2()">
+                  </button> -->
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
             <div class="col-xs-4">
               <div class="btn-group" uib-dropdown is-open="status1.isopen">
                 <button disabled type="button" class="btn btn-default" uib-dropdown-toggle>
@@ -118,13 +133,13 @@
             <div class="col-lg-6">
               <div class="radio">
                 <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                  <input ng-model="flight.type" type="radio" name="optionsRadios" id="optionsRadios1" value="one" checked>
                   One Way
                 </label>
               </div>
               <div class="radio">
                 <label>
-                  <input disabled type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                  <input ng-model="flight.type" type="radio" name="optionsRadios" id="optionsRadios2" value="round">
                   Round Trip
                 </label>
               </div>
