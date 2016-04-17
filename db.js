@@ -57,6 +57,13 @@ exports.seed = function(cb) {
                     safe: true
                 }, function(err, result) {});
             });
+            // Feed seatmap from aircraft to flight
+            flights.forEach(function(flight) {
+              aircrafts.forEach(function(aircraft) {
+                if (aircraft.tailNumber === flight.refAircraftTailNumber)
+                  flight.seatmap = aircraft.seatmap;
+              });
+            });
         }
     });
 
