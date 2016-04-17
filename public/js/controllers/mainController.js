@@ -12,14 +12,14 @@ $scope.flight = {
   type: "one"
 }
     $scope.goToFlights = function() {
-      console.log($scope.exitData);
+      console.log($scope.exitDate);
         if ($scope.flight.type == "one")
-            $location.path('/flights').search('origin', $scope.selectedOrigin).search('destination', $scope.selectedDest).search('exitDate', ($scope.exitData.getTime() / 1000).toFixed(0));
+            $location.path('/flights').search('origin', $scope.selectedOrigin).search('destination', $scope.selectedDest).search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0));
         else {
             $location.path('/flights')
                 .search('origin', $scope.selectedOrigin)
                 .search('destination', $scope.selectedDest)
-                .search('exitDate', ($scope.exitData.getTime() / 1000).toFixed(0))
+                .search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0))
                 .search('returnDate', ($scope.returnDate.getTime() / 1000).toFixed(0));
         }
 
@@ -64,13 +64,13 @@ $scope.flight = {
     }
 
     $scope.buttonState = function() {
-        return !$scope.selectedOrigin || !$scope.selectedDest || !$scope.exitData || $scope.selectedDest == $scope.selectedOrigin || !airporsContains($scope.selectedOrigin) || !airporsContains($scope.selectedDest);
+        return !$scope.selectedOrigin || !$scope.selectedDest || !$scope.exitDate || $scope.selectedDest == $scope.selectedOrigin || !airporsContains($scope.selectedOrigin) || !airporsContains($scope.selectedDest);
     }
 });
 
 function setUpDate($scope) {
     $scope.today = function() {
-        $scope.exitData = new Date();
+        $scope.exitDate = new Date();
         $scope.returnDate = new Date();
     };
     $scope.today();

@@ -6,7 +6,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   $scope.buttonTextBk = "Back";
 
 
-  if(!api.getChosenFlight() || !api.getBooking()){
+  if(!api.getChosenOutGoingFlight() || !api.getBooking()){
     $location.path('/flights');
     return;
   }
@@ -27,7 +27,6 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
 
   $scope.passenger = {
-        _id: null,
         type: null,
         countryCode: null,
         nationality:null,
@@ -110,7 +109,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
     }
       if(complete==true){
         api.setPassenger($scope.passenger);
-          $location.path('/seating');
+          $location.path('/seating/outgoing');
         }
 
       }
