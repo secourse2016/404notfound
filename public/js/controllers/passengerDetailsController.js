@@ -6,7 +6,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   $scope.buttonTextBk = "Back";
 
 
-  if(!api.getChosenFlight() || !api.getBooking()){
+  if(!api.getChosenOutGoingFlight() || !api.getBooking()){
     $location.path('/flights');
     return;
   }

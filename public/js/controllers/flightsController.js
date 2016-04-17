@@ -25,6 +25,11 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
         api.setOutGoingFlight($scope.selectedOutgoingFlight);
         api.setReturningFlight($scope.selectedReturningFlight);
         api.setBooking($scope.selectedBooking);
+
+        console.log(api.getChosenOutGoingFlight());
+        console.log(api.getChosenReturningFlight());
+
+
         $location.path('/exit-flight');
 
     }
@@ -39,11 +44,9 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
     var origin = $routeParams.origin;
     var destination = $routeParams.destination;
     var exitDate = new Date($routeParams.exitDate * 1000);
-    exitDate.setHours(0, 0, 0, 0);
     $scope.roundTrip = false;
     if ($routeParams.returnDate) {
         var returnDate = new Date($routeParams.returnDate * 1000);
-        returnDate.setHours(0, 0, 0, 0);
         $scope.roundTrip = true;
     }
 
@@ -59,10 +62,9 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
     var returnDateISO;
     if (returnDate)
         returnDateISO = returnDate.toISOString();
-
+        
     api.getFlights(origin, destination, exitDate.toISOString(), returnDateISO).then(function mySuccess(response) {
 
-        console.log(response);
         flights = response.data
 
         // formatting data to be presentable
@@ -107,79 +109,78 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
 
         }
         $scope.flights = flights;
+        api.getAirports().then(function mySuccess(response) {
+
+            airports = response.data;
+            for (var i = 0; i < $scope.flights.outgoingFlights.length; i++) {
+
+                for (var j = 0; j < airports.length; j++) {
+
+                    if (airports[j].iata === $scope.flights.outgoingFlights[i].refOriginAirport)
+                        $scope.flights.outgoingFlights[i].refOriginAirportName = airports[j].name;
+
+                    if (airports[j].iata === $scope.flights.outgoingFlights[i].refDestinationAirport)
+                        $scope.flights.outgoingFlights[i].refDestinationAirportName = airports[j].name;
+
+                }
+
+            }
+            if($scope.roundTrip)
+            for (var i = 0; i < $scope.flights.returnFlights.length; i++) {
+
+                for (var j = 0; j < airports.length; j++) {
+
+                    if (airports[j].iata === $scope.flights.returnFlights[i].refOriginAirport)
+                        $scope.flights.returnFlights[i].refOriginAirportName = airports[j].name;
+
+                    if (airports[j].iata === $scope.flights.returnFlights[i].refDestinationAirport)
+                        $scope.flights.returnFlights[i].refDestinationAirportName = airports[j].name;
+
+                }
+
+            }
+
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
+
+
+
+        api.getAircrafts().then(function mySuccess(response) {
+
+            aircrafts = response.data;
+            for (var i = 0; i < $scope.flights.outgoingFlights.length; i++) {
+
+                for (var j = 0; j < aircrafts.length; j++) {
+
+                    if (aircrafts[j].tailNumber === $scope.flights.outgoingFlights[i].refAircraftTailNumber)
+                        $scope.flights.outgoingFlights[i].refAircraftModel = aircrafts[j].model;
+
+                }
+
+            }
+
+            if($scope.roundTrip)
+            for (var i = 0; i < $scope.flights.returnFlights.length; i++) {
+
+                for (var j = 0; j < aircrafts.length; j++) {
+
+                    if (aircrafts[j].tailNumber === $scope.flights.returnFlights[i].refAircraftTailNumber)
+                        $scope.flights.returnFlights[i].refAircraftModel = aircrafts[j].model;
+
+                }
+
+            }
+
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
 
     }, function myError(response) {
         console.log(response.statusText);
     });
 
-    var airports = [];
 
-    api.getAirports().then(function mySuccess(response) {
-
-        airports = response.data;
-        for (var i = 0; i < $scope.flights.outgoingFlights.length; i++) {
-
-            for (var j = 0; j < airports.length; j++) {
-
-                if (airports[j].iata === $scope.flights.outgoingFlights[i].refOriginAirport)
-                    $scope.flights.outgoingFlights[i].refOriginAirportName = airports[j].name;
-
-                if (airports[j].iata === $scope.flights.outgoingFlights[i].refDestinationAirport)
-                    $scope.flights.outgoingFlights[i].refDestinationAirportName = airports[j].name;
-
-            }
-
-        }
-        if($scope.roundTrip)
-        for (var i = 0; i < $scope.flights.returnFlights.length; i++) {
-
-            for (var j = 0; j < airports.length; j++) {
-
-                if (airports[j].iata === $scope.flights.returnFlights[i].refOriginAirport)
-                    $scope.flights.returnFlights[i].refOriginAirportName = airports[j].name;
-
-                if (airports[j].iata === $scope.flights.returnFlights[i].refDestinationAirport)
-                    $scope.flights.returnFlights[i].refDestinationAirportName = airports[j].name;
-
-            }
-
-        }
-
-    }, function myError(response) {
-        console.log(response.statusText);
-    });
-
-    var aircrafts = [];
-
-    api.getAircrafts().then(function mySuccess(response) {
-
-        aircrafts = response.data;
-        for (var i = 0; i < $scope.flights.outgoingFlights.length; i++) {
-
-            for (var j = 0; j < aircrafts.length; j++) {
-
-                if (aircrafts[j].tailNumber === $scope.flights.outgoingFlights[i].refAircraftTailNumber)
-                    $scope.flights.outgoingFlights[i].refAircraftModel = aircrafts[j].model;
-
-            }
-
-        }
-
-        if($scope.roundTrip)
-        for (var i = 0; i < $scope.flights.returnFlights.length; i++) {
-
-            for (var j = 0; j < aircrafts.length; j++) {
-
-                if (aircrafts[j].tailNumber === $scope.flights.returnFlights[i].refAircraftTailNumber)
-                    $scope.flights.returnFlights[i].refAircraftModel = aircrafts[j].model;
-
-            }
-
-        }
-
-    }, function myError(response) {
-        console.log(response.statusText);
-    });
 
     $scope.selectOutgoingFlight = function(flight, isEconomy) {
 
