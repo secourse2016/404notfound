@@ -15,12 +15,70 @@ before(function(done) {
 // this should test that all the collections have been inserted successfully
 describe("seed", function() {
 
+
+
+  before(db.clearDB);
+     it('should populate the db if db is empty returning true', function(done) {
+
+         db.seed(function(err,seeded){
+           assert(seeded, "database is not filled");
+           done();
+         });
+
+     });
+
+
+     it('should not seed db again if db is not empty returning false in the callback', function(done) {
+
+        db.seed(function(error, seeded){
+             assert(!seeded, "Shouldn't seed a database already filled.");
+             done();
+         });
+     });
+
+
+
 });
 
 // @ahmedlhanafy
 // this function should test that the object returned match the same arguments given to it
 // we should test one way and round trip
 describe("getFlights", function() {
+var flight1 = {
+    origin : "CAI",
+    destination : "JED",
+    exitDate : "2016-04-12",
+    reEntryDate : null,
+    isOneway :true
+}
+var flight2 = {
+    origin : "CAI",
+    destination : "JED",
+    exitDate : "2016-04-12",
+    reEntryDate : "2016-05-01",
+    isOneway :false
+}
+it("should make sure that the returned flight matches a one way flight from CAI to JED on 12/4", function(){
+
+  db.getFlights(flight1.origin, flight1.destination, flight1.exitDate, flight1.reEntryDate, flight1.isOneway, function (err,flight){
+
+
+assert(flight1==flight, "The returned flight doesn't match the given flight");
+
+  });
+});
+
+
+it("should make sure that the returned flight matches a ROUND TRIP  from CAI to JED on 12/4 and back on 1/5", function(){
+
+  db.getFlights(flight2.origin, flight2.destination, flight2.exitDate, flight2.reEntryDate, flight2.isOneway, function (err,flight){
+
+
+assert(flight2==flight, "The returned flight doesn't match the given flight");
+
+
+});
+});
 
 });
 
@@ -35,7 +93,7 @@ var iata = "CAI";
           assert( iata == airport.iata, "Returned airport doesn't match with the given iata");
         });
 
-    })
+    });
 
 });
 // @yassmine
@@ -127,4 +185,10 @@ describe("updateFlight",function(){
 // we should check some how if the db still contains collections or not
 describe("clear",function(){
 
+it("should make sure that the database is empty", function(){
+
+  db.clear(function(err){
+    //not sure what to do here
+  })
+})
 });
