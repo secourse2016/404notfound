@@ -105,12 +105,19 @@ exports.getFlights = function(origin, destination, exitDate, reEntryDate, isOnew
             "refOriginAirport": origin
         }, {
             "refDestinationAirport": destination
-        }, {
-            "departureUTC": exitDate
         }]
     }).toArray(function(err, flights) {
 
         if (err) return cb(err);
+
+        flights = flights.filter(function(flight) {
+          var flightDate = new Date(flight.departureUTC);
+          var constraintDate = new Date(exitDate);
+          return flightDate.getDate() === constraintDate.getDate()
+                  && flightDate.getMonth() === constraintDate.getMonth()
+                  && flightDate.getFullYear() === constraintDate.getFullYear();
+        });
+
         result.outgoingFlights = flights;
 
         if (isOneway)
@@ -124,12 +131,19 @@ exports.getFlights = function(origin, destination, exitDate, reEntryDate, isOnew
                 "refOriginAirport": destination
             }, {
                 "refDestinationAirport": origin
-            }, {
-                "departureUTC": reEntryDate
             }]
         }).toArray(function(err, flights) {
 
             if (err) return cb(err);
+
+            flights = flights.filter(function(flight) {
+              var flightDate = new Date(flight.departureUTC);
+              var constraintDate = new Date(reEntryDate);
+              return flightDate.getDate() === constraintDate.getDate()
+                      && flightDate.getMonth() === constraintDate.getMonth()
+                      && flightDate.getFullYear() === constraintDate.getFullYear();
+            });
+
             result.returnFlights = flights;
             cb(null, result);
 
