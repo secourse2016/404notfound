@@ -7,12 +7,18 @@ App.controller('seatingCtrl', function($scope, $location, $routeParams, api) {
     $scope.buttonTextBk = "Back";
     $scope.goNext = function() {
         if (api.getChosenReturningFlight())
-            if ($routeParams.outgoing == "outgoing")
+            if ($routeParams.outgoing == "outgoing") {
                 $location.path('/seating/returing');
-            else
+                api.setOutgoingSeat($scope.seat);
+            } else {
+                api.setRetrunSeat($scope.seat);
                 $location.path('/payment');
-        else
+            }
+        else {
+            api.setOutgoingSeat($scope.seat);
             $location.path('/payment');
+        }
+
     }
     $scope.goBack = function() {
         $location.path('/passenger-details');
@@ -29,8 +35,8 @@ App.controller('seatingCtrl', function($scope, $location, $routeParams, api) {
         return;
     }
     var seatmap;
-console.log($routeParams.outgoing )
-console.log(api.getCabinetOutgoingClass() )
+    console.log($routeParams.outgoing)
+    console.log(api.getCabinetOutgoingClass())
 
     if ($routeParams.outgoing == "outgoing") {
 
@@ -90,7 +96,18 @@ console.log(api.getCabinetOutgoingClass() )
         return true;
     }
     $scope.selectSeat = function(seat) {
-        $scope.seat = seat;
+        $scope.seat = {
+
+            "number": seat,
+            "isEmpty": false,
+            "isEconomy": false,
+            "isAisle": false,
+            "hasSmoking": false,
+            "hasScreen": true,
+            "refBookingID": null,
+            "refPassengerID": null
+
+        };
     };
 
 });

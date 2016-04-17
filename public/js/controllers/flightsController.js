@@ -7,28 +7,13 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
     $scope.buttonTextBk = "Back";
     $scope.isCollapsed = true;
     $scope.isOutgoingFlightSelected = false;
-    $scope.selectedBooking = {
-        "refPassengerID": null,
-        "exitDepartureUTC": null,
-        "reEntryDepartureUTC": null,
-        "issueDate": null,
-        "isGoingEconomy": null,
-        "isReturningEconomy": null,
-        "isOneWay": true,
-        "refExitFlightNumber": null,
-        "refReEntryFlightNumber": null,
-        "receiptNumber": null
-    };
+
 
     $scope.goNext = function() {
 
         api.setOutGoingFlight($scope.selectedOutgoingFlight);
         api.setReturningFlight($scope.selectedReturningFlight);
         api.setBooking($scope.selectedBooking);
-
-        console.log(api.getChosenOutGoingFlight());
-        console.log(api.getChosenReturningFlight());
-
 
         $location.path('/passenger-details');
 
@@ -49,6 +34,18 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
         var returnDate = new Date($routeParams.returnDate * 1000);
         $scope.roundTrip = true;
     }
+    $scope.selectedBooking = {
+        "refPassengerID": null,
+        "exitDepartureUTC": null,
+        "reEntryDepartureUTC": null,
+        "issueDate": null,
+        "isGoingEconomy": null,
+        "isReturningEconomy": null,
+        "isOneWay": !$scope.roundTrip,
+        "refExitFlightNumber": null,
+        "refReEntryFlightNumber": null,
+        "receiptNumber": null
+    };
 
     // var origin = "TXL";
     // var destination = "JFK";
