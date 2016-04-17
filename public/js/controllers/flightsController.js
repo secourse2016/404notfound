@@ -30,7 +30,7 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
         console.log(api.getChosenReturningFlight());
 
 
-        $location.path('/exit-flight');
+        $location.path('/passenger-details');
 
     }
 
@@ -62,7 +62,7 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
     var returnDateISO;
     if (returnDate)
         returnDateISO = returnDate.toISOString();
-        
+
     api.getFlights(origin, destination, exitDate.toISOString(), returnDateISO).then(function mySuccess(response) {
 
         flights = response.data

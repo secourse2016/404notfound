@@ -1,6 +1,6 @@
 App.factory('api', function($http) {
     var accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA4NDIxNTQsImV4cCI6MTQ5MjM3ODE1NCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.MxnOzWblV8rJyhAQexGJaYwCOYqr2yInGeY1A3JLJ1Q"
-      var chosenOutgoingFlight, chosenReturningFlight, passengerData, bookingData, cabinetClass;
+    var chosenOutgoingFlight, chosenReturningFlight, passengerData, bookingData, cabinetOutgoingClass, cabinetReturningClass;
     return {
         getAirports: function() {
             return $http({
@@ -41,14 +41,14 @@ App.factory('api', function($http) {
         getCountries: function() {
             return $http({
                 method: 'GET',
-                url: '/api/v2/countries',
+                url: '/api/countries',
                 headers: {
                     'x-access-token': accessToken
                 }
             })
         },
         setOutGoingFlight: function(flight) {
-            chosenOutGoingFlight = flight;
+            chosenOutgoingFlight = flight;
         },
         setReturningFlight: function(flight) {
             chosenReturningFlight = flight;
@@ -56,14 +56,25 @@ App.factory('api', function($http) {
         setPassenger: function(passenger) {
             passengerData = passenger;
         },
-        getCabinetClass: function() {
-            return cabinetClass;
+        getCabinetOutgoingClass: function() {
+            return cabinetOutgoingClass;
+        },
+        getCabinetReturningClass: function() {
+            return cabinetReturningClass;
         },
         setBooking: function(booking) {
-            if (booking.isEconomy)
-                cabinetClass = "Economy"
+            if (booking.isReturningEconomy)
+                cabinetOutgoingClass = "Business"
             else
-                cabinetClass = "Business"
+                cabinetOutgoingClass = "Economy"
+
+            if (booking.isGoingEconomy)
+                cabinetReturningClass = "Business"
+
+            else
+                cabinetReturningClass = "Economy"
+
+
             bookingData = booking;
         },
         getPassenger: function() {
@@ -76,7 +87,7 @@ App.factory('api', function($http) {
             return chosenOutgoingFlight;
         },
         getChosenReturningFlight: function() {
-              return chosenReturningFlight;
+            return chosenReturningFlight;
         },
         submitBooking: function() {
             // this is the most important function here this is the one which will send data to the server

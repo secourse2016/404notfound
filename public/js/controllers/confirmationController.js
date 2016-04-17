@@ -12,7 +12,7 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
     $location.path('/payment');
   }
 
-  if(!api.getChosenFlight() || !api.getBooking()){
+  if(!api.getChosenOutGoingFlight() || !api.getBooking()){
     $location.path('/flights');
     return;
   }
