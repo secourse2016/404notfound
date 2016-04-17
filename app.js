@@ -8,12 +8,16 @@ var booking               = require('./routes/booking.js');
 var port                  = process.env.PORT || 8080;
 var bodyParser            = require('body-parser');
 var db                    = require('./db.js');
+var jwtAuth              = require('./jwt-auth.js');
 
 // body parser used to get data from request's body
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
 
 app.use('/', express.static('public'));
+
+app.use(jwtAuth);
+
 
 app.use('/api/v2/', aircraftsAndAirports);
 app.use('/api/v2/', flights);
