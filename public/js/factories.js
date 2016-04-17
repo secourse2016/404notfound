@@ -23,7 +23,7 @@ App.factory('api', function($http) {
             else
             return $http({
                 method: 'GET',
-                url: '/api/v2/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate,
+                url: '/api/v2/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/class"  ,
                 headers: {
                   'x-access-token': accessToken
                 }
