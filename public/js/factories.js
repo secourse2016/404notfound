@@ -1,6 +1,6 @@
 App.factory('api', function($http) {
     var accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA4NDIxNTQsImV4cCI6MTQ5MjM3ODE1NCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.MxnOzWblV8rJyhAQexGJaYwCOYqr2yInGeY1A3JLJ1Q"
-    var chosenGoingFlight,chosenReturningFlight, passengerData, bookingData, cabinetClass;
+    var chosenOutgoingFlight,chosenReturningFlight, passengerData, bookingData, cabinetClass;
     return {
         getAirports: function() {
             return $http({
@@ -47,8 +47,8 @@ App.factory('api', function($http) {
                 }
             })
         },
-        setGoingFlight: function(flight) {
-            chosenGoingFlight = flight;
+        setOutGoingFlight: function(flight) {
+            chosenOutGoingFlight = flight;
         },
         setReturningFlight: function(flight) {
             chosenReturningFlight = flight;
@@ -72,8 +72,8 @@ App.factory('api', function($http) {
         getBooking: function() {
             return bookingData;
         },
-        getChosenGoingFlight: function() {
-            return chosenGoingFlight;
+        getChosenOutGoingFlight: function() {
+            return chosenOutGoingFlight;
         },
         getChosenReturningFlight: function() {
             return chosenReturningFlight;

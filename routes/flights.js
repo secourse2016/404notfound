@@ -77,7 +77,7 @@ router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:
 res.send(flights);
 
   }else{
-    consolse.log(err);
+    console.log(err);
   }
 
 });
@@ -162,7 +162,7 @@ router.post('/flights/search/oneway',function (req,res) {
   res.send(flights);
 
  }else{
-   consolse.log(err);
+   console.log(err);
  }
 
  });
@@ -213,7 +213,7 @@ router.post('/flights/search/roundtrip', function(req, res) {
 res.send(flights);
 
   }else{
-    consolse.log(err);
+    console.log(err);
   }
 
   });
