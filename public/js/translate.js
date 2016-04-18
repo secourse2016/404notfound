@@ -115,8 +115,8 @@
         }
 
     });
-  
-    $translateProvider.preferredLanguage('en');
+
+    $translateProvider.preferredLanguage('de');
     $translateProvider.useSanitizeValueStrategy('escape');
 
 });
