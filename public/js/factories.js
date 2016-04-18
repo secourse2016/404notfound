@@ -102,7 +102,16 @@ App.factory('api', function($http) {
         setRetrunSeat: function(seat){
           returnSeat = seat;
         },
-
+        clearLocal:function(){
+          chosenReturningFlight = {}
+          chosenOutgoingFlight = {}
+          passengerData = {}
+          bookingData = {}
+          cabinetOutgoingClass = {}
+          cabinetReturningClass = {}
+          outgoingSeat = {}
+          returnSeat= {}
+        },
         submitBooking: function() {
           return $http({
             method: 'POST',

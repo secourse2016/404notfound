@@ -9,6 +9,7 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
     api.submitBooking().then(function(data){
       console.log(data);
       alert(data.data)
+      api.clearLocal();
     },function(err){
 
     })

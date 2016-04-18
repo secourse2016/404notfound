@@ -62,7 +62,7 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
         returnDateISO = returnDate.toISOString();
 
     api.getFlights(origin, destination, exitDate.toISOString(), returnDateISO).then(function mySuccess(response) {
-        console.log(response)
+        // console.log(response)
         flights = response.data
 
         // formatting data to be presentable

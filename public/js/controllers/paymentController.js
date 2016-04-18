@@ -12,8 +12,8 @@ App.controller('paymentCtrl', function($scope, $location,api) {
     $location.path('/seating');
   }
 
-console.log("Retrun "+api.getReturnSeat());
-console.log("Outgoing "+api.getOutgoingSeat());
+// console.log("Retrun "+api.getReturnSeat());
+// console.log("Outgoing "+api.getOutgoingSeat());
   if(!api.getChosenOutGoingFlight() || !api.getBooking()){
     $location.path('/flights');
     return;
