@@ -5,7 +5,7 @@ App.factory('api', function($http) {
         getAirports: function() {
             return $http({
                 method: 'GET',
-                url: '/api/v2/airports',
+                url: '/api/airports',
                 headers: {
                     'x-access-token': accessToken
                 }
@@ -15,7 +15,7 @@ App.factory('api', function($http) {
             if (!returnDate)
                 return $http({
                     method: 'GET',
-                    url: '/api/v2/flights/search/' + origin + "/" + destination + "/" + exitDate,
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate,
                     headers: {
                         'x-access-token': accessToken
                     }
@@ -23,7 +23,7 @@ App.factory('api', function($http) {
             else
                 return $http({
                     method: 'GET',
-                    url: '/api/v2/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/class",
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/class",
                     headers: {
                         'x-access-token': accessToken
                     }
@@ -32,7 +32,7 @@ App.factory('api', function($http) {
         getAircrafts: function() {
             return $http({
                 method: 'GET',
-                url: '/api/v2/aircrafts',
+                url: '/api/aircrafts',
                 headers: {
                     'x-access-token': accessToken
                 }
@@ -115,7 +115,7 @@ App.factory('api', function($http) {
         submitBooking: function() {
           return $http({
             method: 'POST',
-            url: '/api/v2/booking',
+            url: '/api/booking',
             headers: {
                 'x-access-token': accessToken
             },
