@@ -6,7 +6,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   $scope.buttonTextBk = "Back";
 
 
-  if(!api.getChosenFlight() || !api.getBooking()){
+  if(!api.getChosenOutGoingFlight() || !api.getBooking()){
     $location.path('/flights');
     return;
   }
@@ -27,7 +27,10 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
 
   $scope.passenger = {
+<<<<<<< HEAD
 //        _id: null,
+=======
+>>>>>>> 97058428b1e346996dbda2e801e80b65ebbbf0b9
         type: null,
         countryCode: null,
         nationality:null,
@@ -60,7 +63,10 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 //The reverting to the flights page
 
     $scope.passenger = {
+<<<<<<< HEAD
   //    _id: "A938020", //not sure how it is generated
+=======
+>>>>>>> 97058428b1e346996dbda2e801e80b65ebbbf0b9
       type: null,
       countryCode: null, //according to country
       nationality:$scope.nationality,
@@ -110,7 +116,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
     }
       if(complete==true){
         api.setPassenger($scope.passenger);
-          $location.path('/seating');
+          $location.path('/seating/outgoing');
         }
 
       }

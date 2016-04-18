@@ -5,42 +5,61 @@ var router = express.Router();
 
 //this function is the core of our app, it inserts the passenger data into the database,
 // update the selected seat and insert the booking object into the database
-router.post("/booking",function(req,res){
-var Passenger= req.body.passenger;
-var booking=req.body.booking;
-var flightNumber=booking.refExitFlightNumber;
-var bookingId;
-var passengerId;
-var exitDate;
-var isEconomy;
-var seatNumber;
+router.post("/booking", function(req, res) {
+    var Passenger = req.body.passenger;
+    var booking = req.body.booking;
+    var exitFlightNumber = booking.refExitFlightNumber;
+    var returnFlightNumber = booking.refReEntryFlightNumber;
+    var bookingId;
+    var passengerId;
+    var exitDate;
+    var returnDate;
+    var exitIsEconomy, reEntryIsEconomy;
+    var outgoingSeatNumber, returnSeatNumber;
+    // console.log(booking)
 
-db.postPassenger(Passenger,function(err, data){
-  if(!err){
-  passengerId = data._id;
+    db.postPassenger(Passenger, function(err, data) {
+        if (!err) {
+            passengerId = data.ops[0]._id;
+            booking.refPassengerID = passengerId;
+            db.postBooking(booking, function(err, data) {
+                if (!err) {
+                    bookingId = data.ops[0]._id;
+                    exitIsEconomy = booking.exitIsEconomy;
+                    outgoingSeatNumber = req.body.outgoingSeatNumber;
+                    exitDate = booking.exitDepartureUTC;
+                    res.send("Your booking was submitted succefully");
+                    // db.updateFlight(exitFlightNumber, exitDate, exitIsEconomy, outgoingSeatNumber, passengerId, bookingId, function(err, data) {
+                    //     if (!err) {
+                    //       if (returnFlightNumber) {
+                    //           reEntryIsEconomy = booking.reEntryIsEconomy;
+                    //           returnSeatNumber = req.body.returnSeatNumber;
+                    //           returnDate = booking.reEntryDepartureUTC;
+                    //           db.updateFlight(returnFlightNumber, exitDate, reEntryIsEconomy, returnSeatNumber, passengerId, bookingId, function(err, data) {
+                    //               if (!err) {
+                    //                 res.send('booking added succefully');
+                    //               } else {
+                    //                 res.send(err);
+                    //                   console.log('error occured while adding your booking');
+                    //                   return;
+                    //               }
+                    //           });
+                    //       }
+                    //     } else {
+                    //       res.send(err);
+                    //         console.log('error occured while adding your booking');
+                    //         return;
+                    //     }
+                    // });
+                }
+            });
 
-}
+        }
+    });
 
-});
-db.postBooking(booking,function(err,data ){
-  if(!err){
-    bookingId = data._id;
 
-}
 
-});
 
-isEconomy= booking.isEconomy;
-seatNumber=req.body.seatNumber;
-exitDate=booking.exitDepartureUTC;
-db.updateFlight(flightNumber, exitDate,isEconomy,seatNumber,passengerId,bookingId,function(err,data){
-   if(!err){
- res.send('booking added succefully');
-}
-   else{
- res.send('error occured while adding your booking');
-}
-});
 })
 
 module.exports = router;
