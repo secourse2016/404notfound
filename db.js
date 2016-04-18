@@ -64,6 +64,8 @@ exports.seed = function(cb) {
                   flight.seatmap = aircraft.seatmap;
                   flight.emptyEconomySeatsCount = aircraft.economySeatCount;
                   flight.emptyBusinessSeatsCount = aircraft.businessSeatCount;
+                  flight.economySeatSchema = aircraft.economySeatSchema;
+                  flight.buisnessSeatSchema =aircraft.businessSeatSchema;
                 }
               });
             });
@@ -236,7 +238,7 @@ exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, p
         if (err) return cb(err);
         var i;
         var found = false;
-        console.log(flight[0].seatmap);
+      //  console.log(flight[0].seatmap);
         for (i = 0; i < flight[0].seatmap.length; i++) {
             var seat = flight[0].seatmap[i];
             if (seat.number === seatNumber && seat.isEconomy === isEconomy) {
