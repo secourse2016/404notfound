@@ -36,7 +36,7 @@ exports.seed = function(cb) {
         strict: true
     }, function(err, collection) {
         if (err) {
-          dropDB(function() {});
+            dropDB(function() {});
             DB.collection('airports', function(err, collection) {
                 collection.insert(airports, {
                     safe: true
@@ -47,7 +47,7 @@ exports.seed = function(cb) {
             cb(false);
     });
 
-        // Populate aircrafts
+    // Populate aircrafts
     DB.collection('aircrafts', {
         strict: true
     }, function(err, collection) {
@@ -59,13 +59,13 @@ exports.seed = function(cb) {
             });
             // Feed seatmap from aircraft to flight
             flights.forEach(function(flight) {
-              aircrafts.forEach(function(aircraft) {
-                if (aircraft.tailNumber === flight.refAircraftTailNumber){
-                  flight.seatmap = aircraft.seatmap;
-                  flight.emptyEconomySeatsCount = aircraft.economySeatCount;
-                  flight.emptyBusinessSeatsCount = aircraft.businessSeatCount;
-                }
-              });
+                aircrafts.forEach(function(aircraft) {
+                    if (aircraft.tailNumber === flight.refAircraftTailNumber) {
+                        flight.seatmap = aircraft.seatmap;
+                        flight.emptyEconomySeatsCount = aircraft.economySeatCount;
+                        flight.emptyBusinessSeatsCount = aircraft.businessSeatCount;
+                    }
+                });
             });
         }
     });
@@ -102,7 +102,10 @@ exports.getFlights = function(origin, destination, exitDate, reEntryDate, isOnew
     //from view #1 (date, arrival, depAirport, round/oneway)
 
     var result = {};
-
+    result = {
+        outgoingFlights: [],
+        returnFlights: []
+    }
     DB.collection('flights').find({
         $and: [{
             "refOriginAirport": origin
@@ -114,44 +117,43 @@ exports.getFlights = function(origin, destination, exitDate, reEntryDate, isOnew
         if (err) return cb(err);
 
         flights = flights.filter(function(flight) {
-          var flightDate = new Date(flight.departureUTC);
-          var constraintDate = new Date(exitDate);
-          return flightDate.getDate() === constraintDate.getDate()
-                  && flightDate.getMonth() === constraintDate.getMonth()
-                  && flightDate.getFullYear() === constraintDate.getFullYear();
+            var flightDate = new Date(flight.departureUTC);
+            var constraintDate = new Date(exitDate);
+            return flightDate.getDate() === constraintDate.getDate() && flightDate.getMonth() === constraintDate.getMonth() && flightDate.getFullYear() === constraintDate.getFullYear();
         });
 
         result.outgoingFlights = flights;
+    
 
-        if (isOneway)
+        if (isOneway){
             cb(null, result);
+            return;
+        }
+        else {
+          DB.collection('flights').find({
+              $and: [{
+                  "refOriginAirport": destination
+              }, {
+                  "refDestinationAirport": origin
+              }]
+          }).toArray(function(err, flights) {
+
+              if (err) return cb(err);
+
+              flights = flights.filter(function(flight) {
+                  var flightDate = new Date(flight.departureUTC);
+                  var constraintDate = new Date(reEntryDate);
+                  return flightDate.getDate() === constraintDate.getDate() && flightDate.getMonth() === constraintDate.getMonth() && flightDate.getFullYear() === constraintDate.getFullYear();
+              });
+
+              result.returnFlights = flights;
+              cb(null, result);
+              return;
+          });
+        }
 
     });
-
-    if (!isOneway) {
-        DB.collection('flights').find({
-            $and: [{
-                "refOriginAirport": destination
-            }, {
-                "refDestinationAirport": origin
-            }]
-        }).toArray(function(err, flights) {
-
-            if (err) return cb(err);
-
-            flights = flights.filter(function(flight) {
-              var flightDate = new Date(flight.departureUTC);
-              var constraintDate = new Date(reEntryDate);
-              return flightDate.getDate() === constraintDate.getDate()
-                      && flightDate.getMonth() === constraintDate.getMonth()
-                      && flightDate.getFullYear() === constraintDate.getFullYear();
-            });
-
-            result.returnFlights = flights;
-            cb(null, result);
-
-        });
-    }
+    // console.log(result.outgoingFlights);
 
 };
 

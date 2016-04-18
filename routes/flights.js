@@ -30,9 +30,7 @@ router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:
     db.getFlights(origin, destination, departingDate, returningDate, false, function(err, flights) {
         if (err)
             console.log(err);
-        console.log(flights)
-        console.log("-------------------------------------------------------------------------------------------------------------------------")
-
+        
         res.send(flights);
 
     });
