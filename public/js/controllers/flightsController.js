@@ -36,13 +36,12 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
         var returnDate = new Date($routeParams.returnDate * 1000);
         $scope.roundTrip = true;
     }
+    // console.log($scope.roundTrip)
     $scope.selectedBooking = {
         "refPassengerID": null,
         "exitDepartureUTC": null,
         "reEntryDepartureUTC": null,
         "issueDate": null,
-        "isGoingEconomy": null,
-        "isReturningEconomy": null,
         "isOneWay": !$scope.roundTrip,
         "refExitFlightNumber": null,
         "refReEntryFlightNumber": null,
@@ -188,7 +187,7 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
 
         $scope.selectedBooking.exitDepartureUTC = flight.departureUTC;
         $scope.selectedBooking.exitIsEconomy = isEconomy;
-        $scope.selectedBooking.isOneWay = $scope.roundTrip;
+        // $scope.selectedBooking.isOneWay = $scope.roundTrip;
         $scope.selectedBooking.refExitFlightNumber = flight.number;
     }
 
@@ -199,7 +198,7 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
 
         $scope.selectedBooking.reEntryDepartureUTC = flight.departureUTC;
         $scope.selectedBooking.reEntryIsEconomy = isEconomy;
-        $scope.selectedBooking.isOneWay = $scope.roundTrip;
+        // $scope.selectedBooking.isOneWay = $scope.roundTrip;
         $scope.selectedBooking.refReEntryFlightNumber = flight.number;
     }
 
