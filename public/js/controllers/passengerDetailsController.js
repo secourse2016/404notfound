@@ -27,10 +27,6 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
 
   $scope.passenger = {
-<<<<<<< HEAD
-//        _id: null,
-=======
->>>>>>> 97058428b1e346996dbda2e801e80b65ebbbf0b9
         type: null,
         countryCode: null,
         nationality:null,
@@ -63,10 +59,6 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 //The reverting to the flights page
 
     $scope.passenger = {
-<<<<<<< HEAD
-  //    _id: "A938020", //not sure how it is generated
-=======
->>>>>>> 97058428b1e346996dbda2e801e80b65ebbbf0b9
       type: null,
       countryCode: null, //according to country
       nationality:$scope.nationality,
