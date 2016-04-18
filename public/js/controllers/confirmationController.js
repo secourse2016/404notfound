@@ -8,6 +8,7 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
   $scope.goNext = function() {
     api.submitBooking().then(function(data){
       console.log(data);
+      alert(data.data)
     },function(err){
 
     })
@@ -44,7 +45,7 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
     loop: true
   });
 
-// 
+//
 // console.log("chosenOutgoingFlight");
 //   console.log(api.getChosenOutGoingFlight());
 // console.log("chosenReturningFlight")

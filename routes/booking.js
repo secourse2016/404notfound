@@ -16,18 +16,19 @@ router.post("/booking", function(req, res) {
     var returnDate;
     var exitIsEconomy, reEntryIsEconomy;
     var outgoingSeatNumber, returnSeatNumber;
-
+    // console.log(booking)
 
     db.postPassenger(Passenger, function(err, data) {
         if (!err) {
             passengerId = data.ops[0]._id;
+            booking.refPassengerID = passengerId;
             db.postBooking(booking, function(err, data) {
                 if (!err) {
                     bookingId = data.ops[0]._id;
                     exitIsEconomy = booking.exitIsEconomy;
                     outgoingSeatNumber = req.body.outgoingSeatNumber;
                     exitDate = booking.exitDepartureUTC;
-
+                    res.send("Your booking was submitted succefully");
                     // db.updateFlight(exitFlightNumber, exitDate, exitIsEconomy, outgoingSeatNumber, passengerId, bookingId, function(err, data) {
                     //     if (!err) {
                     //       if (returnFlightNumber) {
