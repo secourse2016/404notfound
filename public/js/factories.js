@@ -1,6 +1,6 @@
 App.factory('api', function($http) {
     var accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA4NDIxNTQsImV4cCI6MTQ5MjM3ODE1NCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.MxnOzWblV8rJyhAQexGJaYwCOYqr2yInGeY1A3JLJ1Q"
-    var chosenOutgoingFlight, chosenReturningFlight, passengerData, bookingData, cabinetOutgoingClass, cabinetReturningClass,outgoingSeat,returnSeat;
+    var chosenOutgoingFlight, chosenReturningFlight, passengerData, bookingData,outgoingSeat,returnSeat;
     return {
         getAirports: function() {
             return $http({
@@ -56,25 +56,7 @@ App.factory('api', function($http) {
         setPassenger: function(passenger) {
             passengerData = passenger;
         },
-        getCabinetOutgoingClass: function() {
-            return cabinetOutgoingClass;
-        },
-        getCabinetReturningClass: function() {
-            return cabinetReturningClass;
-        },
         setBooking: function(booking) {
-            if (booking.isReturningEconomy)
-                cabinetOutgoingClass = "Business"
-            else
-                cabinetOutgoingClass = "Economy"
-
-            if (booking.isGoingEconomy)
-                cabinetReturningClass = "Business"
-
-            else
-                cabinetReturningClass = "Economy"
-
-
             bookingData = booking;
         },
         getPassenger: function() {

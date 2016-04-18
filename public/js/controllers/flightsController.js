@@ -15,7 +15,9 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
         api.setReturningFlight($scope.selectedReturningFlight);
         api.setBooking($scope.selectedBooking);
 
-        $location.path('/passenger-details');
+
+
+        $location.path('/exit-flight');
 
     }
 
@@ -185,7 +187,7 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
         $scope.selectedOutgoingFlight = flight;
 
         $scope.selectedBooking.exitDepartureUTC = flight.departureUTC;
-        $scope.selectedBooking.isGoingEconomy = isEconomy;
+        $scope.selectedBooking.exitIsEconomy = isEconomy;
         $scope.selectedBooking.isOneWay = $scope.roundTrip;
         $scope.selectedBooking.refExitFlightNumber = flight.number;
     }
@@ -196,7 +198,7 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
         $scope.selectedReturningFlight = flight;
 
         $scope.selectedBooking.reEntryDepartureUTC = flight.departureUTC;
-        $scope.selectedBooking.isReturningEconomy = isEconomy;
+        $scope.selectedBooking.reEntryIsEconomy = isEconomy;
         $scope.selectedBooking.isOneWay = $scope.roundTrip;
         $scope.selectedBooking.refReEntryFlightNumber = flight.number;
     }
