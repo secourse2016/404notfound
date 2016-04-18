@@ -14,7 +14,7 @@ router.post("/booking", function(req, res) {
     var passengerId;
     var exitDate;
     var returnDate;
-    var isGoingEconomy, isReturningEconomy;
+    var exitIsEconomy, reEntryIsEconomy;
     var outgoingSeatNumber, returnSeatNumber;
 
 
@@ -24,17 +24,17 @@ router.post("/booking", function(req, res) {
             db.postBooking(booking, function(err, data) {
                 if (!err) {
                     bookingId = data.ops[0]._id;
-                    isGoingEconomy = booking.isGoingEconomy;
+                    exitIsEconomy = booking.exitIsEconomy;
                     outgoingSeatNumber = req.body.outgoingSeatNumber;
                     exitDate = booking.exitDepartureUTC;
 
-                    db.updateFlight(exitFlightNumber, exitDate, isGoingEconomy, outgoingSeatNumber, passengerId, bookingId, function(err, data) {
+                    db.updateFlight(exitFlightNumber, exitDate, exitIsEconomy, outgoingSeatNumber, passengerId, bookingId, function(err, data) {
                         if (!err) {
                           if (returnFlightNumber) {
-                              isReturningEconomy = booking.isReturningEconomy;
+                              reEntryIsEconomy = booking.reEntryIsEconomy;
                               returnSeatNumber = req.body.returnSeatNumber;
                               returnDate = booking.reEntryDepartureUTC;
-                              db.updateFlight(returnFlightNumber, exitDate, isReturningEconomy, returnSeatNumber, passengerId, bookingId, function(err, data) {
+                              db.updateFlight(returnFlightNumber, exitDate, reEntryIsEconomy, returnSeatNumber, passengerId, bookingId, function(err, data) {
                                   if (!err) {
                                     res.send('booking added succefully');
                                   } else {
