@@ -21,11 +21,7 @@ App.controller('seatingCtrl', function($scope, $location, $routeParams, api) {
 
     }
     $scope.goBack = function() {
-      if ($routeParams.outgoing == "outgoing")
         $location.path('/passenger-details');
-        else
-        $location.path('/seating/outgoing');
-
     }
 
 
@@ -41,18 +37,11 @@ App.controller('seatingCtrl', function($scope, $location, $routeParams, api) {
     var seatmap;
 
     if ($routeParams.outgoing == "outgoing") {
-        if (!api.getBooking.exitIsEconomy)
-            $scope.isEconomyText = "Economy";
-        else
-            $scope.isEconomyText = "Business";
 
+        $scope.isEconomyText = api.getCabinetOutgoingClass();
         seatmap = api.getChosenOutGoingFlight().seatmap;
     } else {
-        if (!api.getBooking.reEntryIsEconomy)
-            $scope.isEconomyText = "Economy";
-        else
-            $scope.isEconomyText = "Business";
-
+        $scope.isEconomyText = api.getCabinetReturningClass();
         seatmap = api.getChosenReturningFlight().seatmap;
     }
 
