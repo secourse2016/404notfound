@@ -63,12 +63,13 @@ App.factory('api', function($http) {
             return cabinetReturningClass;
         },
         setBooking: function(booking) {
-             if (!booking.reEntryIsEconomy)
+              
+             if (!booking.exitIsEconomy)
                  cabinetOutgoingClass = "Business"
              else
                  cabinetOutgoingClass = "Economy"
 
-             if (!booking.exitIsEconomy)
+             if (!booking.reEntryIsEconomy)
                  cabinetReturningClass = "Business"
 
              else
