@@ -56,6 +56,20 @@
           CONTACT_US: 'Contact Us'
         }
 
+        CONFIRMATION: {
+
+        THANK_YOU: 'Thank you'
+        NAME: 'Name'
+        PHONE:'Phone'
+        E-MAIL: 'E-mail'
+        FLIGHTNO:'Flight number'
+        DEPARTURE:'Departure'
+        ARRAIVAL: 'Arrival'
+        PRINT:'Print ticket'
+
+        }
+
+
     });
     $translateProvider.translations('de', {
         MAIN: {
@@ -113,6 +127,7 @@
           ABOUT: 'Über uns',
           CONTACT_US: 'Unser Kontakt'
         }
+
 
     });
 
