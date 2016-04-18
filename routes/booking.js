@@ -8,38 +8,57 @@ var router = express.Router();
 router.post("/booking", function(req, res) {
     var Passenger = req.body.passenger;
     var booking = req.body.booking;
-    var flightNumber = booking.refExitFlightNumber;
+    var exitFlightNumber = booking.refExitFlightNumber;
+    var returnFlightNumber = booking.refReEntryFlightNumber;
     var bookingId;
     var passengerId;
     var exitDate;
-    var isEconomy;
-    var seatNumber;
+    var returnDate;
+    var isGoingEconomy, isReturningEconomy;
+    var outgoingSeatNumber, returnSeatNumber;
+
 
     db.postPassenger(Passenger, function(err, data) {
         if (!err) {
-            passengerId = data._id;
+            passengerId = data.ops[0]._id;
+            db.postBooking(booking, function(err, data) {
+                if (!err) {
+                    bookingId = data.ops[0]._id;
+                    isGoingEconomy = booking.isGoingEconomy;
+                    outgoingSeatNumber = req.body.outgoingSeatNumber;
+                    exitDate = booking.exitDepartureUTC;
+
+                    db.updateFlight(exitFlightNumber, exitDate, isGoingEconomy, outgoingSeatNumber, passengerId, bookingId, function(err, data) {
+                        if (!err) {
+                          if (returnFlightNumber) {
+                              isReturningEconomy = booking.isReturningEconomy;
+                              returnSeatNumber = req.body.returnSeatNumber;
+                              returnDate = booking.reEntryDepartureUTC;
+                              db.updateFlight(returnFlightNumber, exitDate, isReturningEconomy, returnSeatNumber, passengerId, bookingId, function(err, data) {
+                                  if (!err) {
+                                    res.send('booking added succefully');
+                                  } else {
+                                    res.send(err);
+                                      console.log('error occured while adding your booking');
+                                      return;
+                                  }
+                              });
+                          }
+                        } else {
+                          res.send(err);
+                            console.log('error occured while adding your booking');
+                            return;
+                        }
+                    });
+                }
+            });
 
         }
-
-    });
-    db.postBooking(booking, function(err, data) {
-        if (!err) {
-            bookingId = data._id;
-
-        }
-
     });
 
-    isEconomy = booking.isEconomy;
-    seatNumber = req.body.seatNumber;
-    exitDate = booking.exitDepartureUTC;
-    db.updateFlight(flightNumber, exitDate, isEconomy, seatNumber, passengerId, bookingId, function(err, data) {
-        if (!err) {
-            res.send('booking added succefully');
-        } else {
-            res.send('error occured while adding your booking');
-        }
-    });
+
+
+
 })
 
 module.exports = router;

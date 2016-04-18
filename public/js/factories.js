@@ -104,7 +104,19 @@ App.factory('api', function($http) {
         },
 
         submitBooking: function() {
-            // this is the most important function here this is the one which will send data to the server
+          return $http({
+            method: 'POST',
+            url: '/api/v2/booking',
+            headers: {
+                'x-access-token': accessToken
+            },
+            data:{
+              passenger: passengerData,
+              booking: bookingData,
+              outgoingSeatNumber: outgoingSeat,
+              returnSeatNumber: returnSeat
+            }
+          });
         }
     };
 });

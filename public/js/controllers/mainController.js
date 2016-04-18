@@ -12,7 +12,6 @@ $scope.flight = {
   type: "one"
 }
     $scope.goToFlights = function() {
-      console.log($scope.exitDate);
         if ($scope.flight.type == "one")
             $location.path('/flights').search('origin', $scope.selectedOrigin).search('destination', $scope.selectedDest).search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0));
         else {

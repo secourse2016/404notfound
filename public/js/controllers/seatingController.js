@@ -35,8 +35,6 @@ App.controller('seatingCtrl', function($scope, $location, $routeParams, api) {
         return;
     }
     var seatmap;
-    console.log($routeParams.outgoing)
-    console.log(api.getCabinetOutgoingClass())
 
     if ($routeParams.outgoing == "outgoing") {
 
@@ -96,18 +94,7 @@ App.controller('seatingCtrl', function($scope, $location, $routeParams, api) {
         return true;
     }
     $scope.selectSeat = function(seat) {
-        $scope.seat = {
-
-            "number": seat,
-            "isEmpty": false,
-            "isEconomy": false,
-            "isAisle": false,
-            "hasSmoking": false,
-            "hasScreen": true,
-            "refBookingID": null,
-            "refPassengerID": null
-
-        };
+        $scope.seat = seat;
     };
 
 });
