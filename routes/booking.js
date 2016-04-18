@@ -28,28 +28,28 @@ router.post("/booking", function(req, res) {
                     outgoingSeatNumber = req.body.outgoingSeatNumber;
                     exitDate = booking.exitDepartureUTC;
 
-                    db.updateFlight(exitFlightNumber, exitDate, exitIsEconomy, outgoingSeatNumber, passengerId, bookingId, function(err, data) {
-                        if (!err) {
-                          if (returnFlightNumber) {
-                              reEntryIsEconomy = booking.reEntryIsEconomy;
-                              returnSeatNumber = req.body.returnSeatNumber;
-                              returnDate = booking.reEntryDepartureUTC;
-                              db.updateFlight(returnFlightNumber, exitDate, reEntryIsEconomy, returnSeatNumber, passengerId, bookingId, function(err, data) {
-                                  if (!err) {
-                                    res.send('booking added succefully');
-                                  } else {
-                                    res.send(err);
-                                      console.log('error occured while adding your booking');
-                                      return;
-                                  }
-                              });
-                          }
-                        } else {
-                          res.send(err);
-                            console.log('error occured while adding your booking');
-                            return;
-                        }
-                    });
+                    // db.updateFlight(exitFlightNumber, exitDate, exitIsEconomy, outgoingSeatNumber, passengerId, bookingId, function(err, data) {
+                    //     if (!err) {
+                    //       if (returnFlightNumber) {
+                    //           reEntryIsEconomy = booking.reEntryIsEconomy;
+                    //           returnSeatNumber = req.body.returnSeatNumber;
+                    //           returnDate = booking.reEntryDepartureUTC;
+                    //           db.updateFlight(returnFlightNumber, exitDate, reEntryIsEconomy, returnSeatNumber, passengerId, bookingId, function(err, data) {
+                    //               if (!err) {
+                    //                 res.send('booking added succefully');
+                    //               } else {
+                    //                 res.send(err);
+                    //                   console.log('error occured while adding your booking');
+                    //                   return;
+                    //               }
+                    //           });
+                    //       }
+                    //     } else {
+                    //       res.send(err);
+                    //         console.log('error occured while adding your booking');
+                    //         return;
+                    //     }
+                    // });
                 }
             });
 

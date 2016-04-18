@@ -59,13 +59,16 @@ exports.seed = function(cb) {
             });
             // Feed seatmap from aircraft to flight
             flights.forEach(function(flight) {
-                aircrafts.forEach(function(aircraft) {
-                    if (aircraft.tailNumber === flight.refAircraftTailNumber) {
-                        flight.seatmap = aircraft.seatmap;
-                        flight.emptyEconomySeatsCount = aircraft.economySeatCount;
-                        flight.emptyBusinessSeatsCount = aircraft.businessSeatCount;
-                    }
-                });
+
+              aircrafts.forEach(function(aircraft) {
+                if (aircraft.tailNumber === flight.refAircraftTailNumber){
+                  flight.seatmap = aircraft.seatmap;
+                  flight.emptyEconomySeatsCount = aircraft.economySeatCount;
+                  flight.emptyBusinessSeatsCount = aircraft.businessSeatCount;
+                  flight.economySeatSchema = aircraft.economySeatSchema;
+                  flight.buisnessSeatSchema =aircraft.businessSeatSchema;
+                }
+              });
             });
         }
     });
@@ -123,7 +126,7 @@ exports.getFlights = function(origin, destination, exitDate, reEntryDate, isOnew
         });
 
         result.outgoingFlights = flights;
-    
+
 
         if (isOneway){
             cb(null, result);
@@ -238,7 +241,7 @@ exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, p
         if (err) return cb(err);
         var i;
         var found = false;
-        console.log(flight[0].seatmap);
+      //  console.log(flight[0].seatmap);
         for (i = 0; i < flight[0].seatmap.length; i++) {
             var seat = flight[0].seatmap[i];
             if (seat.number === seatNumber && seat.isEconomy === isEconomy) {
