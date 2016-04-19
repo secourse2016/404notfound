@@ -1,13 +1,15 @@
 App.factory('api', function($http) {
-    var accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjA4NDIxNTQsImV4cCI6MTQ5MjM3ODE1NCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.MxnOzWblV8rJyhAQexGJaYwCOYqr2yInGeY1A3JLJ1Q"
+    var accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjEwNDMyNzgsImV4cCI6MTQ5MjU3OTI3OCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.dXZVC--uvtigrFB7T3fGTG84NIYlSnRqbgbT43xzFAw"
     var chosenOutgoingFlight, chosenReturningFlight, passengerData, bookingData, cabinetOutgoingClass, cabinetReturningClass,outgoingSeat,returnSeat;
+
     return {
         getAirports: function() {
             return $http({
                 method: 'GET',
                 url: '/api/airports',
                 headers: {
-                    'x-access-token': accessToken
+                    'x-access-token': accessToken,
+                    'website':'AirBerlin'
                 }
             })
         },
@@ -15,17 +17,66 @@ App.factory('api', function($http) {
             if (!returnDate)
                 return $http({
                     method: 'GET',
-                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate,
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/0",
                     headers: {
-                        'x-access-token': accessToken
+                        'x-access-token': accessToken,
+                        'gamed':'hamed'
+
                     }
                 })
             else
                 return $http({
                     method: 'GET',
-                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/class",
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/0",
                     headers: {
-                        'x-access-token': accessToken
+                        'x-access-token': accessToken,
+                        'gamed':'hamed'
+
+
+                    }
+                })
+        },
+        getOtherFlightsEco: function(origin, destination, exitDate, returnDate) {
+            if (!returnDate)
+                return $http({
+                    method: 'GET',
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/economy",
+                    headers: {
+                        'x-access-token': accessToken,
+                        'website':'AirBerlin',
+                        'other-hosts': 'true'
+                    }
+                })
+            else
+                return $http({
+                    method: 'GET',
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/economy",
+                    headers: {
+                        'x-access-token': accessToken,
+                        'website':'AirBerlin',
+                        'other-hosts': 'true'
+                    }
+                })
+        },
+        getOtherFlightsBusi: function(origin, destination, exitDate, returnDate) {
+            if (!returnDate)
+                return $http({
+                    method: 'GET',
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/business",
+                    headers: {
+                        'x-access-token': accessToken,
+                        'website':'AirBerlin',
+                        'other-hosts': 'true'
+                    }
+                })
+            else
+                return $http({
+                    method: 'GET',
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/business",
+                    headers: {
+                        'x-access-token': accessToken,
+                        'website':'AirBerlin',
+                        'other-hosts': 'true'
                     }
                 })
         },
@@ -34,7 +85,8 @@ App.factory('api', function($http) {
                 method: 'GET',
                 url: '/api/aircrafts',
                 headers: {
-                    'x-access-token': accessToken
+                    'x-access-token': accessToken,
+                    'website':'AirBerlin'
                 }
             })
         },
@@ -43,7 +95,8 @@ App.factory('api', function($http) {
                 method: 'GET',
                 url: '/api/countries',
                 headers: {
-                    'x-access-token': accessToken
+                    'x-access-token': accessToken,
+                    'website':'AirBerlin'
                 }
             })
         },
@@ -63,7 +116,7 @@ App.factory('api', function($http) {
             return cabinetReturningClass;
         },
         setBooking: function(booking) {
-              
+
              if (!booking.exitIsEconomy)
                  cabinetOutgoingClass = "Business"
              else

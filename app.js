@@ -8,7 +8,7 @@ var booking               = require('./routes/booking.js');
 var port                  = process.env.PORT || 8080;
 var bodyParser            = require('body-parser');
 var db                    = require('./db.js');
-var jwtAuth              = require('./jwt-auth.js');
+var jwtAuth               = require('./jwt-auth.js');
 
 // body parser used to get data from request's body
 app.use(bodyParser.json()); // to support JSON-encoded bodies
