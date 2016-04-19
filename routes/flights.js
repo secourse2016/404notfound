@@ -23,8 +23,8 @@ router.get('/flights/search/:origin/:destination/:departingDate/:class', functio
         if (err)
             console.log(err);
         if (req.headers['website'] == 'AirBerlin' && req.headers['otherHosts'] == 'false') {
-            res.send(flights);
-        } else if( req.headers['otherHosts'] == 'true'){
+            originalRes.send(flights);
+        } else if( req.headers['other-hosts'] == 'true'){
             function httpGet(url, callback) {
                 const options = {
                     uri: url + '/api/flights/search/' + origin + "/" + destination + "/" + req.params.departingDate + "/" + flightClass,
@@ -36,7 +36,7 @@ router.get('/flights/search/:origin/:destination/:departingDate/:class', functio
                 };
                 request(options,
                     function(err, res, body) {
-                      console.log(err + options.uri)
+                      // console.log(err + options.uri)
 
                         callback(err, res);
                     }
@@ -70,7 +70,77 @@ router.get('/flights/search/:origin/:destination/:departingDate/:class', functio
             //     res.send(result);
             //   })
         }else{
-          res.send(flights)
+          var flightsModified = {
+            outgoingFlights:[],
+            returnFlights:[]
+          }
+          originalRes.send(flightsModified)
+          for (var i = 0; i < flights.outgoingFlights.length; i++) {
+            if(flightClass == 'economy')
+            var flightModified = {
+              "flightNumber"      : flights.outgoingFlights[i].number,
+              "aircraftType"      : flights.outgoingFlights[i].refAircraftTailNumber,
+              "aircraftModel"     :  flights.outgoingFlights[i].refAircraftModel,
+              "departureDateTime" : (new Date(flights.outgoingFlights[i].departureUTC)).getTime(),
+              "arrivalDateTime"   : (new Date(flights.outgoingFlights[i].arrivalUTC)).getTime(),
+              "origin"            : flights.outgoingFlights[i].refOriginAirport,
+              "destination"       : flights.outgoingFlights[i].refDestinationAirport,
+              "cost"              : flights.outgoingFlights[i].economyFare,
+              "currency"          : "USD",
+              "class"             : "Economy",
+              "Airline"           : "Air Berlin"
+            }
+            else
+            var flightModified = {
+              "flightNumber"      : flights.outgoingFlights[i].number,
+              "aircraftType"      : flights.outgoingFlights[i].refAircraftTailNumber,
+              "aircraftModel"     :  flights.outgoingFlights[i].refAircraftModel,
+              "departureDateTime" : (new Date(flights.outgoingFlights[i].departureUTC)).getTime(),
+              "arrivalDateTime"   : (new Date(flights.outgoingFlights[i].arrivalUTC)).getTime(),
+              "origin"            : flights.outgoingFlights[i].refOriginAirport,
+              "destination"       : flights.outgoingFlights[i].refDestinationAirport,
+              "cost"              : flights.outgoingFlights[i].businessFare,
+              "currency"          : "USD",
+              "class"             : "Business",
+              "Airline"           : "Air Berlin"
+            }
+            flightsModified.outgoingFlights.push(flightModified);
+          }
+
+
+          for (var i = 0; i < flights.returnFlights.length; i++) {
+            if(flightClass == 'economy')
+            var flightModified = {
+              "flightNumber"      : flights.returnFlights[i].number,
+              "aircraftType"      : flights.returnFlights[i].refAircraftTailNumber,
+              "aircraftModel"     :  flights.returnFlights[i].refAircraftModel,
+              "departureDateTime" : (new Date(flights.returnFlights[i].departureUTC)).getTime(),
+              "arrivalDateTime"   : (new Date(flights.returnFlights[i].arrivalUTC)).getTime(),
+              "origin"            : flights.returnFlights[i].refOriginAirport,
+              "destination"       : flights.returnFlights[i].refDestinationAirport,
+              "cost"              : flights.returnFlights[i].economyFare,
+              "currency"          : "USD",
+              "class"             : "Economy",
+              "Airline"           : "Air Berlin"
+            }
+            else
+            var flightModified = {
+              "flightNumber"      : flights.returnFlights[i].number,
+              "aircraftType"      : flights.returnFlights[i].refAircraftTailNumber,
+              "aircraftModel"     :  flights.returnFlights[i].refAircraftModel,
+              "departureDateTime" : (new Date(flights.returnFlights[i].departureUTC)).getTime(),
+              "arrivalDateTime"   : (new Date(flights.returnFlights[i].arrivalUTC)).getTime(),
+              "origin"            : flights.returnFlights[i].refOriginAirport,
+              "destination"       : flights.returnFlights[i].refDestinationAirport,
+              "cost"              : flights.returnFlights[i].businessFare,
+              "currency"          : "USD",
+              "class"             : "Business",
+              "Airline"           : "Air Berlin"
+            }
+            flightsModified.returnFlights.push(flightModified);
+          }
+
+          originalRes.send(flightsModified)
         }
 
     });
