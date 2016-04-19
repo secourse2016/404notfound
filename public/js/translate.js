@@ -76,6 +76,12 @@
         LEAVE_MSG: 'Leave us a message'
         SEND: 'Send'
       },
+      ABOUT_US: {
+//Do you mean 404notfound team ?  in aboutus view
+        QUESTION:'Do you mean 404NotFound Team?'
+
+      },
+
 
     });
     $translateProvider.translations('de', {
