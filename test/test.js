@@ -15,8 +15,36 @@ before(function(done) {
 // this should test that all the collections have been inserted successfully
 describe("seed", function() {
 
+before(db.clear);
+
+it('should populate the db if db is empty returning true', function(done) {
+
+      db.seed(function(seeded){
+
+        assert.equal(seeded,true,'seeded is true');
+
+        done();
+
+      });
+
+    });
+
+    it('should not seed db again if db is not empty returning false in the callback', function(done) {
+
+      db.seed(function(seeded){
+
+        assert.equal(seeded,false,'seeded is false');
+
+        done();
+
+
+    });
+
+  });
 
 });
+
+
 
 // @ahmedlhanafy
 // this function should test that the object returned match the same arguments given to it
