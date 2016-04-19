@@ -1,18 +1,23 @@
 var db = require('../db.js');
 var express = require('express');
 var router = express.Router();
-
+var async = require('async');
 
 // this route should return all the flights that matches the given params
-router.get('/flights/search/:origin/:destination/:departingDate', function(req, res) {
+router.get('/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
     var origin = req.params.origin;
     var destination = req.params.destination;
-    var departingDate = req.params.departingDate;
+    var  departingDate= new Date(parseInt(req.params.departingDate, 10));
+    var flightClass =  req.params.class;
 
     db.getFlights(origin, destination, departingDate, null, true, function(err, flights) {
         if (err)
             console.log(err);
-        res.send(flights);
+          if(req.headers['website'] == 'AirBerlin'){
+            res.send(flights);
+          }else{
+
+          }
 
     });
 
@@ -23,15 +28,20 @@ router.get('/flights/search/:origin/:destination/:departingDate', function(req, 
 router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
     var origin = req.params.origin;
     var destination = req.params.destination;
-    var departingDate = req.params.departingDate;
-    var returningDate = req.params.returningDate;
+    var  departingDate= new Date(parseInt(req.params.departingDate, 10));
+    var  returningDate= new Date(parseInt(req.params.returningDate, 10));
+
     var flightClass = req.params.class;
 
     db.getFlights(origin, destination, departingDate, returningDate, false, function(err, flights) {
         if (err)
             console.log(err);
-        
-        res.send(flights);
+
+            if(req.headers['website'] == 'AirBerlin'){
+              res.send(flights);
+            }else{
+
+            }
 
     });
 });

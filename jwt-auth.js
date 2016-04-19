@@ -1,5 +1,5 @@
 var jwt = require('jwt-simple');
-var jwtTokenSecret = 'CSEN603ROCKSi<8SE';
+var jwtTokenSecret = 'CSEN603ROCKSi<8SE!';
 
 
 module.exports = function(req, res, next) {
