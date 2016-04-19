@@ -3,7 +3,7 @@ var jwtTokenSecret = 'CSEN603ROCKSi<8SE';
 
 
 module.exports = function(req, res, next) {
-  var token = (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['x-access-token'];
+  var token = (req.body && req.body.wt) || (req.query && req.query.wt) || req.headers['x-access-token'];
   if (token) {
     try {
       var decoded = jwt.decode(token, jwtTokenSecret);
