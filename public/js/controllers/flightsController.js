@@ -57,14 +57,14 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
     }
 
     var flights;
-    var returnDateISO;
+    var returnDateMill;
     if (returnDate)
-        returnDateISO = returnDate.toISOString();
-
-    api.getFlights(origin, destination, exitDate.toISOString(), returnDateISO).then(function mySuccess(response) {
+        returnDateMill = returnDate.getTime();
+        console.log(exitDate.toISOString())
+    api.getFlights(origin, destination, exitDate.getTime(), returnDateMill).then(function mySuccess(response) {
         // console.log(response)
         flights = response.data
-
+        console.log(response.data)
         // formatting data to be presentable
         for (i = 0; i < flights.outgoingFlights.length; i++) {
 

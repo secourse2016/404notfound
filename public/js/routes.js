@@ -9,6 +9,10 @@ App.config(['$routeProvider','$locationProvider',
         templateUrl: 'templates/flights.html',
         controller: 'flightsCtrl'
       })
+      .when('/flights-new', {
+        templateUrl: 'templates/flights-new.html',
+        controller: 'flightsNewCtrl'
+      })
       .when('/exit-flight', {
         templateUrl: 'templates/flight.html',
         controller: 'exitFlightCtrl'
