@@ -24,6 +24,7 @@ router.get('/flights/search/:origin/:destination/:departingDate/:class', functio
             console.log(err);
         if (req.headers['website'] == 'AirBerlin' && req.headers['otherHosts'] == 'false') {
             originalRes.send(flights);
+            return;
         } else if( req.headers['other-hosts'] == 'true'){
             function httpGet(url, callback) {
                 const options = {
@@ -64,6 +65,7 @@ router.get('/flights/search/:origin/:destination/:departingDate/:class', functio
                 result.returnFlights = [].concat.apply([], result.returnFlights);
 
                 originalRes.send(result)
+                return;
             }
 
             // async.parallel(result,function(){
@@ -74,7 +76,6 @@ router.get('/flights/search/:origin/:destination/:departingDate/:class', functio
             outgoingFlights:[],
             returnFlights:[]
           }
-          originalRes.send(flightsModified)
           for (var i = 0; i < flights.outgoingFlights.length; i++) {
             if(flightClass == 'economy')
             var flightModified = {
@@ -139,8 +140,9 @@ router.get('/flights/search/:origin/:destination/:departingDate/:class', functio
             }
             flightsModified.returnFlights.push(flightModified);
           }
-
+          console.log(flightsModified)
           originalRes.send(flightsModified)
+          return;
         }
 
     });
