@@ -1,5 +1,14 @@
 App.controller('mainCtrl', function($scope, $location, api) {
     $scope.pageClass = 'page-main';
+
+
+
+
+
+
+
+
+
     $('#main-text').typeIt({
         strings: [
             "Simple, convenient, instant confirmation.", "Destinations all around the globe.", "Experience authentic hospitality.", "Time to get enchanted."
@@ -8,18 +17,34 @@ App.controller('mainCtrl', function($scope, $location, api) {
         breakLines: false,
         loop: true
     });
-$scope.flight = {
-  type: "one"
-}
+    $scope.flight = {
+        type: "one"
+    }
+    $scope.otherAirline = {
+    value:false  
+    }
     $scope.goToFlights = function() {
-        if ($scope.flight.type == "one")
-            $location.path('/flights').search('origin', $scope.selectedOrigin).search('destination', $scope.selectedDest).search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0));
-        else {
-            $location.path('/flights')
+        if ($scope.otherAirline.value) {
+          if ($scope.flight.type == "one")
+          $location.path('/flights-new').search('origin', $scope.selectedOrigin).search('destination', $scope.selectedDest).search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0));
+          else{
+            $location.path('/flights-new')
                 .search('origin', $scope.selectedOrigin)
                 .search('destination', $scope.selectedDest)
                 .search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0))
                 .search('returnDate', ($scope.returnDate.getTime() / 1000).toFixed(0));
+          }
+        } else {
+            if ($scope.flight.type == "one")
+                $location.path('/flights').search('origin', $scope.selectedOrigin).search('destination', $scope.selectedDest).search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0));
+            else {
+                $location.path('/flights')
+                    .search('origin', $scope.selectedOrigin)
+                    .search('destination', $scope.selectedDest)
+                    .search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0))
+                    .search('returnDate', ($scope.returnDate.getTime() / 1000).toFixed(0));
+            }
+
         }
 
     };

@@ -14,14 +14,14 @@ App.factory('api', function($http) {
             })
         },
         getFlights: function(origin, destination, exitDate, returnDate) {
-          console.log('/api/flights/search/' + origin + "/" + destination + "/" + exitDate)
             if (!returnDate)
                 return $http({
                     method: 'GET',
                     url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/class",
                     headers: {
                         'x-access-token': accessToken,
-                        'website':'AirBerlin'
+                        'gamed':'hamed'
+
                     }
                 })
             else
@@ -30,7 +30,53 @@ App.factory('api', function($http) {
                     url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/class",
                     headers: {
                         'x-access-token': accessToken,
-                        'website':'AirBerlin'
+                        'gamed':'hamed'
+
+
+                    }
+                })
+        },
+        getOtherFlightsEco: function(origin, destination, exitDate, returnDate) {
+            if (!returnDate)
+                return $http({
+                    method: 'GET',
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/economy",
+                    headers: {
+                        'x-access-token': accessToken,
+                        'website':'AirBerlin',
+                        'other-hosts': 'true'
+                    }
+                })
+            else
+                return $http({
+                    method: 'GET',
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/economy",
+                    headers: {
+                        'x-access-token': accessToken,
+                        'website':'AirBerlin',
+                        'other-hosts': 'true'
+                    }
+                })
+        },
+        getOtherFlightsBusi: function(origin, destination, exitDate, returnDate) {
+            if (!returnDate)
+                return $http({
+                    method: 'GET',
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/business",
+                    headers: {
+                        'x-access-token': accessToken,
+                        'website':'AirBerlin',
+                        'other-hosts': 'true'
+                    }
+                })
+            else
+                return $http({
+                    method: 'GET',
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/business",
+                    headers: {
+                        'x-access-token': accessToken,
+                        'website':'AirBerlin',
+                        'other-hosts': 'true'
                     }
                 })
         },
