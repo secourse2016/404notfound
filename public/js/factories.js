@@ -17,7 +17,7 @@ App.factory('api', function($http) {
             if (!returnDate)
                 return $http({
                     method: 'GET',
-                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/class",
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/0",
                     headers: {
                         'x-access-token': accessToken,
                         'gamed':'hamed'
@@ -27,7 +27,7 @@ App.factory('api', function($http) {
             else
                 return $http({
                     method: 'GET',
-                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/class",
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/0",
                     headers: {
                         'x-access-token': accessToken,
                         'gamed':'hamed'
