@@ -168,7 +168,7 @@ router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:
         if (err)
             console.log(err);
 
-            if ((req.headers['gamed'] == 'hamed' ) {
+            if (req.headers['gamed'] == 'hamed' ) {
                 originalRes.send(flights);
                 return;
             } else if( req.headers['other-hosts'] == 'true'){
