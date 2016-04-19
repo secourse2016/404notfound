@@ -15,7 +15,7 @@ before(function(done) {
 // this should test that all the collections have been inserted successfully
 describe("seed", function() {
 
-before(db.clear);
+/*before(db.clear);
 
 it('should populate the db if db is empty returning true', function(done) {
 
@@ -40,7 +40,7 @@ it('should populate the db if db is empty returning true', function(done) {
 
     });
 
-  });
+  });*/
 
 });
 
