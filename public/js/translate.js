@@ -76,46 +76,53 @@
         LEAVE_MSG: 'Leave us a message'
         SEND: 'Send'
       },
-      ABOUT_US: {
-//Do you mean 404notfound team ?  in aboutus view
+      four_o_for: {
+//Do you mean 404notfound team ?  in 404.html
         QUESTION:'Do you mean 404NotFound Team?'
 
       },
+
+      ABOUT_US: {
+
+        ABOUT: 'About AirBerlin'
+        HISTORY: 'History'
+        HISTORY_PARA: 'The first airberlin plane took off on 28th April 1979. Experience the highlights and milestones in airberlins history '
+OUR_GOAL: 'Our goal'
+OUR_GOAL_PARA: 'First Europe, and then the globe, will be linked by flight, and nations so knit together that they will grow to be next-door neighbors… . What railways have done for nations, airways will do for the world.'
+A_P:'Alliance/partners'
+A_P_PARA:'airberlin guarantees a dense connection network and constant growth thanks to the co-operation with other airlines.airberlin guarantees a dense connection network and constant growth thanks to the co-operation with other airlines.'
+
+
+  },
 
 
     });
     $translateProvider.translations('de', {
       MAIN: {
-        BOOK_NOW: 'Jetzt buchen',
-        FROM: 'von',
-        DEPARTURE_DATE: 'Hinflug',
-        TO: 'nach',
-        UNDER_2_YEARS: 'Jünger als 2 Jahren',
-        ROUND_TRIP: 'Hin-und Rückfahrt',
-        ONE_WAY: 'Nur Hinflug',
-        SEARCH_FOR_FLIGHTS: 'Flüge suchen',
-        YEARS: "Jahre",
-        CHILDREN: 'Kinder',
-        CHILD: 'Kind',
-        ADULT: 'Erwachsener',
-        ADULTS: 'Erwachsenen',
-        INFANTS: 'Babys',
-        INFANT: 'Baby',
-        QUOTES_HOME: {
-          1: "Einfach, praktisch, sofortige Bestätigung.",
-          2: "Reiseziehle überall auf der Welt.",
-          3: "Erlebe unsere Gastfreundschaft.",
-          4: "Es ist jetzt Zeit dir zu verzaubern."
-        }
+        BOOK_NOW: 'Jetzt buchen'
+        FROM: 'von'
+        DEPARTURE_DATE: 'Hinflug'
+        TO: 'nach'
+        UNDER_2_YEARS: 'Jünger als 2 Jahren'
+        ROUND_TRIP: 'Hin-und Rückfahrt'
+        ONE_WAY: 'Nur Hinflug'
+        SEARCH_FOR_FLIGHTS: 'Flüge suchen'
+        YEARS: "Jahre"
+        CHILDREN: 'Kinder'
+        CHILD: 'Kind'
+        ADULT: 'Erwachsener'
+        ADULTS: 'Erwachsenen'
+        INFANTS: 'Babys'
+        INFANT: 'Baby'
       },
       FLIGHTS: {
-        TITLE: 'Einen Flug aussuchen',
-        ECONOMY: 'Economy',
-        BUSINESS: 'Business',
-        SEATS_LEFT: 'freie Sitzplätze',
-        MORE_DETAILS: 'Mehr Details',
-        BOOK: 'buchen',
-        FLIGHT: 'Flug',
+        TITLE: 'Einen Flug aussuchen'
+        ECONOMY: 'Economy'
+        BUSINESS: 'Business'
+        SEATS_LEFT: 'freie Sitzplätze'
+        MORE_DETAILS: 'Mehr Details'
+        BOOK: 'buchen'
+        FLIGHT: 'Flug'
         OPERATED_BY: 'betrieben von'
       },
       FLIGHT: {
