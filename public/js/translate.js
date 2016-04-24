@@ -129,6 +129,13 @@ COST:'Your booking total cost'
 
 },
 
+SEATING: {
+
+SEAT_MAP:'Seatmap'
+SELECTED:'You selected seat'
+
+},
+
     });
     $translateProvider.translations('de', {
       MAIN: {
