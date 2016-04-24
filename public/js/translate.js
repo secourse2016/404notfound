@@ -136,6 +136,18 @@ SELECTED:'You selected seat'
 
 },
 
+SERVICES: {
+
+SERVICE:'Services'
+INFLIGHT_SERVICES:'Inflight Services'
+INFLIGHT_PARA:'  Airberlin presents the economy and business class.'
+G_MEALS:'Gourmet Meals'
+G_MEALS_PARA:'Airberlin is the right airline for connoisseurs: treat yourself to one of the delicious gourmet meals from "Sansibar" on board'
+BAGGAGE:'Baggage'
+BAGGAGE_PARA:'Everything you need to know about free baggage allowances, cabin baggage regulations and special baggage.'
+
+},
+
     });
     $translateProvider.translations('de', {
       MAIN: {
