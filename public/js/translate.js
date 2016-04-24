@@ -95,6 +95,17 @@ A_P_PARA:'airberlin guarantees a dense connection network and constant growth th
 
   },
 
+  OFFERS: {
+SPECIAL_OFFERS: 'Special Offers'
+FLIGHT_OFFERS:'Flight Offers'
+FLIGHT_OFFERS_PARA:'Find the most attractive fare for your flight'
+LIKE_FACEBOOK:'Like us on Facebook'
+LIKE_FACEBOOK_PARA:'Dont miss our special offers on: with our newsletter and on Facebook'
+HOTEL:'Hotel'
+HOTEL_PARA:'Special offers for your hotel stay away from our partners .'
+
+},
+
 
     });
     $translateProvider.translations('de', {
