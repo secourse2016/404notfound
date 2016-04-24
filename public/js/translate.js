@@ -120,6 +120,14 @@ REPEAT_E_MAIL:'Repeat Email'
 VERIFY_PARA:'I verify the information provided matches the passport information.'
 
 },
+PAYMENT: {
+
+WE_ACCEPT:'We accept'
+CARD_INFO:'Card information:'
+EXP_DATE:'Expire Date:'
+COST:'Your booking total cost'
+
+},
 
     });
     $translateProvider.translations('de', {
