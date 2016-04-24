@@ -107,6 +107,20 @@ HOTEL_PARA:'Special offers for your hotel stay away from our partners .'
 },
 
 
+PASS_DETAILS: {
+
+FIRST_NAME:'First Name'
+MIDDLE_NAME:'Middle Name'
+LAST_NAME:'Last Name'
+PASS_NO:'Passport Number'
+PLACE_OFBIRTH:'Place Of Birth'
+PHONE_NO:'Phone Number'
+E_MAIL:'Email'
+REPEAT_E_MAIL:'Repeat Email'
+VERIFY_PARA:'I verify the information provided matches the passport information.'
+
+},
+
     });
     $translateProvider.translations('de', {
       MAIN: {
