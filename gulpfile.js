@@ -16,7 +16,7 @@ gulp.task('copyJs', function() {
   // copy any html files in source/ to public/
   gulp.src('./public/shared/js/**/*.js')
       .pipe(concat('generated.js'))
-      .pipe(gulp.dest('./public/js/'))
+      .pipe(gulp.dest('./public/desktop/js/'))
       .pipe(gulp.dest('./public/mobile/www/js/'))
 });
 
