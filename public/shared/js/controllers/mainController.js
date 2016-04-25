@@ -1,14 +1,5 @@
 App.controller('mainCtrl', function($scope, $location, api) {
     $scope.pageClass = 'page-main';
-
-
-
-
-
-
-
-
-
     $('#main-text').typeIt({
         strings: [
             "Simple, convenient, instant confirmation.", "Destinations all around the globe.", "Experience authentic hospitality.", "Time to get enchanted."
@@ -21,7 +12,7 @@ App.controller('mainCtrl', function($scope, $location, api) {
         type: "one"
     }
     $scope.otherAirline = {
-    value:false  
+    value:false
     }
     $scope.goToFlights = function() {
         if ($scope.otherAirline.value) {
