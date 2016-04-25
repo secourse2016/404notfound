@@ -274,6 +274,17 @@ SEAT_MAP:'Sitzplatzreservierung'
 SELECTED:'Sie haben einen Sitzplatz reserviert.'
 
 },
+SERVICES: {
+
+SERVICE:'Services'
+INFLIGHT_SERVICES:'Services an board'
+INFLIGHT_PARA:'  Airberlin heißen Sie herzlich willkommen an Bord: economy und business class.'
+G_MEALS:'Gourmetessen'
+G_MEALS_PARA:'Freuen Sie sich auf Airberlins a la carte-Speise : Wir servieren Ihnen unsere warmen On-Top-Speisen, die extra vom Sansibar-Wirt Herbert Seckler kreiert wurden.'
+BAGGAGE:'Reisegepäck'
+BAGGAGE_PARA:'Unsere Reglungen über Aufzugebendes Gepäckmengen, über Handgepäck und Sondergepäck.'
+
+},
 
     });
 
