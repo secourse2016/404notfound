@@ -219,6 +219,23 @@ BAGGAGE_PARA:'Everything you need to know about free baggage allowances, cabin b
         LEAVE_MSG: 'Ihr Anliegen'
         SEND: 'abschicken'
       },
+      four_o_for: {
+//Do you mean 404notfound team ?  in 404.html
+        QUESTION:'Meinten Sie die Gruppe von 404NotFound ?'
+
+      },
+      ABOUT_US: {
+
+        ABOUT: 'Über AirBerlin'
+        HISTORY: 'Geschichte'
+        HISTORY_PARA: 'Am 28. April 1979 startet eine Boeing 707 von Berlin-Tegel nach Palma de Mallorca. Der Erstflug ist der Anfang der Erfolgsgeschichte von airberlin. '
+OUR_GOAL: 'Unser Ziel'
+OUR_GOAL_PARA: 'Zuert Europa, zunächst die ganze Welt, werden durch den Flug zusammen verbunden, und Nationen eng zusammen damit sie Nachbarn aufwachsen… . Was die Eisbahnen für die Nationen getan hat, wird die Flüge für das ganze Welt tun.'
+A_P:'Alliance/partners'
+A_P_PARA:'airberlin erweitert ihr internationales Streckennetz, indem sie mit mehreren Airlines als Codeshare-Partnern kooperiert.'
+
+
+  },
 
 
     });
