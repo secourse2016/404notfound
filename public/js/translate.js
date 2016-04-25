@@ -247,6 +247,20 @@ HOTEL_PARA:'Sonderangebote für Ihr Hotel weg von unsere Partnern .'
 
 },
 
+PASS_DETAILS: {
+
+FIRST_NAME:'Vorname'
+MIDDLE_NAME:'Zweitname'
+LAST_NAME:'Nachname'
+PASS_NO:'Reisepass Nummer'
+PLACE_OFBIRTH:'Ort des Geburts'
+PHONE_NO:'Telefon Nummer'
+E_MAIL:'E-mail adresse'
+REPEAT_E_MAIL:'E-mail wiederholen'
+VERIFY_PARA:'Hiermit, bestätige ich, dass die Informationen, die vorhin gegeben sind, meine Passdaten entsprichen.'
+
+},
+
 
     });
 
