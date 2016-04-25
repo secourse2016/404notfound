@@ -198,7 +198,19 @@ BAGGAGE_PARA:'Everything you need to know about free baggage allowances, cabin b
         OUR_TEAM: 'Unser Team',
         ABOUT: 'Über uns',
         CONTACT_US: 'Unser Kontakt'
-      }
+      },
+      CONFIRMATION: {
+
+        THANK_YOU: 'Danke schön'
+        NAME: 'Name'
+        PHONE: 'Telefon'
+        E-MAIL: 'E-mail adresse'
+        FLIGHTNO: 'Flug Nummer'
+        DEPARTURE: 'Abfahrt'
+        ARRAIVAL: 'Ankunft'
+        PRINT: 'Flugkarte abdrucken'
+
+      },
 
 
     });
