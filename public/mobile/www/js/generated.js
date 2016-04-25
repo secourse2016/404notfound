@@ -681,86 +681,91 @@ App.controller('flightsNewCtrl', function($scope, $location, $routeParams, api) 
 
 App.controller('mainCtrl', function($scope, $location, api) {
     $scope.pageClass = 'page-main';
-    $('#main-text').typeIt({
-        strings: [
-            "Simple, convenient, instant confirmation.", "Destinations all around the globe.", "Experience authentic hospitality.", "Time to get enchanted."
-        ],
-        speed: 120,
-        breakLines: false,
-        loop: true
-    });
-    $scope.flight = {
-        type: "one"
-    }
-    $scope.otherAirline = {
-    value:false
-    }
-    $scope.goToFlights = function() {
-        if ($scope.otherAirline.value) {
-          if ($scope.flight.type == "one")
-          $location.path('/flights-new').search('origin', $scope.selectedOrigin).search('destination', $scope.selectedDest).search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0));
-          else{
-            $location.path('/flights-new')
-                .search('origin', $scope.selectedOrigin)
-                .search('destination', $scope.selectedDest)
-                .search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0))
-                .search('returnDate', ($scope.returnDate.getTime() / 1000).toFixed(0));
-          }
-        } else {
+    if(api.getType() == 'desktop'){
+
+      $('#main-text').typeIt({
+          strings: [
+              "Simple, convenient, instant confirmation.", "Destinations all around the globe.", "Experience authentic hospitality.", "Time to get enchanted."
+          ],
+          speed: 120,
+          breakLines: false,
+          loop: true
+      });
+      $scope.flight = {
+          type: "one"
+      }
+      $scope.otherAirline = {
+      value:false
+      }
+      $scope.goToFlights = function() {
+          if ($scope.otherAirline.value) {
             if ($scope.flight.type == "one")
-                $location.path('/flights').search('origin', $scope.selectedOrigin).search('destination', $scope.selectedDest).search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0));
-            else {
-                $location.path('/flights')
-                    .search('origin', $scope.selectedOrigin)
-                    .search('destination', $scope.selectedDest)
-                    .search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0))
-                    .search('returnDate', ($scope.returnDate.getTime() / 1000).toFixed(0));
+            $location.path('/flights-new').search('origin', $scope.selectedOrigin).search('destination', $scope.selectedDest).search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0));
+            else{
+              $location.path('/flights-new')
+                  .search('origin', $scope.selectedOrigin)
+                  .search('destination', $scope.selectedDest)
+                  .search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0))
+                  .search('returnDate', ($scope.returnDate.getTime() / 1000).toFixed(0));
             }
+          } else {
+              if ($scope.flight.type == "one")
+                  $location.path('/flights').search('origin', $scope.selectedOrigin).search('destination', $scope.selectedDest).search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0));
+              else {
+                  $location.path('/flights')
+                      .search('origin', $scope.selectedOrigin)
+                      .search('destination', $scope.selectedDest)
+                      .search('exitDate', ($scope.exitDate.getTime() / 1000).toFixed(0))
+                      .search('returnDate', ($scope.returnDate.getTime() / 1000).toFixed(0));
+              }
 
-        }
+          }
 
-    };
-    $location.url($location.path());
-    setUpDate($scope);
+      };
+      $location.url($location.path());
+      setUpDate($scope);
 
-    $scope.children = ['0 children', '1 child', '2 children', '3 children', '4 children'];
-    $scope.childrenBtnText = $scope.children[0];
-    $scope.changeChildren = function(text) {
-        $scope.childrenBtnText = text;
-    }
+      $scope.children = ['0 children', '1 child', '2 children', '3 children', '4 children'];
+      $scope.childrenBtnText = $scope.children[0];
+      $scope.changeChildren = function(text) {
+          $scope.childrenBtnText = text;
+      }
 
 
 
-    $scope.adults = ['1 adult', '2 adults', '3 adults', '4 adults'];
-    $scope.adultBtnText = $scope.adults[0];
-    $scope.changeAdult = function(text) {
-        $scope.adultBtnText = text;
-    }
+      $scope.adults = ['1 adult', '2 adults', '3 adults', '4 adults'];
+      $scope.adultBtnText = $scope.adults[0];
+      $scope.changeAdult = function(text) {
+          $scope.adultBtnText = text;
+      }
 
-    $scope.infants = ['0 infants', '1 infant'];
-    $scope.infantBtnText = $scope.infants[0];
-    $scope.changeInfant = function(text) {
-        $scope.infantBtnText = text;
-    }
+      $scope.infants = ['0 infants', '1 infant'];
+      $scope.infantBtnText = $scope.infants[0];
+      $scope.changeInfant = function(text) {
+          $scope.infantBtnText = text;
+      }
 
-    api.getAirports().then(function mySucces(response) {
-        $scope.airports = response.data;
-    }, function myError(response) {
-        console.log(response.statusText);
-    });
-    $scope.selectedOrigin = undefined;
-    $scope.selectedDest = undefined;
+      api.getAirports().then(function mySucces(response) {
+          $scope.airports = response.data;
+      }, function myError(response) {
+          console.log(response.statusText);
+      });
+      $scope.selectedOrigin = undefined;
+      $scope.selectedDest = undefined;
 
-    function airporsContains(iata) {
-        for (var i = 0; i < $scope.airports.length; i++) {
-            if (iata == $scope.airports[i]['iata'])
-                return true;
-        }
-        return false;
-    }
+      function airporsContains(iata) {
+          for (var i = 0; i < $scope.airports.length; i++) {
+              if (iata == $scope.airports[i]['iata'])
+                  return true;
+          }
+          return false;
+      }
 
-    $scope.buttonState = function() {
-        return !$scope.selectedOrigin || !$scope.selectedDest || !$scope.exitDate || $scope.selectedDest == $scope.selectedOrigin || !airporsContains($scope.selectedOrigin) || !airporsContains($scope.selectedDest);
+      $scope.buttonState = function() {
+          return !$scope.selectedOrigin || !$scope.selectedDest || !$scope.exitDate || $scope.selectedDest == $scope.selectedOrigin || !airporsContains($scope.selectedOrigin) || !airporsContains($scope.selectedDest);
+      }
+    }else{
+      
     }
 });
 

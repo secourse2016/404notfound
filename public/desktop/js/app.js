@@ -1,5 +1,6 @@
 App = angular.module('airBerlinApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
-  .controller('parentCtrl', function($scope, $location) {
+  .controller('parentCtrl', function($scope, $location,api) {
+    api.setType('desktop');
     $scope.goHome = function() {
       $location.path('/');
     }
