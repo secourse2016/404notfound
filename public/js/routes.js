@@ -21,7 +21,7 @@ App.config(['$routeProvider','$locationProvider',
         templateUrl: 'templates/passenger-details.html',
         controller: 'passengerDetailsCtrl'
       })
-      .when('/seating', {
+      .when('/seating/:outgoing', {
         templateUrl: 'templates/seating.html',
         controller: 'seatingCtrl'
       })
