@@ -236,6 +236,16 @@ A_P_PARA:'airberlin erweitert ihr internationales Streckennetz, indem sie mit me
 
 
   },
+  OFFERS: {
+SPECIAL_OFFERS: 'Spezielle Angebote'
+FLIGHT_OFFERS:'Flugangebote'
+FLIGHT_OFFERS_PARA:'Finden Sie die attraktivsten Tarife für Ihren Flug'
+LIKE_FACEBOOK:'Folgen Sie uns auf Facebook'
+LIKE_FACEBOOK_PARA:'Vermissen Sie nicht unsere spezielle Angebote: mit unser newsletter und auf Facebook'
+HOTEL:'Hotel'
+HOTEL_PARA:'Sonderangebote für Ihr Hotel weg von unsere Partnern .'
+
+},
 
 
     });
