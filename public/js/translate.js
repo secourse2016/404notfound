@@ -211,6 +211,14 @@ BAGGAGE_PARA:'Everything you need to know about free baggage allowances, cabin b
         PRINT: 'Flugkarte abdrucken'
 
       },
+      CONTACT_US: {
+
+        CONTACT_US: 'Unser Kontakt'
+        PHONE: 'Telefon'
+        E-MAIL: 'E-mail adresse'
+        LEAVE_MSG: 'Ihr Anliegen'
+        SEND: 'abschicken'
+      },
 
 
     });
