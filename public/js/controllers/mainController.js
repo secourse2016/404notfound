@@ -1,4 +1,4 @@
-App.controller('mainCtrl', function($scope, $location, api) {
+App.controller('mainCtrl', function($scope, $location, api,$translate) {
     $scope.pageClass = 'page-main';
 
 
@@ -10,12 +10,10 @@ App.controller('mainCtrl', function($scope, $location, api) {
 
 
     $('#main-text').typeIt({
-        strings: [
-            "Simple, convenient, instant confirmation.", "Destinations all around the globe.", "Experience authentic hospitality.", "Time to get enchanted."
-        ],
-        speed: 120,
-        breakLines: false,
-        loop: true
+      strings: [$translate.instant('MAIN.QUOTES_HOME.1'),$translate.instant('MAIN.QUOTES_HOME.2'),$translate.instant('MAIN.QUOTES_HOME.3'),$translate.instant('MAIN.QUOTES_HOME.4')],
+      speed: 120,
+      breakLines: false,
+      loop: true
     });
     $scope.flight = {
         type: "one"
@@ -51,7 +49,7 @@ App.controller('mainCtrl', function($scope, $location, api) {
     $location.url($location.path());
     setUpDate($scope);
 
-    $scope.children = ['0 children', '1 child', '2 children', '3 children', '4 children'];
+    $scope.children = ['0 ' + $translate.instant('MAIN.CHILDREN'), '1 ' + $translate.instant('MAIN.CHILD'), '2 ' + $translate.instant('MAIN.CHILDREN'), '3 ' + $translate.instant('MAIN.CHILDREN'), '4 ' + $translate.instant('MAIN.CHILDREN')];
     $scope.childrenBtnText = $scope.children[0];
     $scope.changeChildren = function(text) {
         $scope.childrenBtnText = text;
@@ -59,13 +57,14 @@ App.controller('mainCtrl', function($scope, $location, api) {
 
 
 
-    $scope.adults = ['1 adult', '2 adults', '3 adults', '4 adults'];
+    $scope.adults = ['1 '+$translate.instant('MAIN.ADULT') , '2 '+$translate.instant('MAIN.ADULTS'), '3 ' + $translate.instant('MAIN.ADULTS'), '4 '+$translate.instant('MAIN.ADULTs')];
     $scope.adultBtnText = $scope.adults[0];
     $scope.changeAdult = function(text) {
         $scope.adultBtnText = text;
     }
 
-    $scope.infants = ['0 infants', '1 infant'];
+    $scope.infants = ['0 '+$translate.instant('MAIN.INFANT'), '1 '+$translate.instant('MAIN.INFANTS')];
+
     $scope.infantBtnText = $scope.infants[0];
     $scope.changeInfant = function(text) {
         $scope.infantBtnText = text;

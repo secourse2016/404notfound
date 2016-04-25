@@ -100,9 +100,9 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
             var arrivalDate = new Date(flights.returnFlights[i].arrivalUTC);
             flights.returnFlights[i].arrivalUTC = arrivalDate.toUTCString();
 
-            var hours = Math.floor(flights.returnFlights[i].duration / 60);
-            var minutes = flights.returnFlights[i].duration % 60;
 
+var hours = Math.floor(flights.returnFlights[i].duration / 60);
+var minutes = flights.returnFlights[i].duration % 60;
             flights.returnFlights[i].duration = hours + "h " + minutes + "m";
 
         }

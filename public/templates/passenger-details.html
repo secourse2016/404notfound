@@ -45,37 +45,37 @@
           <div class="row">
 
             <div class="input-group">
-              <span class="input-group-addon" id="basic-addon1">First Name</span>
+              <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.FIRST_NAME" | translate}}</span>
               <input type="text" class="form-control" ng-model="firstName" placeholder="ex. Jack" aria-describedby="basic-addon1">
-              <span class="input-group-addon" id="basic-addon2">Middle Name</span>
+              <span class="input-group-addon" id="basic-addon2">{{"PASS_DETAILS.MIDDLE_NAME" | translate}}</span>
               <input type="text" class="form-control" ng-model="middleName" placeholder="" aria-describedby="basic-addon1">
-              <span class="input-group-addon" id="basic-addon1">Last Name</span>
+              <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.LAST_NAME" | translate}}</span>
               <input type="text" class="form-control" placeholder="ex. Dawson" ng-model="lastName" aria-describedby="basic-addon1">
             </div>
 
           </div>
           <div class="row">
             <div class="input-group">
-              <span class="input-group-addon" id="basic-addon1">Passport Number</span>
+              <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.PASS_NO" | translate}}</span>
               <input type="text" class="form-control" placeholder="ex. A308641" ng-model="passportNumber" aria-describedby="basic-addon1">
-              <span class="input-group-addon" id="basic-addon1">Place Of Birth</span>
+              <span class="input-group-addon" id="basic-addon1">{{PASS_DETAILS.PLACE_OFBIRTH" | translate}}</span>
               <input name="originAirports" type="text" placeholder="ex. Egypt" ng-model="nationality" uib-typeahead="country.name for country in countries | filter:$viewValue | limitTo:10" class="form-control">
-              <span class="input-group-addon" id="basic-addon1">Phone Number</span>
+              <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.PHONE_NO" | translate}}</span>
               <input type="text" class="form-control" placeholder="ex. +20127628918" ng-model="phoneNumber" aria-describedby="basic-addon1">
             </div>
           </div>
           <div class="row">
             <div class="input-group">
-              <span class="input-group-addon" id="basic-addon1">Email</span>
+              <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.E_MAIL" | translate}}</span>
               <input type="text" class="form-control" placeholder="ex. jackdawson@example.com" ng-model="email1" aria-describedby="basic-addon1">
-              <span class="input-group-addon" id="basic-addon1">Repeat Email</span>
+              <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.REPEAT_E_MAIL" | translate}}</span>
               <input type="text" class="form-control" placeholder="ex. jackdawson@example.com" ng-model="emailver" aria-describedby="basic-addon1">
             </div>
           </div>
           <div class="row">
             <div class="input-group">
               <label>
-                <input type="checkbox" style="margin-right: 8px" ng-model="check">I verify the information provided matches the passport information.
+                <input type="checkbox" style="margin-right: 8px" ng-model="check">{{"PASS_DETAILS.VERIFY_PARA" | translate}}
               </label>
             </div>
           </div>
