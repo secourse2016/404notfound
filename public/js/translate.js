@@ -262,10 +262,16 @@ VERIFY_PARA:'Hiermit, bestätige ich, dass die Informationen, die vorhin gegeben
 },
 PAYMENT: {
 
-WE_ACCEPT:'Wir akzptieren'
+WE_ACCEPT:'Zahlungsmethoden'
 CARD_INFO:'Kreditkarte informationen:'
 EXP_DATE:'Ablaufdatum Ihrer Karte:'
 COST:'Gesamtpreis'
+
+},
+SEATING: {
+
+SEAT_MAP:'Sitzplatzreservierung'
+SELECTED:'Sie haben einen Sitzplatz reserviert.'
 
 },
 
