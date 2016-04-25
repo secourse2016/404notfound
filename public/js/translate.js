@@ -260,7 +260,14 @@ REPEAT_E_MAIL:'E-mail wiederholen'
 VERIFY_PARA:'Hiermit, bestätige ich, dass die Informationen, die vorhin gegeben sind, meine Passdaten entsprichen.'
 
 },
+PAYMENT: {
 
+WE_ACCEPT:'Wir akzptieren'
+CARD_INFO:'Kreditkarte informationen:'
+EXP_DATE:'Ablaufdatum Ihrer Karte:'
+COST:'Gesamtpreis'
+
+},
 
     });
 
