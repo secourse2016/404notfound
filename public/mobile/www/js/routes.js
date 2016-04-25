@@ -18,7 +18,7 @@ App.config(function($stateProvider, $urlRouterProvider) {
     url: '/home',
     views: {
       'tab-home': {
-        templateUrl: 'templates/tab-home.html',
+        templateUrl: 'templates/tab-main.html',
         controller: 'mainCtrl'
       }
     }
@@ -27,27 +27,32 @@ App.config(function($stateProvider, $urlRouterProvider) {
   .state('tab.flights', {
     url: '/flights',
     views: {
-      templateUrl: 'templates/flights.html',
-      controller: 'flightsCtrl'
+      'tab-flights': {
+        templateUrl: 'templates/flights.html',
+        controller: 'flightsCtrl'
+      }
     }
   })
 
   .state('tab.flights-new', {
     url: '/flights-new',
     views: {
-      templateUrl: 'templates/flights-new.html',
-      controller: 'flightsNewCtrl'
+      'tab-flights-new': {
+        templateUrl: 'templates/flights-new.html',
+        controller: 'flightsNewCtrl'
+      }
     }
   })
 
 
-  .state('tab.exit-flight', {
-      url: '/exit-flight',
+  .state('tab.flight-details', {
+      url: '/flight-details',
       views: {
-        templateUrl: 'templates/flight.html',
-        controller: 'exitFlightCtrl'
+        'tab-flight-details': {
+          templateUrl: 'templates/flight.html',
+          controller: 'exitFlightCtrl'
+        }
       }
-
     })
     // .state('reentry-flight', {
     //   templateUrl: 'templates/flight.html',
@@ -58,8 +63,10 @@ App.config(function($stateProvider, $urlRouterProvider) {
   .state('tab.passenger-details', {
     url: '/passenger-details',
     views: {
-      templateUrl: 'templates/passenger-details.html',
-      controller: 'passengerDetailsCtrl'
+      'tab-passenger-details': {
+        templateUrl: 'templates/passenger-details.html',
+        controller: 'passengerDetailsCtrl'
+      }
     }
   })
 
@@ -67,8 +74,10 @@ App.config(function($stateProvider, $urlRouterProvider) {
   .state('tab.seating', {
     url: '/seating/:outgoing',
     views: {
-      templateUrl: 'templates/seating.html',
-      controller: 'seatingCtrl'
+      'tab-seating': {
+        templateUrl: 'templates/seating.html',
+        controller: 'seatingCtrl'
+      }
     }
   })
 
@@ -76,51 +85,65 @@ App.config(function($stateProvider, $urlRouterProvider) {
   .state('tab.payment', {
     url: '/payment',
     views: {
-      templateUrl: 'templates/payment.html',
-      controller: 'paymentCtrl'
+      'tab-payment': {
+        templateUrl: 'templates/payment.html',
+        controller: 'paymentCtrl'
+      }
     }
   })
 
   .state('tab.confirmation', {
     url: '/confirmation',
     views: {
-      templateUrl: 'templates/confirmation.html',
-      controller: 'confirmationCtrl'
+      'tab-confirmation': {
+        templateUrl: 'templates/confirmation.html',
+        controller: 'confirmationCtrl'
+      }
     }
   })
 
   .state('tab.contact-us', {
     url: '/contact-us',
     views: {
-      templateUrl: 'templates/contact-us.html'
+      'tab-contact-us': {
+        templateUrl: 'templates/contact-us.html'
+      }
     }
   })
 
   .state('tab.services', {
     url: '/services',
     views: {
-      templateUrl: 'templates/services.html'
+      'tab-services': {
+        templateUrl: 'templates/services.html'
+      }
     }
   })
 
   .state('tab.about', {
     url: '/about',
     views: {
-      templateUrl: 'templates/about.html'
+      'tab-about': {
+        templateUrl: 'templates/about.html'
+      }
     }
   })
 
   .state('tab.team', {
     url: '/team',
     views: {
-      templateUrl: 'templates/team.html'
+      'tab-team': {
+        templateUrl: 'templates/team.html'
+      }
     }
   })
 
   .state('tab.offers', {
     url: '/offers',
     views: {
-      templateUrl: 'templates/offers.html'
+      'offers': {
+        templateUrl: 'templates/offers.html'
+      }
     }
   })
 
