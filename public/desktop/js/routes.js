@@ -15,7 +15,7 @@ App.config(['$routeProvider','$locationProvider',
       })
       .when('/exit-flight', {
         templateUrl: 'templates/flight.html',
-        controller: 'exitFlightCtrl'
+        controller: 'flightDetailsCtrl'
       })
       // .when('/reentry-flight', {
       //   templateUrl: 'templates/flight.html',
