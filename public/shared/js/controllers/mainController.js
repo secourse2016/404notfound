@@ -1,6 +1,8 @@
 App.controller('mainCtrl', function($scope, $location, api) {
     $scope.pageClass = 'page-main';
 
+
+
     if(Type == 'desktop'){
 
       $('#main-text').typeIt({

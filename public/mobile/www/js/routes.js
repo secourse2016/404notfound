@@ -102,10 +102,21 @@ App.config(function($stateProvider, $urlRouterProvider) {
     }
   })
 
+
+    .state('tab.other', {
+      url: '/other',
+      views: {
+        'tab-other': {
+          templateUrl: 'templates/other.html'
+        }
+      }
+    })
+
+
   .state('tab.contact-us', {
     url: '/contact-us',
     views: {
-      'tab-contact-us': {
+      'tab-other': {
         templateUrl: 'templates/contact-us.html'
       }
     }
@@ -114,7 +125,7 @@ App.config(function($stateProvider, $urlRouterProvider) {
   .state('tab.services', {
     url: '/services',
     views: {
-      'tab-services': {
+      'tab-other': {
         templateUrl: 'templates/services.html'
       }
     }
@@ -123,7 +134,7 @@ App.config(function($stateProvider, $urlRouterProvider) {
   .state('tab.about', {
     url: '/about',
     views: {
-      'tab-about': {
+      'tab-other': {
         templateUrl: 'templates/about.html'
       }
     }
@@ -132,7 +143,7 @@ App.config(function($stateProvider, $urlRouterProvider) {
   .state('tab.team', {
     url: '/team',
     views: {
-      'tab-team': {
+      'tab-other': {
         templateUrl: 'templates/team.html'
       }
     }
@@ -141,7 +152,7 @@ App.config(function($stateProvider, $urlRouterProvider) {
   .state('tab.offers', {
     url: '/offers',
     views: {
-      'offers': {
+      'tab-other': {
         templateUrl: 'templates/offers.html'
       }
     }
