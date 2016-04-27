@@ -7,7 +7,7 @@ var sourcemaps = require('gulp-sourcemaps');
 gulp.task('default', ['start', 'watch']);
 
 gulp.task('install', function() {
-    gulp.src(['./public/bower.json', './package.json'])
+    gulp.src(['./public/desktop/bower.json','./public/mobile/bower.json', './package.json'])
         .pipe(install());
 
 });

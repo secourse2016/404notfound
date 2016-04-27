@@ -19,7 +19,7 @@ App.factory('api', function($http) {
                     url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/0",
                     headers: {
                         'x-access-token': accessToken,
-                        'gamed': 'hamed'
+                        'other-hosts': 'false'
 
                     }
                 })
@@ -29,7 +29,7 @@ App.factory('api', function($http) {
                     url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/0",
                     headers: {
                         'x-access-token': accessToken,
-                        'gamed': 'hamed'
+                        'other-hosts': 'false'
 
 
                     }
