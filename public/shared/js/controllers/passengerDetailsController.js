@@ -5,7 +5,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   $scope.buttonTextNxt = "Next";
   $scope.buttonTextBk = "Back";
 
-
+if(Type == 'desktop'){
   if(!api.getChosenOutGoingFlight() || !api.getBooking()){
     $location.path('/flights');
     return;
@@ -47,16 +47,16 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
         email: null
 
        };
-// ---------------------------------------- Now you have $scope.nationality and $scope.titlesBtnText you can use them in your object
+  // ---------------------------------------- Now you have $scope.nationality and $scope.titlesBtnText you can use them in your object
   var complete = false;
   $scope.goNext = function() {
 
-/*if(!api.getChosenFlight())
-{
+  /*if(!api.getChosenFlight())
+  {
   $location.path('/flights');
   alert("You have to choose a flight");
-}*/
-//The reverting to the flights page
+  }*/
+  //The reverting to the flights page
 
     $scope.passenger = {
       type: null,
@@ -115,9 +115,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   $scope.goBack = function() {
       $location.path('/exit-flight');
     }
-    //yasmine you're not expecting any parameters. You're only creating a form and you will have
-    // the resulting object ready to be sent to the server
-
+}
 
 
 });

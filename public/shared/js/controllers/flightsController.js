@@ -1,6 +1,5 @@
 // @abdelrahman-maged
-
-var flightController = function($scope, $location,api,$routeParams) {
+var flightController = function($scope, $location,$routeParams,api) {
 
       $scope.pageClass = 'page-flights';
       $scope.title = "Choose a Flight";
@@ -9,7 +8,7 @@ var flightController = function($scope, $location,api,$routeParams) {
 
 
 
-      if(api.getType() == 'desktop'){
+      if(Type == 'desktop'){
         $scope.isCollapsed = true;
         $scope.isOutgoingFlightSelected = false;
 
@@ -225,12 +224,11 @@ var flightController = function($scope, $location,api,$routeParams) {
 
 }
 
+if(Type == 'mobile'){
   flightController.$inject = ['$scope', '$location', 'api'];
+}else{
+  flightController.$inject = ['$scope', '$location','$routeParams', 'api'];
+}
+
 
 App.controller('flightsCtrl', flightController);
-
-// App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
-//
-//
-//
-// });

@@ -1,3 +1,5 @@
+Type = 'mobile';
+
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -9,7 +11,6 @@ App = angular.module('starter', ['ionic', 'starter.controllers', 'starter.servic
 
 .run(function($ionicPlatform,api) {
   $ionicPlatform.ready(function() {
-    api.setType('mobile');
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {

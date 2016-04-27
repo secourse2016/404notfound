@@ -95,7 +95,7 @@ App.config(function($stateProvider, $urlRouterProvider) {
   .state('tab.confirmation', {
     url: '/confirmation',
     views: {
-      'tab-confirmation': {
+      'tab-home': {
         templateUrl: 'templates/confirmation.html',
         controller: 'confirmationCtrl'
       }

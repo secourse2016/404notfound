@@ -1,5 +1,5 @@
-App.controller('flightsNewCtrl', function($scope, $location, $routeParams, api) {
 
+var flightNewController = function($scope, $location,$routeParams,api) {
     $scope.pageClass = 'page-flights';
     $scope.title = "Choose a Flight";
     $scope.buttonTextNxt = "Next";
@@ -46,4 +46,14 @@ App.controller('flightsNewCtrl', function($scope, $location, $routeParams, api) 
     }, function myError(response) {
         console.log(response.statusText);
     })
-})
+}
+
+
+if(Type == 'mobile'){
+  flightNewController.$inject = ['$scope', '$location', 'api'];
+}else{
+  flightNewController.$inject = ['$scope', '$location','$routeParams', 'api'];
+}
+
+
+App.controller('flightsNewCtrl', flightNewController);

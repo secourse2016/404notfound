@@ -1,6 +1,7 @@
 App.controller('mainCtrl', function($scope, $location, api) {
     $scope.pageClass = 'page-main';
-    if(api.getType() == 'desktop'){
+
+    if(Type == 'desktop'){
 
       $('#main-text').typeIt({
           strings: [
@@ -84,7 +85,7 @@ App.controller('mainCtrl', function($scope, $location, api) {
           return !$scope.selectedOrigin || !$scope.selectedDest || !$scope.exitDate || $scope.selectedDest == $scope.selectedOrigin || !airporsContains($scope.selectedOrigin) || !airporsContains($scope.selectedDest);
       }
     }else{
-      
+
     }
 });
 
