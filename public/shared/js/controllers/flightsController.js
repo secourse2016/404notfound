@@ -35,12 +35,10 @@ var flightController = function($scope, $location, $routeParams, api) {
 
     $scope.selectedBooking = {
       "refPassengerID": null,
-      "exitDepartureUTC": null,
-      "reEntryDepartureUTC": null,
       "issueDate": null,
       "isOneWay": !$scope.roundTrip,
-      "refExitFlightNumber": null,
-      "refReEntryFlightNumber": null,
+      "refExitFlightID": null,
+      "refReEntryFlightID": null,
       "receiptNumber": null
     };
 
@@ -179,19 +177,17 @@ var flightController = function($scope, $location, $routeParams, api) {
     $scope.selectOutgoingFlight = function(flight, isEconomy) {
       $scope.isOutgoingFlightSelected = true;
       $scope.selectedOutgoingFlight = flight;
-      $scope.selectedBooking.exitDepartureUTC = flight.departureUTC;
       $scope.selectedBooking.exitIsEconomy = isEconomy;
       // $scope.selectedBooking.isOneWay = $scope.roundTrip;
-      $scope.selectedBooking.refExitFlightNumber = flight.number;
+      $scope.selectedBooking.refExitFlightID = flight._id;
     }
 
     $scope.selectReturningFlight = function(flight, isEconomy) {
       $scope.isReturningFlightSelected = true;
       $scope.selectedReturningFlight = flight;
-      $scope.selectedBooking.reEntryDepartureUTC = flight.departureUTC;
       $scope.selectedBooking.reEntryIsEconomy = isEconomy;
       // $scope.selectedBooking.isOneWay = $scope.roundTrip;
-      $scope.selectedBooking.refReEntryFlightNumber = flight.number;
+      $scope.selectedBooking.refReEntryFlightID = flight._id;
     }
 
     $scope.checkNextBtnState = function() {
