@@ -314,6 +314,10 @@ var flightController = function($scope, $location,$routeParams,api) {
           "seatmap": null
         }];
 
+        $scope.dummyOrigin = "CAI";
+        $scope.dummyDestination = "JED";
+        $scope.dummyExitDate = "2016-05-10T01:00:00Z";
+
       }
 
       // console.log($scope.roundTrip)
