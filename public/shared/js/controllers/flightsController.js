@@ -59,12 +59,6 @@ var flightController = function($scope, $location, $routeParams, api) {
       // formatting data to be presentable
       for (i = 0; i < flights.outgoingFlights.length; i++) {
 
-        var departureDate = new Date(flights.outgoingFlights[i].departureUTC);
-        flights.outgoingFlights[i].departureUTC = departureDate.toUTCString();
-
-        var arrivalDate = new Date(flights.outgoingFlights[i].arrivalUTC);
-        flights.outgoingFlights[i].arrivalUTC = arrivalDate.toUTCString();
-
         var hours = Math.floor(flights.outgoingFlights[i].duration / 60);
         var minutes = flights.outgoingFlights[i].duration % 60;
 
@@ -77,12 +71,6 @@ var flightController = function($scope, $location, $routeParams, api) {
       if ($scope.roundTrip) {
 
         for (i = 0; i < flights.returnFlights.length; i++) {
-
-          var departureDate = new Date(flights.returnFlights[i].departureUTC);
-          flights.returnFlights[i].departureUTC = departureDate.toUTCString();
-
-          var arrivalDate = new Date(flights.returnFlights[i].arrivalUTC);
-          flights.returnFlights[i].arrivalUTC = arrivalDate.toUTCString();
 
           var hours = Math.floor(flights.returnFlights[i].duration / 60);
           var minutes = flights.returnFlights[i].duration % 60;
