@@ -29,7 +29,7 @@ App.controller('flightDetailsCtrl', function($scope, $location, api) {
     "4 cultural cuisines", "Inflight entertainment", "Extra cozy sleeperette",
     "Screens to show your flight pattern, aircraft altitude and speed"
   ];
-
+if (outgoingFlight){
   var departureDate = new Date(outgoingFlight.departureUTC);
   outgoingFlight.departureUTC = departureDate.toUTCString();
   var arrivalDate = new Date(outgoingFlight.arrivalUTC);
@@ -150,5 +150,5 @@ App.controller('flightDetailsCtrl', function($scope, $location, api) {
   $scope.outfare = outfare;
   $scope.outfacilitiesResult = outfacilitiesResult;
 
-
+}
 });
