@@ -206,11 +206,21 @@ exports.getCountries = function(cb) {
 };
 
 // On Confirmation
+// exports.postPassenger = function(passenger, cb) {
+//     //post created passenger to db
+//     DB.collection('passengers', function(err, collection) {
+//         collection.insert(passenger, {
+//             safe: true
+//         }, function(err, result) {
+//             cb(err, result);
+//         });
+//     });
+// };
 
-exports.postPassenger = function(passenger, cb) {
-    //post created passenger to db
+exports.postPassengers = function(passengers, cb) {
+    //post created passengers to db
     DB.collection('passengers', function(err, collection) {
-        collection.insert(passenger, {
+        collection.insert(passengers, {
             safe: true
         }, function(err, result) {
             cb(err, result);
@@ -232,15 +242,15 @@ exports.postBooking = function(booking, cb) {
 exports.updateFlight = function(flightID, isEconomy, seatNumber, passengerID, bookingID, cb) {
 
     //update the flight with the allocated seats
-    DB.collection('flights').find({
+    DB.collection('flights').findOne({
         "_id":flightID
     }).toArray(function(err, flight) {
         if (err) return cb(err);
         var i;
         var found = false;
       //  console.log(flight[0].seatmap);
-        for (i = 0; i < flight[0].seatmap.length; i++) {
-            var seat = flight[0].seatmap[i];
+        for (i = 0; i < flight.seatmap.length; i++) {
+            var seat = flight.seatmap[i];
             if (seat.number === seatNumber && seat.isEconomy === isEconomy) {
                 seat.refPassengerID = passengerID;
                 seat.refBookingID = bookingID;
@@ -252,12 +262,12 @@ exports.updateFlight = function(flightID, isEconomy, seatNumber, passengerID, bo
 
         if (isEconomy) {
 
-            if (found && flight[0].emptyEconomySeatsCount != 0 )
+            if (found && flight.emptyEconomySeatsCount != 0 )
                 DB.collection('flights').update({
                     "_id":flightID
                 }, {
                     $set: {
-                        "seatmap": flight[0].seatmap
+                        "seatmap": flight.seatmap
                     },
                     $inc: {
                         "emptyEconomySeatsCount": -1
@@ -269,12 +279,12 @@ exports.updateFlight = function(flightID, isEconomy, seatNumber, passengerID, bo
 
         } else {
 
-            if (found && flight[0].emptyBusinessSeatsCount != 0)
+            if (found && flight.emptyBusinessSeatsCount != 0)
                 DB.collection('flights').update({
                       "_id":flightID
                 }, {
                     $set: {
-                        "seatmap": flight[0].seatmap
+                        "seatmap": flight.seatmap
                     },
                     $inc: {
                         "emptyBusinessSeatsCount": -1

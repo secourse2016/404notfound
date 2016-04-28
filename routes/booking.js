@@ -16,8 +16,9 @@ router.post("/booking", function(req, res) {
     var outgoingSeatNumber, returnSeatNumber;
     // console.log(booking)
 
-    db.postPassenger(Passenger, function(err, data) {
+    db.postPassengers(Passenger, function(err, data) {
         if (!err) {
+            if (req.headers['other-hosts'] == 'false') {
             passengerId = data.ops[0]._id;
             booking.refPassengerID = passengerId;
             db.postBooking(booking, function(err, data) {
@@ -35,23 +36,34 @@ router.post("/booking", function(req, res) {
 
                               db.updateFlight(returnFlightID, reEntryIsEconomy, returnSeatNumber, passengerId, bookingId, function(err, data) {
                                   if (!err) {
-                                    res.send('booking added succefully');
+                                    res.send({
+                                                  refNum: booking.receiptNumber,
+                                                  errorMessage: err
+                                              });
+                                    console.log('successfully added your booking');
+                                    return;
                                   } else {
-                                    res.send(err);
+                                    res.send({
+                                                  refNum: booking.receiptNumber,
+                                                  errorMessage: err
+                                              });
                                       console.log('error occured while adding your booking');
                                       return;
                                   }
                               });
                           }
                         } else {
-                          res.send(err);
+                          res.send({
+                                        refNum: booking.receiptNumber,
+                                        errorMessage: err
+                                    });
                             console.log('error occured while adding your booking');
                             return;
                         }
                     });
                 }
             });
-
+          }
         }
     });
 

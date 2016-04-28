@@ -1,6 +1,7 @@
 App.factory('api', function($http) {
     var accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjEwNDMyNzgsImV4cCI6MTQ5MjU3OTI3OCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.dXZVC--uvtigrFB7T3fGTG84NIYlSnRqbgbT43xzFAw"
-    var chosenOutgoingFlight, chosenReturningFlight, passengerData, bookingData, cabinetOutgoingClass, cabinetReturningClass, outgoingSeat, returnSeat;
+    var chosenOutgoingFlight, chosenReturningFlight, bookingData, cabinetOutgoingClass, cabinetReturningClass, outgoingSeat, returnSeat;
+    var passengerData = [];
     return {
         getAirports: function() {
             return $http({
@@ -106,7 +107,7 @@ App.factory('api', function($http) {
             chosenReturningFlight = flight;
         },
         setPassenger: function(passenger) {
-            passengerData = passenger;
+            passengerData.push(passenger);
         },
         getCabinetOutgoingClass: function() {
             return cabinetOutgoingClass;
