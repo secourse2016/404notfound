@@ -14,13 +14,13 @@
 
           <div class="item item-text-wrap">
 
-            <ion-radio ng-model="choice" ng-repeat="chat in chats">
+            <ion-radio ng-model="choice" ng-repeat="flight in dummyFlights">
 
               <div class="row">
 
                 <div class="col">
-                  <p class="text-left">{{chat.refOriginAirport}}</p>
-                  <p class="text-left" ng-bind="constructDate(chat.departureUTC) | date:'HH:mm'"></p>
+                  <p class="text-left">{{flight.refOriginAirport}}</p>
+                  <p class="text-left" ng-bind="constructDate(flight.departureUTC) | date:'HH:mm'"></p>
                 </div>
 
                 <div class="col">
@@ -28,8 +28,8 @@
                 </div>
 
                 <div class="col">
-                  <p class="text-right">{{chat.refDestinationAirport}}</p>
-                  <p class="text-right" ng-bind="constructDate(chat.arrivalUTC) | date:'HH:mm'"></p>
+                  <p class="text-right">{{flight.refDestinationAirport}}</p>
+                  <p class="text-right" ng-bind="constructDate(flight.arrivalUTC) | date:'HH:mm'"></p>
                 </div>
 
               </div>

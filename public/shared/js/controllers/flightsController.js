@@ -216,7 +216,7 @@ var flightController = function($scope, $location,$routeParams,api) {
         }
       }else{
 
-        $scope.chats = [{
+        $scope.dummyFlights = [{
           "number": "1000",
           "departureUTC": "2016-05-10T01:00:00Z",
           "arrivalUTC": "2016-05-10T03:00:00Z",
