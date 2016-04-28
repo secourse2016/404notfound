@@ -63,6 +63,7 @@ exports.seed = function(cb) {
               aircrafts.forEach(function(aircraft) {
                 if (aircraft.tailNumber === flight.refAircraftTailNumber){
                   flight.seatmap = aircraft.seatmap;
+                  flight.refAircraftModel = aircraft.model;
                   flight.emptyEconomySeatsCount = aircraft.economySeatCount;
                   flight.emptyBusinessSeatsCount = aircraft.businessSeatCount;
                   flight.economySeatSchema = aircraft.economySeatSchema;
@@ -228,15 +229,11 @@ exports.postBooking = function(booking, cb) {
     });
 };
 
-exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, passengerID, bookingID, cb) {
+exports.updateFlight = function(flightID, isEconomy, seatNumber, passengerID, bookingID, cb) {
 
     //update the flight with the allocated seats
     DB.collection('flights').find({
-        $and: [{
-            "number": flightNumber
-        }, {
-            "departureUTC": exitDate
-        }]
+        "_id":flightID
     }).toArray(function(err, flight) {
         if (err) return cb(err);
         var i;
@@ -255,13 +252,9 @@ exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, p
 
         if (isEconomy) {
 
-            if (flight[0].emptyEconomySeatsCount != 0 && found)
+            if (found && flight[0].emptyEconomySeatsCount != 0 )
                 DB.collection('flights').update({
-                    $and: [{
-                        "number": flightNumber
-                    }, {
-                        "departureUTC": exitDate
-                    }]
+                    "_id":flightID
                 }, {
                     $set: {
                         "seatmap": flight[0].seatmap
@@ -276,13 +269,9 @@ exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, p
 
         } else {
 
-            if (flight[0].emptyBusinessSeatsCount != 0 && found)
+            if (found && flight[0].emptyBusinessSeatsCount != 0)
                 DB.collection('flights').update({
-                    $and: [{
-                        "number": flightNumber
-                    }, {
-                        "departureUTC": exitDate
-                    }]
+                      "_id":flightID
                 }, {
                     $set: {
                         "seatmap": flight[0].seatmap
