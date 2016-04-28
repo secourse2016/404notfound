@@ -1,4 +1,4 @@
-<ion-view view-title="Flight details">
+<ion-view view-title="Booked Flight(s)">
   <ion-content class="padding">
     <a href="#/tab/passenger-details" class="button button-block button-positive">
       Passenger's info
@@ -61,9 +61,11 @@
 
         <div class="item item-divider"> <i class="icon ion-plus-circled">  Flight facilities</i></div>
 
-        <li ng-repeat="facility in outfacilitiesResult">
-          <div class="item item-text-wrap">{{facility}}</div>
-        </li>
+        <ion-list>
+
+          <div class="item item-text-wrap" ng-repeat="facility in outfacilitiesResult">{{facility}}</div>
+
+      </iom-list>
       </div>
     </div>
 
@@ -125,11 +127,11 @@
 
 
           <div class="item item-divider"> <i class="icon ion-plus-circled">  Flight facilities</i></div>
+          <ion-list>
 
-          <li ng-repeat="facility in refacilitiesResult">
-            <div class="item item-text-wrap">{{facility}}</div>
-          </li>
-        </div>
+            <div class="item item-text-wrap" ng-repeat="facility in refacilitiesResult">{{facility}}</div>
+
+        </iom-list>
       </div>
     </div>
 
