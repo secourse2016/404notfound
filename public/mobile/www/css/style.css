@@ -1,1 +1,14 @@
-/* Empty. Add your own CSS if you like */
+/* Add your own CSS if you like */
+
+.flights h1 {
+  font-size: 20px !important;
+}
+.flights h4 {
+  color: white;
+}
+.flights p {
+  font-size: 17px !important;
+}
+.flights .bar-footer {
+  height: 80px;
+}

@@ -1,49 +1,53 @@
 <ion-view view-title="Choose a flight">
 
-  <div class="bar bar-subheader bar-light">
-    <h1 class="title">CAI ✈ 10/05/2016 ✈ JED</h1>
-  </div>
+  <div class="flights">
 
-  <ion-content class="padding has-subheader">
+    <div class="bar bar-subheader bar-light">
+      <h1 class="title">CAI ✈ 10/05/2016 ✈ JED</h1>
+    </div>
 
-    <ion-list>
+    <ion-content class="padding has-subheader">
 
-      <div class="list-card">
+      <ion-list>
 
-        <div class="item item-text-wrap">
+        <div class="list-card">
 
-          <ion-radio ng-model="choice" ng-repeat="chat in chats">
+          <div class="item item-text-wrap">
 
-            <div class="row">
+            <ion-radio ng-model="choice" ng-repeat="chat in chats">
 
-              <div class="col">
-                <p class="text-left">{{chat.refOriginAirport}}</p>
-                <p class="text-left" ng-bind="constructDate(chat.departureUTC) | date:'HH:mm'"></p>
+              <div class="row">
+
+                <div class="col">
+                  <p class="text-left">{{chat.refOriginAirport}}</p>
+                  <p class="text-left" ng-bind="constructDate(chat.departureUTC) | date:'HH:mm'"></p>
+                </div>
+
+                <div class="col">
+                  <img ng-src="img/mini-logo.png">
+                </div>
+
+                <div class="col">
+                  <p class="text-right">{{chat.refDestinationAirport}}</p>
+                  <p class="text-right" ng-bind="constructDate(chat.arrivalUTC) | date:'HH:mm'"></p>
+                </div>
+
               </div>
 
-              <div class="col">
-                <img ng-src="img/mini-logo.png">
-              </div>
+            </ion-radio>
 
-              <div class="col">
-                <p class="text-right">{{chat.refDestinationAirport}}</p>
-                <p class="text-right" ng-bind="constructDate(chat.arrivalUTC) | date:'HH:mm'"></p>
-              </div>
-
-            </div>
-
-          </ion-radio>
+          </div>
 
         </div>
 
-      </div>
+      </ion-list>
 
-    </ion-list>
+    </ion-content>
 
-  </ion-content>
+    <ion-footer-bar>
+      <button class="button button-block button-positive"><h4>Book</h4></button>
+    </ion-footer-bar>
 
-  <ion-footer-bar>
-    <button class="button button-full button-balanced">Book</button>
-  </ion-footer-bar>
+  </div>
 
 </ion-view>
