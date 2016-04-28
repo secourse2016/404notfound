@@ -216,7 +216,7 @@ var flightController = function($scope, $location,$routeParams,api) {
         }
       }else{
 
-        $scope.dummyFlights = [{
+        $scope.flights = [{
           "number": "1000",
           "departureUTC": "2016-05-10T01:00:00Z",
           "arrivalUTC": "2016-05-10T03:00:00Z",
@@ -314,9 +314,9 @@ var flightController = function($scope, $location,$routeParams,api) {
           "seatmap": null
         }];
 
-        $scope.dummyOrigin = "CAI";
-        $scope.dummyDestination = "JED";
-        $scope.dummyExitDate = "2016-05-10T01:00:00Z";
+        $scope.origin = "CAI";
+        $scope.destination = "JED";
+        $scope.exitDate = "2016-05-10T01:00:00Z";
 
       }
 
