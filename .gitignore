@@ -1,5 +1,7 @@
 node_modules
+
 public/desktop/bower_components/
+
 public/mobile/www/lib/
 public/mobile/platforms/
 public/mobile/plugins/
