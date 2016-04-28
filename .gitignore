@@ -1,3 +1,9 @@
 node_modules
-public/bower_components/
+
+public/desktop/bower_components/
+
+public/mobile/www/lib/
+public/mobile/platforms/
+public/mobile/plugins/
+
 npm-debug.log

@@ -14,7 +14,7 @@ var jwtAuth               = require('./jwt-auth.js');
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
 
-app.use('/', express.static('public'));
+app.use('/', express.static('public/desktop'));
 
 app.use(jwtAuth);
 
