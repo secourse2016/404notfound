@@ -36,7 +36,28 @@
                <input type="text" placeholder="Passport Number" ng-model = "passportNumber">
              </label>
 
+             <label class="item item-input item-select">
+                     <div class="input-label" ng-model = "nationallity">
+                       Place Of Birth
+                     </div>
+                     <select>
+                       <option>Egypt</option>
+                       <option selected>USA</option>
+                       <option>UAE</option>
+                     </select>
+                   </label>
 
+                 <label class="item item-input item-floating-label">
+                   <span class="input-label">Email</span>
+                   <input type="text" placeholder="Email" ng-model = "email1">
+                 </label>
+                 <label class="item item-input item-floating-label">
+                   <span class="input-label">Repeat Email</span>
+                   <input type="text" placeholder="Repeat Email" ng-model = "emailver">
+                 </label>
+                 <ion-checkbox ng-model="check">I verify that the information given are correct</ion-checkbox>
+
+               </div>
     <a href="#/tab/seating/outgoing" class="button button-block button-positive">
       Seating
     </a>
