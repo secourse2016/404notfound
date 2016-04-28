@@ -220,6 +220,10 @@ var flightController = function($scope, $location,$routeParams,api) {
 
       // console.log($scope.roundTrip)
 
+      $scope.constructDate = function(date) {
+        var dateOut = new Date(date);
+        return dateOut;
+      };
 
 
 }
