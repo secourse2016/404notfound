@@ -69,10 +69,10 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
         for (i = 0; i < flights.outgoingFlights.length; i++) {
 
             var departureDate = new Date(flights.outgoingFlights[i].departureUTC);
-            flights.outgoingFlights[i].departureUTC = departureDate.toUTCString();
+            flights.outgoingFlights[i].departuredisplayUTC = departureDate.toUTCString();
 
             var arrivalDate = new Date(flights.outgoingFlights[i].arrivalUTC);
-            flights.outgoingFlights[i].arrivalUTC = arrivalDate.toUTCString();
+            flights.outgoingFlights[i].arrivaldisplayUTC = arrivalDate.toUTCString();
 
             var hours = Math.floor(flights.outgoingFlights[i].duration / 60);
             var minutes = flights.outgoingFlights[i].duration % 60;
@@ -95,10 +95,10 @@ App.controller('flightsCtrl', function($scope, $location, $routeParams, api) {
         for (i = 0; i < flights.returnFlights.length; i++) {
 
             var departureDate = new Date(flights.returnFlights[i].departureUTC);
-            flights.returnFlights[i].departureUTC = departureDate.toUTCString();
+            flights.returnFlights[i].departuredisplayUTC = departureDate.toUTCString();
 
             var arrivalDate = new Date(flights.returnFlights[i].arrivalUTC);
-            flights.returnFlights[i].arrivalUTC = arrivalDate.toUTCString();
+            flights.returnFlights[i].arrivaldisplayUTC = arrivalDate.toUTCString();
 
             var hours = Math.floor(flights.returnFlights[i].duration / 60);
             var minutes = flights.returnFlights[i].duration % 60;

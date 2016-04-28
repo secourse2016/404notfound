@@ -63,6 +63,7 @@ exports.seed = function(cb) {
               aircrafts.forEach(function(aircraft) {
                 if (aircraft.tailNumber === flight.refAircraftTailNumber){
                   flight.seatmap = aircraft.seatmap;
+                  flight.refAircraftModel = aircraft.model;
                   flight.emptyEconomySeatsCount = aircraft.economySeatCount;
                   flight.emptyBusinessSeatsCount = aircraft.businessSeatCount;
                   flight.economySeatSchema = aircraft.economySeatSchema;
@@ -235,13 +236,16 @@ exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, p
         $and: [{
             "number": flightNumber
         }, {
-            "departureUTC": exitDate
+            "departureUTC": exitDate //"2016-04-19T01:00:00Z"
         }]
     }).toArray(function(err, flight) {
         if (err) return cb(err);
         var i;
         var found = false;
       //  console.log(flight[0].seatmap);
+      if (flight.length!=0){
+        //console.log(flight);
+        //console.log(flight[0].seatmap);
         for (i = 0; i < flight[0].seatmap.length; i++) {
             var seat = flight[0].seatmap[i];
             if (seat.number === seatNumber && seat.isEconomy === isEconomy) {
@@ -252,10 +256,13 @@ exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, p
                 break;
             }
         }
+      }
+      else cb(err);
+
 
         if (isEconomy) {
 
-            if (flight[0].emptyEconomySeatsCount != 0 && found)
+            if ( found && flight[0].emptyEconomySeatsCount != 0 )
                 DB.collection('flights').update({
                     $and: [{
                         "number": flightNumber
@@ -276,7 +283,7 @@ exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, p
 
         } else {
 
-            if (flight[0].emptyBusinessSeatsCount != 0 && found)
+            if (found && flight[0].emptyBusinessSeatsCount != 0 )
                 DB.collection('flights').update({
                     $and: [{
                         "number": flightNumber
