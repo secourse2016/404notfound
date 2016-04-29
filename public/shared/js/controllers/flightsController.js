@@ -189,6 +189,7 @@ var flightController = function($scope, $location, $routeParams, api) {
 
     $scope.flights = {
     "outgoingFlights": [{
+      "_id": "1",
       "number": "1000",
       "departureUTC": "2016-05-10T01:00:00Z",
       "arrivalUTC": "2016-05-10T03:00:00Z",
@@ -213,6 +214,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "buisnessSeatSchema": null,
       "seatmap": null
     }, {
+      "_id": "2",
       "number": "1001",
       "departureUTC": "2016-05-10T06:00:00Z",
       "arrivalUTC": "2016-05-10T08:00:00Z",
@@ -237,6 +239,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "buisnessSeatSchema": null,
       "seatmap": null
     }, {
+      "_id": "3",
       "number": "1002",
       "departureUTC": "2016-05-10T12:00:00Z",
       "arrivalUTC": "2016-05-10T14:00:00Z",
@@ -261,6 +264,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "buisnessSeatSchema": null,
       "seatmap": null
     }, {
+      "_id": "4",
       "number": "1003",
       "departureUTC": "2016-05-10T17:00:00Z",
       "arrivalUTC": "2016-05-10T19:00:00Z",
@@ -286,6 +290,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "seatmap": null
     }],
     "returnFlights": [{
+      "_id": "1",
       "number": "1000",
       "departureUTC": "2016-05-12T01:00:00Z",
       "arrivalUTC": "2016-05-12T03:00:00Z",
@@ -310,6 +315,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "buisnessSeatSchema": null,
       "seatmap": null
     }, {
+      "_id": "2",
       "number": "1001",
       "departureUTC": "2016-05-12T06:00:00Z",
       "arrivalUTC": "2016-05-12T08:00:00Z",
@@ -334,6 +340,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "buisnessSeatSchema": null,
       "seatmap": null
     }, {
+      "_id": "3",
       "number": "1002",
       "departureUTC": "2016-05-12T12:00:00Z",
       "arrivalUTC": "2016-05-12T14:00:00Z",
@@ -358,6 +365,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "buisnessSeatSchema": null,
       "seatmap": null
     }, {
+      "_id": "4",
       "number": "1003",
       "departureUTC": "2016-05-12T17:00:00Z",
       "arrivalUTC": "2016-05-12T19:00:00Z",
@@ -393,6 +401,14 @@ var flightController = function($scope, $location, $routeParams, api) {
         return "img/air-berlin-mini-logo.png"
       return "img/other-airline-mini-logo.png"
     };
+
+    $scope.selectOutgoingFlight = function(flight) {
+      console.log(flight._id);
+    }
+
+    $scope.selectReturningFlight = function(flight) {
+      console.log(flight._id);
+    }
 
   }
 
