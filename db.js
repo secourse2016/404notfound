@@ -253,7 +253,7 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
   //update the flight with the allocated seats
   DB.collection('flights').findOne({
     "_id": flightID
-  }).toArray(function(err, flight) {
+  },function(err, flight) {
     if (err) return cb(err);
     var i;
     var found = false;
