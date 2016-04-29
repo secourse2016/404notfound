@@ -261,7 +261,24 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
       }
 
     }
-    
+    else {
+      for (var j = 0; j < passengersID.length; j++) {
+        found = false;
+        for (i = 0; i < flight.seatmap.length; i++) {
+          var seat = flight.seatmap[i];
+          if (seat.isEconomy === isEconomy && seat.isEmpty) {
+            seat.refPassengerID = passengersID[j];
+            seat.refBookingID = bookingID;
+            seat.isEmpty = false;
+            found = true;
+            break;
+          }
+        }
+
+      }
+
+
+    }
 
     if (isEconomy) {
 
