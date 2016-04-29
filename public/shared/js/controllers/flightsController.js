@@ -244,7 +244,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "status": "On Time",
       "refAircraftTailNumber": "D-CCCC",
       "refAircraftModel": null,
-      "operatorAirline": "Air Berlin",
+      "operatorAirline": "Swiss Air",
       "refOriginAirport": "CAI",
       "refOriginAirportName": null,
       "refDestinationAirport": "JED",
@@ -268,7 +268,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "status": "On Time",
       "refAircraftTailNumber": "D-CCCC",
       "refAircraftModel": null,
-      "operatorAirline": "Air Berlin",
+      "operatorAirline": "Swiss Air",
       "refOriginAirport": "CAI",
       "refOriginAirportName": null,
       "refDestinationAirport": "JED",
@@ -341,7 +341,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "status": "On Time",
       "refAircraftTailNumber": "D-CCCC",
       "refAircraftModel": null,
-      "operatorAirline": "Air Berlin",
+      "operatorAirline": "Swiss Air",
       "refOriginAirport": "JED",
       "refOriginAirportName": null,
       "refDestinationAirport": "CAI",
@@ -365,7 +365,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "status": "On Time",
       "refAircraftTailNumber": "D-CCCC",
       "refAircraftModel": null,
-      "operatorAirline": "Air Berlin",
+      "operatorAirline": "Swiss Air",
       "refOriginAirport": "JED",
       "refOriginAirportName": null,
       "refDestinationAirport": "CAI",
@@ -387,6 +387,12 @@ var flightController = function($scope, $location, $routeParams, api) {
     $scope.origin = "CAI";
     $scope.destination = "JED";
     $scope.exitDate = "2016-05-10T01:00:00Z";
+
+    $scope.miniLogoPath = function(operatorAirline){
+      if (operatorAirline === "Air Berlin")
+        return "img/air-berlin-mini-logo.png"
+      return "img/other-airline-mini-logo.png"
+    };
 
   }
 
