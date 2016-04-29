@@ -97,15 +97,45 @@ router.post("/booking", function(req, res) {
 
   } else {
 
-    var passengers = req.body.booking.passengerDetails;
-    var booking = req.body.booking;
-    var exitFlightID = booking.outgoingFlightId;
-    var returnFlightID = booking.returnFlightId;
-    // l booking m7tag yt3ml mn l awl abl ma t post 3ashan l database f mongo tkon consistent
-    var bookingID;
-    var passengersIDs = []; //hatmlaholi Ids bas  (Ids ba3d l posting passengers) wenta bta3ml l "refPassengerID" lel booking obj bta3na abl ma t post-o
-    var isEconomy = booking.class;
-    //  var outgoingSeatNumber, returnSeatNumber;
+    var booking = {
+      "refPassengerID": null,
+      "issueDate": (new Date()).toUTCString(),
+      "isOneWay": req.body.returnFlightId ? false : true,
+      "refExitFlightID": req.body.outgoingFlightId,
+      "refReEntryFlightID": req.body.returnFlightId,
+      "exitIsEconomy": req.body.class === "economy" ? true : false,
+      "reEntryIsEconomy": req.body.class === "economy" ? true : false,
+      "receiptNumber": null
+    };
+
+    var passengers = [];
+
+    req.body.passengerDetails.forEach(function(passenger) {
+
+        passengers.push({
+            type: null,
+            countryCode: null,
+            nationality: passenger.nationality,
+            sex: null,
+            birthDate: passenger.dateOfBirth,
+            birthPlace: null,
+            nationalID: null,
+            authority: null,
+            issueDate: null,
+            expiryDate: passenger.passportExpiryDate,
+            points: null,
+            membership: null,
+            title: null,
+            firstName: passenger.firstName,
+            middleName: null,
+            lastName: passenger.lastName,
+            passportNumber: passenger.passportNum,
+            phoneNumber: null,
+            email: passenger.email
+          };
+        });
+
+    );
 
   }
 
