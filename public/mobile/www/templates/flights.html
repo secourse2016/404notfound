@@ -20,7 +20,7 @@
 
           <div class="item item-text-wrap">
 
-            <ion-radio ng-model="choice" ng-repeat="flight in flights.outgoingFlights" name="outgoing">
+            <ion-radio ng-model="checked" ng-repeat="flight in flights.outgoingFlights" ng-init="checked = false" name="outgoing">
 
               <div class="row">
 
@@ -60,7 +60,7 @@
 
           <div class="item item-text-wrap">
 
-            <ion-radio ng-model="choice" ng-repeat="flight in flights.returnFlights" name="return">
+            <ion-radio ng-model="checked" ng-repeat="flight in flights.returnFlights" ng-init="checked = false" name="return">
 
               <div class="row">
 
