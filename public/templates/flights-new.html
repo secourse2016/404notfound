@@ -49,9 +49,11 @@
       <div class="text-center">
         <h3>Outgoing Flights</h3>
       </div>
+
       <table class="table table-bordered table-striped table-hover">
 
         <tbody class="text-center">
+
 
           <tr ng-repeat="flight in flights.outgoingFlights">
 
@@ -60,23 +62,22 @@
               <div class="row">
 
                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                  <h3>{{flight.refOriginAirport}}</h3>
-                  <h5>{{flight.refOriginAirportName}}</h5>
-                  <h3>{{flight.departureUTC}}</h3>
+                  <h3>{{flight.origin}}</h3>
+                  <h3>{{flight.departureDateTime | date:'short'}}</h3>
                 </div>
 
                 <div class="hidden-sm">
 
                   <div class="col-md-4 col-lg-4">
 
-                    <h5>{{flight.duration}}</h5>
+                      <h5>{{flight.class}}</h5>
 
                     <button type="button" class="btn btn-link" ng-click="isCollapsed = !isCollapsed">More details</button>
 
                     <div uib-collapse="isCollapsed">
-                      <h5>Flight {{flight.number}}</h5>
-                      <h5>{{flight.refAircraftModel}}</h5>
-                      <h5>Operated by {{flight.operatorAirline}}</h5>
+                      <h5>Flight {{flight.flightNumber}}</h5>
+                      <h5>{{flight.aircraftType}} {{flight.aircraftModel}}</h5>
+                      <h5>Operated by {{flight.Airline}}</h5>
                     </div>
 
                   </div>
@@ -84,9 +85,8 @@
                 </div>
 
                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                  <h3>{{flight.refDestinationAirport}}</h3>
-                  <h5>{{flight.refDestinationAirportName}}</h5>
-                  <h3>{{flight.arrivalUTC}}</h3>
+                  <h3>{{flight.destination}}</h3>
+                  <h3>{{flight.arrivalDateTime  | date:'short'}}</h3>
                 </div>
 
               </div>
@@ -98,22 +98,9 @@
               <br/>
               <br/>
 
-              <h4>Economy</h4>
-              <h4>&euro;{{flight.economyFare}}</h4>
-              <h6 class="text-success">{{flight.emptyEconomySeatsCount}} seats left</h6>
+              <h4>Book</h4>
+              <h4>&euro;{{flight.cost}}</h4>
               <button type="button" ng-click="selectOutgoingFlight(flight,true)" class="btn btn-lg btn-primary">Book</button>
-
-            </td>
-
-            <td>
-
-              <br/>
-              <br/>
-
-              <h4>Business</h4>
-              <h4>&euro;{{flight.businessFare}}</h4>
-              <h6 class="text-success">{{flight.emptyBusinessSeatsCount}} seats left</h6>
-              <button type="button" ng-click="selectOutgoingFlight(flight,false)" class="btn btn-lg btn-primary">Book</button>
 
             </td>
 
@@ -136,23 +123,22 @@
               <div class="row">
 
                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                  <h3>{{flight.refOriginAirport}}</h3>
-                  <h5>{{flight.refOriginAirportName}}</h5>
-                  <h3>{{flight.departureUTC}}</h3>
+                  <h3>{{flight.origin}}</h3>
+                  <h3>{{flight.departureDateTime  | date:'short'}}</h3>
                 </div>
 
                 <div class="hidden-sm">
 
                   <div class="col-md-4 col-lg-4">
 
-                    <h5>{{flight.duration}}</h5>
+                    <h5>{{flight.class}}</h5>
 
                     <button type="button" class="btn btn-link" ng-click="isCollapsed = !isCollapsed">More details</button>
 
                     <div uib-collapse="isCollapsed">
-                      <h5>Flight {{flight.number}}</h5>
-                      <h5>{{flight.refAircraftModel}}</h5>
-                      <h5>Operated by {{flight.operatorAirline}}</h5>
+                      <h5>Flight {{flight.flightNumber}}</h5>
+                      <h5>{{flight.aircraftType}} {{flight.aircraftModel}}</h5>
+                      <h5>Operated by {{flight.Airline}}</h5>
                     </div>
 
                   </div>
@@ -160,9 +146,8 @@
                 </div>
 
                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                  <h3>{{flight.refDestinationAirport}}</h3>
-                  <h5>{{flight.refDestinationAirportName}}</h5>
-                  <h3>{{flight.arrivalUTC}}</h3>
+                  <h3>{{flight.destination}}</h3>
+                  <h3>{{flight.arrivalDateTime  | date:'short'}}</h3>
                 </div>
 
               </div>
@@ -174,22 +159,9 @@
               <br/>
               <br/>
 
-              <h4>Economy</h4>
-              <h4>&euro;{{flight.economyFare}}</h4>
-              <h6 class="text-success">{{flight.emptyEconomySeatsCount}} seats left</h6>
+              <h4>Book</h4>
+              <h4>&euro;{{flight.cost}}</h4>
               <button type="button" ng-click="selectReturningFlight(flight,true)" class="btn btn-lg btn-primary">Book</button>
-
-            </td>
-
-            <td>
-
-              <br/>
-              <br/>
-
-              <h4>Business</h4>
-              <h4>&euro;{{flight.businessFare}}</h4>
-              <h6 class="text-success">{{flight.emptyBusinessSeatsCount}} seats left</h6>
-              <button type="button" ng-click="selectReturningFlight(flight,false)" class="btn btn-lg btn-primary">Book</button>
 
             </td>
 

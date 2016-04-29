@@ -7,18 +7,22 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha  test/test.js",
     "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.0.0-rc.3",
     "body-parser": "^1.15.0",
     "chai": "^3.5.0",
     "express": "^4.13.4",
     "istanbul": "^0.4.2",
+    "jwt-simple": "^0.5.0",
     "mocha": "^2.4.5",
+    "moment": "^2.13.0",
     "mongodb": "^2.1.7",
+    "request": "^2.72.0",
     "supertest": "^1.2.0"
   }
 }

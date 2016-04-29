@@ -6,13 +6,20 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
   $scope.buttonTextNxt = "Confirm?";
   $scope.buttonTextBk = "Back";
   $scope.goNext = function() {
+    api.submitBooking().then(function(data){
+      console.log(data);
+      alert(data.data)
+      api.clearLocal();
+    },function(err){
+
+    })
     $location.path('/');
   }
   $scope.goBack = function() {
     $location.path('/payment');
   }
 
-  if(!api.getChosenFlight() || !api.getBooking()){
+  if(!api.getChosenOutGoingFlight() || !api.getBooking()){
     $location.path('/flights');
     return;
   }
@@ -24,7 +31,7 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
     $location.path('/social');
 
   }
-  $scope.flight = api.getChosenFlight();
+  $scope.flight = api.getChosenOutGoingFlight();
 
   $scope.passenger = api.getPassenger();
   $('#quotes-text').typeIt({
@@ -38,4 +45,20 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
     breakLines: false,
     loop: true
   });
+
+//
+// console.log("chosenOutgoingFlight");
+//   console.log(api.getChosenOutGoingFlight());
+// console.log("chosenReturningFlight")
+// console.log(api.getChosenReturningFlight());
+// console.log("passenger")
+// console.log(api.getPassenger())
+// console.log("booking")
+// console.log(api.getBooking())
+// console.log("goingSeat")
+// console.log(api.getOutgoingSeat())
+// console.log("retrunSeat")
+// console.log(api.getReturnSeat())
+
+
 });

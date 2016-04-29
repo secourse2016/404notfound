@@ -9,6 +9,10 @@ App.config(['$routeProvider','$locationProvider',
         templateUrl: 'templates/flights.html',
         controller: 'flightsCtrl'
       })
+      .when('/flights-new', {
+        templateUrl: 'templates/flights-new.html',
+        controller: 'flightsNewCtrl'
+      })
       .when('/exit-flight', {
         templateUrl: 'templates/flight.html',
         controller: 'exitFlightCtrl'
@@ -21,7 +25,7 @@ App.config(['$routeProvider','$locationProvider',
         templateUrl: 'templates/passenger-details.html',
         controller: 'passengerDetailsCtrl'
       })
-      .when('/seating', {
+      .when('/seating/:outgoing', {
         templateUrl: 'templates/seating.html',
         controller: 'seatingCtrl'
       })

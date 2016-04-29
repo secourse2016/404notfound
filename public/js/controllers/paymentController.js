@@ -12,8 +12,9 @@ App.controller('paymentCtrl', function($scope, $location,api) {
     $location.path('/seating');
   }
 
-
-  if(!api.getChosenFlight() || !api.getBooking()){
+// console.log("Retrun "+api.getReturnSeat());
+// console.log("Outgoing "+api.getOutgoingSeat());
+  if(!api.getChosenOutGoingFlight() || !api.getBooking()){
     $location.path('/flights');
     return;
   }
@@ -21,12 +22,24 @@ App.controller('paymentCtrl', function($scope, $location,api) {
     $location.path('/passenger-details');
       return;
   }
-
-  if(api.getCabinetClass() == 'Economy')
-    $scope.price = api.getChosenFlight().economyFare
+  var price = 0;
+  if(api.getCabinetOutgoingClass() == 'Economy')
+    price = api.getChosenOutGoingFlight().economyFare
   else
-    $scope.price = api.getChosenFlight().businessFare
+    price = api.getChosenOutGoingFlight().businessFare
 
+    if(api.getChosenReturningFlight()){
+
+      if(api.getCabinetReturningClass() == 'Economy')
+        price = price + api.getChosenReturningFlight().economyFare
+      else
+        price = price + api.getChosenReturningFlight().businessFare
+
+
+    }
+
+
+  $scope.price = price;
   $scope.years = ['2016','2017','2018','2019','2020','2021','2022','2023','2024'];
   $scope.yearsBtnText = $scope.years[0];
   $scope.changeYear = function(text) {

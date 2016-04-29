@@ -36,6 +36,7 @@ exports.seed = function(cb) {
         strict: true
     }, function(err, collection) {
         if (err) {
+            dropDB(function() {});
             DB.collection('airports', function(err, collection) {
                 collection.insert(airports, {
                     safe: true
@@ -55,6 +56,19 @@ exports.seed = function(cb) {
                 collection.insert(aircrafts, {
                     safe: true
                 }, function(err, result) {});
+            });
+            // Feed seatmap from aircraft to flight
+            flights.forEach(function(flight) {
+
+              aircrafts.forEach(function(aircraft) {
+                if (aircraft.tailNumber === flight.refAircraftTailNumber){
+                  flight.seatmap = aircraft.seatmap;
+                  flight.emptyEconomySeatsCount = aircraft.economySeatCount;
+                  flight.emptyBusinessSeatsCount = aircraft.businessSeatCount;
+                  flight.economySeatSchema = aircraft.economySeatSchema;
+                  flight.buisnessSeatSchema =aircraft.businessSeatSchema;
+                }
+              });
             });
         }
     });
@@ -91,42 +105,58 @@ exports.getFlights = function(origin, destination, exitDate, reEntryDate, isOnew
     //from view #1 (date, arrival, depAirport, round/oneway)
 
     var result = {};
-
+    result = {
+        outgoingFlights: [],
+        returnFlights: []
+    }
     DB.collection('flights').find({
         $and: [{
             "refOriginAirport": origin
         }, {
             "refDestinationAirport": destination
-        }, {
-            "departureUTC": exitDate
         }]
     }).toArray(function(err, flights) {
 
         if (err) return cb(err);
+
+        flights = flights.filter(function(flight) {
+            var flightDate = new Date(flight.departureUTC);
+            var constraintDate = new Date(exitDate);
+            return flightDate.getDate() === constraintDate.getDate() && flightDate.getMonth() === constraintDate.getMonth() && flightDate.getFullYear() === constraintDate.getFullYear();
+        });
+
         result.outgoingFlights = flights;
 
-        if (isOneway)
+
+        if (isOneway){
             cb(null, result);
+            return;
+        }
+        else {
+          DB.collection('flights').find({
+              $and: [{
+                  "refOriginAirport": destination
+              }, {
+                  "refDestinationAirport": origin
+              }]
+          }).toArray(function(err, flights) {
+
+              if (err) return cb(err);
+
+              flights = flights.filter(function(flight) {
+                  var flightDate = new Date(flight.departureUTC);
+                  var constraintDate = new Date(reEntryDate);
+                  return flightDate.getDate() === constraintDate.getDate() && flightDate.getMonth() === constraintDate.getMonth() && flightDate.getFullYear() === constraintDate.getFullYear();
+              });
+
+              result.returnFlights = flights;
+              cb(null, result);
+              return;
+          });
+        }
 
     });
-
-    if (!isOneway) {
-        DB.collection('flights').find({
-            $and: [{
-                "refOriginAirport": destination
-            }, {
-                "refDestinationAirport": origin
-            }, {
-                "departureUTC": reEntryDate
-            }]
-        }).toArray(function(err, flights) {
-
-            if (err) return cb(err);
-            result.returnFlights = flights;
-            cb(null, result);
-
-        });
-    }
+    // console.log(result.outgoingFlights);
 
 };
 
@@ -211,7 +241,7 @@ exports.updateFlight = function(flightNumber, exitDate, isEconomy, seatNumber, p
         if (err) return cb(err);
         var i;
         var found = false;
-        console.log(flight[0].seatmap);
+      //  console.log(flight[0].seatmap);
         for (i = 0; i < flight[0].seatmap.length; i++) {
             var seat = flight[0].seatmap[i];
             if (seat.number === seatNumber && seat.isEconomy === isEconomy) {
@@ -280,7 +310,7 @@ exports.clear = function(done) {
 };
 
 //Drops database
-exports.dropDB = function(done) {
+function dropDB(done) {
     DB.dropDatabase();
     done();
 };
