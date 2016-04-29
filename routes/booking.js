@@ -28,13 +28,13 @@ router.post("/booking", function(req, res) {
                     outgoingSeatNumber = req.body.outgoingSeatNumber;
 
                     res.send("Your booking was submitted succefully");
-                    db.updateFlight(exitFlightID, exitIsEconomy, outgoingSeatNumber, passengerId, bookingId, function(err, data) {
+                    db.updateFlight(false, exitFlightID, exitIsEconomy, outgoingSeatNumber, passengersIds, bookingId, function(err, data) {
                         if (!err) {
-                          if (returnFlightNumber) {
+                          if (returnFlightID) {
                               reEntryIsEconomy = booking.reEntryIsEconomy;
                               returnSeatNumber = req.body.returnSeatNumber;
 
-                              db.updateFlight(returnFlightID, reEntryIsEconomy, returnSeatNumber, passengerId, bookingId, function(err, data) {
+                              db.updateFlight(false, returnFlightID, reEntryIsEconomy, returnSeatNumber, passengersIds, bookingId, function(err, data) {
                                   if (!err) {
                                     res.send({
                                                   refNum: booking.receiptNumber,
