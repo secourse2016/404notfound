@@ -6,7 +6,7 @@
       <h1 class="title">{{origin}} ✈ {{constructDate(exitDate) | date:'longDate'}} ✈ {{destination}}</h1>
     </div>
 
-    <ion-content class="padding has-subheader">
+    <ion-content class="has-subheader">
 
       <ion-list>
 
@@ -25,8 +25,8 @@
               <div class="row">
 
                 <div class="col">
-                  <p class="text-left">{{flight.refOriginAirport}}</p>
-                  <p class="text-left" ng-bind="constructDate(flight.departureUTC) | date:'HH:mm'"></p>
+                  <p class="text-center">{{flight.refOriginAirport}}</p>
+                  <p class="text-center" ng-bind="constructDate(flight.departureUTC) | date:'HH:mm'"></p>
                 </div>
 
                 <div class="col">
@@ -34,8 +34,8 @@
                 </div>
 
                 <div class="col">
-                  <p class="text-right">{{flight.refDestinationAirport}}</p>
-                  <p class="text-right" ng-bind="constructDate(flight.arrivalUTC) | date:'HH:mm'"></p>
+                  <p class="text-center">{{flight.refDestinationAirport}}</p>
+                  <p class="text-center" ng-bind="constructDate(flight.arrivalUTC) | date:'HH:mm'"></p>
                 </div>
 
               </div>
@@ -65,8 +65,8 @@
               <div class="row">
 
                 <div class="col">
-                  <p class="text-left">{{flight.refOriginAirport}}</p>
-                  <p class="text-left" ng-bind="constructDate(flight.departureUTC) | date:'HH:mm'"></p>
+                  <p class="text-center">{{flight.refOriginAirport}}</p>
+                  <p class="text-center" ng-bind="constructDate(flight.departureUTC) | date:'HH:mm'"></p>
                 </div>
 
                 <div class="col">
@@ -74,8 +74,8 @@
                 </div>
 
                 <div class="col">
-                  <p class="text-right">{{flight.refDestinationAirport}}</p>
-                  <p class="text-right" ng-bind="constructDate(flight.arrivalUTC) | date:'HH:mm'"></p>
+                  <p class="text-center">{{flight.refDestinationAirport}}</p>
+                  <p class="text-center" ng-bind="constructDate(flight.arrivalUTC) | date:'HH:mm'"></p>
                 </div>
 
               </div>
