@@ -101,6 +101,16 @@ exports.seed = function(cb) {
   });
 };
 
+exports.getFlight = function(_id, cb) {
+  // get flight from db with id
+  DB.collection('flights').find({
+    "_id": _id
+  }).toArray(function(err, flight) {
+    if (err) return cb(err);
+    cb(null, flight);
+  });
+};
+
 exports.getFlights = function(origin, destination, exitDate, reEntryDate, isOneway, cb) {
   // view #2 will have to aquire flights from db with input params
   //from view #1 (date, arrival, depAirport, round/oneway)
