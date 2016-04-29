@@ -11,7 +11,7 @@ router.post("/booking", function(req, res) {
     var exitFlightID = booking.refExitFlightID;
     var returnFlightID = booking.refReEntryFlightID;
     var bookingId;
-    var passengerId;
+    var passengersIds = [];
     var exitIsEconomy, reEntryIsEconomy;
     var outgoingSeatNumber, returnSeatNumber;
     // console.log(booking)
@@ -19,8 +19,8 @@ router.post("/booking", function(req, res) {
     db.postPassengers(Passenger, function(err, data) {
         if (!err) {
             if (req.headers['other-hosts'] == 'false') {
-            passengerId = data.ops[0]._id;
-            booking.refPassengerID = passengerId;
+            passengersIds.push(data.ops[0]._id);
+            booking.refPassengerID.push(passengersIds[0]);
             db.postBooking(booking, function(err, data) {
                 if (!err) {
                     bookingId = data.ops[0]._id;
@@ -63,6 +63,9 @@ router.post("/booking", function(req, res) {
                     });
                 }
             });
+          }
+          else{
+
           }
         }
     });

@@ -166,12 +166,13 @@ App.factory('api', function($http) {
             outgoingSeat = {}
             returnSeat = {}
         },
-        submitBooking: function() {
+        submitBooking: function(otherHosts) {
             return $http({
                 method: 'POST',
                 url: '/api/booking',
                 headers: {
-                    'x-access-token': accessToken
+                    'x-access-token': accessToken,
+                    'other-hosts': otherHosts
                 },
                 data: {
                     passenger: passengerData,

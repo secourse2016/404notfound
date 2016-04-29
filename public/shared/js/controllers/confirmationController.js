@@ -8,7 +8,7 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
 
   if(Type == 'desktop'){
     $scope.goNext = function() {
-      api.submitBooking().then(function(data){
+      api.submitBooking('false').then(function(data){
         console.log(data);
         alert(data.data)
         api.clearLocal();
