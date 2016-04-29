@@ -14,8 +14,8 @@ router.post("/booking", function(req, res) {
     var booking = req.body.booking;
     var exitFlightID = booking.refExitFlightID;
     var returnFlightID = booking.refReEntryFlightID;
-    var bookingId;
-    var passengersIds = [];
+    var bookingID;
+    var passengersIDs = [];
     var exitIsEconomy, reEntryIsEconomy;
     var outgoingSeatNumber, returnSeatNumber;
 
@@ -23,20 +23,20 @@ router.post("/booking", function(req, res) {
 
       if (!err) {
 
-        passengersIds.push(data.ops[0]._id);
-        booking.refPassengerID.push(passengersIds[0]);
+        passengersIDs.push(data.ops[0]._id);
+        booking.refPassengerID.push(passengersIDs[0]);
 
         db.postBooking(booking, function(err, data) {
 
           if (!err) {
 
-            bookingId = data.ops[0]._id;
+            bookingID = data.ops[0]._id;
             exitIsEconomy = booking.exitIsEconomy;
             outgoingSeatNumber = req.body.outgoingSeatNumber;
 
             res.send("Your booking was submitted successfully");
 
-            db.updateFlight(false, exitFlightID, exitIsEconomy, outgoingSeatNumber, passengersIds, bookingId, function(err, data) {
+            db.updateFlight(false, exitFlightID, exitIsEconomy, outgoingSeatNumber, passengersIDs, bookingID, function(err, data) {
 
               if (!err) {
 
@@ -45,7 +45,7 @@ router.post("/booking", function(req, res) {
                   reEntryIsEconomy = booking.reEntryIsEconomy;
                   returnSeatNumber = req.body.returnSeatNumber;
 
-                  db.updateFlight(false, returnFlightID, reEntryIsEconomy, returnSeatNumber, passengersIds, bookingId, function(err, data) {
+                  db.updateFlight(false, returnFlightID, reEntryIsEconomy, returnSeatNumber, passengersIDs, bookingID, function(err, data) {
 
                     if (!err) {
 
@@ -102,8 +102,8 @@ router.post("/booking", function(req, res) {
     var exitFlightID = booking.outgoingFlightId;
     var returnFlightID = booking.returnFlightId;
     // l booking m7tag yt3ml mn l awl abl ma t post 3ashan l database f mongo tkon consistent
-    var bookingId;
-    var passengersIds = []; //hatmlaholi Ids bas  (Ids ba3d l posting passengers) wenta bta3ml l "refPassengerID" lel booking obj bta3na abl ma t post-o
+    var bookingID;
+    var passengersIDs = []; //hatmlaholi Ids bas  (Ids ba3d l posting passengers) wenta bta3ml l "refPassengerID" lel booking obj bta3na abl ma t post-o
     var isEconomy = booking.class;
     //  var outgoingSeatNumber, returnSeatNumber;
 
