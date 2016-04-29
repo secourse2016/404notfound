@@ -97,8 +97,10 @@ router.post("/booking", function(req, res) {
 
   } else {
 
+    // Conforming alien booking into air-berlin-valid objects
+
     var booking = {
-      "refPassengerID": null,
+      "refPassengerID": [],
       "issueDate": (new Date()).toUTCString(),
       "isOneWay": req.body.returnFlightId ? false : true,
       "refExitFlightID": req.body.outgoingFlightId,
@@ -133,8 +135,81 @@ router.post("/booking", function(req, res) {
         phoneNumber: null,
         email: passenger.email
       });
-      
+
     });
+
+    // Finding empty seats for passengers
+
+    var outgoingSeatNumbers = [];
+    var returnSeatNumbers = [];
+
+    function findEmptyEconomySeat(seat) {
+      return seat.isEconomy === true && seat.isEmpty === true;
+    }
+
+    function findEmptyBusinessSeat(seat) {
+      return seat.isEconomy === false && seat.isEmpty === true;
+    }
+
+    db.getFlight(booking.refExitFlightID, function(err, flight) {
+
+      if (booking.exitIsEconomy) {
+
+        if (flight.emptyEconomySeatsCount < passengers.length) {
+          // TODO: Send back error
+        } else {
+          for (var i = 0; i < passengers.length; i++) {
+            outgoingSeatNumbers.push(flight.seatmap.find(findEmptyEconomySeat).number);
+          }
+        }
+
+      } else {
+
+        if (flight.emptyBusinessSeatsCount < passengers.length) {
+          // TODO: Send back error
+        } else {
+          for (var i = 0; i < passengers.length; i++) {
+            outgoingSeatNumbers.push(flight.seatmap.find(findEmptyBusinessSeat).number);
+          }
+        }
+
+      }
+
+    });
+
+    if (!booking.isOneWay) {
+
+      db.getFlight(booking.refReEntryFlightID, function(err, flight) {
+
+        if (booking.reEntryIsEconomy) {
+
+          if (flight.emptyEconomySeatsCount < passengers.length) {
+            // TODO: Send back error
+          } else {
+            for (var i = 0; i < passengers.length; i++) {
+              returnSeatNumbers.push(flight.seatmap.find(findEmptyEconomySeat).number);
+            }
+          }
+
+        } else {
+
+          if (flight.emptyBusinessSeatsCount < passengers.length) {
+            // TODO: Send back error
+          } else {
+            for (var i = 0; i < passengers.length; i++) {
+              returnSeatNumbers.push(flight.seatmap.find(findEmptyBusinessSeat).number);
+            }
+          }
+
+        }
+
+      });
+
+    }
+
+    // TODO: Complete stripe payment to procede
+
+    // TODO: Post passengers & update flight(s)
 
   }
 
