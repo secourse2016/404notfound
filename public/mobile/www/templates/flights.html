@@ -12,9 +12,55 @@
 
         <div class="list-card">
 
+          <div class="item item-divider">
+            <p class="text-center">
+              Outgoing flights
+            </p>
+          </div>
+
           <div class="item item-text-wrap">
 
-            <ion-radio ng-model="choice" ng-repeat="flight in flights">
+            <ion-radio ng-model="choice" ng-repeat="flight in flights.outgoingFlights">
+
+              <div class="row">
+
+                <div class="col">
+                  <p class="text-left">{{flight.refOriginAirport}}</p>
+                  <p class="text-left" ng-bind="constructDate(flight.departureUTC) | date:'HH:mm'"></p>
+                </div>
+
+                <div class="col">
+                  <img ng-src="img/mini-logo.png">
+                </div>
+
+                <div class="col">
+                  <p class="text-right">{{flight.refDestinationAirport}}</p>
+                  <p class="text-right" ng-bind="constructDate(flight.arrivalUTC) | date:'HH:mm'"></p>
+                </div>
+
+              </div>
+
+            </ion-radio>
+
+          </div>
+
+        </div>
+
+      </ion-list>
+
+      <ion-list>
+
+        <div class="list-card">
+
+          <div class="item item-divider">
+            <p class="text-center">
+              Return flights
+            </p>
+          </div>
+
+          <div class="item item-text-wrap">
+
+            <ion-radio ng-model="choice" ng-repeat="flight in flights.returnFlights">
 
               <div class="row">
 
