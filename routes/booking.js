@@ -112,30 +112,29 @@ router.post("/booking", function(req, res) {
 
     req.body.passengerDetails.forEach(function(passenger) {
 
-        passengers.push({
-            type: null,
-            countryCode: null,
-            nationality: passenger.nationality,
-            sex: null,
-            birthDate: passenger.dateOfBirth,
-            birthPlace: null,
-            nationalID: null,
-            authority: null,
-            issueDate: null,
-            expiryDate: passenger.passportExpiryDate,
-            points: null,
-            membership: null,
-            title: null,
-            firstName: passenger.firstName,
-            middleName: null,
-            lastName: passenger.lastName,
-            passportNumber: passenger.passportNum,
-            phoneNumber: null,
-            email: passenger.email
-          };
-        });
-
-    );
+      passengers.push({
+        type: null,
+        countryCode: null,
+        nationality: passenger.nationality,
+        sex: null,
+        birthDate: passenger.dateOfBirth,
+        birthPlace: null,
+        nationalID: null,
+        authority: null,
+        issueDate: null,
+        expiryDate: passenger.passportExpiryDate,
+        points: null,
+        membership: null,
+        title: null,
+        firstName: passenger.firstName,
+        middleName: null,
+        lastName: passenger.lastName,
+        passportNumber: passenger.passportNum,
+        phoneNumber: null,
+        email: passenger.email
+      });
+      
+    });
 
   }
 
