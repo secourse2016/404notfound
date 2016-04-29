@@ -10,7 +10,7 @@ router.post("/booking", function(req, res) {
 
   if (req.headers['other-hosts'] == 'false') {
 
-    var Passenger = req.body.passenger;
+    var passenger = req.body.passenger;
     var booking = req.body.booking;
     var exitFlightID = booking.refExitFlightID;
     var returnFlightID = booking.refReEntryFlightID;
@@ -19,7 +19,7 @@ router.post("/booking", function(req, res) {
     var exitIsEconomy, reEntryIsEconomy;
     var outgoingSeatNumber, returnSeatNumber;
 
-    db.postPassengers(Passenger, function(err, data) {
+    db.postPassengers(passenger, function(err, data) {
 
       if (!err) {
 
@@ -97,7 +97,7 @@ router.post("/booking", function(req, res) {
 
   } else {
 
-    var Passengers = req.body.booking.passengerDetails;
+    var passengers = req.body.booking.passengerDetails;
     var booking = req.body.booking;
     var exitFlightID = booking.outgoingFlightId;
     var returnFlightID = booking.returnFlightId;
