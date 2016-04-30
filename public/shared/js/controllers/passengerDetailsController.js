@@ -122,6 +122,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
 
         var complete1 = false;
+
         $scope.Next = function() {
 
 
@@ -155,7 +156,8 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
             if (complete1 == false) {
 
                 if (($scope.firstNameMob == null) || ($scope.middleNameMob == null) || ($scope.lastNameMob == null) || ($scope.phoneNumberMob == null) || ($scope.passportNumberMob == null) || ($scope.email1Mob == null) || ($scope.emailverMob == null)) {
-                    alert("Please fill in data");
+                    alert("Please fill in data:" + "\n" + "Passport Number must be 8 numbers" + "\n"+
+                        "Phone Number must be 10 numbers" + "\n" + "Emails must be in a@xyz.com format");
 
                 } else {
 
@@ -175,9 +177,10 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
 
             }
+
             if (complete1 == true) {
                 api.setPassenger($scope.passenger);
-                alert($scope.passenger)
+
                 $location.path('/tab/seating/outgoing');
             }
 
