@@ -184,12 +184,14 @@ App.factory('api', function($http) {
         clearLocal: function() {
             chosenReturningFlight = {}
             chosenOutgoingFlight = {}
-            passengerData = {}
+            passengerData =[]
             bookingData = {}
             cabinetOutgoingClass = {}
             cabinetReturningClass = {}
             outgoingSeat = {}
             returnSeat = {}
+            isisOtherHosts = false
+
         },
         submitBooking: function(otherHosts) {
             return otherHosts? $http({
