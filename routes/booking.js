@@ -51,7 +51,7 @@ router.post("/booking", function(req, res) {
                     if (!err) {
 
                       res.send({
-                        refNum: booking.receiptNumber,
+                        refNum: bookingID,
                         errorMessage: err
                       });
 
@@ -61,7 +61,7 @@ router.post("/booking", function(req, res) {
                     } else {
 
                       res.send({
-                        refNum: booking.receiptNumber,
+                        refNum: bookingID,
                         errorMessage: err
                       });
 
@@ -77,7 +77,7 @@ router.post("/booking", function(req, res) {
               } else {
 
                 res.send({
-                  refNum: booking.receiptNumber,
+                  refNum: bookingID,
                   errorMessage: err
                 });
 
@@ -141,76 +141,148 @@ router.post("/booking", function(req, res) {
 
     // Finding empty seats for passengers
 
-    var outgoingSeatNumbers = [];
-    var returnSeatNumbers = [];
-
-    function findEmptyEconomySeat(seat) {
-      return seat.isEconomy === true && seat.isEmpty === true;
-    }
-
-    function findEmptyBusinessSeat(seat) {
-      return seat.isEconomy === false && seat.isEmpty === true;
-    }
-
-    db.getFlight(booking.refExitFlightID, function(err, flight) {
-
-      if (booking.exitIsEconomy) {
-
-        if (flight.emptyEconomySeatsCount < passengers.length) {
-          // TODO: Send back error
-        } else {
-          for (var i = 0; i < passengers.length; i++) {
-            outgoingSeatNumbers.push(flight.seatmap.find(findEmptyEconomySeat).number);
-          }
-        }
-
-      } else {
-
-        if (flight.emptyBusinessSeatsCount < passengers.length) {
-          // TODO: Send back error
-        } else {
-          for (var i = 0; i < passengers.length; i++) {
-            outgoingSeatNumbers.push(flight.seatmap.find(findEmptyBusinessSeat).number);
-          }
-        }
-
-      }
-
-    });
-
-    if (!booking.isOneWay) {
-
-      db.getFlight(booking.refReEntryFlightID, function(err, flight) {
-
-        if (booking.reEntryIsEconomy) {
-
-          if (flight.emptyEconomySeatsCount < passengers.length) {
-            // TODO: Send back error
-          } else {
-            for (var i = 0; i < passengers.length; i++) {
-              returnSeatNumbers.push(flight.seatmap.find(findEmptyEconomySeat).number);
-            }
-          }
-
-        } else {
-
-          if (flight.emptyBusinessSeatsCount < passengers.length) {
-            // TODO: Send back error
-          } else {
-            for (var i = 0; i < passengers.length; i++) {
-              returnSeatNumbers.push(flight.seatmap.find(findEmptyBusinessSeat).number);
-            }
-          }
-
-        }
-
-      });
-
-    }
+    // var outgoingSeatNumbers = [];
+    // var returnSeatNumbers = [];
+    //
+    // function findEmptyEconomySeat(seat) {
+    //   return seat.isEconomy === true && seat.isEmpty === true;
+    // }
+    //
+    // function findEmptyBusinessSeat(seat) {
+    //   return seat.isEconomy === false && seat.isEmpty === true;
+    // }
+    //
+    // db.getFlight(booking.refExitFlightID, function(err, flight) {
+    //
+    //   if (booking.exitIsEconomy) {
+    //
+    //     if (flight.emptyEconomySeatsCount < passengers.length) {
+    //       // TODO: Send back error
+    //     } else {
+    //       for (var i = 0; i < passengers.length; i++) {
+    //         outgoingSeatNumbers.push(flight.seatmap.find(findEmptyEconomySeat).number);
+    //       }
+    //     }
+    //
+    //   } else {
+    //
+    //     if (flight.emptyBusinessSeatsCount < passengers.length) {
+    //       // TODO: Send back error
+    //     } else {
+    //       for (var i = 0; i < passengers.length; i++) {
+    //         outgoingSeatNumbers.push(flight.seatmap.find(findEmptyBusinessSeat).number);
+    //       }
+    //     }
+    //
+    //   }
+    //
+    // });
+    //
+    // if (!booking.isOneWay) {
+    //
+    //   db.getFlight(booking.refReEntryFlightID, function(err, flight) {
+    //
+    //     if (booking.reEntryIsEconomy) {
+    //
+    //       if (flight.emptyEconomySeatsCount < passengers.length) {
+    //         // TODO: Send back error
+    //       } else {
+    //         for (var i = 0; i < passengers.length; i++) {
+    //           returnSeatNumbers.push(flight.seatmap.find(findEmptyEconomySeat).number);
+    //         }
+    //       }
+    //
+    //     } else {
+    //
+    //       if (flight.emptyBusinessSeatsCount < passengers.length) {
+    //         // TODO: Send back error
+    //       } else {
+    //         for (var i = 0; i < passengers.length; i++) {
+    //           returnSeatNumbers.push(flight.seatmap.find(findEmptyBusinessSeat).number);
+    //         }
+    //       }
+    //
+    //     }
+    //
+    //   });
+    //
+    // }
 
     // TODO: Complete stripe payment to procede
 
     // TODO: Post passengers & update flight(s)
+
+    db.postPassengers(passengers, function(err, data) {
+
+      if (!err) {
+
+        data.forEach(function(passengerID){
+          booking.refPassengerID.push(passengerID);
+        });
+
+        db.postBooking(booking, function(err, data) {
+
+          if (!err) {
+
+            var bookingID = data.ops[0]._id;
+
+            res.send("Your booking was submitted successfully");
+
+            db.updateFlight(true, booking.refExitFlightID, booking.exitIsEconomy, null, booking.refPassengerID, bookingID, function(err, data) {
+
+              if (!err) {
+
+                if (!booking.isOneWay) {
+
+                  db.updateFlight(true, booking.refReEntryFlightID, booking.reEntryIsEconomy, null, booking.refPassengerID, bookingID, function(err, data) {
+
+                    if (!err) {
+
+                      res.send({
+                        refNum: bookingID,
+                        errorMessage: err
+                      });
+
+                      console.log('successfully added your booking');
+                      return;
+
+                    } else {
+
+                      res.send({
+                        refNum: bookingID,
+                        errorMessage: err
+                      });
+
+                      console.log('error occured while adding your booking');
+                      return;
+
+                    }
+
+                  });
+
+                }
+
+              } else {
+
+                res.send({
+                  refNum: bookingID,
+                  errorMessage: err
+                });
+
+                console.log('error occured while adding your booking');
+                return;
+
+              }
+
+            });
+
+          }
+
+        });
+
+      }
+
+    });
 
   }
 
