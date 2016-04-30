@@ -35,7 +35,7 @@ router.post("/booking", function(req, res) {
             exitIsEconomy = booking.exitIsEconomy;
             outgoingSeatNumber = req.body.outgoingSeatNumber;
 
-            res.send("Your booking was submitted successfully");
+
 
             db.updateFlight(false, exitFlightID, exitIsEconomy, outgoingSeatNumber, passengersIDs, bookingID, function(err, data) {
 
@@ -73,6 +73,13 @@ router.post("/booking", function(req, res) {
                   });
 
                 }
+
+                res.send({
+                  refNum: bookingID,
+                  errorMessage: err
+                });
+                console.log('successfully updated flight');
+                return;
 
               } else {
 
