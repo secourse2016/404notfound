@@ -1,41 +1,37 @@
 <ion-view view-title="Book Now">
-  <ion-pane >
+  <ion-pane>
     <ion-content class="red" scroll="false">
-
       <section class="home-container">
-
-        <div class="row header"></div>
-
         <div class="row main-row">
-
           <div class="col text-center">
             <div class="card">
               <div class="list list-inset">
                 <label class="item item-input">
-                  <input class="form-control" name="originAirports" ng-model="selectedOrigin" placeholder="Flying From" type="text" typeahead-append-to-body="true" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10">
+                  <input name="originAirports" ng-model="selectedOrigin" placeholder="Flying From" type="text" typeahead-append-to-body="true" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10">
                 </label>
                 <label class="item item-input">
-                  <input placeholder="Departure Date" type="text">
+                  <input placeholder="Departure Date" type="date">
                 </label>
                 <label class="item item-input">
-                  <input class="form-control" name="desAirports" ng-model="selectedDest" placeholder="Flying To" type="text" typeahead-append-to-body="true" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10">
+                  <input name="desAirports" ng-model="selectedDest" placeholder="Flying To" type="text" typeahead-append-to-body="true" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10">
                 </label>
                 <label class="item item-input">
-                  <input placeholder="Re-entry Date" type="text">
+                  <input placeholder="Re-entry Date" type="date">
+                </label>
+                <label class="item item-input">
+                  <ion-checkbox ng-model="filter.blue">Round Trip</ion-checkbox>
+                </label>
+                <label class="item item-input">
+                  <ion-checkbox ng-model="filter.blue">Search other airlines</ion-checkbox>
                 </label>
               </div>
             </div>
-            <a class="button button-block button-positive" href="#/tab/flights">
+            <a class="button button-stable" href="#/tab/flights">
               <h4>Search for flights</h4>
             </a>
           </div>
-
         </div>
-
       </section>
-
     </ion-content>
   </ion-pane>
-
-</body>
 </ion-view>
