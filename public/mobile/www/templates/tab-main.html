@@ -1,14 +1,7 @@
 <ion-view view-title="Book Now" >
   <ion-pane >
-       <ion-content scroll="false" class="red" >
+       <ion-content  >
 
- <section class = "home-container">
-
- <div class = "row header">
-
-
-
-           </div>
 
 
  <div class = "row main-row">
@@ -28,14 +21,26 @@
        <label class="item item-input">
          <input type="date" placeholder="Re-entry Date">
        </label>
+
      </div>
+
+
+
+
 </div>
-<a href="#/tab/flights" class="button button-block button-positive"><h4>Search for flights</h4></a>
+<div class= "card">
+
+<ion-list>
+<ion-radio ng-model="choice" ng-value="'A'">One Way</ion-radio>
+<ion-radio ng-model="choice" ng-value="'B'">Round Trip</ion-radio>
+</ion-list>
+</div>
+
+<a href="#/tab/flights" class="button button-positive"><h4>Search for flights</h4></a>
+
              </div>
 
            </div>
-
-         </section>
 
        </ion-content>
      </ion-pane>
