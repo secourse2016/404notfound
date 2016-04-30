@@ -35,8 +35,6 @@ router.post("/booking", function(req, res) {
             exitIsEconomy = booking.exitIsEconomy;
             outgoingSeatNumber = req.body.outgoingSeatNumber;
 
-
-
             db.updateFlight(false, exitFlightID, exitIsEconomy, outgoingSeatNumber, passengersIDs, bookingID, function(err, data) {
 
               if (!err) {
@@ -55,7 +53,7 @@ router.post("/booking", function(req, res) {
                         errorMessage: err
                       });
 
-                      console.log('successfully added your booking');
+                      console.log('successfully updated flight');
                       return;
 
                     } else {
@@ -65,7 +63,7 @@ router.post("/booking", function(req, res) {
                         errorMessage: err
                       });
 
-                      console.log('error occured while adding your booking');
+                      console.log('error occured while updating the flight');
                       return;
 
                     }
@@ -88,7 +86,7 @@ router.post("/booking", function(req, res) {
                   errorMessage: err
                 });
 
-                console.log('error occured while adding your booking');
+                console.log('error occured while updating the flight');
                 return;
 
               }
@@ -217,7 +215,7 @@ router.post("/booking", function(req, res) {
 
     // TODO: Complete stripe payment to procede
 
-    // TODO: Post passengers & update flight(s)
+    // Post passengers & update flight(s)
 
     db.postPassengers(passengers, function(err, data) {
 
@@ -232,8 +230,6 @@ router.post("/booking", function(req, res) {
           if (!err) {
 
             var bookingID = data.ops[0]._id;
-
-            res.send("Your booking was submitted successfully");
 
             db.updateFlight(true, booking.refExitFlightID, booking.exitIsEconomy, null, booking.refPassengerID, bookingID, function(err, data) {
 
@@ -260,7 +256,7 @@ router.post("/booking", function(req, res) {
                         errorMessage: err
                       });
 
-                      console.log('error occured while adding your booking');
+                      console.log('error occured while updating the flight');
                       return;
 
                     }
@@ -269,6 +265,15 @@ router.post("/booking", function(req, res) {
 
                 }
 
+                res.send({
+                  refNum: bookingID,
+                  errorMessage: err
+                });
+
+                console.log('successfully added your booking');
+                return;
+
+
               } else {
 
                 res.send({
@@ -276,7 +281,7 @@ router.post("/booking", function(req, res) {
                   errorMessage: err
                 });
 
-                console.log('error occured while adding your booking');
+                console.log('error occured while updating the flight');
                 return;
 
               }
