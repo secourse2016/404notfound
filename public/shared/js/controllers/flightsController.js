@@ -187,7 +187,9 @@ var flightController = function($scope, $location, $routeParams, api) {
 
   } else {
 
-    $scope.flights = [{
+    $scope.flights = {
+    "outgoingFlights": [{
+      "_id": "1",
       "number": "1000",
       "departureUTC": "2016-05-10T01:00:00Z",
       "arrivalUTC": "2016-05-10T03:00:00Z",
@@ -212,6 +214,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "buisnessSeatSchema": null,
       "seatmap": null
     }, {
+      "_id": "2",
       "number": "1001",
       "departureUTC": "2016-05-10T06:00:00Z",
       "arrivalUTC": "2016-05-10T08:00:00Z",
@@ -236,6 +239,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "buisnessSeatSchema": null,
       "seatmap": null
     }, {
+      "_id": "3",
       "number": "1002",
       "departureUTC": "2016-05-10T12:00:00Z",
       "arrivalUTC": "2016-05-10T14:00:00Z",
@@ -243,7 +247,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "status": "On Time",
       "refAircraftTailNumber": "D-CCCC",
       "refAircraftModel": null,
-      "operatorAirline": "Air Berlin",
+      "operatorAirline": "Swiss Air",
       "refOriginAirport": "CAI",
       "refOriginAirportName": null,
       "refDestinationAirport": "JED",
@@ -260,6 +264,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "buisnessSeatSchema": null,
       "seatmap": null
     }, {
+      "_id": "4",
       "number": "1003",
       "departureUTC": "2016-05-10T17:00:00Z",
       "arrivalUTC": "2016-05-10T19:00:00Z",
@@ -267,7 +272,7 @@ var flightController = function($scope, $location, $routeParams, api) {
       "status": "On Time",
       "refAircraftTailNumber": "D-CCCC",
       "refAircraftModel": null,
-      "operatorAirline": "Air Berlin",
+      "operatorAirline": "Swiss Air",
       "refOriginAirport": "CAI",
       "refOriginAirportName": null,
       "refDestinationAirport": "JED",
@@ -283,11 +288,127 @@ var flightController = function($scope, $location, $routeParams, api) {
       "economySeatSchema": null,
       "buisnessSeatSchema": null,
       "seatmap": null
-    }];
+    }],
+    "returnFlights": [{
+      "_id": "1",
+      "number": "1000",
+      "departureUTC": "2016-05-12T01:00:00Z",
+      "arrivalUTC": "2016-05-12T03:00:00Z",
+      "duration": 120,
+      "status": "On Time",
+      "refAircraftTailNumber": "D-CCCC",
+      "refAircraftModel": null,
+      "operatorAirline": "Air Berlin",
+      "refOriginAirport": "JED",
+      "refOriginAirportName": null,
+      "refDestinationAirport": "CAI",
+      "refDestinationAirportName": null,
+      "boardingGate": "40",
+      "boardingPeriod": 45.0,
+      "boardingTerminal": "3",
+      "arrivalTerminal": "1",
+      "economyFare": 200.0,
+      "businessFare": 300.0,
+      "emptyEconomySeatsCount": null,
+      "emptyBusinessSeatsCount": null,
+      "economySeatSchema": null,
+      "buisnessSeatSchema": null,
+      "seatmap": null
+    }, {
+      "_id": "2",
+      "number": "1001",
+      "departureUTC": "2016-05-12T06:00:00Z",
+      "arrivalUTC": "2016-05-12T08:00:00Z",
+      "duration": 120,
+      "status": "On Time",
+      "refAircraftTailNumber": "D-CCCC",
+      "refAircraftModel": null,
+      "operatorAirline": "Air Berlin",
+      "refOriginAirport": "JED",
+      "refOriginAirportName": null,
+      "refDestinationAirport": "CAI",
+      "refDestinationAirportName": null,
+      "boardingGate": "40",
+      "boardingPeriod": 45.0,
+      "boardingTerminal": "3",
+      "arrivalTerminal": "1",
+      "economyFare": 200.0,
+      "businessFare": 300.0,
+      "emptyEconomySeatsCount": null,
+      "emptyBusinessSeatsCount": null,
+      "economySeatSchema": null,
+      "buisnessSeatSchema": null,
+      "seatmap": null
+    }, {
+      "_id": "3",
+      "number": "1002",
+      "departureUTC": "2016-05-12T12:00:00Z",
+      "arrivalUTC": "2016-05-12T14:00:00Z",
+      "duration": 120,
+      "status": "On Time",
+      "refAircraftTailNumber": "D-CCCC",
+      "refAircraftModel": null,
+      "operatorAirline": "Swiss Air",
+      "refOriginAirport": "JED",
+      "refOriginAirportName": null,
+      "refDestinationAirport": "CAI",
+      "refDestinationAirportName": null,
+      "boardingGate": "40",
+      "boardingPeriod": 45.0,
+      "boardingTerminal": "3",
+      "arrivalTerminal": "1",
+      "economyFare": 200.0,
+      "businessFare": 300.0,
+      "emptyEconomySeatsCount": null,
+      "emptyBusinessSeatsCount": null,
+      "economySeatSchema": null,
+      "buisnessSeatSchema": null,
+      "seatmap": null
+    }, {
+      "_id": "4",
+      "number": "1003",
+      "departureUTC": "2016-05-12T17:00:00Z",
+      "arrivalUTC": "2016-05-12T19:00:00Z",
+      "duration": 120,
+      "status": "On Time",
+      "refAircraftTailNumber": "D-CCCC",
+      "refAircraftModel": null,
+      "operatorAirline": "Swiss Air",
+      "refOriginAirport": "JED",
+      "refOriginAirportName": null,
+      "refDestinationAirport": "CAI",
+      "refDestinationAirportName": null,
+      "boardingGate": "40",
+      "boardingPeriod": 45.0,
+      "boardingTerminal": "3",
+      "arrivalTerminal": "1",
+      "economyFare": 200.0,
+      "businessFare": 300.0,
+      "emptyEconomySeatsCount": null,
+      "emptyBusinessSeatsCount": null,
+      "economySeatSchema": null,
+      "buisnessSeatSchema": null,
+      "seatmap": null
+    }]
+  };
 
     $scope.origin = "CAI";
     $scope.destination = "JED";
     $scope.exitDate = "2016-05-10T01:00:00Z";
+
+    $scope.miniLogoPath = function(operatorAirline){
+      if (operatorAirline === "Air Berlin")
+        return "img/air-berlin-mini-logo.png"
+      return "img/other-airline-mini-logo.png"
+    };
+
+    $scope.selectOutgoingFlight = function(flight) {
+      console.log(flight._id);
+    }
+
+    $scope.selectReturningFlight = function(flight) {
+      console.log(flight._id);
+    }
 
   }
 
