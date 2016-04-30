@@ -1,5 +1,5 @@
 // @yassmine
-App.controller('passengerDetailsCtrl', function($scope, $location, api) {
+App.controller('passengerDetailsCtrl', function($scope, $location, api, $ionicPopup) {
   $scope.title = "Fill in your details";
 
   $scope.buttonTextNxt = "Next";
@@ -86,17 +86,20 @@ if(Type == 'desktop'){
 
 
   if(complete == false){
+    $scope.alertData=false;
         if(($scope.firstName ==null)||($scope.middleName ==null)||($scope.lastName ==null)||($scope.phoneNumber ==null)||($scope.passportNumber ==null))
         {
-          alert("Please fill in data");
+          $scope.alertData = true;
 
         }
         else{
+          $scope.alertConfirm=false;
           if($scope.email1!=$scope.emailver)
-          alert("The repeated email doesnt match the first email");
+      $scope.alertConfirm=true;
           else {
+              $scope.alertCheck=false;
             if(($scope.check==null))
-            alert("Please check the box");
+          $scope.alertCheck=true;
             else{
             complete = true;
           }
@@ -116,6 +119,20 @@ if(Type == 'desktop'){
       $location.path('/exit-flight');
     }
 }
+
+
+
+
+/*$scope.goAlert = function() {
+ $scope.showPopup = function() {
+  var alertPopup = $ionicPopup.alert({
+  title: 'Dont eat that!',
+  template: 'It might taste good'
+});
+alertPopup.then(function(res) {
+     console.log('Thank you for not eating my delicious ice cream cone');
+   });
+ };*/
 
 
 });
