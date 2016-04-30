@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 
+
 /*this function is the core of our app, it inserts the passenger data into the database,
   updates the selected seat and inserts the booking object into the database*/
 
@@ -23,7 +24,7 @@ router.post("/booking", function(req, res) {
 
       if (!err) {
 
-        passengersIDs.push(data.ops[0]._id);
+        passengersIDs.push(data[0]);
         booking.refPassengerID.push(passengersIDs[0]);
 
         db.postBooking(booking, function(err, data) {

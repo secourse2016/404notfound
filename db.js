@@ -228,13 +228,20 @@ exports.getCountries = function(cb) {
 
 exports.postPassengers = function(passengers, cb) {
   //post created passengers to db
-  DB.collection('passengers', function(err, collection) {
-    collection.insert(passengers, {
-      safe: true
-    }, function(err, result) {
-      cb(err, result);
+  var res = [];
+  for (var i = 0; i < passengers.length; i++) {
+    DB.collection('passengers', function(err, collection) {
+      collection.insert(passengers[i], {
+        safe: true
+      }, function(err, result) {
+        res.push(result.ops[0]._id);
+        if(res.length == passengers.length){
+          cb(null,res)
+        }
+      });
+
     });
-  });
+  }
 };
 
 exports.postBooking = function(booking, cb) {
@@ -306,7 +313,7 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
           cb(err, result);
         });
 
-      else cb("there is no enough seats available", result);
+      else cb("there is no enough seats available", null);
 
 
     } else {
@@ -325,7 +332,7 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
           cb(err, result);
         });
 
-      else cb("there is no enough seats available", result);
+      else cb("there is no enough seats available", null);
 
 
     }
