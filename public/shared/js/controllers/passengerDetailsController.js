@@ -111,7 +111,9 @@ if(Type == 'desktop'){
     }
       if(complete==true){
         api.setPassenger($scope.passenger);
+        if(!api.isOtherHosts) // ymkn ya3mlo conflicts fa nehda kda w tet3ml manually
           $location.path('/seating/outgoing');
+          else $location.path('/payment')
         }
 
       }
