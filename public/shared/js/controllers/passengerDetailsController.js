@@ -117,15 +117,18 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
       $location.path('/exit-flight');
     }
   }
+  else {
 
 
+
+var complete1 = false;
   $scope.hello = function(){
 
 
     $scope.passenger = {
       type: null,
       countryCode: null, //according to country
-      nationality: $scope.countries,
+      nationality: $scope.countriesMob,
       sex: null,
       birthDate: null,
       birthPlace: null,
@@ -135,35 +138,34 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
       expiryDate: null,
       points: null,
       membership: null,
-      title: $scope.Title,
-      firstName: $scope.firstName,
-      middleName: $scope.middleName,
-      lastName: $scope.lastName,
-      passportNumber: $scope.passportNumber,
-      phoneNumber: $scope.phoneNumber,
-      email: $scope.email1
+      title: $scope.TitleMob,
+      firstName: $scope.firstNameMob,
+      middleName: $scope.middleNameMob,
+      lastName: $scope.lastNameMob,
+      passportNumber: $scope.passportNumberMob,
+      phoneNumber: $scope.phoneNumberMob,
+      email: $scope.email1Mob
 
 
     };
-    ///before you leave the page make sure that the passenger object is complete otherwise show alert("Fill in all data");
 
 
 
-    if (complete == false) {
+    if (complete1 == false) {
 
-      if (($scope.firstName == null) || ($scope.middleName == null) || ($scope.lastName == null) || ($scope.phoneNumber == null) || ($scope.passportNumber == null)) {
+      if (($scope.firstNameMob == null) || ($scope.middleNameMob == null) || ($scope.lastNameMob == null) || ($scope.phoneNumberMob == null) || ($scope.passportNumberMob == null)) {
       alert("Please fill in data");
 
       } else {
 
-        if ($scope.email1 != $scope.emailver)
+        if ($scope.email1Mob != $scope.emailverMob)
         alert("The entered emails do not match");
         else {
 
-          if (($scope.check == null))
+          if (($scope.checkMob == null))
           alert("Please verify the information you entered")
           else {
-            complete = true;
+            complete1 = true;
           }
         }
 
@@ -171,12 +173,13 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
 
     }
-    if (complete == true) {
+    if (complete1 == true) {
       api.setPassenger($scope.passenger);
       $location.path('#/tab/seating/outgoing');
     }
 
   };
+}
 
 
 
