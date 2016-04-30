@@ -34,7 +34,7 @@ var flightController = function($scope, $location, $routeParams, api) {
     }
 
     $scope.selectedBooking = {
-      "refPassengerID": null,
+      "refPassengerID": [],
       "issueDate": null,
       "isOneWay": !$scope.roundTrip,
       "refExitFlightID": null,
