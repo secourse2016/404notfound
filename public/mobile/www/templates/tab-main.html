@@ -1,49 +1,38 @@
-<ion-view view-title="Book Now" >
-  <ion-pane >
-       <ion-content  >
+<ion-view view-title="Book Now">
+  <ion-pane>
+    <ion-content scroll="false" class="red">
+      <section class="home-container">
 
+        <div class="row main-row">
 
-
- <div class = "row main-row">
-
- <div class = "col text-center">
-   <div class="card">
-     <div class="list list-inset">
-       <label class="item item-input">
-         <input type="text" placeholder="Flying From">
-       </label>
-       <label class="item item-input">
-         <input type="date" placeholder="Departure Date">
-       </label>
-       <label class="item item-input">
-         <input type="text" placeholder="Flying To">
-       </label>
-       <label class="item item-input">
-         <input type="date" placeholder="Re-entry Date">
-       </label>
-
-     </div>
-
-
-
-
-</div>
-<div class= "card">
-
-<ion-list>
-<ion-radio ng-model="choice" ng-value="'A'">One Way</ion-radio>
-<ion-radio ng-model="choice" ng-value="'B'">Round Trip</ion-radio>
-</ion-list>
-</div>
-
-<a href="#/tab/flights" class="button button-positive"><h4>Search for flights</h4></a>
-
-             </div>
-
-           </div>
-
-       </ion-content>
-     </ion-pane>
-
-   </body>
+          <div class="col text-center">
+            <div class="card">
+              <div class="list list-inset">
+                <label class="item item-input">
+                  <input type="text" placeholder="Flying From">
+                </label>
+                <label class="item item-input">
+                  <input type="date" placeholder="Departure Date">
+                </label>
+                <label class="item item-input">
+                  <input type="text" placeholder="Flying To">
+                </label>
+                <label class="item item-input">
+                  <input type="date" placeholder="Re-entry Date">
+                </label>
+                <label class="item item-input">
+                  <ion-checkbox ng-model="filter.blue">Round Trip</ion-checkbox>
+                </label>
+                <label class="item item-input">
+                  <ion-checkbox ng-model="filter.blue">Search other airlines</ion-checkbox>
+                </label>
+              </div>
+            </div>
+            <a href="#/tab/flights" class="button button-stable"><h4>Search for flights</h4></a>
+          </div>
+        </div>
+      </section>
+    </ion-content>
+  </ion-pane>
+  </body>
 </ion-view>
