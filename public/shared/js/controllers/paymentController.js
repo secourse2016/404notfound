@@ -6,6 +6,13 @@ App.controller('paymentCtrl', function($scope, $location,api) {
   $scope.buttonTextNxt = "Pay!";
   $scope.buttonTextBk = "Back";
   $scope.goNext = function() {
+    api.submitBooking('false').then(function(data){
+      console.log(data);
+      alert(data.data)
+      api.clearLocal();
+    },function(err){
+
+    })
     $location.path('/confirmation');
   }
   $scope.goBack = function() {
@@ -50,7 +57,7 @@ App.controller('paymentCtrl', function($scope, $location,api) {
       $scope.monthsBtnText = $scope.months[0];
       $scope.changeMonth = function(text) {
         $scope.monthsBtnText = text;
-      }    
+      }
   }
 
 });
