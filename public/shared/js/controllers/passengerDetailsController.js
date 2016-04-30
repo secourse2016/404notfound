@@ -122,7 +122,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
 
         var complete1 = false;
-        $scope.hello = function() {
+        $scope.Next = function() {
 
 
             $scope.passenger = {
@@ -177,7 +177,8 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
             }
             if (complete1 == true) {
                 api.setPassenger($scope.passenger);
-                $location.path('#/tab/seating/outgoing');
+                alert($scope.passenger)
+                $location.path('/tab/seating/outgoing');
             }
 
         };
