@@ -72,12 +72,15 @@ router.post("/booking", function(req, res) {
 
                 }
 
-                res.send({
-                  refNum: bookingID,
-                  errorMessage: err
-                });
-                console.log('successfully updated flight');
-                return;
+                else{
+                  res.send({
+                    refNum: bookingID,
+                    errorMessage: err
+                  });
+
+                  console.log('successfully added your booking');
+                  return;
+                }
 
               } else {
 
@@ -264,14 +267,17 @@ router.post("/booking", function(req, res) {
                   });
 
                 }
+                else{
+                  res.send({
+                    refNum: bookingID,
+                    errorMessage: err
+                  });
 
-                res.send({
-                  refNum: bookingID,
-                  errorMessage: err
-                });
+                  console.log('successfully added your booking');
+                  return;
+                }
 
-                console.log('successfully added your booking');
-                return;
+
 
 
               } else {
