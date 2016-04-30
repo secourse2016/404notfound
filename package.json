@@ -16,6 +16,7 @@
     "async": "^2.0.0-rc.3",
     "body-parser": "^1.15.0",
     "chai": "^3.5.0",
+    "cors": "^2.7.1",
     "express": "^4.13.4",
     "istanbul": "^0.4.2",
     "jwt-simple": "^0.5.0",

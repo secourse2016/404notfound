@@ -2,6 +2,26 @@ App.controller('mainCtrl', function($scope, $location, api) {
     $scope.pageClass = 'page-main';
 
 
+      api.getAirports().then(function mySucces(response) {
+          $scope.airports = response.data;
+      }, function myError(response) {
+          console.log(response.statusText);
+      });
+      $scope.selectedOrigin = undefined;
+      $scope.selectedDest = undefined;
+
+      function airporsContains(iata) {
+          for (var i = 0; i < $scope.airports.length; i++) {
+              if (iata == $scope.airports[i]['iata'])
+                  return true;
+          }
+          return false;
+      }
+
+      $scope.buttonState = function() {
+          return !$scope.selectedOrigin || !$scope.selectedDest || !$scope.exitDate || $scope.selectedDest == $scope.selectedOrigin || !airporsContains($scope.selectedOrigin) || !airporsContains($scope.selectedDest);
+      }
+
 
     if(Type == 'desktop'){
 
@@ -66,28 +86,7 @@ App.controller('mainCtrl', function($scope, $location, api) {
       $scope.changeInfant = function(text) {
           $scope.infantBtnText = text;
       }
-
-      api.getAirports().then(function mySucces(response) {
-          $scope.airports = response.data;
-      }, function myError(response) {
-          console.log(response.statusText);
-      });
-      $scope.selectedOrigin = undefined;
-      $scope.selectedDest = undefined;
-
-      function airporsContains(iata) {
-          for (var i = 0; i < $scope.airports.length; i++) {
-              if (iata == $scope.airports[i]['iata'])
-                  return true;
-          }
-          return false;
-      }
-
-      $scope.buttonState = function() {
-          return !$scope.selectedOrigin || !$scope.selectedDest || !$scope.exitDate || $scope.selectedDest == $scope.selectedOrigin || !airporsContains($scope.selectedOrigin) || !airporsContains($scope.selectedDest);
-      }
     }else{
-
     }
 });
 

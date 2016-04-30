@@ -1,44 +1,41 @@
-<ion-view view-title="Book Now" >
+<ion-view view-title="Book Now">
   <ion-pane >
-       <ion-content scroll="false" class="red" >
+    <ion-content class="red" scroll="false">
 
- <section class = "home-container">
+      <section class="home-container">
 
- <div class = "row header">
+        <div class="row header"></div>
 
+        <div class="row main-row">
 
+          <div class="col text-center">
+            <div class="card">
+              <div class="list list-inset">
+                <label class="item item-input">
+                  <input class="form-control" name="originAirports" ng-model="selectedOrigin" placeholder="Flying From" type="text" typeahead-append-to-body="true" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10">
+                </label>
+                <label class="item item-input">
+                  <input placeholder="Departure Date" type="text">
+                </label>
+                <label class="item item-input">
+                  <input class="form-control" name="desAirports" ng-model="selectedDest" placeholder="Flying To" type="text" typeahead-append-to-body="true" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10">
+                </label>
+                <label class="item item-input">
+                  <input placeholder="Re-entry Date" type="text">
+                </label>
+              </div>
+            </div>
+            <a class="button button-block button-positive" href="#/tab/flights">
+              <h4>Search for flights</h4>
+            </a>
+          </div>
 
-           </div>
+        </div>
 
+      </section>
 
- <div class = "row main-row">
+    </ion-content>
+  </ion-pane>
 
- <div class = "col text-center">
-   <div class="card">
-     <div class="list list-inset">
-       <label class="item item-input">
-         <input type="text" placeholder="Flying From">
-       </label>
-       <label class="item item-input">
-         <input type="text" placeholder="Departure Date">
-       </label>
-       <label class="item item-input">
-         <input type="text" placeholder="Flying To">
-       </label>
-       <label class="item item-input">
-         <input type="text" placeholder="Re-entry Date">
-       </label>
-     </div>
-</div>
-<a href="#/tab/flights" class="button button-block button-positive"><h4>Search for flights</h4></a>
-             </div>
-
-           </div>
-
-         </section>
-
-       </ion-content>
-     </ion-pane>
-
-   </body>
+</body>
 </ion-view>
