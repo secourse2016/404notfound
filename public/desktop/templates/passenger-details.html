@@ -30,7 +30,8 @@
 
           <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertData">
                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                   <strong>Attention! </strong>Please fill in data.
+                   <strong>Attention! </strong>Please fill in data. <br></br>Passport Number must be 8 digits <br></br>
+                       Phone Number must be 10 digits<br></br>Emails must be in a@xyz.com format
                  </div>
 
 
@@ -77,19 +78,19 @@
           <div class="row">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">Passport Number</span>
-              <input type="text" class="form-control" placeholder="ex. A308641" ng-model="passportNumber" aria-describedby="basic-addon1">
+              <input type="number" class="form-control" placeholder="ex. 44308641" ng-model="passportNumber" aria-describedby="basic-addon1" ng-minlength="8" ng-maxlength="8">
               <span class="input-group-addon" id="basic-addon1">Place Of Birth</span>
               <input name="originAirports" type="text" placeholder="ex. Egypt" ng-model="nationality" uib-typeahead="country.name for country in countries | filter:$viewValue | limitTo:10" class="form-control">
               <span class="input-group-addon" id="basic-addon1">Phone Number</span>
-              <input type="text" class="form-control" placeholder="ex. +20127628918" ng-model="phoneNumber" aria-describedby="basic-addon1">
+              <input type="number" class="form-control" placeholder="ex. 0127628918" ng-model="phoneNumber" aria-describedby="basic-addon1" ng-minlength="10" ng-maxlength="10">
             </div>
           </div>
           <div class="row">
             <div class="input-group">
               <span class="input-group-addon" id="basic-addon1">Email</span>
-              <input type="text" class="form-control" placeholder="ex. jackdawson@example.com" ng-model="email1" aria-describedby="basic-addon1">
+              <input type="email" class="form-control" placeholder="ex. jackdawson@example.com" ng-model="email1" aria-describedby="basic-addon1">
               <span class="input-group-addon" id="basic-addon1">Repeat Email</span>
-              <input type="text" class="form-control" placeholder="ex. jackdawson@example.com" ng-model="emailver" aria-describedby="basic-addon1">
+              <input type="email" class="form-control" placeholder="ex. jackdawson@example.com" ng-model="emailver" aria-describedby="basic-addon1">
             </div>
           </div>
           <div class="row">
