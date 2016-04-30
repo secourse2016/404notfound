@@ -1,5 +1,6 @@
 // Dependancies
 var MongoClient = require('mongodb').MongoClient;
+var ObjectID = require('mongodb').ObjectID;
 var airports = require('./mockdata/airports.json');
 var aircrafts = require('./mockdata/aircrafts.json');
 var flights = require('./mockdata/flights.json');
@@ -103,9 +104,9 @@ exports.seed = function(cb) {
 
 exports.getFlight = function(_id, cb) {
   // get flight from db with id
-  DB.collection('flights').find({
+  DB.collection('flights').findOne({
     "_id": _id
-  }).toArray(function(err, flight) {
+  },function(err, flight) {
     if (err) return cb(err);
     cb(null, flight);
   });
@@ -259,7 +260,7 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
 
   //update the flight with the allocated seats
   DB.collection('flights').findOne({
-    "_id": flightID
+    "_id": new ObjectID(flightID)
   },function(err, flight) {
     if (err) return cb(err);
     var i;
@@ -269,8 +270,8 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
       for (i = 0; i < flight.seatmap.length; i++) {
         var seat = flight.seatmap[i];
         if (seat.number === seatNumber && seat.isEconomy === isEconomy) {
-          seat.refPassengerID = passengersID[0];
-          seat.refBookingID = bookingID;
+          seat.refPassengerID.push(passengersID[0].toString());
+          seat.refBookingID = bookingID.toString();
           seat.isEmpty = false;
           found = true;
           break;
@@ -284,8 +285,8 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
         for (i = 0; i < flight.seatmap.length; i++) {
           var seat = flight.seatmap[i];
           if (seat.isEconomy === isEconomy && seat.isEmpty) {
-            seat.refPassengerID = passengersID[j];
-            seat.refBookingID = bookingID;
+            seat.refPassengerID = push(passengersID[j].toString());
+            seat.refBookingID = bookingID.toString();
             seat.isEmpty = false;
             found = true;
             break;
@@ -301,7 +302,7 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
 
       if (found && flight.emptyEconomySeatsCount >= passengersID.length)
         DB.collection('flights').update({
-          "_id": flightID
+          "_id": new ObjectID(flightID)
         }, {
           $set: {
             "seatmap": flight.seatmap
@@ -320,7 +321,7 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
 
       if (found && flight.emptyBusinessSeatsCount >= passengersID.length)
         DB.collection('flights').update({
-          "_id": flightID
+          "_id": new ObjectID(flightID)
         }, {
           $set: {
             "seatmap": flight.seatmap
