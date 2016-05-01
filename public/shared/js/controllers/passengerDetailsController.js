@@ -1,5 +1,5 @@
 // @yassmine
-App.controller('passengerDetailsCtrl', function($scope, $location, api, $ionicPopup) {
+App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   $scope.title = "Fill in your details";
 
   $scope.buttonTextNxt = "Next";
@@ -121,20 +121,76 @@ if(Type == 'desktop'){
       $location.path('/exit-flight');
     }
 }
+else {
+
+
+
+        var complete1 = false;
+
+        $scope.Next = function() {
+
+
+            $scope.passenger = {
+                type: null,
+                countryCode: null, //according to country
+                nationality: $scope.countriesMob,
+                sex: null,
+                birthDate: null,
+                birthPlace: null,
+                nationalID: null,
+                authority: null,
+                issueDate: null,
+                expiryDate: null,
+                points: null,
+                membership: null,
+                title: $scope.TitleMob,
+                firstName: $scope.firstNameMob,
+                middleName: $scope.middleNameMob,
+                lastName: $scope.lastNameMob,
+                passportNumber: $scope.passportNumberMob,
+                phoneNumber: $scope.phoneNumberMob,
+                email: $scope.email1Mob
+
+
+            };
 
 
 
 
-/*$scope.goAlert = function() {
- $scope.showPopup = function() {
-  var alertPopup = $ionicPopup.alert({
-  title: 'Dont eat that!',
-  template: 'It might taste good'
-});
-alertPopup.then(function(res) {
-     console.log('Thank you for not eating my delicious ice cream cone');
-   });
- };*/
+            if (complete1 == false) {
+
+                if (($scope.firstNameMob == null) || ($scope.middleNameMob == null) || ($scope.lastNameMob == null) || ($scope.phoneNumberMob == null) || ($scope.passportNumberMob == null) || ($scope.email1Mob == null) || ($scope.emailverMob == null)) {
+                    alert("Please fill in data:" + "\n" + "Passport Number must be 8 numbers" + "\n" +
+                        "Phone Number must be 10 numbers" + "\n" + "Emails must be in a@xyz.com format");
+
+                } else {
+
+                    if ($scope.email1Mob != $scope.emailverMob)
+                        alert("The entered emails do not match");
+                    else {
+
+                        if (($scope.checkMob == null))
+                            alert("Please verify the information you entered")
+                        else {
+                            complete1 = true;
+
+                        }
+                    }
+
+                }
+
+
+            }
+
+            if (complete1 == true) {
+                api.setPassenger($scope.passenger);
+
+                $location.path('/tab/seating/outgoing');
+            }
+
+        };
+    }
+
 
 
 });
