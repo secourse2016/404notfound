@@ -141,18 +141,21 @@ if (!api.IsOtherHosts()){
     outfacilitiesResult.push(facilities[0]);
   if (outAircrafthasWifi)
     outfacilitiesResult.push(facilities[1]);
-if(!api.IsOtherHosts())
+if(!api.IsOtherHosts()){
   if (!booking.exitIsEconomy) {
     outfacilitiesResult.push(facilities[2]);
     outfacilitiesResult.push(facilities[3]);
     outfacilitiesResult.push(facilities[4]);
   }
-  else
-  if (!booking.class) {
-    outfacilitiesResult.push(facilities[2]);
-    outfacilitiesResult.push(facilities[3]);
-    outfacilitiesResult.push(facilities[4]);
+}
+  else {
+    if (!booking.class) {
+      outfacilitiesResult.push(facilities[2]);
+      outfacilitiesResult.push(facilities[3]);
+      outfacilitiesResult.push(facilities[4]);
+    }
   }
+
   outfacilitiesResult.push(facilities[5]);
   if (returnFlight) {
     var refacilitiesResult = [];
@@ -160,18 +163,22 @@ if(!api.IsOtherHosts())
       refacilitiesResult.push(facilities[0]);
     if (reAircrafthasWifi)
       refacilitiesResult.push(facilities[1]);
-  if(!api.IsOtherHosts())
+  if(!api.IsOtherHosts()){
     if (!booking.reEntryIsEconomy) {
       refacilitiesResult.push(facilities[2]);
       refacilitiesResult.push(facilities[3]);
       refacilitiesResult.push(facilities[4]);
     }
-    else
+  }
+
+    else{
       if (!booking.class) {
         refacilitiesResult.push(facilities[2]);
         refacilitiesResult.push(facilities[3]);
         refacilitiesResult.push(facilities[4]);
       }
+    }
+
     refacilitiesResult.push(facilities[5]);
 
     $scope.returnFlight = returnFlight;

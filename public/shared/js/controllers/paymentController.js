@@ -8,6 +8,7 @@ App.controller('paymentCtrl', function($scope, $location,api) {
   $scope.goNext = function() {
     api.submitBooking(api.IsOtherHosts()).then(function(data){
       console.log(data);
+      alert(data.data)
       api.clearLocal();
     },function(err){
 

@@ -35,7 +35,7 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
     }
     $scope.flight = api.getChosenOutGoingFlight();
 
-    $scope.passenger = api.getPassenger();
+    $scope.passenger = api.getPassenger()[0];
     $('#quotes-text').typeIt({
       strings: [
         '"Travel and change of place impart new vigor to the mind."-Seneca',
