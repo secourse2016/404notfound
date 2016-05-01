@@ -10,7 +10,7 @@ var flightNewController = function($scope, $location, $routeParams, api) {
   api.setIsOtherHosts(true);
 
   $scope.goNext = function() {
-    api.setOutGoingFlight($scope.selectedOutgoingFlight); console.log("hello");
+    api.setOutGoingFlight($scope.selectedOutgoingFlight);
     api.setReturningFlight($scope.selectedReturningFlight);
     api.setBooking($scope.selectedBooking);
     $location.path('/exit-flight');
