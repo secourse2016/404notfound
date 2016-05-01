@@ -21,16 +21,27 @@ var flightNewController = function($scope, $location, $routeParams, api) {
   }
 
   $scope.selectedBooking = {
-    "PassengerDetails": null,
-    "refExitFlightID": null,
-    "refReEntryFlightID": null,
+    "passengerDetails": [{
+      "firstName": null,
+      "lastName": null,
+      "passportNum": null,
+      "passportExpiryDate": null,
+      "dateOfBirth": null,
+      "nationality": null,
+      "email": null,
+    }],
     "class": null,
+    "outgoingFlightId": null,
+    "returnFlightId": null,
     "paymentToken": null
-  };
+  }
 
   var origin = $routeParams.origin;
   var destination = $routeParams.destination;
   var exitDate = new Date($routeParams.exitDate * 1000);
+
+  // TODO: var isEconomy = $routeParams.class === "economy"? true : false;
+  var isEconomy = true;
 
   $scope.roundTrip = false;
 
@@ -39,17 +50,44 @@ var flightNewController = function($scope, $location, $routeParams, api) {
     $scope.roundTrip = true;
   }
 
-  var flights;
   var returnDateMill;
 
   if (returnDate)
     returnDateMill = returnDate.getTime();
 
-  api.getOtherFlightsEco(origin, destination, exitDate.getTime(), returnDateMill).then(function mySuccess(response) {
-    $scope.flights = response.data;
-  }, function myError(response) {
-    console.log(response.statusText);
-  })
+  if (isEconomy) {
+    api.getOtherFlightsEco(origin, destination, exitDate.getTime(), returnDateMill).then(function mySuccess(response) {
+      $scope.flights = response.data;
+    }, function myError(response) {
+      console.log(response.statusText);
+    });
+  } else {
+    api.getOtherFlightsBusi(origin, destination, exitDate.getTime(), returnDateMill).then(function mySuccess(response) {
+      $scope.flights = response.data;
+    }, function myError(response) {
+      console.log(response.statusText);
+    });
+  }
+
+  $scope.selectOutgoingFlight = function(flight) {
+    $scope.isOutgoingFlightSelected = true;
+    $scope.selectedOutgoingFlight = flight;
+    $scope.selectedBooking.class = isEconomy === true ? "economy" : "business";
+    $scope.selectedBooking.outgoingFlightId = flight._id;
+  }
+
+  $scope.selectReturningFlight = function(flight) {
+    $scope.isReturningFlightSelected = true;
+    $scope.selectedReturningFlight = flight;
+    $scope.selectedBooking.returnFlightId = flight._id;
+  }
+
+  $scope.checkNextBtnState = function() {
+    if ($scope.roundTrip)
+      return $scope.isReturningFlightSelected && $scope.isOutgoingFlightSelected;
+    else
+      return $scope.isOutgoingFlightSelected;
+  }
 
 }
 
