@@ -7,7 +7,6 @@ var flightNewController = function($scope, $location, $routeParams, api) {
   $scope.isCollapsed = false;
   $scope.isOutgoingFlightSelected = false;
 
-  api.setIsOtherHosts(true);
 
   $scope.goNext = function() {
     api.setOutGoingFlight($scope.selectedOutgoingFlight);
@@ -19,14 +18,6 @@ var flightNewController = function($scope, $location, $routeParams, api) {
   $scope.goBack = function() {
     $location.path('/');
   }
-
-  $scope.selectedBooking = {
-    "PassengerDetails": null,
-    "refExitFlightID": null,
-    "refReEntryFlightID": null,
-    "class": null,
-    "paymentToken": null
-  };
 
   var origin = $routeParams.origin;
   var destination = $routeParams.destination;
