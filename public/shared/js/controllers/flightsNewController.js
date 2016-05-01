@@ -13,7 +13,7 @@ var flightNewController = function($scope, $location, $routeParams, api) {
     api.setOutGoingFlight($scope.selectedOutgoingFlight);
     api.setReturningFlight($scope.selectedReturningFlight);
     api.setBooking($scope.selectedBooking);
-    $location.path('/exit-flight');
+    $location.path('/passenger-details');
   }
 
   $scope.goBack = function() {
