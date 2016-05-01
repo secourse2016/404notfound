@@ -88,7 +88,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
             if (complete == false) {
                 $scope.alertData = false;
-                if (($scope.firstName == null) || ($scope.middleName == null) || ($scope.lastName == null) || ($scope.phoneNumber == null) || ($scope.passportNumber == null)) {
+                if (($scope.firstName == null) || ($scope.middleName == null) || ($scope.lastName == null) || ($scope.phoneNumber == null) || ($scope.passportNumber == null) || ($scope.email1 == null) || ($scope.emailver == null)) {
                     $scope.alertData = true;
 
                 } else {
@@ -156,7 +156,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
             if (complete1 == false) {
 
                 if (($scope.firstNameMob == null) || ($scope.middleNameMob == null) || ($scope.lastNameMob == null) || ($scope.phoneNumberMob == null) || ($scope.passportNumberMob == null) || ($scope.email1Mob == null) || ($scope.emailverMob == null)) {
-                    alert("Please fill in data:" + "\n" + "Passport Number must be 8 numbers" + "\n"+
+                    alert("Please fill in data:" + "\n" + "Passport Number must be 8 numbers" + "\n" +
                         "Phone Number must be 10 numbers" + "\n" + "Emails must be in a@xyz.com format");
 
                 } else {
