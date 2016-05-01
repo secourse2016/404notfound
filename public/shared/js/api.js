@@ -1,8 +1,6 @@
 App.factory('api', function($http) {
     var accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjEwNDMyNzgsImV4cCI6MTQ5MjU3OTI3OCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.dXZVC--uvtigrFB7T3fGTG84NIYlSnRqbgbT43xzFAw"
-    var chosenOutgoingFlight, chosenReturningFlight, bookingData, cabinetOutgoingClass, cabinetReturningClass, outgoingSeat, returnSeat, refNum;
-    var isOtherHosts ; // set to false in flightsctrl ,set to true flightsNewCtrl
-    var passengerData = [];
+    var chosenOutgoingFlight, chosenReturningFlight, passengerData, bookingData, cabinetOutgoingClass, cabinetReturningClass, outgoingSeat, returnSeat;
     return {
         getAirports: function() {
             return $http({
@@ -108,9 +106,7 @@ App.factory('api', function($http) {
             chosenReturningFlight = flight;
         },
         setPassenger: function(passenger) {
-            passengerData.push(passenger);
-            if(isOtherHosts)
-            bookingData.PassengerDetails = passengerData
+            passengerData = passenger;
         },
         getCabinetOutgoingClass: function() {
             return cabinetOutgoingClass;
@@ -119,7 +115,6 @@ App.factory('api', function($http) {
             return cabinetReturningClass;
         },
         setBooking: function(booking) {
-          if (!isOtherHosts){
 
             if (!booking.exitIsEconomy)
                 cabinetOutgoingClass = "Business"
@@ -131,25 +126,10 @@ App.factory('api', function($http) {
 
             else
                 cabinetReturningClass = "Economy"
-          }
-          else{
-            if (!booking.class)
-                cabinetOutgoingClass = "Business"
-            else
-                cabinetOutgoingClass = "Economy"
-
-            if (!booking.class)
-                cabinetReturningClass = "Business"
-
-            else
-                cabinetReturningClass = "Economy"
-          }
-
 
 
             bookingData = booking;
         },
-
         getPassenger: function() {
             return passengerData;
         },
@@ -175,53 +155,30 @@ App.factory('api', function($http) {
         setRetrunSeat: function(seat) {
             returnSeat = seat;
         },
-        setIsOtherHosts: function(otherHosts) {
-            isOtherHosts = otherHosts;
-        },
-        IsOtherHosts: function() {
-            return isOtherHosts;
-        },
         clearLocal: function() {
             chosenReturningFlight = {}
             chosenOutgoingFlight = {}
-            passengerData =[]
+            passengerData = {}
             bookingData = {}
             cabinetOutgoingClass = {}
             cabinetReturningClass = {}
             outgoingSeat = {}
             returnSeat = {}
-            isisOtherHosts = false
-
         },
-        submitBooking: function(otherHosts) {
-          if(!otherHosts)
-          {
+        submitBooking: function() {
             return $http({
-                  method: 'POST',
-                  url: '/api/booking',
-                  headers: {
-                      'x-access-token': accessToken,
-                      'other-hosts': otherHosts
-                  },
-                  data: {
-                      passenger: passengerData,
-                      booking: bookingData,
-                      outgoingSeatNumber: outgoingSeat,
-                      returnSeatNumber: returnSeat
-                  }
-              });
-          } else {
-          return $http({
-                  method: 'POST',
-                  url: '/api/booking', // has to be changed !!
-                  headers: {
-                      'x-access-token': accessToken,
-                      'other-hosts': otherHosts
-                  },
-                  data: bookingData
-              });
-          }
-
+                method: 'POST',
+                url: '/api/booking',
+                headers: {
+                    'x-access-token': accessToken
+                },
+                data: {
+                    passenger: passengerData,
+                    booking: bookingData,
+                    outgoingSeatNumber: outgoingSeat,
+                    returnSeatNumber: returnSeat
+                }
+            });
         }
     };
 });
