@@ -5,7 +5,7 @@ var flightController = function($scope, $location, $routeParams, api) {
   $scope.title = "Choose a Flight";
   $scope.buttonTextNxt = "Next";
   $scope.buttonTextBk = "Back";
-
+  api.setIsOtherHosts(false);
   if (Type == 'desktop') {
 
     $scope.isCollapsed = true;
