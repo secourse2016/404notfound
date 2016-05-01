@@ -87,7 +87,7 @@ if(Type == 'desktop'){
 
   if(complete == false){
     $scope.alertData=false;
-        if(($scope.firstName ==null)||($scope.middleName ==null)||($scope.lastName ==null)||($scope.phoneNumber ==null)||($scope.passportNumber ==null))
+        if(($scope.firstName ==null)||($scope.middleName ==null)||($scope.lastName ==null)||($scope.phoneNumber ==null)||($scope.passportNumber ==null)|| ($scope.email1 == null) || ($scope.emailver == null))
         {
           $scope.alertData = true;
 
