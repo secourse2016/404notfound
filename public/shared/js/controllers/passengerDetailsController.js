@@ -111,6 +111,9 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
             if (complete == true) {
                 api.setPassenger($scope.passenger);
                 $location.path('/seating/outgoing');
+                if(!api.isOtherHosts)
+                  $location.path('/seating/outgoing');
+                  else $location.path('/payment')
             }
 
         }
