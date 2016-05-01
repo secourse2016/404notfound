@@ -6,7 +6,7 @@ var flightNewController = function($scope, $location,$routeParams,api) {
     $scope.buttonTextBk = "Back";
     $scope.isCollapsed = false;
     $scope.isOutgoingFlightSelected = false;
-
+    api.setIsOtherHosts(true);
 
     $scope.goNext = function() {
 
@@ -27,6 +27,13 @@ var flightNewController = function($scope, $location,$routeParams,api) {
         $location.path('/');
     }
 
+    $scope.selectedBooking = {
+      "PassengerDetails": null,
+      "refExitFlightID": null,
+      "refReEntryFlightID": null,
+      "class": null,
+      "paymentToken": null
+    };
     var origin = $routeParams.origin;
     var destination = $routeParams.destination;
     var exitDate = new Date($routeParams.exitDate * 1000);
