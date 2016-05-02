@@ -8,13 +8,13 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
 
   if(Type == 'desktop'){
     $scope.goNext = function() {
-      api.submitBooking().then(function(data){
-        console.log(data);
-        alert(data.data)
-        api.clearLocal();
-      },function(err){
-
-      })
+      // api.submitBooking('false').then(function(data){
+      //   console.log(data);
+      //   alert(data.data)
+      //   api.clearLocal();
+      // },function(err){
+      //
+      // })
       $location.path('/');
     }
     $scope.goBack = function() {
@@ -35,7 +35,7 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
     }
     $scope.flight = api.getChosenOutGoingFlight();
 
-    $scope.passenger = api.getPassenger();
+    $scope.passenger = api.getPassenger()[0];
     $('#quotes-text').typeIt({
       strings: [
         '"Travel and change of place impart new vigor to the mind."-Seneca',
