@@ -1,5 +1,5 @@
 // @ahmed-essmat
-  var seatingController = function($scope, $location,$routeParams,api) {
+  var seatingController = function($scope, $location,api,$routeParams) {
     $scope.pageClass = 'page-seating';
     $scope.title = "Where would you like to sit?";
 
@@ -101,13 +101,45 @@
     }
 
 
+
+    var alphabits = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', "M", "N"];
+    var schema = [2, 4, 2, 9];
+
+    $scope.array1 = [];
+
+    $scope.array2 = [];
+
+    $scope.array3 = [];
+
+    $scope.bob = [];
+
+    for (var i = 0; i < schema[0]; i++) {
+        $scope.array1.push(alphabits[0]);
+        alphabits.splice(0, 1);
+    }
+
+    for (var i = 0; i < schema[1]; i++) {
+        $scope.array2.push(alphabits[0]);
+        alphabits.splice(0, 1);
+    }
+    for (var i = 0; i < schema[2]; i++) {
+        $scope.array3.push(alphabits[0]);
+        alphabits.splice(0, 1);
+    }
+
+    for (var i = 0; i < schema[3]; i++) {
+        $scope.bob.push(i);
+
+    }
+
+
 };
 
 
 if(Type == 'mobile'){
   seatingController.$inject = ['$scope', '$location', 'api'];
 }else{
-  seatingController.$inject = ['$scope', '$location','$routeParams', 'api'];
+  seatingController.$inject = ['$scope', '$location', 'api','$routeParams'];
 }
 
 
