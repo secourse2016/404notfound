@@ -47,16 +47,12 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
       email: null
 
     };
-    // ---------------------------------------- Now you have $scope.nationality and $scope.titlesBtnText you can use them in your object
+
+
     var complete = false;
     $scope.goNext = function() {
 
-      /*if(!api.getChosenFlight())
-      {
-      $location.path('/flights');
-      alert("You have to choose a flight");
-      }*/
-      //The reverting to the flights page
+
 
       $scope.passenger = {
         type: null,
