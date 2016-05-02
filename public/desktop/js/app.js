@@ -1,5 +1,5 @@
 Type = 'desktop';
-App = angular.module('airBerlinApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
+App = angular.module('airBerlinApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate','angular-stripe'])
   .controller('parentCtrl', function($scope, $location,api) {
     $scope.goHome = function() {
       $location.path('/');
@@ -20,8 +20,9 @@ App = angular.module('airBerlinApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate'])
       $location.path('/team');
     }
   })
-  .config(function($animateProvider) {
+  .config(function($animateProvider,stripeProvider) {
     $animateProvider.classNameFilter(/page/);
+     stripeProvider.setPublishableKey('pk_test_SiY0xaw7q3LNlpCnkhpo60jt');
   });
 
 App.controller('404Ctrl',function($scope,$location){

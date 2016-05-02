@@ -9,6 +9,7 @@ App.factory('api', function($http) {
     var accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjEwNDMyNzgsImV4cCI6MTQ5MjU3OTI3OCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.dXZVC--uvtigrFB7T3fGTG84NIYlSnRqbgbT43xzFAw"
     var chosenOutgoingFlight, chosenReturningFlight, bookingData, cabinetOutgoingClass, cabinetReturningClass, outgoingSeat, returnSeat, refNum;
     var isOtherHosts ; // set to false in flightsctrl ,set to true flightsNewCtrl
+    var stripeToken;
     var passengerData = [];
     return {
         getAirports: function() {
@@ -214,7 +215,8 @@ App.factory('api', function($http) {
                       passenger: passengerData,
                       booking: bookingData,
                       outgoingSeatNumber: outgoingSeat,
-                      returnSeatNumber: returnSeat
+                      returnSeatNumber: returnSeat,
+                      token: stripeToken
                   }
               });
           } else {
@@ -229,6 +231,12 @@ App.factory('api', function($http) {
               });
           }
 
+        },
+        getStripeToken: function(){
+          return stripeToken;
+        },
+        setStripeToken: function(token){
+          stripeToken = token;
         }
     };
 });
