@@ -55,7 +55,6 @@ var flightController = function($scope, $location, $routeParams, api) {
     api.getFlights(origin, destination, exitDate.getTime(), returnDateMill).then(function mySuccess(response) {
 
       flights = response.data;
-
       // formatting data to be presentable
       for (i = 0; i < flights.outgoingFlights.length; i++) {
 

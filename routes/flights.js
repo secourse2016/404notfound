@@ -6,11 +6,11 @@ var request = require('request');
 var endpointsUrls = require('../endpoints.json');
 var accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE0NjEwNDMyNzgsImV4cCI6MTQ5MjU3OTI3OCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSJ9.dXZVC--uvtigrFB7T3fGTG84NIYlSnRqbgbT43xzFAw"
 
-function searchFlights(req,res){
+function searchFlights(req, res) {
   var origin = req.params.origin;
   var destination = req.params.destination;
   var departingDate = new Date(parseInt(req.params.departingDate, 10));
-  if(req.params.returningDate)
+  if (req.params.returningDate)
     var returningDate = new Date(parseInt(req.params.returningDate, 10));
   var flightClass = req.params.class;
 
@@ -36,21 +36,21 @@ function searchFlights(req,res){
           timeout: 1500,
           json: true
         };
-          if(req.params.returningDate){
-            options.uri =  url + '/api/flights/search/' + origin + "/" + destination + "/" + req.params.departingDate + "/" + req.params.returningDate + "/" + flightClass + '/1';
-          }
-          else{
-            options.uri =  url + '/api/flights/search/' + origin + "/" + destination + "/" + req.params.departingDate + "/" + flightClass + '/1';
-          }
+        if (req.params.returningDate) {
+          options.uri = url + '/api/flights/search/' + origin + "/" + destination + "/" + req.params.departingDate + "/" + req.params.returningDate + "/" + flightClass + '/1';
+        } else {
+          options.uri = url + '/api/flights/search/' + origin + "/" + destination + "/" + req.params.departingDate + "/" + flightClass + '/1';
+        }
 
         request(options,
           function(err, res, body) {
             // console.log(err + options.uri)
-            if(err)
-            console.log(err)
-            else
-            console.log(res.body)
-            callback(err, res);
+            if (err)
+              console.log(err)
+            else {
+              console.log(res.body)
+              callback(err, res);
+            }
           }
 
         );
@@ -58,19 +58,24 @@ function searchFlights(req,res){
 
       async.map(endpointsUrls, httpGet, function(err, res) {
         if (err) {
-           console.log(err);
-        }else
-        parseResult(res);
+          console.log(err);
+        } else{
+          parseResult(res);
+        }
       })
 
       function parseResult(res) {
         for (var i = 0; i < res.length; i++) {
           if (res[i].body.outgoingFlights) {
-            res[i].body.outgoingFlights.url = res[i].request.uri.host;
+            for (var j = 0; j < res[i].body.outgoingFlights.length; j++) {
+              res[i].body.outgoingFlights[j].url = res[i].request.uri.host;
+            }
             result.outgoingFlights.push(res[i].body.outgoingFlights)
           }
           if (res[i].body.returnFlights) {
-            res[i].body.returnFlights.url = res[i].request.uri.host;
+            for (var j = 0; j < res[i].body.returnFlights.length; j++) {
+              res[i].body.returnFlights[j].url = res[i].request.uri.host;
+            }
             result.returnFlights.push(res[i].body.returnFlights)
           }
         }
@@ -81,19 +86,16 @@ function searchFlights(req,res){
         return;
       }
 
-      // async.parallel(result,function(){
-      //     res.send(result);
-      //   })
     } else {
       var flightsModified = {
         outgoingFlights: [],
         returnFlights: []
       }
       for (var i = 0; i < flights.outgoingFlights.length; i++) {
-        if (flightClass == 'economy'){
+        if (flightClass == 'economy') {
 
           var flightModified = {
-            "flightId":  flights.outgoingFlights[i]._id,
+            "flightId": flights.outgoingFlights[i]._id,
             "flightNumber": flights.outgoingFlights[i].number,
             "aircraftType": flights.outgoingFlights[i].refAircraftTailNumber,
             "aircraftModel": flights.outgoingFlights[i].refAircraftModel,
@@ -106,32 +108,30 @@ function searchFlights(req,res){
             "class": "Economy",
             "Airline": "Air Berlin"
           }
+        } else {
+          var flightModified = {
+            "flightId": flights.outgoingFlights[i]._id,
+            "flightNumber": flights.outgoingFlights[i].number,
+            "aircraftType": flights.outgoingFlights[i].refAircraftTailNumber,
+            "aircraftModel": flights.outgoingFlights[i].refAircraftModel,
+            "departureDateTime": (new Date(flights.outgoingFlights[i].departureUTC)).getTime(),
+            "arrivalDateTime": (new Date(flights.outgoingFlights[i].arrivalUTC)).getTime(),
+            "origin": flights.outgoingFlights[i].refOriginAirport,
+            "destination": flights.outgoingFlights[i].refDestinationAirport,
+            "cost": flights.outgoingFlights[i].businessFare,
+            "currency": "USD",
+            "class": "Business",
+            "Airline": "Air Berlin"
+          }
         }
-           else{
-            var flightModified = {
-              "flightId":  flights.outgoingFlights[i]._id,
-              "flightNumber": flights.outgoingFlights[i].number,
-              "aircraftType": flights.outgoingFlights[i].refAircraftTailNumber,
-              "aircraftModel": flights.outgoingFlights[i].refAircraftModel,
-              "departureDateTime": (new Date(flights.outgoingFlights[i].departureUTC)).getTime(),
-              "arrivalDateTime": (new Date(flights.outgoingFlights[i].arrivalUTC)).getTime(),
-              "origin": flights.outgoingFlights[i].refOriginAirport,
-              "destination": flights.outgoingFlights[i].refDestinationAirport,
-              "cost": flights.outgoingFlights[i].businessFare,
-              "currency": "USD",
-              "class": "Business",
-              "Airline": "Air Berlin"
-            }
-           }
         flightsModified.outgoingFlights.push(flightModified);
       }
 
 
       for (var i = 0; i < flights.returnFlights.length; i++) {
-        if (flightClass == 'economy')
-          {
+        if (flightClass == 'economy') {
           var flightModified = {
-            "flightId":  flights.returnFlights[i]._id,
+            "flightId": flights.returnFlights[i]._id,
             "flightNumber": flights.returnFlights[i].number,
             "aircraftType": flights.returnFlights[i].refAircraftTailNumber,
             "aircraftModel": flights.returnFlights[i].refAircraftModel,
@@ -145,21 +145,21 @@ function searchFlights(req,res){
             "Airline": "Air Berlin"
           }
 
-        }else{
-            var flightModified = {
-              "flightId":  flights.returnFlights[i]._id,
-              "flightNumber": flights.returnFlights[i].number,
-              "aircraftType": flights.returnFlights[i].refAircraftTailNumber,
-              "aircraftModel": flights.returnFlights[i].refAircraftModel,
-              "departureDateTime": (new Date(flights.returnFlights[i].departureUTC)).getTime(),
-              "arrivalDateTime": (new Date(flights.returnFlights[i].arrivalUTC)).getTime(),
-              "origin": flights.returnFlights[i].refOriginAirport,
-              "destination": flights.returnFlights[i].refDestinationAirport,
-              "cost": flights.returnFlights[i].businessFare,
-              "currency": "USD",
-              "class": "Business",
-              "Airline": "Air Berlin"
-            }
+        } else {
+          var flightModified = {
+            "flightId": flights.returnFlights[i]._id,
+            "flightNumber": flights.returnFlights[i].number,
+            "aircraftType": flights.returnFlights[i].refAircraftTailNumber,
+            "aircraftModel": flights.returnFlights[i].refAircraftModel,
+            "departureDateTime": (new Date(flights.returnFlights[i].departureUTC)).getTime(),
+            "arrivalDateTime": (new Date(flights.returnFlights[i].arrivalUTC)).getTime(),
+            "origin": flights.returnFlights[i].refOriginAirport,
+            "destination": flights.returnFlights[i].refDestinationAirport,
+            "cost": flights.returnFlights[i].businessFare,
+            "currency": "USD",
+            "class": "Business",
+            "Airline": "Air Berlin"
+          }
 
         }
         flightsModified.returnFlights.push(flightModified);
@@ -173,13 +173,13 @@ function searchFlights(req,res){
 
 // this route should return all the flights that matches the given params
 router.get('/flights/search/:origin/:destination/:departingDate/:class/:seats', function(req, res) {
-  searchFlights(req,res)
+  searchFlights(req, res)
 });
 
 
 // not so sure about this one, but it's included in the sprint description
 router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:class/:seats', function(req, res) {
-  searchFlights(req,res)
+  searchFlights(req, res)
 
 });
 
