@@ -58,7 +58,7 @@ App.controller('paymentCtrl', function($scope, $location,api) {
       $scope.monthsBtnText = $scope.months[0];
       $scope.changeMonth = function(text) {
         $scope.monthsBtnText = text;
-      }    
+      }
   }
 
 });

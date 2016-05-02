@@ -128,16 +128,16 @@ if (outgoingFlight){
     outfacilitiesResult.push(facilities[3]);
     outfacilitiesResult.push(facilities[4]);
   }
-  outfacilitiesResult.push(facilities[5]);
-  
+ outfacilitiesResult.push(facilities[5]);
   if (returnFlight) {
     var refacilitiesResult = [];
     if (reAircrafthasSmoking)
       refacilitiesResult.push(facilities[0]);
     if (reAircrafthasWifi)
       refacilitiesResult.push(facilities[1]);
- 
+
     if (!booking.reEntryIsEconomy) {
+
       refacilitiesResult.push(facilities[2]);
       refacilitiesResult.push(facilities[3]);
       refacilitiesResult.push(facilities[4]);

@@ -1,5 +1,4 @@
-var flightNewController = function($scope, $location, $routeParams, api) {
-
+var flightNewController = function($scope, $location, api,$routeParams) {
   $scope.pageClass = 'page-flights';
   $scope.title = "Choose a Flight";
   $scope.buttonTextNxt = "Next";
@@ -95,7 +94,7 @@ var flightNewController = function($scope, $location, $routeParams, api) {
 if (Type == 'mobile') {
   flightNewController.$inject = ['$scope', '$location', 'api'];
 } else {
-  flightNewController.$inject = ['$scope', '$location', '$routeParams', 'api'];
+  flightNewController.$inject = ['$scope', '$location', 'api','$routeParams',];
 }
 
 
