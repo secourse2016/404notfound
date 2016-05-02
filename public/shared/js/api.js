@@ -25,7 +25,7 @@ App.factory('api', function($http) {
             if (!returnDate)
                 return $http({
                     method: 'GET',
-                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/0",
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/0/1",
                     headers: {
                         'x-access-token': accessToken,
                         'other-hosts': 'false'
@@ -35,7 +35,7 @@ App.factory('api', function($http) {
             else
                 return $http({
                     method: 'GET',
-                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/0",
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/0/1",
                     headers: {
                         'x-access-token': accessToken,
                         'other-hosts': 'false'
@@ -48,7 +48,7 @@ App.factory('api', function($http) {
             if (!returnDate)
                 return $http({
                     method: 'GET',
-                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/economy",
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/economy/1",
                     headers: {
                         'x-access-token': accessToken,
                         'website': 'AirBerlin',
@@ -58,7 +58,7 @@ App.factory('api', function($http) {
             else
                 return $http({
                     method: 'GET',
-                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/economy",
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/economy/1",
                     headers: {
                         'x-access-token': accessToken,
                         'website': 'AirBerlin',
@@ -70,7 +70,7 @@ App.factory('api', function($http) {
             if (!returnDate)
                 return $http({
                     method: 'GET',
-                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/business",
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/business/1",
                     headers: {
                         'x-access-token': accessToken,
                         'website': 'AirBerlin',
@@ -80,7 +80,7 @@ App.factory('api', function($http) {
             else
                 return $http({
                     method: 'GET',
-                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/business",
+                    url: '/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/business/1",
                     headers: {
                         'x-access-token': accessToken,
                         'website': 'AirBerlin',
