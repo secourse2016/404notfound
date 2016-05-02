@@ -205,7 +205,7 @@ App.factory('api', function($http) {
           {
             return $http({
                   method: 'POST',
-                  url: '/api/booking',
+                  url: '/booking',
                   headers: {
                       'x-access-token': accessToken,
                       'other-hosts': otherHosts
@@ -220,7 +220,7 @@ App.factory('api', function($http) {
           } else {
           return $http({
                   method: 'POST',
-                  url: '/api/booking', // has to be changed !!
+                  url: '/booking', // has to be changed !!
                   headers: {
                       'x-access-token': accessToken,
                       'other-hosts': otherHosts
