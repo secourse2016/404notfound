@@ -33,19 +33,23 @@ function searchFlights(req,res){
           headers: {
             'x-access-token': accessToken,
           },
+          timeout: 1500,
           json: true
         };
           if(req.params.returningDate){
-            options.uri =  url + '/api/flights/search/' + origin + "/" + destination + "/" + req.params.departingDate + "/" + req.params.returningDate + "/" + flightClass;
+            options.uri =  url + '/api/flights/search/' + origin + "/" + destination + "/" + req.params.departingDate + "/" + req.params.returningDate + "/" + flightClass + '/1';
           }
           else{
-            options.uri =  url + '/api/flights/search/' + origin + "/" + destination + "/" + req.params.departingDate + "/" + flightClass;
+            options.uri =  url + '/api/flights/search/' + origin + "/" + destination + "/" + req.params.departingDate + "/" + flightClass + '/1';
           }
 
         request(options,
           function(err, res, body) {
             // console.log(err + options.uri)
-
+            if(err)
+            console.log(err)
+            else
+            console.log(res.body)
             callback(err, res);
           }
 
@@ -54,11 +58,9 @@ function searchFlights(req,res){
 
       async.map(endpointsUrls, httpGet, function(err, res) {
         if (err) {
-          originalRes.send(err)
-          return console.log(err);
-        }
+           console.log(err);
+        }else
         parseResult(res);
-
       })
 
       function parseResult(res) {
@@ -91,6 +93,7 @@ function searchFlights(req,res){
         if (flightClass == 'economy'){
 
           var flightModified = {
+            "flightId":  flights.outgoingFlights[i]._id,
             "flightNumber": flights.outgoingFlights[i].number,
             "aircraftType": flights.outgoingFlights[i].refAircraftTailNumber,
             "aircraftModel": flights.outgoingFlights[i].refAircraftModel,
@@ -106,6 +109,7 @@ function searchFlights(req,res){
         }
            else{
             var flightModified = {
+              "flightId":  flights.outgoingFlights[i]._id,
               "flightNumber": flights.outgoingFlights[i].number,
               "aircraftType": flights.outgoingFlights[i].refAircraftTailNumber,
               "aircraftModel": flights.outgoingFlights[i].refAircraftModel,
@@ -127,6 +131,7 @@ function searchFlights(req,res){
         if (flightClass == 'economy')
           {
           var flightModified = {
+            "flightId":  flights.returnFlights[i]._id,
             "flightNumber": flights.returnFlights[i].number,
             "aircraftType": flights.returnFlights[i].refAircraftTailNumber,
             "aircraftModel": flights.returnFlights[i].refAircraftModel,
@@ -142,6 +147,7 @@ function searchFlights(req,res){
 
         }else{
             var flightModified = {
+              "flightId":  flights.returnFlights[i]._id,
               "flightNumber": flights.returnFlights[i].number,
               "aircraftType": flights.returnFlights[i].refAircraftTailNumber,
               "aircraftModel": flights.returnFlights[i].refAircraftModel,
@@ -166,13 +172,13 @@ function searchFlights(req,res){
 }
 
 // this route should return all the flights that matches the given params
-router.get('/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
+router.get('/flights/search/:origin/:destination/:departingDate/:class/:seats', function(req, res) {
   searchFlights(req,res)
 });
 
 
 // not so sure about this one, but it's included in the sprint description
-router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res) {
+router.get('/flights/search/:origin/:destination/:departingDate/:returningDate/:class/:seats', function(req, res) {
   searchFlights(req,res)
 
 });
