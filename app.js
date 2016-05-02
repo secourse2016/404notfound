@@ -24,7 +24,7 @@ app.use(jwtAuth);
 
 app.use('/api/', aircraftsAndAirports);
 app.use('/api/', flights);
-app.use('/api/', booking);
+app.use('/', booking);
 
 db.init(function(err) {
   if (err)

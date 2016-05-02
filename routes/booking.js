@@ -4,6 +4,11 @@ var router = express.Router();
 
 
 
+
+router.get('/stripe/pubkey',function (req,res) {
+  res.send('pk_test_SiY0xaw7q3LNlpCnkhpo60jt');
+})
+
 /*this function is the core of our app, it inserts the passenger data into the database,
   updates the selected seat and inserts the booking object into the database*/
 
