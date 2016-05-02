@@ -57,6 +57,7 @@ var flightNewController = function($scope, $location, api,$routeParams) {
   if (isEconomy) {
     api.getOtherFlightsEco(origin, destination, exitDate.getTime(), returnDateMill).then(function mySuccess(response) {
       $scope.flights = response.data;
+      console.log(response.data)
     }, function myError(response) {
       console.log(response.statusText);
     });
