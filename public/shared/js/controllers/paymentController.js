@@ -3,7 +3,7 @@ App.controller('paymentCtrl', function($scope, $location, api) {
   $scope.pageClass = 'page-payment';
   $scope.title = "Choose your payment option";
 
-  $scope.buttonTextNxt = "Pay!";
+  $scope.buttonTextNxt = "Submit";
   $scope.buttonTextBk = "Back";
 
   $scope.form = {
@@ -13,17 +13,21 @@ App.controller('paymentCtrl', function($scope, $location, api) {
     exp_year: null
   };
   $scope.goNext = function() {
+    var r = confirm("Are you sure you want pay?");
+    if (r == true) {
     $scope.form.exp_year = $scope.yearsBtnText
     $scope.form.exp_month = parseInt($scope.months.indexOf($scope.monthsBtnText)) + 1
     Stripe.card.createToken($scope.form, function(status, response) {
       api.setStripeToken(response.id)
       api.submitBooking(api.IsOtherHosts()).then(function(data) {
+        console.log(data)
         $location.path('/confirmation');
         // api.clearLocal();
       }, function(err) {
 
       })
     });
+    }
 
     // if (!api.IsOtherHosts())
   }
