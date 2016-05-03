@@ -106,7 +106,7 @@
 
    if (Type == 'desktop') {
      $('#main-text').typeIt({
-       strings: [$translate.instant('MAIN.QUOTES_HOME.1'),$translate.instant('MAIN.QUOTES_HOME.2'),$translate.instant('MAIN.QUOTES_HOME.3'),$translate.instant('MAIN.QUOTES_HOME.4')],
+       strings: [$translate.instant('MAIN.QUOTES_HOME.ONE'),$translate.instant('MAIN.QUOTES_HOME.TWO'),$translate.instant('MAIN.QUOTES_HOME.THREE'),$translate.instant('MAIN.QUOTES_HOME.FOUR')],
        speed: 120,
        breakLines: false,
        loop: true
