@@ -221,33 +221,96 @@ if (allpassing == true) {
 
 
 
-      if (complete1 == false) {
+      // if (complete1 == false) {
+      //
+      //   if (($scope.firstNameMob == null) || ($scope.middleNameMob == null) || ($scope.lastNameMob == null) || ($scope.phoneNumberMob == null) || ($scope.passportNumberMob == null) || ($scope.email1Mob == null) || ($scope.emailverMob == null)) {
+      //     alert("Please fill in data:" + "\n" + "Passport Number must be 8 numbers" + "\n" +
+      //       "Phone Number must be 10 numbers" + "\n" + "Emails must be in a@xyz.com format");
+      //
+      //   } else {
+      //
+      //     if ($scope.email1Mob != $scope.emailverMob)
+      //       alert("The entered emails do not match");
+      //     else {
+      //
+      //       if (($scope.checkMob == null))
+      //         alert("Please verify the information you entered")
+      //       else {
+      //         complete1 = true;
+      //
+      //       }
+      //     }
+      //
+      //   }
+      //
+      //
+      // }
+      //
+      // if (complete1 == true) {
+      //   api.setPassenger($scope.passenger);
+      //
+      //   $location.path('/tab/seating/outgoing');
+      // }
 
-        if (($scope.firstNameMob == null) || ($scope.middleNameMob == null) || ($scope.lastNameMob == null) || ($scope.phoneNumberMob == null) || ($scope.passportNumberMob == null) || ($scope.email1Mob == null) || ($scope.emailverMob == null)) {
-          alert("Please fill in data:" + "\n" + "Passport Number must be 8 numbers" + "\n" +
-            "Phone Number must be 10 numbers" + "\n" + "Emails must be in a@xyz.com format");
 
-        } else {
 
-          if ($scope.email1Mob != $scope.emailverMob)
-            alert("The entered emails do not match");
-          else {
+      var fieldsMob = [true, true, true, true, true,true, true, true, true];
 
-            if (($scope.checkMob == null))
-              alert("Please verify the information you entered")
-            else {
-              complete1 = true;
 
-            }
-          }
 
-        }
 
+      if($scope.firstNameMob==null){
+      fieldsMob[0]=false;
+      alert("Please Enter your first name.")
+      }
+      if($scope.middleNameMob==null){
+      fieldsMob[1]=false;
+    alert("Please enter your middle name.");
+      }
+      if($scope.lastNameMob==null){
+      fieldsMob[2]=false;
+      alert("Please enter your last name.");
 
       }
+      if($scope.phoneNumberMob==null){
+      fieldsMob[3]=false;
+      alert("Please enter your phone number, it must be 10 digits");
+      }
+      if($scope.passportNumberMob==null){
+      fieldsMob[4]=false;
+    alert("Please enter your passport number, it must be 8 digits.");
+      }
+      if($scope.email1==null){
+      fieldsMob[5]=false;
+alert("Please enter your email, it must be in this format 'a@xyz.com' ");
+      }
+      if($scope.emailver==null){
+      fieldsMob[6]=false;
+      alert("Please confirm your email, it must be in this format 'a@xyz.com' ");
 
-      if (complete1 == true) {
-        api.setPassenger($scope.passenger);
+      }
+      if($scope.email1!=$scope.emailver){
+      fieldsMob[7]=false;
+alert("The entered emails do not match");
+      }
+      if($scope.check==null){
+      fieldsMob[8]=false;
+alert("Please verify the information you've entered");
+      }
+
+      var allpassingMob = true;
+
+      for(var i = 0; i<fieldsMob.length;i++)
+      {
+        if(fieldsMob[i]==false)
+        {
+          allpassingMob=false;
+          break;
+        }
+      }
+
+      if (allpassingMob == true) {
+         api.setPassenger($scope.passenger);
 
         $location.path('/tab/seating/outgoing');
       }
