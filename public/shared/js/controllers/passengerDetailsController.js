@@ -5,6 +5,29 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
   $scope.buttonTextNxt = "Next";
   $scope.buttonTextBk = "Back";
 
+  $scope.passenger = {
+    type: null,
+    countryCode: null,
+    nationality: null,
+    sex: null,
+    birthDate: null,
+    birthPlace: null,
+    nationalID: null,
+    authority: null,
+    issueDate: null,
+    expiryDate: null,
+    points: null,
+    membership: null,
+    firstName: null,
+    middleName: null,
+    lastName: null,
+    passportNumber: null,
+    phoneNumber: null,
+    email: null
+
+  };
+
+
   if (Type == 'desktop') {
     if (!api.getChosenOutGoingFlight() || !api.getBooking()) {
       $location.path('/flights');
@@ -26,27 +49,6 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
 
 
-    $scope.passenger = {
-      type: null,
-      countryCode: null,
-      nationality: null,
-      sex: null,
-      birthDate: null,
-      birthPlace: null,
-      nationalID: null,
-      authority: null,
-      issueDate: null,
-      expiryDate: null,
-      points: null,
-      membership: null,
-      firstName: null,
-      middleName: null,
-      lastName: null,
-      passportNumber: null,
-      phoneNumber: null,
-      email: null
-
-    };
 
 
     var complete = false;
@@ -81,34 +83,103 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
 
 
-      if (complete == false) {
-        $scope.alertData = false;
-        if (($scope.firstName == null) || ($scope.middleName == null) || ($scope.lastName == null) || ($scope.phoneNumber == null) || ($scope.passportNumber == null) || ($scope.email1 == null) || ($scope.emailver == null)) {
-          $scope.alertData = true;
+      // if (complete == false) {
+      //   $scope.alertData = false;
+      //   if (($scope.firstName == null) || ($scope.middleName == null) || ($scope.lastName == null) || ($scope.phoneNumber == null) || ($scope.passportNumber == null) || ($scope.email1 == null) || ($scope.emailver == null)) {
+      //     $scope.alertData = true;
+      //
+      //   } else {
+      //     $scope.alertConfirm = false;
+      //     if ($scope.email1 != $scope.emailver)
+      //       $scope.alertConfirm = true;
+      //     else {
+      //       $scope.alertCheck = false;
+      //       if (($scope.check == null))
+      //         $scope.alertCheck = true;
+      //       else {
+      //         complete = true;
+      //       }
+      //     }
+      //
+      //   }
+      //
+      //
+      // }
+      // if (complete == true) {
+      //   api.setPassenger($scope.passenger);
+      //   if (!api.isOtherHosts)
+      //     $location.path('/seating/outgoing');
+      //   else $location.path('/payment')
+      // }
 
-        } else {
-          $scope.alertConfirm = false;
-          if ($scope.email1 != $scope.emailver)
-            $scope.alertConfirm = true;
-          else {
-            $scope.alertCheck = false;
-            if (($scope.check == null))
-              $scope.alertCheck = true;
-            else {
-              complete = true;
-            }
-          }
+var fields = [true, true, true, true, true,true, true, true, true];
 
-        }
+$scope.alertFName = false;
+$scope.alertMName = false;
+$scope.alertLName = false;
+$scope.alertPhNumber = false;
+$scope.alertPNumber= false;
+$scope.alertEmail = false;
+$scope.alertConfirm = false;
+$scope.alertCheck = false;
 
 
-      }
-      if (complete == true) {
-        api.setPassenger($scope.passenger);
-        if (!api.isOtherHosts)
-          $location.path('/seating/outgoing');
-        else $location.path('/payment')
-      }
+if($scope.firstName==null){
+fields[0]=false;
+$scope.alertFName = true;
+}
+if($scope.middleName==null){
+fields[1]=false;
+$scope.alertMName = true;
+}
+if($scope.lastName==null){
+fields[2]=false;
+$scope.alertLName = true;
+}
+if($scope.phoneNumber==null){
+fields[3]=false;
+$scope.alertPhNumber = true;
+}
+if($scope.passportNumber==null){
+fields[4]=false;
+$scope.alertPNumber= true;
+}
+if($scope.email1==null){
+fields[5]=false;
+$scope.alertEmail = true;
+}
+if($scope.emailver==null){
+fields[6]=false;
+$scope.alertEmail = true;
+}
+if($scope.email1!=$scope.emailver){
+fields[7]=false;
+$scope.alertConfirm = true;
+}
+if($scope.check==null){
+fields[8]=false;
+$scope.alertCheck = true;
+}
+
+var allpassing = true;
+
+for(var i = 0; i<fields.length;i++)
+{
+  if(fields[i]==false)
+  {
+    allpassing=false;
+    break;
+  }
+}
+
+if (allpassing == true) {
+   api.setPassenger($scope.passenger);
+   if (!api.isOtherHosts)
+     $location.path('/seating/outgoing');
+   else $location.path('/payment')
+ }
+
+
 
     }
     $scope.goBack = function() {
