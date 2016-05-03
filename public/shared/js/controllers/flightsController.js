@@ -14,6 +14,9 @@ var flightController = function($scope, $location, $routeParams, api) {
     $scope.goNext = function() {
       api.setOutGoingFlight($scope.selectedOutgoingFlight);
       api.setReturningFlight($scope.selectedReturningFlight);
+      $scope.selectedBooking.refExitFlightID = $scope.selectedOutgoingFlight._id
+      if($scope.selectedReturningFlight)
+      $scope.selectedBooking.refReEntryFlightID = $scope.selectedReturningFlight._id
       api.setBooking($scope.selectedBooking);
       $location.path('/exit-flight');
     }

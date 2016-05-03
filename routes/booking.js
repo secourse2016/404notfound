@@ -15,11 +15,12 @@ router.get('/stripe/pubkey',function (req,res) {
 router.post("/booking", function(req, res) {
 
   if (req.headers['other-hosts'] == 'false') {
-
+    console.log(req.body)
     var passenger = req.body.passenger;
     var booking = req.body.booking;
     var exitFlightID = booking.refExitFlightID;
-    var returnFlightID = booking.refReEntryFlightID;
+    if(booking.refReEntryFlightID)
+      var returnFlightID = booking.refReEntryFlightID;
     var bookingID;
     var passengersIDs = [];
     var exitIsEconomy, reEntryIsEconomy;
@@ -30,6 +31,7 @@ router.post("/booking", function(req, res) {
       if (!err) {
 
         passengersIDs.push(data[0]);
+        booking.refPassengerID = []
         booking.refPassengerID.push(passengersIDs[0]);
 
         db.postBooking(booking, function(err, data) {
