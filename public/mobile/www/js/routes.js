@@ -25,7 +25,7 @@ App.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.flights', {
-    url: '/flights',
+    url: '/flights?origin&destination&exitDate&returnDate',
     views: {
       'tab-home': {
         templateUrl: 'templates/flights.html',
@@ -35,7 +35,7 @@ App.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('tab.flights-new', {
-    url: '/flights-new',
+    url: '/flights-new?origin&destination&exitDate&returnDate',
     views: {
       'tab-home': {
         templateUrl: 'templates/flights-new.html',
