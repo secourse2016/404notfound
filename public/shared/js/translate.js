@@ -30,6 +30,7 @@
         SEATS_LEFT: 'seats left',
         MORE_DETAILS: 'More details',
         BOOK: 'Book',
+        SELECT:'Select',
         FLIGHT: 'Flight',
         OPERATED_BY: 'Operated by'
       },
@@ -47,13 +48,18 @@
         PASSENGERS: 'passengers'
       },
       NAV: {
+        GO_HOME:'Go Home',
+        SUBMIT: 'Submit',
         NEXT: 'Next',
         BACK: 'Back',
         SPECIAL_OFFERS: 'Special Offers',
         SERVICES: 'Services',
         OUR_TEAM: 'Our Team',
         ABOUT: 'About',
-        CONTACT_US: 'Contact Us'
+        CONTACT_US: 'Contact Us',
+        CHOOSE_LANGUAGE:'Choose language',
+        ENGLISH: 'English',
+        GERMAN:'German'
       },
 
       CONFIRMATION: {
@@ -174,6 +180,7 @@
         SEATS_LEFT: 'freie Sitzplätze',
         MORE_DETAILS: 'Mehr Details',
         BOOK: 'buchen',
+        SELECT:'Wählen',
         FLIGHT: 'Flug',
         OPERATED_BY: 'betrieben von'
       },
@@ -191,13 +198,18 @@
         PASSENGERS: 'Passagiere'
       },
       NAV: {
+        GO_HOME:'heimgehen',
+        SUBMIT: 'einreichen',
         NEXT: 'weiter',
         BACK: 'zurück',
         SPECIAL_OFFERS: 'Spezielle Angebote',
         SERVICES: 'Dienstleistungen',
         OUR_TEAM: 'Unser Team',
         ABOUT: 'Über uns',
-        CONTACT_US: 'Unser Kontakt'
+        CONTACT_US: 'Unser Kontakt',
+        CHOOSE_LANGUAGE:'Wähle eine Sprache',
+        ENGLISH: 'Englisch',
+        GERMAN:'Deutsche'
       },
       CONFIRMATION: {
 
@@ -209,7 +221,6 @@
         DEPARTURE: 'Abfahrt',
         ARRAIVAL: 'Ankunft',
         PRINT: 'Flugkarte abdrucken'
-
       },
       CONTACT_US: {
 

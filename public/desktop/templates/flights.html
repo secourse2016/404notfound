@@ -101,7 +101,7 @@
               <h4>{{'FLIGHTS.ECONOMY' | translate}}</h4>
               <h4>&euro;{{flight.economyFare}}</h4>
               <h6 class="text-success">{{flight.emptyEconomySeatsCount}}  {{'FLIGHTS.SEATS_LEFT' | translate}}</h6>
-              <button type="button" ng-click="selectOutgoingFlight(flight,true)" class="btn btn-lg btn-primary">Select</button>
+              <button type="button" ng-click="selectOutgoingFlight(flight,true)" class="btn btn-lg btn-primary">{{'FLIGHTS.SELECT'| translate}}</button>
 
             </td>
 
@@ -113,7 +113,7 @@
               <h4>{{'FLIGHTS.BUSINESS' | translate}}</h4>
               <h4>&euro;{{flight.businessFare}}</h4>
               <h6 class="text-success">{{flight.emptyBusinessSeatsCount}} {{'FLIGHTS.SEATS_LEFT' | translate}}</h6>
-              <button type="button" ng-click="selectOutgoingFlight(flight,false)" class="btn btn-lg btn-primary">Select</button>
+              <button type="button" ng-click="selectOutgoingFlight(flight,false)" class="btn btn-lg btn-primary">{{'FLIGHTS.SELECT'| translate}}</button>
 
 
             </td>
@@ -148,7 +148,7 @@
 
                     <h5>{{flight.duration}}</h5>
 
-                    <button type="button" class="btn btn-link" ng-click="isCollapsed = !isCollapsed">More details</button>
+                    <button type="button" class="btn btn-link" ng-click="isCollapsed = !isCollapsed">{{'FLIGHTS.MORE_DETAILS' | translate}}</button>
 
                     <div uib-collapse="isCollapsed">
                       <h5>Flight {{flight.number}}</h5>
@@ -178,7 +178,7 @@
               <h4>Economy</h4>
               <h4>&euro;{{flight.economyFare}}</h4>
               <h6 class="text-success">{{flight.emptyEconomySeatsCount}} seats left</h6>
-              <button type="button" ng-click="selectReturningFlight(flight,true)" class="btn btn-lg btn-primary">Select</button>
+              <button type="button" ng-click="selectReturningFlight(flight,true)" class="btn btn-lg btn-primary">{{'FLIGHTS.SELECT'| translate}}</button>
 
             </td>
 
@@ -190,7 +190,7 @@
               <h4>Business</h4>
               <h4>&euro;{{flight.businessFare}}</h4>
               <h6 class="text-success">{{flight.emptyBusinessSeatsCount}} seats left</h6>
-              <button type="button" ng-click="selectReturningFlight(flight,false)" class="btn btn-lg btn-primary">Select</button>
+              <button type="button" ng-click="selectReturningFlight(flight,false)" class="btn btn-lg btn-primary">{{'FLIGHTS.SELECT'| translate}}</button>
 
             </td>
 
