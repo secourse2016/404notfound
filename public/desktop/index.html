@@ -14,7 +14,6 @@
 
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
-
     <script src="./bower_components/angular/angular.min.js" charset="utf-8"></script>
     <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
     <script src="./bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
@@ -24,6 +23,8 @@
     <script src="./js/app.js" charset="utf-8"></script>
     <script src="./js/routes.js" charset="utf-8"></script>
     <script src="./js/generated.js" charset="utf-8"></script>
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./static/js/typeit.min.js" charset="utf-8"></script>
   </head>
   <body ng-controller="parentCtrl">
 
@@ -39,8 +40,5 @@
       <div  class="page {{ pageClass }}"  ng-view></div>
       <div ng-include="'/templates/nav.html'"></div>
 
-    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="./static/js/typeit.min.js" charset="utf-8"></script>
-    <script type="text/javascript"></script>
   </body>
 </html>

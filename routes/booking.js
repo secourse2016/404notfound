@@ -1,11 +1,11 @@
 var db = require('../db.js');
 var express = require('express');
 var router = express.Router();
+var stripe = require('stripe')('sk_test_7OmjPhkDeNnP4d41dR5hteUC');
 
 
 
-
-router.get('/stripe/pubkey',function (req,res) {
+router.get('/stripe/pubkey', function(req, res) {
   res.send('pk_test_SiY0xaw7q3LNlpCnkhpo60jt');
 })
 
@@ -13,91 +13,103 @@ router.get('/stripe/pubkey',function (req,res) {
   updates the selected seat and inserts the booking object into the database*/
 
 router.post("/booking", function(req, res) {
-
+  var price = parseInt(req.body.price) *100;
   if (req.headers['other-hosts'] == 'false') {
-    console.log(req.body)
-    var passenger = req.body.passenger;
-    var booking = req.body.booking;
-    var exitFlightID = booking.refExitFlightID;
-    if(booking.refReEntryFlightID)
-      var returnFlightID = booking.refReEntryFlightID;
-    var bookingID;
-    var passengersIDs = [];
-    var exitIsEconomy, reEntryIsEconomy;
-    var outgoingSeatNumber, returnSeatNumber;
+    stripe.charges.create({
+      amount: price,
+      currency: "usd",
+      source:req.body.token,
+      description: "test"
+    }, function(err, data) {
+      if (err) res.send({
+        refNum: null,
+        errorMessage: err
+      });
+      else {
+        var passenger = req.body.passenger;
+        var booking = req.body.booking;
+        var exitFlightID = booking.refExitFlightID;
+        if (booking.refReEntryFlightID)
+          var returnFlightID = booking.refReEntryFlightID;
+        var bookingID;
+        var passengersIDs = [];
+        var exitIsEconomy, reEntryIsEconomy;
+        var outgoingSeatNumber, returnSeatNumber;
 
-    db.postPassengers(passenger, function(err, data) {
-
-      if (!err) {
-
-        passengersIDs.push(data[0]);
-        booking.refPassengerID = []
-        booking.refPassengerID.push(passengersIDs[0]);
-
-        db.postBooking(booking, function(err, data) {
+        db.postPassengers(passenger, function(err, data) {
 
           if (!err) {
 
-            bookingID = data.ops[0]._id;
-            exitIsEconomy = booking.exitIsEconomy;
-            outgoingSeatNumber = req.body.outgoingSeatNumber;
+            passengersIDs.push(data[0]);
+            booking.refPassengerID = []
+            booking.refPassengerID.push(passengersIDs[0]);
 
-            db.updateFlight(false, exitFlightID, exitIsEconomy, outgoingSeatNumber, passengersIDs, bookingID, function(err, data) {
+            db.postBooking(booking, function(err, data) {
 
               if (!err) {
 
-                if (returnFlightID) {
+                bookingID = data.ops[0]._id;
+                exitIsEconomy = booking.exitIsEconomy;
+                outgoingSeatNumber = req.body.outgoingSeatNumber;
 
-                  reEntryIsEconomy = booking.reEntryIsEconomy;
-                  returnSeatNumber = req.body.returnSeatNumber;
+                db.updateFlight(false, exitFlightID, exitIsEconomy, outgoingSeatNumber, passengersIDs, bookingID, function(err, data) {
 
-                  db.updateFlight(false, returnFlightID, reEntryIsEconomy, returnSeatNumber, passengersIDs, bookingID, function(err, data) {
+                  if (!err) {
 
-                    if (!err) {
+                    if (returnFlightID) {
 
-                      res.send({
-                        refNum: bookingID,
-                        errorMessage: err
+                      reEntryIsEconomy = booking.reEntryIsEconomy;
+                      returnSeatNumber = req.body.returnSeatNumber;
+
+                      db.updateFlight(false, returnFlightID, reEntryIsEconomy, returnSeatNumber, passengersIDs, bookingID, function(err, data) {
+
+                        if (!err) {
+
+                          res.send({
+                            refNum: bookingID,
+                            errorMessage: err
+                          });
+
+                          console.log('successfully updated flight');
+                          return;
+
+                        } else {
+
+                          res.send({
+                            refNum: bookingID,
+                            errorMessage: err
+                          });
+
+                          console.log('error occured while updating the flight');
+                          return;
+
+                        }
+
                       });
-
-                      console.log('successfully updated flight');
-                      return;
 
                     } else {
-
                       res.send({
                         refNum: bookingID,
                         errorMessage: err
                       });
 
-                      console.log('error occured while updating the flight');
+                      console.log('successfully added your booking');
                       return;
-
                     }
 
-                  });
+                  } else {
 
-                }
+                    res.send({
+                      refNum: bookingID,
+                      errorMessage: err
+                    });
 
-                else{
-                  res.send({
-                    refNum: bookingID,
-                    errorMessage: err
-                  });
+                    console.log('error occured while updating the flight');
+                    return;
 
-                  console.log('successfully added your booking');
-                  return;
-                }
+                  }
 
-              } else {
-
-                res.send({
-                  refNum: bookingID,
-                  errorMessage: err
                 });
-
-                console.log('error occured while updating the flight');
-                return;
 
               }
 
@@ -108,7 +120,6 @@ router.post("/booking", function(req, res) {
         });
 
       }
-
     });
 
   } else {
@@ -231,7 +242,7 @@ router.post("/booking", function(req, res) {
 
       if (!err) {
 
-        data.forEach(function(passengerID){
+        data.forEach(function(passengerID) {
           booking.refPassengerID.push(passengerID);
         });
 
@@ -273,8 +284,7 @@ router.post("/booking", function(req, res) {
 
                   });
 
-                }
-                else{
+                } else {
                   res.send({
                     refNum: bookingID,
                     errorMessage: err
