@@ -100,13 +100,8 @@
 
               <h4>{{'FLIGHTS.ECONOMY' | translate}}</h4>
               <h4>&euro;{{flight.economyFare}}</h4>
-<<<<<<< HEAD:public/desktop/templates/flights.html
-              <h6 class="text-success">{{flight.emptyEconomySeatsCount}} seats left</h6>
-              <button type="button" ng-click="selectOutgoingFlight(flight,true)" class="btn btn-lg btn-primary">Select</button>
-=======
               <h6 class="text-success">{{flight.emptyEconomySeatsCount}}  {{'FLIGHTS.SEATS_LEFT' | translate}}</h6>
-              <button type="button" ng-click="selectOutgoingFlight(flight,true)" class="btn btn-lg btn-primary">{{'FLIGHTS.BOOK' | translate}}</button>
->>>>>>> de72fea63c46bbcd292714eb36b492817d990746:public/templates/flights.html
+              <button type="button" ng-click="selectOutgoingFlight(flight,true)" class="btn btn-lg btn-primary">Select</button>
 
             </td>
 
@@ -117,14 +112,9 @@
 
               <h4>{{'FLIGHTS.BUSINESS' | translate}}</h4>
               <h4>&euro;{{flight.businessFare}}</h4>
-<<<<<<< HEAD:public/desktop/templates/flights.html
-              <h6 class="text-success">{{flight.emptyBusinessSeatsCount}} seats left</h6>
-              <button type="button" ng-click="selectOutgoingFlight(flight,false)" class="btn btn-lg btn-primary">Select</button>
-=======
-
               <h6 class="text-success">{{flight.emptyBusinessSeatsCount}} {{'FLIGHTS.SEATS_LEFT' | translate}}</h6>
-              <button type="button" ng-click="selectOutgoingFlight(flight,false)" class="btn btn-lg btn-primary">{{'FLIGHTS.BOOK' | translate}}</button>
->>>>>>> de72fea63c46bbcd292714eb36b492817d990746:public/templates/flights.html
+              <button type="button" ng-click="selectOutgoingFlight(flight,false)" class="btn btn-lg btn-primary">Select</button>
+
 
             </td>
 
