@@ -1,4 +1,4 @@
- var mainController = function($scope, $location, api) {
+ var mainController = function($scope, $location, api,$translate) {
    $scope.pageClass = 'page-main';
 
    $scope.go = function() {
@@ -105,22 +105,18 @@
 
 
    if (Type == 'desktop') {
-
      $('#main-text').typeIt({
-       strings: [
-         "Simple, convenient, instant confirmation.", "Destinations all around the globe.", "Experience authentic hospitality.", "Time to get enchanted."
-       ],
+       strings: [$translate.instant('MAIN.QUOTES_HOME.ONE'),$translate.instant('MAIN.QUOTES_HOME.TWO'),$translate.instant('MAIN.QUOTES_HOME.THREE'),$translate.instant('MAIN.QUOTES_HOME.FOUR')],
        speed: 120,
        breakLines: false,
        loop: true
      });
 
 
-
      $location.url($location.path());
      setUpDate($scope);
 
-     $scope.children = ['0 children', '1 child', '2 children', '3 children', '4 children'];
+     $scope.children = ['0 ' + $translate.instant('MAIN.CHILDREN'), '1 ' + $translate.instant('MAIN.CHILD'), '2 ' + $translate.instant('MAIN.CHILDREN'), '3 ' + $translate.instant('MAIN.CHILDREN'), '4 ' + $translate.instant('MAIN.CHILDREN')];
      $scope.childrenBtnText = $scope.children[0];
      $scope.changeChildren = function(text) {
        $scope.childrenBtnText = text;
@@ -128,13 +124,13 @@
 
 
 
-     $scope.adults = ['1 adult', '2 adults', '3 adults', '4 adults'];
+     $scope.adults = ['1 '+$translate.instant('MAIN.ADULT') , '2 '+$translate.instant('MAIN.ADULTS'), '3 ' + $translate.instant('MAIN.ADULTS'), '4 '+$translate.instant('MAIN.ADULTs')];
      $scope.adultBtnText = $scope.adults[0];
      $scope.changeAdult = function(text) {
        $scope.adultBtnText = text;
      }
 
-     $scope.infants = ['0 infants', '1 infant'];
+     $scope.infants = ['0 '+$translate.instant('MAIN.INFANT'), '1 '+$translate.instant('MAIN.INFANTS')];
      $scope.infantBtnText = $scope.infants[0];
      $scope.changeInfant = function(text) {
        $scope.infantBtnText = text;
@@ -179,9 +175,9 @@
  }
 
  if (Type == 'mobile') {
-   mainController.$inject = ['$scope', '$state', 'api'];
+   mainController.$inject = ['$scope', '$state', 'api','$translate'];
  } else {
-   mainController.$inject = ['$scope', '$location', 'api'];
+   mainController.$inject = ['$scope', '$location', 'api','$translate'];
  }
 
  App.controller('mainCtrl', mainController);
