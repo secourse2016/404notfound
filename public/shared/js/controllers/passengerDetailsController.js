@@ -112,13 +112,14 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
       //   else $location.path('/payment')
       // }
 
-var fields = [true, true, true, true, true,true, true, true, true];
+var fields = [true, true, true, true, true,true, true, true, true,true];
 
 $scope.alertFName = false;
 $scope.alertMName = false;
 $scope.alertLName = false;
 $scope.alertPhNumber = false;
 $scope.alertPNumber= false;
+$scope.alertCountry=false;
 $scope.alertEmail = false;
 $scope.alertConfirm = false;
 $scope.alertCheck = false;
@@ -144,20 +145,24 @@ if($scope.passportNumber==null){
 fields[4]=false;
 $scope.alertPNumber= true;
 }
-if($scope.email1==null){
+if($scope.nationality==null){
 fields[5]=false;
-$scope.alertEmail = true;
+$scope.alertCountry = true;
 }
-if($scope.emailver==null){
+if($scope.email1==null){
 fields[6]=false;
 $scope.alertEmail = true;
 }
-if($scope.email1!=$scope.emailver){
+if($scope.emailver==null){
 fields[7]=false;
+$scope.alertEmail = true;
+}
+if($scope.email1!=$scope.emailver){
+fields[8]=false;
 $scope.alertConfirm = true;
 }
 if($scope.check==null){
-fields[8]=false;
+fields[9]=false;
 $scope.alertCheck = true;
 }
 
