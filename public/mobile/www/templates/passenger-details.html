@@ -3,7 +3,7 @@
 
     <div class="list">
       <label class="item item-input item-select">
-        <div class="input-label" ng-model="TitleMob">
+        <div class="input-label" ng-model="$parent.TitleMob">
           Title
         </div>
         <select>
@@ -294,7 +294,7 @@
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Repeat Email</span>
-        <input type="text" placeholder="Repeat Email" ng-model="$parent.emailverMob">
+        <input type="email" placeholder="Repeat Email" ng-model="$parent.emailverMob">
       </label>
       <ion-checkbox ng-model="$parent.checkMob">I verify that the information given are correct</ion-checkbox>
 

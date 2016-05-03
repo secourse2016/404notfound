@@ -28,6 +28,7 @@
     "supertest": "^1.2.0"
   },
   "devDependencies": {
+    "angular-translate": "^2.11.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-install": "^0.6.0",
