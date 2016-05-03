@@ -13,12 +13,12 @@ router.get('/stripe/pubkey', function(req, res) {
   updates the selected seat and inserts the booking object into the database*/
 
 router.post("/booking", function(req, res) {
-  var price = parseInt(req.body.price) *100;
+  var price = parseInt(req.body.price) * 100;
   if (req.headers['other-hosts'] == 'false') {
     stripe.charges.create({
       amount: price,
       currency: "usd",
-      source:req.body.token,
+      source: req.body.token,
       description: "test"
     }, function(err, data) {
       if (err) res.send({
@@ -123,47 +123,131 @@ router.post("/booking", function(req, res) {
     });
 
   } else {
-
+    var price = parseInt(req.body.cost) *100;
     // Conforming alien booking into air-berlin-valid objects
-
-    var booking = {
-      "refPassengerID": [],
-      "issueDate": (new Date()).toUTCString(),
-      "isOneWay": req.body.returnFlightId ? false : true,
-      "refExitFlightID": req.body.outgoingFlightId,
-      "refReEntryFlightID": req.body.returnFlightId,
-      "exitIsEconomy": req.body.class === "economy" ? true : false,
-      "reEntryIsEconomy": req.body.class === "economy" ? true : false,
-      "receiptNumber": null
-    };
-
-    var passengers = [];
-
-    req.body.passengerDetails.forEach(function(passenger) {
-
-      passengers.push({
-        type: null,
-        countryCode: null,
-        nationality: passenger.nationality,
-        sex: null,
-        birthDate: passenger.dateOfBirth,
-        birthPlace: null,
-        nationalID: null,
-        authority: null,
-        issueDate: null,
-        expiryDate: passenger.passportExpiryDate,
-        points: null,
-        membership: null,
-        title: null,
-        firstName: passenger.firstName,
-        middleName: null,
-        lastName: passenger.lastName,
-        passportNumber: passenger.passportNum,
-        phoneNumber: null,
-        email: passenger.email
+    stripe.charges.create({
+      amount: price,
+      currency: "usd",
+      source: req.body.paymentToken,
+      description: "test"
+    }, function(err, data) {
+      if (err) res.send({
+        refNum: null,
+        errorMessage: err
       });
+      else {
+        var booking = {
+          "refPassengerID": [],
+          "issueDate": (new Date()).toUTCString(),
+          "isOneWay": req.body.returnFlightId ? false : true,
+          "refExitFlightID": req.body.outgoingFlightId,
+          "refReEntryFlightID": req.body.returnFlightId,
+          "exitIsEconomy": req.body.class === "economy" ? true : false,
+          "reEntryIsEconomy": req.body.class === "economy" ? true : false,
+          "receiptNumber": null
+        };
 
-    });
+        var passengers = [];
+
+        req.body.passengerDetails.forEach(function(passenger) {
+
+          passengers.push({
+            type: null,
+            countryCode: null,
+            nationality: passenger.nationality,
+            sex: null,
+            birthDate: passenger.dateOfBirth,
+            birthPlace: null,
+            nationalID: null,
+            authority: null,
+            issueDate: null,
+            expiryDate: passenger.passportExpiryDate,
+            points: null,
+            membership: null,
+            title: null,
+            firstName: passenger.firstName,
+            middleName: null,
+            lastName: passenger.lastName,
+            passportNumber: passenger.passportNum,
+            phoneNumber: null,
+            email: passenger.email
+          });
+
+        });
+
+        // Post passengers & update flight(s)
+
+        db.postPassengers(passengers, function(err, data) {
+
+          if (!err) {
+
+            data.forEach(function(passengerID) {
+              booking.refPassengerID.push(passengerID);
+            });
+
+            db.postBooking(booking, function(err, data) {
+
+              if (!err) {
+
+                var bookingID = data.ops[0]._id;
+
+                db.updateFlight(true, booking.refExitFlightID, booking.exitIsEconomy, null, booking.refPassengerID, bookingID, function(err, data) {
+
+                  if (!err) {
+
+                    if (!booking.isOneWay) {
+
+                      db.updateFlight(true, booking.refReEntryFlightID, booking.reEntryIsEconomy, null, booking.refPassengerID, bookingID, function(err, data) {
+                        if (!err) {
+                          res.send({
+                            refNum: bookingID,
+                            errorMessage: err
+                          });
+                          console.log('successfully added your booking');
+                          return;
+                        } else {
+                          res.send({
+                            refNum: bookingID,
+                            errorMessage: err
+                          });
+                          console.log('error occured while updating the flight');
+                          return;
+                        }
+                      });
+                    } else {
+                      res.send({
+                        refNum: bookingID,
+                        errorMessage: err
+                      });
+                      console.log('successfully added your booking');
+                      return;
+                    }
+                  } else {
+
+                    res.send({
+                      refNum: bookingID,
+                      errorMessage: err
+                    });
+
+                    console.log('error occured while updating the flight');
+                    return;
+
+                  }
+
+                });
+
+              }
+
+            });
+
+          }
+
+        });
+
+
+      }
+    })
+
 
     // Finding empty seats for passengers
 
@@ -236,88 +320,7 @@ router.post("/booking", function(req, res) {
 
     // TODO: Complete stripe payment to procede
 
-    // Post passengers & update flight(s)
 
-    db.postPassengers(passengers, function(err, data) {
-
-      if (!err) {
-
-        data.forEach(function(passengerID) {
-          booking.refPassengerID.push(passengerID);
-        });
-
-        db.postBooking(booking, function(err, data) {
-
-          if (!err) {
-
-            var bookingID = data.ops[0]._id;
-
-            db.updateFlight(true, booking.refExitFlightID, booking.exitIsEconomy, null, booking.refPassengerID, bookingID, function(err, data) {
-
-              if (!err) {
-
-                if (!booking.isOneWay) {
-
-                  db.updateFlight(true, booking.refReEntryFlightID, booking.reEntryIsEconomy, null, booking.refPassengerID, bookingID, function(err, data) {
-
-                    if (!err) {
-
-                      res.send({
-                        refNum: bookingID,
-                        errorMessage: err
-                      });
-
-                      console.log('successfully added your booking');
-                      return;
-
-                    } else {
-
-                      res.send({
-                        refNum: bookingID,
-                        errorMessage: err
-                      });
-
-                      console.log('error occured while updating the flight');
-                      return;
-
-                    }
-
-                  });
-
-                } else {
-                  res.send({
-                    refNum: bookingID,
-                    errorMessage: err
-                  });
-
-                  console.log('successfully added your booking');
-                  return;
-                }
-
-
-
-
-              } else {
-
-                res.send({
-                  refNum: bookingID,
-                  errorMessage: err
-                });
-
-                console.log('error occured while updating the flight');
-                return;
-
-              }
-
-            });
-
-          }
-
-        });
-
-      }
-
-    });
 
   }
 

@@ -18,6 +18,8 @@ App.controller('paymentCtrl', function($scope, $location, api) {
     $scope.form.exp_year = $scope.yearsBtnText
     $scope.form.exp_month = parseInt($scope.months.indexOf($scope.monthsBtnText)) + 1
     Stripe.card.createToken($scope.form, function(status, response) {
+      console.log(api.getChosenOutGoingFlight());
+      console.log(response.id)
       api.setStripeToken(response.id)
       api.submitBooking(api.IsOtherHosts()).then(function(data) {
         console.log(data)

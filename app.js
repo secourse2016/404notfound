@@ -20,7 +20,7 @@ app.use('/', express.static('public/desktop'));
 
 app.use(cors());
 
-app.use(jwtAuth);
+// app.use(jwtAuth);
 
 
 
