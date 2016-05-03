@@ -201,6 +201,18 @@ App.factory('api', function($http) {
 
     },
     submitBooking: function(otherHosts) {
+      var price = 0;
+      if (this.getCabinetOutgoingClass() == 'Economy')
+        price = this.getChosenOutGoingFlight().economyFare
+      else
+        price = this.getChosenOutGoingFlight().businessFare
+
+      if (this.getChosenReturningFlight())
+        if (this.getCabinetReturningClass() == 'Economy')
+          price = price + this.getChosenReturningFlight().economyFare
+        else
+          price = price + this.getChosenReturningFlight().businessFare
+
       if (!otherHosts) {
         return $http({
           method: 'POST',
@@ -213,6 +225,7 @@ App.factory('api', function($http) {
           data: $.param({
             passenger: passengerData,
             booking: bookingData,
+            price: price,
             outgoingSeatNumber: outgoingSeat,
             returnSeatNumber: returnSeat,
             token: stripeToken

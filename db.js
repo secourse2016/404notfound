@@ -229,7 +229,6 @@ exports.getCountries = function(cb) {
 
 exports.postPassengers = function(passengers, cb) {
   //post created passengers to db
-  console.log(passengers)
   var res = [];
   for (var i = 0; i < passengers.length; i++) {
     DB.collection('passengers', function(err, collection) {
