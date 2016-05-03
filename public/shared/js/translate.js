@@ -16,6 +16,8 @@
         ADULTS: 'adults',
         INFANTS: 'infants',
         INFANT: 'infant',
+        ECONOMY: 'Economy',
+        BUSINESS: 'Business',
         QUOTES_HOME: {
           ONE: "Simple, convenient, instant confirmation.",
           TWO: "Destinations all around the globe.",
@@ -166,6 +168,8 @@
         ADULTS: 'Erwachsenen',
         INFANTS: 'Babys',
         INFANT: 'Baby',
+        ECONOMY: 'Economy',
+        BUSINESS: 'Business',
         QUOTES_HOME: {
           ONE: "Simple, convenient, instant confirmation.",
           TWO: "Destinations all around the globe.",

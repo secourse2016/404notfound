@@ -49,7 +49,9 @@
            $location.path('/flights-new')
            .search('origin', $scope.selectedOrigin)
            .search('destination', $scope.selectedDest)
-           .search('exitDate', exitDate);
+           .search('exitDate', exitDate)
+           .search('flightClass',$scope.classeBtnText);
+
          else
            $location.go('tab.flights-new', {
              origin: $scope.selectedOrigin,
@@ -62,7 +64,8 @@
            .search('origin', $scope.selectedOrigin)
            .search('destination', $scope.selectedDest)
            .search('exitDate', exitDate)
-           .search('returnDate', returnDate);
+           .search('returnDate', returnDate)
+           .search('flightClass',$scope.classeBtnText);
          else
            $location.go('tab.flights-new', {
              origin: $scope.selectedOrigin,
@@ -134,6 +137,13 @@
      $scope.infantBtnText = $scope.infants[0];
      $scope.changeInfant = function(text) {
        $scope.infantBtnText = text;
+     }
+
+
+     $scope.classes = [$translate.instant('MAIN.ECONOMY'), $translate.instant('MAIN.BUSINESS')];
+     $scope.classeBtnText = $scope.classes[0];
+     $scope.changeClass = function(text) {
+       $scope.classeBtnText = text;
      }
    }
 
