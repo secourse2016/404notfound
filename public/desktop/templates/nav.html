@@ -31,23 +31,14 @@
           <li>
             <a ng-click="goContactUs()">{{'NAV.CONTACT_US' | translate}}</a>
           </li>
-          <li>
-            <a style="    margin-top: -2.6px;">
-              <select id="select-nav">
-                <option value="one">
-                  <span style="color:black">Change Language</span>
-                </option>
-                <option value="one">
-                  <span style="color:black">English</span>
-                </option>
-                <option value="one">
-                  <span style="color:black">German</span>
-                </option>
+          <li uib-dropdown>
+                <a href="#" uib-dropdown-toggle>{{'NAV.CHOOSE_LANGUAGE' | translate }} <b class="caret"></b></a>
+                 <ul uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                    <li role="menuitem"><a ng-click="changeLangauge('en')">{{'NAV.ENGLISH' | translate }}</a></li>
+                    <li role="menuitem"><a ng-click="changeLangauge('de')">{{'NAV.GERMAN' | translate }}</a></li>
+                </ul>
+            </li>
 
-              </select>
-
-            </a>
-          </li>
         </ul>
       </div>
     </div>

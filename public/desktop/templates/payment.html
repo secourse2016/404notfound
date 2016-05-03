@@ -5,7 +5,7 @@
       <div class="panel-heading clearfix">
 
         <div class="col-xs-2">
-          <button class="btn btn-primary btn-lg pull-left" ng-click="goBack()">{{buttonTextBk}}</button>
+          <button class="btn btn-primary btn-lg pull-left" ng-click="goBack()">{{'NAV.BACK' | translate}}</button>
         </div>
 
         <div class="col-xs-8">
@@ -16,7 +16,7 @@
         </div>
 
         <div class="col-xs-2 ">
-          <button class="btn btn-primary btn-lg pull-right" ng-disabled="!form.number || !form.cvc || form.cvc.length != 3 || form.number.length != 16" ng-click="goNext()">{{buttonTextNxt}}</button>
+          <button class="btn btn-primary btn-lg pull-right" ng-disabled="!form.number || !form.cvc || form.cvc.length != 3 || form.number.length != 16" ng-click="goNext()">{{'NAV.SUBMIT' | translate}}</button>
         </div>
 
       </div>
