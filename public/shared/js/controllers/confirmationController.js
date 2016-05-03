@@ -1,9 +1,9 @@
 // @abdelrhman-essam
 App.controller('confirmationCtrl', function($scope, $location,api) {
       $scope.pageClass = 'page-confirmation';
-  $scope.title = "Confirm your flight";
+  $scope.title = "Confirmation";
 
-  $scope.buttonTextNxt = "Confirm?";
+  $scope.buttonTextNxt = "Go Home";
   $scope.buttonTextBk = "Back";
 
   if(Type == 'desktop'){
