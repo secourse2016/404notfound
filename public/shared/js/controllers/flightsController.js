@@ -1,5 +1,5 @@
 // @abdelrahman-maged
-var flightController = function($scope, $location, $routeParams, api) {
+var flightController = function($scope, $location,api,$routeParams) {
 
   $scope.pageClass = 'page-flights';
   $scope.title = "Choose a Flight";
@@ -188,6 +188,9 @@ var flightController = function($scope, $location, $routeParams, api) {
     }
 
   } else {
+
+    console.log($routeParams)
+
 
     $scope.flights = {
     "outgoingFlights": [{
@@ -422,9 +425,9 @@ var flightController = function($scope, $location, $routeParams, api) {
 }
 
 if (Type == 'mobile') {
-  flightController.$inject = ['$scope', '$location', 'api'];
+  flightController.$inject = ['$scope', '$location', 'api','$stateParams'];
 } else {
-  flightController.$inject = ['$scope', '$location', '$routeParams', 'api'];
+  flightController.$inject = ['$scope', '$location', 'api','$routeParams'];
 }
 
 App.controller('flightsCtrl', flightController);
