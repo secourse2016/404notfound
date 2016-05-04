@@ -301,7 +301,7 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
       if(isEconomy)
         seat = flight.seatmap.find(findEmptyEconomySeat);
       else
-        var seat = flight.seatmap.find(findEmptyBusinessSeat);
+        seat = flight.seatmap.find(findEmptyBusinessSeat);
 
       console.log(seat.number);
 
@@ -318,7 +318,7 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
         if(isEconomy)
           seat = flight.seatmap.find(findEmptyEconomySeat);
         else
-          var seat = flight.seatmap.find(findEmptyBusinessSeat);
+          seat = flight.seatmap.find(findEmptyBusinessSeat);
 
         console.log(seat.number);
 
