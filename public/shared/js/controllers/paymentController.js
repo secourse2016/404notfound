@@ -1,5 +1,5 @@
 // @mirna
-App.controller('paymentCtrl', function($scope, $location,$http, api) {
+App.controller('paymentCtrl', function($scope, $location, $http, api) {
     $scope.pageClass = 'page-payment';
     $scope.title = "Choose your payment option";
 
@@ -33,18 +33,17 @@ App.controller('paymentCtrl', function($scope, $location,$http, api) {
 
                     })
                 }); {
-                  var booking = api.getBooking();
-                  if(booking.returnUrl == booking.outgoingUrl || !booking.returnUrl)
-                  {
-                    if(booking.returnCost)
-                    booking.cost = parseInt(booking.returnCost) + parseInt(booking.outgoingCost);
-                      else
-                    booking.cost = parseInt(booking.outgoingCost);
-api.getStripeToken("http://" + booking.outgoingUrl + '/stripe/pubkey').then(function(data){
+                var booking = api.getBooking();
+                if (booking.returnUrl == booking.outgoingUrl || !booking.returnUrl) {
+                    if (booking.returnCost)
+                        booking.cost = parseInt(booking.returnCost) + parseInt(booking.outgoingCost);
+                    else
+                        booking.cost = parseInt(booking.outgoingCost);
+                    api.getStripeToken("http://" + booking.outgoingUrl + '/stripe/pubkey').then(function(data) {
+                      console.log(data)
+                    })
 
-})
-
-                  }
+                }
             }
         }
 
