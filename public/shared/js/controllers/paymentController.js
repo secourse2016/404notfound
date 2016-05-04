@@ -1,5 +1,5 @@
 // @mirna
- var paymentCtrl = function($scope, $location, $http, api) {
+var paymentCtrl = function($scope, $location, $http, api) {
     $scope.pageClass = 'page-payment';
     $scope.title = "Choose your payment option";
 
@@ -12,6 +12,38 @@
         exp_month: null,
         exp_year: null
     };
+
+
+
+
+    $scope.otherHosts = api.IsOtherHosts();
+    console.log(api.getBooking().outgoingCost)
+    if ($scope.otherHosts) {
+        if (api.getBooking().returnCost)
+            $scope.price = parseInt(api.getBooking().outgoingCost) + parseInt(api.getBooking().returnCost);
+        else
+            $scope.price = parseInt(api.getBooking().outgoingCost)
+        console.log($scope.price)
+    } else {
+        var price = 0;
+        if (api.getCabinetOutgoingClass() == 'Economy')
+            price = api.getChosenOutGoingFlight().economyFare
+        else
+            price = api.getChosenOutGoingFlight().businessFare
+
+        if (api.getChosenReturningFlight()) {
+
+            if (api.getCabinetReturningClass() == 'Economy')
+                price = price + api.getChosenReturningFlight().economyFare
+            else
+                price = price + api.getChosenReturningFlight().businessFare
+
+
+        }
+
+
+        $scope.price = price;
+    }
     $scope.goNext = function() {
         var r = confirm("Are you sure you want pay?");
         if (r == true) {
@@ -28,7 +60,6 @@
 
                 console.log($scope.form)
             }
-
 
 
 
@@ -186,31 +217,14 @@
             $scope.monthsBtnNo = $scope.months.indexOf(text);
         }
     }
-    var price = 0;
-    if (api.getCabinetOutgoingClass() == 'Economy')
-        price = api.getChosenOutGoingFlight().economyFare
-    else
-        price = api.getChosenOutGoingFlight().businessFare
 
-    if (api.getChosenReturningFlight()) {
-
-        if (api.getCabinetReturningClass() == 'Economy')
-            price = price + api.getChosenReturningFlight().economyFare
-        else
-            price = price + api.getChosenReturningFlight().businessFare
-
-
-    }
-
-
-    $scope.price = price;
 }
 
 
 if (Type == 'mobile') {
-  paymentCtrl.$inject = ['$scope', '$state', '$http', 'api'];
+    paymentCtrl.$inject = ['$scope', '$state', '$http', 'api'];
 } else {
-  paymentCtrl.$inject = ['$scope', '$location', '$http', 'api'];
+    paymentCtrl.$inject = ['$scope', '$location', '$http', 'api'];
 }
 
 App.controller('paymentCtrl', paymentCtrl);
