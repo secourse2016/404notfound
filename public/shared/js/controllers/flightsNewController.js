@@ -12,6 +12,26 @@ var flightNewController = function($scope, $location, api, $routeParams) {
     $scope.miniLogoPath = function(operatorAirline) {
       if (operatorAirline === "Air Berlin")
         return "img/air-berlin-mini-logo.png"
+      if (operatorAirline === "Swiss Air")
+        return "img/swiss-air-mini-logo.png"
+      if (operatorAirline === "Austrian")
+        return "img/austrian-airlines-mini-logo.png"
+      if (operatorAirline === "Hawaiian")
+        return "img/hawaiian-airlines-mini-logo.png"
+      if (operatorAirline === "AirNewZealand")
+        return "img/air-new-zealand-mini-logo.png"
+      if (operatorAirline === "KLM")
+        return "img/klm-mini-logo.png"
+      if (operatorAirline === "Air Madagascar")
+        return "img/air-madagascar-mini-logo.png"
+      if (operatorAirline === "Iberia")
+        return "img/iberia-mini-logo.png"
+      if (operatorAirline === "United")
+        return "img/united-mini-logo.png"
+      if (operatorAirline === "Delta Airlines")
+        return "img/delta-airlines-mini-logo.png"
+      if (operatorAirline === "Turkish Airlines")
+        return "img/turkish-airlines-mini-logo.png"
       return "img/other-airline-mini-logo.png"
     };
   }
@@ -59,7 +79,8 @@ var flightNewController = function($scope, $location, api, $routeParams) {
   $scope.destination = destination;
   $scope.exitDate = exitDate;
 
-  var isEconomy = $routeParams.flightClass == "Economy";
+  // var isEconomy = $routeParams.flightClass == "Economy";
+  var isEconomy = true;
   $scope.roundTrip = false;
 
   if ($routeParams.returnDate) {
@@ -76,6 +97,7 @@ var flightNewController = function($scope, $location, api, $routeParams) {
   if (isEconomy) {
     api.getOtherFlightsEco(origin, destination, exitDate.getTime(), returnDateMill).then(function mySuccess(response) {
       $scope.flights = response.data;
+      console.log(response.data);
     }, function myError(response) {
       console.log(response.statusText);
     });
