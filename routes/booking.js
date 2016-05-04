@@ -331,17 +331,17 @@ router.get('/booking/:id', function(req, res) {
   db.getBooking(req.params.id, function(err, booking) {
 
     db.getFlight(booking.refExitFlightID, function(err, flight) {
-      booking.exitFlightOrigin = flight.refOriginAirport;
-      booking.exitFlightDestination = flight.refDestinationAirport;
-      booking.exitFlightDeparture = flight.departureUTC;
-      booking.exitFlightArrival = flight.arrivalUTC;
+      booking.exitFlight.origin = flight.refOriginAirport;
+      booking.exitFlight.destination = flight.refDestinationAirport;
+      booking.exitFlight.departure = flight.departureUTC;
+      booking.exitFlight.arrival = flight.arrivalUTC;
     });
 
     db.getFlight(booking.refReEntryFlightID, function(err, flight) {
-      booking.returnFlightOrigin = flight.refOriginAirport;
-      booking.returnFlightDestination = flight.refDestinationAirport;
-      booking.returnFlightDeparture = flight.departureUTC;
-      booking.returnFlightArrival = flight.arrivalUTC;
+      booking.returnFlight.origin = flight.refOriginAirport;
+      booking.returnFlight.destination = flight.refDestinationAirport;
+      booking.returnFlight.departure = flight.departureUTC;
+      booking.returnFlight.arrival = flight.arrivalUTC;
     });
 
     booking.passengersNames = [];
