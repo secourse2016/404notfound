@@ -37,7 +37,7 @@
                     </p>
 
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8" ng-show="notOtherHosts">
                     <di class="panel panel-default">
                         <div class="panel-body">
                             <div class="col-lg-5">
@@ -93,7 +93,7 @@
                         <button type="button" class="btn btn-default">
                             {{'  CONFIRMATION.PRINT' | translate}}</button>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4"  ng-show="notOtherHosts">
                         <div class="row">
                             <a ng-click="goSocial()" href="" class="icoFacebook" title="Facebook">
                                 <i class="fa fa-facebook"></i>
