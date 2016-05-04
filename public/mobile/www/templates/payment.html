@@ -1,21 +1,12 @@
 <ion-view view-title="Choose a payment method">
   <ion-content class="padding">
-    <div class="card">
-      <ion-list>
 
-        <div class="item item-text-wrap">
-          <label class="item ">
-            <i class="icon ion-person"></i>Price</label>
-
-        </ion-list>
-      </div>
-    </div>
 
     <ion-list>
 
       <div class="list">
-        <label class="item ">
-          <i class="icon ion-person"></i>Price ${{price}}</label>
+        <label class="item " >
+          <i class="icon ion-person" ></i>Price ${{price}}</label>
 
         <label class="item item-input item-floating-label">
           <span class="input-label">Valid Card number</span>
@@ -39,7 +30,7 @@
   </ion-content>
 
   <ion-footer-bar>
-    <a href="" ng-click="goNext()" class="button button-block button-positive">
+    <a href="" ng-disabled="!form.number || !form.cvc || form.number.length != 16 || form.cvc.length != 3 || !date" ng-click="goNext()" class="button button-block button-positive">
       <h4>Next</h4>
     </a>
   </ion-footer-bar>
