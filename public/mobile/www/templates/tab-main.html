@@ -8,14 +8,14 @@
               <div class="list list-inset">
 
                 <label class="item item-input">
-                  <input name="originAirports" ng-model="$parent.selectedOrigin" placeholder="Flying From" type="text" typeahead-append-to-body="true" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10">
+                  <input name="originAirports" ng-model="$parent.selectedOrigin" placeholder="Flying From" type="text" typeahead-append-to-body="true" uib-typeahead="airport as airport.name + ' (' + airport.iata + ')' for airport in airports | filter:$viewValue | limitTo:10">
                 </label>
                 <label class="item item-input">
                   <input placeholder="Departure Date" ng-model="$parent.exitDate" type="date">
                 </label>
 
                 <label class="item item-input">
-                  <input name="desAirports" ng-model="$parent.selectedDest" placeholder="Flying To" type="text" typeahead-append-to-body="true" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10">
+                  <input name="desAirports" ng-model="$parent.selectedDest" placeholder="Flying To" type="text" typeahead-append-to-body="true" uib-typeahead="airport as airport.name + ' (' + airport.iata + ')' for airport in airports | filter:$viewValue | limitTo:10">
                 </label>
                 <label class="item item-input">
                   <input ng-disabled="flight.type == 'one'" ng-model="$parent.returnDate" placeholder="Re-entry Date" type="date">

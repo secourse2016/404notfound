@@ -24,7 +24,6 @@
                             <div class="input-group">
                                 <span class="input-group-addon">{{'MAIN.FROM' | translate}}</span>
                                 <input name="originAirports" type="text" placeholder="{{'MAIN.FLYING_FROM' | translate}}" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
-
                             </div>
                         </div>
                     </div>
@@ -48,7 +47,6 @@
                             <div class="input-group">
                                 <span class="input-group-addon">{{'MAIN.TO' | translate}}</span>
                                 <input name="desAirports" type="text" placeholder="{{'MAIN.FLYING_TO' | translate}}" ng-model="selectedDest" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
-
                             </div>
                         </div>
                     </div>
@@ -149,10 +147,10 @@
                             <label class="checkbox-inline"><input type="checkbox" ng-model="otherAirline.value">{{'MAIN.OTHER_AIRLINES' | translate}}</label>
                         </div>
                     </div>
-                    <div  class="form-group">
+                    <div class="form-group">
                         <div ng-show="otherAirline.value" class="col-lg-6">
                             <div class="btn-group" uib-dropdown is-open="status4.isopen">
-                                <button  type="button" class="btn btn-success" uib-dropdown-toggle>
+                                <button type="button" class="btn btn-success" uib-dropdown-toggle>
                                     {{classeBtnText}}
                                     <span class="caret"></span>
                                 </button>
