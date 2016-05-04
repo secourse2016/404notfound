@@ -109,6 +109,7 @@ var paymentCtrl = function($scope, $location, $http, api) {
 
                     var url = "http://" + booking.outgoingUrl;
                     api.getStripeKey(url + '/stripe/pubkey').then(function(data) {
+                      console.log(data.data)
                         Stripe.setPublishableKey(data.data)
                         Stripe.card.createToken($scope.form, function(status, response) {
                             outgoingBooking.paymentToken = response.id;

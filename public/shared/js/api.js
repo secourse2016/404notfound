@@ -16,12 +16,14 @@ App.factory('api', function($http) {
     return {
         getStripeKey: function(url) {
             return $http({
-              'method': 'GET',
-              'url': url,
-              'headers': {
-                  'x-access-token': accessToken,
-                  'website': 'AirBerlin'
-              }
+                method: 'POST',
+                url: 'http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com/stripe/internal/',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: $.param({
+                    url: url
+                })
             });
         },
         getAirports: function() {
