@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="airBerlinApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Airberlin</title>
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./static/css/themes/flaty.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./bower_components/components-font-awesome/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./css/app.css" media="screen" title="no title" charset="utf-8">
+    <link href="./static/imgs/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+    <script src="./bower_components/angular/angular.min.js" charset="utf-8"></script>
+    <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" charset="utf-8"></script>
+    <script src="./bower_components/angular-route/angular-route.min.js" charset="utf-8"></script>
+    <script src="./bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="./bower_components/angular-stripe/release/angular-stripe.js"></script>
+    <script src="./bower_components/angular-translate/angular-translate.min.js" charset="utf-8"></script>
+
+    <script src="./js/app.js" charset="utf-8"></script>
+    <script src="./js/routes.js" charset="utf-8"></script>
+    <script src="./js/generated.js" charset="utf-8"></script>
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./static/js/typeit.min.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller="parentCtrl">
+
+    <!-- poster="polina.jpg" -->
+    <video autoplay loop muted controls="false" id="bgvid">
+      <source src="./static/vids/clouds5.mp4" type="video/webm">
+      <!-- <source src="polina.mp4" type="video/mp4"> -->
+    </video>
+
+    <div class="video-overlay"></div>
+
+
+      <div  class="page {{ pageClass }}"  ng-view></div>
+      <div ng-include="'/templates/nav.html'"></div>
+
+  </body>
+</html>

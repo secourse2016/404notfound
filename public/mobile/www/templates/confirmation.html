@@ -1,0 +1,71 @@
+<ion-view view-title="Confirmation">
+
+  <ion-content>
+    <div class="text-center">
+      <div class="row">
+        <div class="card" style="width:100%">
+          <div class="item item-divider">Thank you!</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="card" style="width:100%">
+        <div class="item item-divider">Booking reference number</div>
+
+        <div class="item item-text-wrap">booking</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="card" style="width:100%">
+        <div class="item item-divider"> <i class="icon ion-person"> Name</i></div>
+
+        <div class="item item-text-wrap">{{passenger.firstName + " " + passenger.lastName}}</div>
+
+
+
+        <div class="item item-divider"><i class="icon ion-ios-telephone"> Phone</i></div>
+
+        <div class="item item-text-wrap">{{passenger.phoneNumber}}</div>
+
+
+
+        <div class="item item-divider"><i class="icon ion-email"> E-mail</i></div>
+
+
+        <div class="item item-text-wrap">{{passenger.email}}</div>
+
+
+      </div>
+    </div>
+    <div class="row">
+      ​
+      <div class="card" style="width:100%">
+        <div class="item item-divider" style="font-size:18px">Flight details</div>
+        <ion-list>
+          <div class="item item-text-wrap">
+            <label class="item "><i class="icon ion-star"> </i> Flight NO</label>
+            <label class="item ">
+              <h4>{{flight.number}}</h4></label>
+
+            <label class="item "><i class="icon ion-ios-time-outline"> </i> Departure</label>
+            <label class="item ">
+              <h4>{{flight.departureUTC}}</h4></label>
+
+            <label class="item "><i class="icon ion-ios-time"> </i> Arrival</label>
+            <label class="item ">
+              <<h4>{{flight.arrivalUTC}}</h4>
+            </label>
+        </ion-list>
+        </div>
+
+      </div>
+      ​
+    </div>
+
+
+  </ion-content>
+  <ion-footer-bar>
+    <a href="#/tab/home" class="button button-block button-balanced"><h4>Done</h4></a>
+  </ion-footer-bar>
+</ion-view>

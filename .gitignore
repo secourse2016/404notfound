@@ -1,3 +1,12 @@
 node_modules
-public/bower_components/
+
+public/desktop/bower_components/
+
+public/mobile/www/lib/
+public/mobile/platforms/
+public/mobile/plugins/
+
 npm-debug.log
+
+public/desktop/js/generated.js
+public/mobile/www/js/generated.js
