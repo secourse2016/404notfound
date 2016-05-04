@@ -3,14 +3,14 @@
 .flights h1 {
   font-size: 20px !important;
 }
-.flights h4 {
+.bar-footer h4 {
   color: white;
 }
 .flights p {
   font-size: 17px !important;
 }
-.flights .bar-footer {
-  height: 80px;
+.bar-footer {
+  height: 70px;
   display: block;
 }
 /* Empty. Add your own CSS if you like */
