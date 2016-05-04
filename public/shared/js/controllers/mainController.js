@@ -4,6 +4,8 @@
    $scope.go = function() {
      console.log($scope.selectedOrigin);
    }
+   $scope.exitDate = new Date();
+   $scope.returnDate = new Date();
 
    api.getAirports().then(function mySucces(response) {
      $scope.airports = response.data;

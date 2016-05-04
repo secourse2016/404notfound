@@ -27,7 +27,7 @@ App.factory('api', function($http) {
         getAirports: function() {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:8080/api/airports',
+                url: 'http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com/api/airports',
                 headers: {
                     'x-access-token': accessToken,
                     'website': 'AirBerlin'
@@ -38,7 +38,7 @@ App.factory('api', function($http) {
             if (!returnDate)
                 return $http({
                     method: 'GET',
-                    url: 'http://localhost:8080/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/0/1",
+                    url: 'http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/0/1",
                     headers: {
                         'x-access-token': accessToken,
                         'other-hosts': 'false'
@@ -48,7 +48,7 @@ App.factory('api', function($http) {
             else
                 return $http({
                     method: 'GET',
-                    url: 'http://localhost:8080/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/0/1",
+                    url: 'http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/0/1",
                     headers: {
                         'x-access-token': accessToken,
                         'other-hosts': 'false'
@@ -61,7 +61,7 @@ App.factory('api', function($http) {
             if (!returnDate)
                 return $http({
                     method: 'GET',
-                    url: 'http://localhost:8080/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/economy/1",
+                    url: 'http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/economy/1",
                     headers: {
                         'x-access-token': accessToken,
                         'website': 'AirBerlin',
@@ -71,7 +71,7 @@ App.factory('api', function($http) {
             else
                 return $http({
                     method: 'GET',
-                    url: 'http://localhost:8080/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/economy/1",
+                    url: 'http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/economy/1",
                     headers: {
                         'x-access-token': accessToken,
                         'website': 'AirBerlin',
@@ -83,7 +83,7 @@ App.factory('api', function($http) {
             if (!returnDate)
                 return $http({
                     method: 'GET',
-                    url: 'http://localhost:8080/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/business/1",
+                    url: 'http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/business/1",
                     headers: {
                         'x-access-token': accessToken,
                         'website': 'AirBerlin',
@@ -93,7 +93,7 @@ App.factory('api', function($http) {
             else
                 return $http({
                     method: 'GET',
-                    url: 'http://localhost:8080/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/business/1",
+                    url: 'http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com/api/flights/search/' + origin + "/" + destination + "/" + exitDate + "/" + returnDate + "/business/1",
                     headers: {
                         'x-access-token': accessToken,
                         'website': 'AirBerlin',
@@ -228,7 +228,7 @@ App.factory('api', function($http) {
             if (!otherHosts) {
                 return $http({
                     method: 'POST',
-                    url: 'http://localhost:8080/booking',
+                    url: 'http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com/booking',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                         'x-access-token': accessToken,
