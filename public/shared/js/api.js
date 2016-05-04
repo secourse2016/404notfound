@@ -16,12 +16,12 @@ App.factory('api', function($http) {
     return {
         getStripeKey: function(url) {
             return $http({
-                method: 'GET',
-                url: url,
-                headers: {
-                    'x-access-token': accessToken,
-                    'Content-Type':undefined
-                  }
+              'method': 'GET',
+              'url': url,
+              'headers': {
+                  'x-access-token': accessToken,
+                  'website': 'AirBerlin'
+              }
             });
         },
         getAirports: function() {
