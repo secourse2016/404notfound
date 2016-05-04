@@ -326,4 +326,36 @@ router.post("/booking", function(req, res) {
 
 });
 
+router.get('/booking/:id', function(req, res) {
+
+  db.getBooking(req.params.id, function(err, booking) {
+
+    db.getFlight(booking.refExitFlightID, function(err, flight) {
+      booking.exitFlightOrigin = flight.refOriginAirport;
+      booking.exitFlightDestination = flight.refDestinationAirport;
+      booking.exitFlightDeparture = flight.departureUTC;
+      booking.exitFlightArrival = flight.arrivalUTC;
+    });
+
+    db.getFlight(booking.refReEntryFlightID, function(err, flight) {
+      booking.returnFlightOrigin = flight.refOriginAirport;
+      booking.returnFlightDestination = flight.refDestinationAirport;
+      booking.returnFlightDeparture = flight.departureUTC;
+      booking.returnFlightArrival = flight.arrivalUTC;
+    });
+
+    booking.passengersNames = [];
+
+    booking.refPassengerID.forEach(function(passengerID) {
+      db.getPassenger(passengerID, function(err, passenger) {
+        booking.passengersNames.push(passenger.firstName + " " + passenger.middleName + " " + passenger.lastName);
+      });
+    });
+
+    res.send(booking);
+
+  });
+
+});
+
 module.exports = router;
