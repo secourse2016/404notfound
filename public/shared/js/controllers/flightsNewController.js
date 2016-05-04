@@ -56,7 +56,6 @@ var flightNewController = function($scope, $location, api, $routeParams) {
   if (isEconomy) {
     api.getOtherFlightsEco(origin, destination, exitDate.getTime(), returnDateMill).then(function mySuccess(response) {
       $scope.flights = response.data;
-      console.log(response.data)
     }, function myError(response) {
       console.log(response.statusText);
     });
@@ -86,20 +85,21 @@ var flightNewController = function($scope, $location, api, $routeParams) {
   }
 
   $scope.checkNextBtnState = function() {
-    
+
     if ($scope.roundTrip)
       return $scope.isReturningFlightSelected && $scope.isOutgoingFlightSelected;
     else
       return $scope.isOutgoingFlightSelected;
+
   }
 
 }
 
 
 if (Type == 'mobile') {
-  flightNewController.$inject = ['$scope', '$location', 'api'];
+  flightNewController.$inject = ['$scope', '$state', 'api', '$stateParams'];
 } else {
-  flightNewController.$inject = ['$scope', '$location', 'api', '$routeParams', ];
+  flightNewController.$inject = ['$scope', '$location', 'api', '$routeParams'];
 }
 
 
