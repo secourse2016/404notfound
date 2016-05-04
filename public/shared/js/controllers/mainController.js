@@ -59,7 +59,8 @@
            $location.go('tab.flights-new', {
              origin: $scope.selectedOrigin,
              destination: $scope.selectedDest,
-             exitDate: exitDate
+             exitDate: exitDate,
+             isEconomy: !$scope.isBusiness
            })
        else {
          if (Type == 'desktop')
@@ -74,7 +75,9 @@
              origin: $scope.selectedOrigin,
              destination: $scope.selectedDest,
              exitDate: exitDate,
-             returnDate: returnDate
+             returnDate: returnDate,
+             isEconomy: !$scope.isBusiness
+
            })
        }
      } else {
@@ -85,7 +88,9 @@
          $location.go('tab.flights', {
            origin: $scope.selectedOrigin,
            destination: $scope.selectedDest,
-           exitDate: ($scope.exitDate.getTime() / 1000).toFixed(0)
+           exitDate: ($scope.exitDate.getTime() / 1000).toFixed(0),
+           isEconomy: !$scope.isBusiness
+
          })
        else {
          if(Type == 'desktop')
@@ -99,7 +104,9 @@
              origin: $scope.selectedOrigin,
              destination: $scope.selectedDest,
              exitDate: ($scope.exitDate.getTime() / 1000).toFixed(0),
-             returnDate: ($scope.returnDate.getTime() / 1000).toFixed(0)
+             returnDate: ($scope.returnDate.getTime() / 1000).toFixed(0),
+             isEconomy: !$scope.isBusiness
+
            })
        }
 
