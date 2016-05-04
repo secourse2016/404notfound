@@ -58,33 +58,44 @@ var flightController = function($scope, $location, api, $routeParams) {
     return dateOut;
   };
 
+  $scope.goNext = function() {
+
+    api.setOutGoingFlight($scope.selectedOutgoingFlight);
+    api.setReturningFlight($scope.selectedReturningFlight);
+
+    $scope.selectedBooking.refExitFlightID = $scope.selectedOutgoingFlight._id;
+
+    if ($scope.selectedReturningFlight)
+      $scope.selectedBooking.refReEntryFlightID = $scope.selectedReturningFlight._id;
+
+    api.setBooking($scope.selectedBooking);
+
+    if (Type == "desktop")
+      $location.path('/exit-flight');
+    else
+      $location.go('tab.flight-details');
+
+  }
+
+  $scope.goBack = function() {
+    $location.path('/');
+  }
+
+  if (!origin || !destination || !exitDate) {
+    $location.path('/');
+  }
+
+  $scope.checkNextBtnState = function() {
+    if ($scope.roundTrip)
+      return $scope.isReturningFlightSelected && $scope.isOutgoingFlightSelected;
+    else
+      return $scope.isOutgoingFlightSelected;
+  }
+
   if (Type == 'desktop') {
 
     $scope.isCollapsed = true;
     $scope.isOutgoingFlightSelected = false;
-
-    $scope.goNext = function() {
-
-      api.setOutGoingFlight($scope.selectedOutgoingFlight);
-      api.setReturningFlight($scope.selectedReturningFlight);
-
-      $scope.selectedBooking.refExitFlightID = $scope.selectedOutgoingFlight._id;
-
-      if ($scope.selectedReturningFlight)
-        $scope.selectedBooking.refReEntryFlightID = $scope.selectedReturningFlight._id;
-
-      api.setBooking($scope.selectedBooking);
-      $location.path('/exit-flight');
-
-    }
-
-    $scope.goBack = function() {
-      $location.path('/');
-    }
-
-    if (!origin || !destination || !exitDate) {
-      $location.path('/');
-    }
 
     api.getFlights(origin, destination, exitDate.getTime(), returnDateMill).then(function mySuccess(response) {
 
@@ -192,13 +203,6 @@ var flightController = function($scope, $location, api, $routeParams) {
       console.log(response.statusText);
     });
 
-    $scope.checkNextBtnState = function() {
-      if ($scope.roundTrip)
-        return $scope.isReturningFlightSelected && $scope.isOutgoingFlightSelected;
-      else
-        return $scope.isOutgoingFlightSelected;
-    }
-
   } else {
 
     api.getFlights(origin, destination, exitDate.getTime(), returnDateMill).then(function mySuccess(response) {
@@ -218,7 +222,7 @@ var flightController = function($scope, $location, api, $routeParams) {
 }
 
 if (Type == 'mobile') {
-  flightController.$inject = ['$scope', '$location', 'api', '$stateParams'];
+  flightController.$inject = ['$scope', '$state', 'api', '$stateParams'];
 } else {
   flightController.$inject = ['$scope', '$location', 'api', '$routeParams'];
 }
