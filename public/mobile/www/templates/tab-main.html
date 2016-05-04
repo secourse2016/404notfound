@@ -1,6 +1,11 @@
 <ion-view view-title="Book Now">
   <ion-pane>
     <ion-content class="padding">
+
+      <div class="main text-center">
+          <img src="img/logo.png" />
+      </div>
+
       <div class="card">
         <div class="item item-text-wrap">
           <div class="list list-inset">
@@ -30,9 +35,9 @@
           </div>
         </div>
       </div>
-      <button ng-disabled="buttonState()" ng-click="goToFlights()" class="button button-block button-positive">
-        Search for flights
-      </button>
     </ion-content>
+    <ion-footer-bar>
+      <a href="" ng-click="goToFlights()" ng-disabled="buttonState()" class="button button-block button-positive"><h4>Search for flights</h4></a>
+    </ion-footer-bar>
   </ion-pane>
 </ion-view>
