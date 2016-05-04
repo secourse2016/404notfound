@@ -39,7 +39,7 @@ App.controller('paymentCtrl', function($scope, $location, $http, api) {
                         booking.cost = parseInt(booking.returnCost) + parseInt(booking.outgoingCost);
                     else
                         booking.cost = parseInt(booking.outgoingCost);
-                    api.getStripeToken("http://" + booking.outgoingUrl + '/stripe/pubkey').then(function(data) {
+                    api.getStripeKey("http://" + booking.outgoingUrl + '/stripe/pubkey').then(function(data) {
                       console.log(data)
                     })
 
