@@ -1,5 +1,5 @@
 // @abdelrhman-essam
-App.controller('confirmationCtrl', function($scope, $location,api) {
+var confirmationController = function($scope, $location,api, $routeParams) {
       $scope.pageClass = 'page-confirmation';
   $scope.title = "Confirmation";
 
@@ -51,7 +51,20 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
   }
   $scope.flight = api.getChosenOutGoingFlight();
 
+
+  $scope.passenger = api.getPassenger()[0];
+
+  $scope.booking = $routeParams.booking;
+  $scope.notOtherHosts = !api.IsOtherHosts();
+
   $scope.passenger = api.getPassenger()[0];
 
 
-});
+}
+if (Type == 'mobile') {
+  confirmationController.$inject = ['$scope', '$state', 'api', '$stateParams'];
+} else {
+  confirmationController.$inject = ['$scope', '$location', 'api', '$routeParams'];
+}
+
+App.controller('confirmationCtrl', confirmationController);
