@@ -215,6 +215,24 @@ exports.getCountries = function(cb) {
   });
 };
 
+exports.getBooking = function(_id, cb) {
+  DB.collection('bookings').findOne({
+    "_id": _id
+  },function(err, booking) {
+    if (err) return cb(err);
+    cb(null, booking);
+  });
+};
+
+exports.getPassenger = function(_id, cb) {
+  DB.collection('passengers').findOne({
+    "_id": _id
+  },function(err, passenger) {
+    if (err) return cb(err);
+    cb(null, passenger);
+  });
+};
+
 // On Confirmation
 // exports.postPassenger = function(passenger, cb) {
 //     //post created passenger to db
