@@ -52,6 +52,7 @@ var confirmationController = function($scope, $location,api, $routeParams) {
   $scope.passenger = api.getPassenger()[0];
 
   $scope.booking = $routeParams.booking;
+  $scope.notOtherHosts = !api.IsOtherHosts();
 
 //
 // console.log("chosenOutgoingFlight");
