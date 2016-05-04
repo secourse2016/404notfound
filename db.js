@@ -279,25 +279,23 @@ exports.postBooking = function(booking, cb) {
 
 exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, passengersID, bookingID, cb) {
 
+  console.log(seatNumber);
+
+  function findSeat(seat) {
+    return seat.number === seatNumber;
+  }
+
   //update the flight with the allocated seats
   DB.collection('flights').findOne({
     "_id": new ObjectID(flightID)
   },function(err, flight) {
     if (err) return cb(err);
-    var i;
-    var found = false;
     if (!isOtherHosts) {
-      for (i = 0; i < flight.seatmap.length; i++) {
-        var seat = flight.seatmap[i];
-        if ((seat.isEconomy && isEconomy)||(!seat.isEconomy && !isEconomy) && (seat.number == seatNumber)  ) {
-          seat.refPassengerID.push(passengersID[0].toString());
-          seat.refBookingID = bookingID.toString();
-          seat.isEmpty = false;
-          found = true;
-          break;
-        }
-      }
-
+      var seat = flight.seatmap.find(findSeat);
+      console.log(seat.number);
+      seat.refPassengerID.push(passengersID[0].toString());
+      seat.refBookingID = bookingID.toString();
+      seat.isEmpty = false;
     }
     else {
       for (var j = 0; j < passengersID.length; j++) {
