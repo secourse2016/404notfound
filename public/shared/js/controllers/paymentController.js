@@ -1,5 +1,5 @@
 // @mirna
-App.controller('paymentCtrl', function($scope, $location, $http, api) {
+ var paymentCtrl = function($scope, $location, $http, api) {
     $scope.pageClass = 'page-payment';
     $scope.title = "Choose your payment option";
 
@@ -15,8 +15,19 @@ App.controller('paymentCtrl', function($scope, $location, $http, api) {
     $scope.goNext = function() {
         var r = confirm("Are you sure you want pay?");
         if (r == true) {
-            $scope.form.exp_year = $scope.yearsBtnText
-            $scope.form.exp_month = parseInt($scope.months.indexOf($scope.monthsBtnText)) + 1
+
+
+
+            if (Type == 'desktop') {
+                $scope.form.exp_year = $scope.yearsBtnText
+                $scope.form.exp_month = parseInt($scope.months.indexOf($scope.monthsBtnText)) + 1
+
+            } else {
+                $scope.form.exp_year = (parseInt(new Date($scope.date).getYear())) + 2000 - 100
+                $scope.form.exp_month = new Date($scope.date).getMonth()
+
+                console.log($scope.form)
+            }
 
 
 
@@ -27,18 +38,23 @@ App.controller('paymentCtrl', function($scope, $location, $http, api) {
                     console.log(response.id)
                     api.setStripeToken(response.id)
                     api.submitBooking(api.IsOtherHosts()).then(function(data) {
-                      console.log(data)
-                      if(data.data.refNum)
-                        $location.path('/confirmation').search('booking', data.data.refNum);
+                        console.log(data)
+                        if (data.data.refNum)
+                            if (Type == 'desktop')
+                                $location.path('/confirmation').search('booking', data.data.refNum);
+                            else
+                                $location.go('tab.confirmation', {
+                                    booking: data.data.refNum
+                                })
+
                         else
-                        alert(data.data.errorMessage)
-                        // api.clearLocal();
+                            alert(data.data.errorMessage)
+                            // api.clearLocal();
                     }, function(err) {
 
                     })
                 });
-                else
-                 {
+            else {
                 var booking = api.getBooking();
                 if (booking.returnUrl == booking.outgoingUrl || !booking.returnUrl) {
                     if (booking.returnCost)
@@ -52,16 +68,23 @@ App.controller('paymentCtrl', function($scope, $location, $http, api) {
                             booking.paymentToken = response.id;
                             api.setBooking(booking);
                             api.submitBooking(true, url).then(function(data) {
-                              console.log(data)
-                              if(data.data.refNum)
-                                $location.path('/confirmation').search('booking', data.data.refNum);
-                                else
-                                alert(data.data.errorMessage)
+                                console.log(data)
+                                if (data.data.refNum) {
+                                    Stripe.setPublishableKey('pk_test_SiY0xaw7q3LNlpCnkhpo60jt');
+                                    if (Type == 'desktop')
+                                        $location.path('/confirmation').search('booking', data.data.refNum);
+                                    else
+                                        $location.go('tab.confirmation', {
+                                            booking: data.data.refNum
+                                        })
+
+                                } else
+                                    alert(data.data.errorMessage)
 
                             })
 
                         }, function(err) {
-                          console.log(err)
+                            console.log(err)
                         })
                     }, function(status) {
                         console.log(status)
@@ -85,38 +108,44 @@ App.controller('paymentCtrl', function($scope, $location, $http, api) {
                             outgoingBooking.paymentToken = response.id;
                             api.setBooking(outgoingBooking);
                             api.submitBooking(true, url).then(function(data) {
-                              console.log(data)
-                                // $location.path('/confirmation').search('booking', data.data.refNum);
-                                if(data.data.refNum)
-                                if( booking.returnUrl){
-                                  var url = "http://" + booking.returnUrl;
-                                  api.getStripeKey(url + '/stripe/pubkey').then(function(data) {
-                                      Stripe.setPublishableKey(data.data)
-                                      Stripe.card.createToken($scope.form, function(status, response) {
+                                console.log(data)
+                                    // $location.path('/confirmation').search('booking', data.data.refNum);
+                                if (data.data.refNum)
+                                    if (booking.returnUrl) {
+                                        var url = "http://" + booking.returnUrl;
+                                        api.getStripeKey(url + '/stripe/pubkey').then(function(data) {
+                                            Stripe.setPublishableKey(data.data)
+                                            Stripe.card.createToken($scope.form, function(status, response) {
 
-                                          returnBooking.paymentToken = response.id;
-                                          api.setBooking(returnBooking);
-                                          api.submitBooking(true, url).then(function(data) {
-                                            if(data.data.refNum)
-                                              $location.path('/confirmation').search('booking', data.data.refNum);
-                                              else
-                                              alert(data.data.errorMessage)
+                                                returnBooking.paymentToken = response.id;
+                                                api.setBooking(returnBooking);
+                                                api.submitBooking(true, url).then(function(data) {
+                                                    if (data.data.refNum) {
+                                                        Stripe.setPublishableKey('pk_test_SiY0xaw7q3LNlpCnkhpo60jt');
+                                                        if (Type == 'desktop')
+                                                            $location.path('/confirmation').search('booking', data.data.refNum);
+                                                        else
+                                                            $location.go('tab.confirmation', {
+                                                                booking: data.data.refNum
+                                                            })
+                                                    } else
+                                                        alert(data.data.errorMessage)
 
-                                          })
+                                                })
 
-                                      }, function(err) {
-                                        console.log(err)
-                                      })
-                                  }, function(status) {
-                                      console.log(status)
-                                  })
-                                }
+                                            }, function(err) {
+                                                console.log(err)
+                                            })
+                                        }, function(status) {
+                                            console.log(status)
+                                        })
+                                    }
 
 
                             })
 
                         }, function(err) {
-                          console.log(err)
+                            console.log(err)
                         })
                     }, function(status) {
                         console.log(status)
@@ -143,24 +172,7 @@ App.controller('paymentCtrl', function($scope, $location, $http, api) {
             $location.path('/passenger-details');
             return;
         }
-        var price = 0;
-        if (api.getCabinetOutgoingClass() == 'Economy')
-            price = api.getChosenOutGoingFlight().economyFare
-        else
-            price = api.getChosenOutGoingFlight().businessFare
 
-        if (api.getChosenReturningFlight()) {
-
-            if (api.getCabinetReturningClass() == 'Economy')
-                price = price + api.getChosenReturningFlight().economyFare
-            else
-                price = price + api.getChosenReturningFlight().businessFare
-
-
-        }
-
-
-        $scope.price = price;
         $scope.years = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
         $scope.yearsBtnText = $scope.years[0];
         $scope.changeYear = function(text) {
@@ -174,5 +186,31 @@ App.controller('paymentCtrl', function($scope, $location, $http, api) {
             $scope.monthsBtnNo = $scope.months.indexOf(text);
         }
     }
+    var price = 0;
+    if (api.getCabinetOutgoingClass() == 'Economy')
+        price = api.getChosenOutGoingFlight().economyFare
+    else
+        price = api.getChosenOutGoingFlight().businessFare
 
-});
+    if (api.getChosenReturningFlight()) {
+
+        if (api.getCabinetReturningClass() == 'Economy')
+            price = price + api.getChosenReturningFlight().economyFare
+        else
+            price = price + api.getChosenReturningFlight().businessFare
+
+
+    }
+
+
+    $scope.price = price;
+}
+
+
+if (Type == 'mobile') {
+  paymentCtrl.$inject = ['$scope', '$state', '$http', 'api'];
+} else {
+  paymentCtrl.$inject = ['$scope', '$location', '$http', 'api'];
+}
+
+App.controller('paymentCtrl', paymentCtrl);

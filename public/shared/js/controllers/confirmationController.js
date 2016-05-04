@@ -33,9 +33,7 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
       $location.path('/social');
 
     }
-    $scope.flight = api.getChosenOutGoingFlight();
 
-    $scope.passenger = api.getPassenger()[0];
     $('#quotes-text').typeIt({
       strings: [
         '"Travel and change of place impart new vigor to the mind."-Seneca',
@@ -48,21 +46,12 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
       loop: true
     });
 
-  }
+  }else{
 
-//
-// console.log("chosenOutgoingFlight");
-//   console.log(api.getChosenOutGoingFlight());
-// console.log("chosenReturningFlight")
-// console.log(api.getChosenReturningFlight());
-// console.log("passenger")
-// console.log(api.getPassenger())
-// console.log("booking")
-// console.log(api.getBooking())
-// console.log("goingSeat")
-// console.log(api.getOutgoingSeat())
-// console.log("retrunSeat")
-// console.log(api.getReturnSeat())
+  }
+  $scope.flight = api.getChosenOutGoingFlight();
+
+  $scope.passenger = api.getPassenger()[0];
 
 
 });

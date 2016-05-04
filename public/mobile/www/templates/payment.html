@@ -1,24 +1,36 @@
 <ion-view view-title="Choose a payment method">
   <ion-content class="padding">
-    <a href="#/tab/confirmation" class="button button-block button-positive">
-      confirmation
-    </a>
+    <div class="card">
+      <ion-list>
+
+        <div class="item item-text-wrap">
+          <label class="item ">
+            <i class="icon ion-person"></i>Price</label>
+
+        </ion-list>
+      </div>
+    </div>
+
     <ion-list>
 
       <div class="list">
+        <label class="item ">
+          <i class="icon ion-person"></i>Price ${{price}}</label>
+
         <label class="item item-input item-floating-label">
           <span class="input-label">Valid Card number</span>
-          <input type="text" placeholder="Valid Card number">
+          <input type="text" ng-model="form.number" placeholder="Valid Card number">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">CVC code</span>
-          <input type="text" placeholder="CVC code">
+          <input type="text" ng-model="form.cvc" placeholder="CVC code">
         </label>
         <!-- <label class="item item-input item-select"> -->
-          <label class="item item-input">
-            <span class="input-label">Expire date: </span>
-            <input type="month">
-          </label>
+        <label class="item item-input">
+          <span class="input-label">Expire date:
+          </span>
+          <input type="month" ng-model="$parent.date">
+        </label>
 
       </div>
 
@@ -27,7 +39,9 @@
   </ion-content>
 
   <ion-footer-bar>
-    <a href="" class="button button-block button-assertive"><h4>€{{price}}</h4></a>
+    <a href="" ng-click="goNext()" class="button button-block button-positive">
+      <h4>Next</h4>
+    </a>
   </ion-footer-bar>
 
 </ion-view>

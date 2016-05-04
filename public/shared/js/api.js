@@ -104,7 +104,7 @@ App.factory('api', function($http) {
         getAircrafts: function() {
             return $http({
                 method: 'GET',
-                url: '/api/aircrafts',
+                url: 'http://ec2-52-38-101-89.us-west-2.compute.amazonaws.com/api/aircrafts',
                 headers: {
                     'x-access-token': accessToken,
                     'website': 'AirBerlin'

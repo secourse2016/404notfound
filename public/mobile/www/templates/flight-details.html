@@ -5,10 +5,12 @@
       <div class="row">
         <div class="card" style="width:100%">
           <div class="item item-divider">
-            <h3 style="font-size:20px"><i class="icon ion-android-plane"></i> Exit Flight</h3>
+            <h3 style="font-size:20px">
+              <i class="icon ion-android-plane"></i>
+              Exit Flight</h3>
 
-
-            <h4 style="font-size:15px">Flight {{outgoingFlight.number}}</h4>
+            <h4 style="font-size:15px">Flight
+              {{outgoingFlight.number}}</h4>
 
             <h4 style="font-size:15px">{{outgoingFlight.duration}}</h4>
           </div>
@@ -36,34 +38,39 @@
       </div>
     </div>
 
-
     <div class="row">
       <div class="card" style="width:100%">
-        <div class="item item-divider"> <i class="icon ion-person-stalker"> Number of passengers</i></div>
+        <div class="item item-divider">
+          <i class="icon ion-person-stalker">
+            Number of passengers</i>
+        </div>
 
         <div class="item item-text-wrap">1 passenger</div>
 
-
-
-        <div class="item item-divider"><i class="icon ion-briefcase">  Flying class</i></div>
+        <div class="item item-divider">
+          <i class="icon ion-briefcase">
+            Flying class</i>
+        </div>
 
         <div class="item item-text-wrap">{{outbusinessOrEcon}}</div>
 
-
-
-        <div class="item item-divider"><i class="icon ion-cash">  Flight fare</i></div>
-
+        <div class="item item-divider">
+          <i class="icon ion-cash">
+            Flight fare</i>
+        </div>
 
         <div class="item item-text-wrap">&euro;{{outfare}}</div>
 
-
-        <div class="item item-divider"> <i class="icon ion-plus-circled">  Flight facilities</i></div>
+        <div class="item item-divider">
+          <i class="icon ion-plus-circled">
+            Flight facilities</i>
+        </div>
 
         <ion-list>
 
           <div class="item item-text-wrap" ng-repeat="facility in outfacilitiesResult">{{facility}}</div>
 
-      </iom-list>
+        </iom-list>
       </div>
     </div>
 
@@ -72,10 +79,12 @@
         <div class="row">
           <div class="card" style="width:100%">
             <div class="item item-divider">
-              <h3 style="font-size:20px"><i class="icon ion-android-plane"></i>  Re-entry Flight</h3>
+              <h3 style="font-size:20px">
+                <i class="icon ion-android-plane"></i>
+                Re-entry Flight</h3>
 
-
-              <h4 style="font-size:15px">Flight {{returnFlight.number}}</h4>
+              <h4 style="font-size:15px">Flight
+                {{returnFlight.number}}</h4>
 
               <h4 style="font-size:15px">{{returnFlight.duration}}</h4>
             </div>
@@ -103,41 +112,49 @@
         </div>
       </div>
 
-
       <div class="row">
         <div class="card" style="width:100%">
-          <div class="item item-divider"> <i class="icon ion-person-stalker"> Number of passengers</i></div>
+          <div class="item item-divider">
+            <i class="icon ion-person-stalker">
+              Number of passengers</i>
+          </div>
 
           <div class="item item-text-wrap">1 passenger</div>
 
-
-
-          <div class="item item-divider"><i class="icon ion-briefcase">  Flying class</i></div>
+          <div class="item item-divider">
+            <i class="icon ion-briefcase">
+              Flying class</i>
+          </div>
 
           <div class="item item-text-wrap">{{rebusinessOrEcon}}</div>
 
+          <div class="item item-divider">
+            <i class="icon ion-cash">
+              Flight fare</i>
+          </div>
 
+          <div class="item item-text-wrap">&euro;
+            {{refare}}</div>
 
-          <div class="item item-divider"><i class="icon ion-cash">  Flight fare</i></div>
-
-
-          <div class="item item-text-wrap">&euro; {{refare}}</div>
-
-
-          <div class="item item-divider"> <i class="icon ion-plus-circled">  Flight facilities</i></div>
+          <div class="item item-divider">
+            <i class="icon ion-plus-circled">
+              Flight facilities</i>
+          </div>
           <ion-list>
 
             <div class="item item-text-wrap" ng-repeat="facility in refacilitiesResult">{{facility}}</div>
 
-        </iom-list>
+          </iom-list>
+        </div>
       </div>
     </div>
-</div>
 
   </ion-content>
 
   <ion-footer-bar>
-    <a href="#/tab/passenger-details" class="button button-block button-positive"><h4>Next</h4></a>
+    <a href="#/tab/passenger-details" class="button button-block button-positive">
+      <h4>Next</h4>
+    </a>
   </ion-footer-bar>
 
 </ion-view>

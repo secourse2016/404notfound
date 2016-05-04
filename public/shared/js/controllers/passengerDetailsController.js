@@ -5,28 +5,6 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
     $scope.buttonTextNxt = "Next";
     $scope.buttonTextBk = "Back";
 
-    $scope.passenger = {
-        type: null,
-        countryCode: null,
-        nationality: null,
-        sex: null,
-        birthDate: null,
-        birthPlace: null,
-        nationalID: null,
-        authority: null,
-        issueDate: null,
-        expiryDate: null,
-        points: null,
-        membership: null,
-        firstName: null,
-        middleName: null,
-        lastName: null,
-        passportNumber: null,
-        phoneNumber: null,
-        email: null
-
-    };
-
 
     if (Type == 'desktop') {
         if (!api.getChosenOutGoingFlight() || !api.getBooking()) {
@@ -49,9 +27,6 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
 
 
 
-
-
-        var complete = false;
         $scope.goNext = function() {
 
 
@@ -112,13 +87,14 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
             //   else $location.path('/payment')
             // }
 
-            var fields = [true, true, true, true, true, true, true, true, true];
+            var fields = [true, true, true, true, true, true, true, true, true, true];
 
             $scope.alertFName = false;
             $scope.alertMName = false;
             $scope.alertLName = false;
             $scope.alertPhNumber = false;
             $scope.alertPNumber = false;
+            $scope.alertCountry = false;
             $scope.alertEmail = false;
             $scope.alertConfirm = false;
             $scope.alertCheck = false;
@@ -144,20 +120,24 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
                 fields[4] = false;
                 $scope.alertPNumber = true;
             }
-            if ($scope.email1 == null) {
+            if ($scope.nationality == null) {
                 fields[5] = false;
-                $scope.alertEmail = true;
+                $scope.alertCountry = true;
             }
-            if ($scope.emailver == null) {
+            if ($scope.email1 == null) {
                 fields[6] = false;
                 $scope.alertEmail = true;
             }
-            if ($scope.email1 != $scope.emailver) {
+            if ($scope.emailver == null) {
                 fields[7] = false;
+                $scope.alertEmail = true;
+            }
+            if ($scope.email1 != $scope.emailver) {
+                fields[8] = false;
                 $scope.alertConfirm = true;
             }
             if ($scope.check == null) {
-                fields[8] = false;
+                fields[9] = false;
                 $scope.alertCheck = true;
             }
 
@@ -293,20 +273,20 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
                 fieldsMob[4] = false;
                 alert("Please enter your passport number, it must be 8 digits.");
             }
-            if ($scope.email1 == null) {
+            if ($scope.email1Mob == null) {
                 fieldsMob[5] = false;
                 alert("Please enter your email, it must be in this format 'a@xyz.com' ");
             }
-            if ($scope.emailver == null) {
+            if ($scope.emailverMob == null) {
                 fieldsMob[6] = false;
                 alert("Please confirm your email, it must be in this format 'a@xyz.com' ");
 
             }
-            if ($scope.email1 != $scope.emailver) {
+            if ($scope.email1Mob != $scope.emailverMob) {
                 fieldsMob[7] = false;
                 alert("The entered emails do not match");
             }
-            if ($scope.check == null) {
+            if ($scope.checkMob == null) {
                 fieldsMob[8] = false;
                 alert("Please verify the information you've entered");
             }
@@ -323,7 +303,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
             if (allpassingMob == true) {
                 api.setPassenger($scope.passenger);
 
-                $location.path('/tab/seating/outgoing');
+                $location.path('/tab/payment');
             }
 
         };
