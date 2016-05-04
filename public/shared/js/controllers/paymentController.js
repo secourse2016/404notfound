@@ -16,34 +16,7 @@ var paymentCtrl = function($scope, $location, $http, api) {
 
 
 
-    $scope.otherHosts = api.IsOtherHosts();
-    console.log(api.getBooking().outgoingCost)
-    if ($scope.otherHosts) {
-        if (api.getBooking().returnCost)
-            $scope.price = parseInt(api.getBooking().outgoingCost) + parseInt(api.getBooking().returnCost);
-        else
-            $scope.price = parseInt(api.getBooking().outgoingCost)
-        console.log($scope.price)
-    } else {
-        var price = 0;
-        if (api.getCabinetOutgoingClass() == 'Economy')
-            price = api.getChosenOutGoingFlight().economyFare
-        else
-            price = api.getChosenOutGoingFlight().businessFare
 
-        if (api.getChosenReturningFlight()) {
-
-            if (api.getCabinetReturningClass() == 'Economy')
-                price = price + api.getChosenReturningFlight().economyFare
-            else
-                price = price + api.getChosenReturningFlight().businessFare
-
-
-        }
-
-
-        $scope.price = price;
-    }
     $scope.goNext = function() {
         var r = confirm("Are you sure you want pay?");
         if (r == true) {
@@ -93,7 +66,9 @@ var paymentCtrl = function($scope, $location, $http, api) {
                     else
                         booking.cost = parseInt(booking.outgoingCost);
                     var url = "http://" + booking.outgoingUrl;
+                    console.log(url + '/stripe/pubkey/')
                     api.getStripeKey(url + '/stripe/pubkey/').then(function(data) {
+                      console.log(data)
                         Stripe.setPublishableKey(data.data)
                         Stripe.card.createToken($scope.form, function(status, response) {
                             booking.paymentToken = response.id;
@@ -217,7 +192,34 @@ var paymentCtrl = function($scope, $location, $http, api) {
             $scope.monthsBtnNo = $scope.months.indexOf(text);
         }
     }
+    $scope.otherHosts = api.IsOtherHosts();
+    console.log(api.getBooking().outgoingCost)
+    if ($scope.otherHosts) {
+        if (api.getBooking().returnCost)
+            $scope.price = parseInt(api.getBooking().outgoingCost) + parseInt(api.getBooking().returnCost);
+        else
+            $scope.price = parseInt(api.getBooking().outgoingCost)
+        console.log($scope.price)
+    } else {
+        var price = 0;
+        if (api.getCabinetOutgoingClass() == 'Economy')
+            price = api.getChosenOutGoingFlight().economyFare
+        else
+            price = api.getChosenOutGoingFlight().businessFare
 
+        if (api.getChosenReturningFlight()) {
+
+            if (api.getCabinetReturningClass() == 'Economy')
+                price = price + api.getChosenReturningFlight().economyFare
+            else
+                price = price + api.getChosenReturningFlight().businessFare
+
+
+        }
+
+
+        $scope.price = price;
+    }
 }
 
 
