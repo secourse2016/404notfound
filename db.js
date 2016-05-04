@@ -279,46 +279,61 @@ exports.postBooking = function(booking, cb) {
 
 exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, passengersID, bookingID, cb) {
 
-  console.log(seatNumber);
+  function findEmptyEconomySeat(seat) {
+    return seat.isEconomy === true && seat.isEmpty === true;
+  }
 
-  function findSeat(seat) {
-    return seat.number === seatNumber;
+  function findEmptyBusinessSeat(seat) {
+    return seat.isEconomy === false && seat.isEmpty === true;
   }
 
   //update the flight with the allocated seats
   DB.collection('flights').findOne({
     "_id": new ObjectID(flightID)
-  },function(err, flight) {
+  }, function(err, flight) {
+
     if (err) return cb(err);
+
     if (!isOtherHosts) {
-      var seat = flight.seatmap.find(findSeat);
+
+      var seat;
+
+      if(isEconomy)
+        seat = flight.seatmap.find(findEmptyEconomySeat);
+      else
+        var seat = flight.seatmap.find(findEmptyBusinessSeat);
+
       console.log(seat.number);
+
       seat.refPassengerID.push(passengersID[0].toString());
       seat.refBookingID = bookingID.toString();
       seat.isEmpty = false;
-    }
-    else {
-      for (var j = 0; j < passengersID.length; j++) {
-        found = false;
-        for (i = 0; i < flight.seatmap.length; i++) {
-          var seat = flight.seatmap[i];
-          if ((seat.isEconomy && isEconomy)||(!seat.isEconomy && !isEconomy) && seat.isEmpty) {
-            seat.refPassengerID.push(passengersID[j].toString());
-            seat.refBookingID = bookingID.toString();
-            seat.isEmpty = false;
-            found = true;
-            break;
-          }
-        }
 
-      }
+    } else {
 
+      passengersID.forEach(function(passengerID) {
+
+        var seat;
+
+        if(isEconomy)
+          seat = flight.seatmap.find(findEmptyEconomySeat);
+        else
+          var seat = flight.seatmap.find(findEmptyBusinessSeat);
+
+        console.log(seat.number);
+
+
+        seat.refPassengerID.push(passengerID.toString());
+        seat.refBookingID = bookingID.toString();
+        seat.isEmpty = false;
+
+      });
 
     }
 
     if (isEconomy) {
 
-      if (found && flight.emptyEconomySeatsCount >= passengersID.length)
+      if (flight.emptyEconomySeatsCount >= passengersID.length)
         DB.collection('flights').update({
           "_id": new ObjectID(flightID)
         }, {
@@ -337,7 +352,7 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
 
     } else {
 
-      if (found && flight.emptyBusinessSeatsCount >= passengersID.length)
+      if (flight.emptyBusinessSeatsCount >= passengersID.length)
         DB.collection('flights').update({
           "_id": new ObjectID(flightID)
         }, {
