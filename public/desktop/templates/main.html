@@ -1,166 +1,175 @@
 <div class="container vertical-center">
-  <div class="col-md-6 col-sm-12">
-    <div class="row changing-text">
-      <h1 id="main-text"></h1>
-    </div>
-    <div class="row">
-      <div class="col-lg-4 col-lg-offset-4">
-        <!-- <button type="button" class="btn btn-primary btn-lg ">View Offers</button> -->
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6 col-sm-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 >{{"MAIN.BOOK_NOW" | translate}}</h4>
-      </div>
-      <div class="panel-body">
-
-        <form class="form-horizontal">
-
-          <div class="form-group">
-            <div class="col-lg-12">
-              <div class="input-group">
-                <span class="input-group-addon" >{{'MAIN.FROM' | translate}}</span>
-                <input name="originAirports" type="text" placeholder="Flying From" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
-
-
-              </div>
+    <div class="col-md-6 col-sm-12">
+        <div class="row changing-text">
+            <h1 id="main-text"></h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <!-- <button type="button" class="btn btn-primary btn-lg ">View Offers</button> -->
             </div>
-          </div>
+        </div>
+    </div>
 
+    <div class="col-md-6 col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 >{{"MAIN.BOOK_NOW" | translate}}</h4>
+            </div>
+            <div class="panel-body">
 
+                <form class="form-horizontal">
 
-          <div class="form-group">
-            <div class="col-lg-12">
-              <div class="input-group">
-                <span class="input-group-addon">{{'MAIN.DEPARTURE_DATE' | translate}}</span>
-                  <input type="text" class="form-control" uib-datepicker-popup ng-model="exitDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
-                  <span class="input-group-addon btn btn-default" ng-click="open2()">
-                    <i class="glyphicon glyphicon-calendar"></i>
-                  </span>
-                  <!-- <button type="button" class="btn btn-default input-group-addon" ng-click="open2()">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">{{'MAIN.FROM' | translate}}</span>
+                                <input name="originAirports" type="text" placeholder="{{'MAIN.FLYING_FROM' | translate}}" ng-model="selectedOrigin" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">{{'MAIN.DEPARTURE_DATE' | translate}}</span>
+                                <input type="text" class="form-control" uib-datepicker-popup ng-model="exitDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                                <span class="input-group-addon btn btn-default" ng-click="open2()">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </span>
+                                <!-- <button type="button" class="btn btn-default input-group-addon" ng-click="open2()">
                   </button> -->
-              </div>
-            </div>
-          </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">{{'MAIN.TO' | translate}}</span>
+                                <input name="desAirports" type="text" placeholder="{{'MAIN.FLYING_TO' | translate}}" ng-model="selectedDest" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="form-group">
-            <div class="col-lg-12">
-              <div class="input-group">
-                <span class="input-group-addon" >{{'MAIN.TO' | translate}}</span>
-                <input name="desAirports" type="text" placeholder="Flying To" ng-model="selectedDest" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10" class="form-control">
-
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-lg-12">
-              <div class="input-group">
-                <span class="input-group-addon">Re-entry Date</span>
-                  <input ng-disabled="flight.type == 'one'" type="text" class="form-control" uib-datepicker-popup ng-model="returnDate" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
-                  <span class="input-group-addon btn btn-default" ng-click="open()">
-                    <i class="glyphicon glyphicon-calendar"></i>
-                  </span>
-                  <!-- <button type="button" class="btn btn-default input-group-addon" ng-click="open2()">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">{{'MAIN.REENTRY_DATE' | translate}}</span>
+                                <input ng-disabled="flight.type == 'one'" type="text" class="form-control" uib-datepicker-popup ng-model="returnDate" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                                <span class="input-group-addon btn btn-default" ng-click="open()">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </span>
+                                <!-- <button type="button" class="btn btn-default input-group-addon" ng-click="open2()">
                   </button> -->
-              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-4">
+                            <div class="btn-group" uib-dropdown is-open="status1.isopen">
+                                <button disabled type="button" class="btn btn-default" uib-dropdown-toggle>
+                                    {{adultBtnText}}
+                                    <span class="caret"></span>
+                                </button>
+                                <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                    <li>
+                                        <a ng-repeat="adult in adults" ng-click="changeAdult(adult)">{{adult}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <br>
+                            <span class="small-text">12+
+                                {{'MAIN.YEARS' | translate}}</span>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="text-center">
+                                <div class="btn-group" uib-dropdown is-open="status2.isopen">
+                                    <button disabled type="button" class="btn btn-default" uib-dropdown-toggle>
+                                        {{childrenBtnText}}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                        <li>
+                                            <a ng-repeat="child in children" ng-click="changeChildren(child)">{{child}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <br>
+                                <span class="small-text">2-11
+                                    {{'MAIN.YEARS' | translate}}</span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="pull-right">
+                                <div class="btn-group " uib-dropdown is-open="status3.isopen">
+                                    <button type="button" class="btn btn-success" uib-dropdown-toggle>
+                                        {{infantBtnText}}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                        <li>
+                                            <a ng-repeat="infant in infants" ng-click="changeInfant(infant)">{{infant}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <br>
+                                <span class="small-text">{{'MAIN.UNDER_2_YEARS' | translate}}</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <div class="radio">
+                                <label>
+                                    <input ng-model="flight.type" type="radio" name="optionsRadios" id="optionsRadios1" value="one" checked>
+                                    {{'MAIN.ONE_WAY' | translate}}
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input ng-model="flight.type" type="radio" name="optionsRadios" id="optionsRadios2" value="round">
+                                    {{'MAIN.ROUND_TRIP' | translate}}
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+
+                            <label class="checkbox-inline"><input type="checkbox" ng-model="otherAirline.value">{{'MAIN.OTHER_AIRLINES' | translate}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div ng-show="otherAirline.value" class="col-lg-6">
+                            <div class="btn-group" uib-dropdown is-open="status4.isopen">
+                                <button type="button" class="btn btn-success" uib-dropdown-toggle>
+                                    {{classeBtnText}}
+                                    <span class="caret"></span>
+                                </button>
+                                <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                    <li>
+                                        <a ng-repeat="class in classes" ng-click="changeClass(class)">{{class}}</a>
+                                    </li>
+                                </ul>
+                            </div >
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <button type="button" class="btn btn-primary btn-lg " ng-disabled="buttonState()" ng-click="goToFlights()">{{'MAIN.SEARCH_FOR_FLIGHTS' | translate}}</button>
+                    </div>
+
+                </form>
             </div>
-          </div>
-
-
-          <div class="form-group">
-            <div class="col-xs-4">
-              <div class="btn-group" uib-dropdown is-open="status1.isopen">
-                <button disabled type="button" class="btn btn-default" uib-dropdown-toggle>
-                  {{adultBtnText}}
-                  <span class="caret"></span>
-                </button>
-                <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                  <li>
-                    <a ng-repeat="adult in adults" ng-click="changeAdult(adult)">{{adult}}</a>
-                  </li>
-                </ul>
-              </div>
-              <br>
-              <span class="small-text">12+ {{'MAIN.YEARS' | translate}}</span>
-            </div>
-
-            <div class="col-xs-4">
-              <div class="text-center">
-                <div class="btn-group" uib-dropdown is-open="status2.isopen">
-                  <button disabled type="button" class="btn btn-default" uib-dropdown-toggle>
-                    {{childrenBtnText}}
-                    <span class="caret"></span>
-                  </button>
-                  <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                    <li>
-                      <a ng-repeat="child in children" ng-click="changeChildren(child)">{{child}}</a>
-                    </li>
-                  </ul>
-                </div>
-                <br>
-                <span class="small-text">2-11 {{'MAIN.YEARS' | translate}}</span>
-              </div>
-
-            </div>
-
-            <div class="col-xs-4">
-              <div class="pull-right">
-                <div class="btn-group " uib-dropdown is-open="status3.isopen">
-                  <button type="button" class="btn btn-success" uib-dropdown-toggle>
-                    {{infantBtnText}}
-                    <span class="caret"></span>
-                  </button>
-                  <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                    <li>
-                      <a ng-repeat="infant in infants" ng-click="changeInfant(infant)">{{infant}}</a>
-                    </li>
-                  </ul>
-                </div>
-                <br>
-                <span class="small-text">{{'MAIN.UNDER_2_YEARS' | translate}}</span>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="form-group">
-            <div class="col-lg-6">
-              <div class="radio">
-                <label>
-                  <input ng-model="flight.type" type="radio" name="optionsRadios" id="optionsRadios1" value="one" checked>
-                {{'MAIN.ONE_WAY' | translate}}
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input ng-model="flight.type" type="radio" name="optionsRadios" id="optionsRadios2" value="round">
-                  {{'MAIN.ROUND_TRIP' | translate}}
-                </label>
-              </div>
-            </div>
-
-          </div>
-          <div class="form-group">
-            <div class="col-lg-6">
-
-              <label class="checkbox-inline"><input type="checkbox" ng-model="otherAirline.value">Search other airlines?</label>
-            </div>
-          </div>
-
-
-          <div class="col-lg-4 col-lg-offset-4">
-            <button type="button" class="btn btn-primary btn-lg " ng-disabled="buttonState()" ng-click="goToFlights()">{{'MAIN.SEARCH_FOR_FLIGHTS' | translate}}</button>
-          </div>
-
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
 
 </div>

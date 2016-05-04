@@ -4,7 +4,7 @@ var concat = require('gulp-concat');
 var nodemon = require('gulp-nodemon');
 var sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('default', ['start', 'watch']);
+gulp.task('default', ['start','copyJs', 'watch']);
 
 gulp.task('install', function() {
     gulp.src(['./public/desktop/bower.json','./public/mobile/bower.json', './package.json'])
