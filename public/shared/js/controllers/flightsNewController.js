@@ -9,31 +9,63 @@ var flightNewController = function($scope, $location, api, $routeParams) {
     $scope.isCollapsed = false;
     $scope.isOutgoingFlightSelected = false;
   } else {
+
+    String.prototype.contains = function(it) {
+      return this.indexOf(it) != -1;
+    };
+
     $scope.miniLogoPath = function(operatorAirline) {
+
       if (operatorAirline === "Air Berlin")
         return "img/air-berlin-mini-logo.png"
-      if (operatorAirline === "Swiss Air")
+        
+      if (operatorAirline.toLowerCase().contains("swiss"))
         return "img/swiss-air-mini-logo.png"
-      if (operatorAirline === "Austrian")
+      if (operatorAirline.toLowerCase().contains("austrian"))
         return "img/austrian-airlines-mini-logo.png"
-      if (operatorAirline === "Hawaiian")
+      if (operatorAirline.toLowerCase().contains("hawaiian"))
         return "img/hawaiian-airlines-mini-logo.png"
-      if (operatorAirline === "AirNewZealand")
+      if (operatorAirline.toLowerCase().contains("zealand"))
         return "img/air-new-zealand-mini-logo.png"
-      if (operatorAirline === "KLM")
+      if (operatorAirline.toLowerCase().contains("klm"))
         return "img/klm-mini-logo.png"
-      if (operatorAirline === "Air Madagascar")
+      if (operatorAirline.toLowerCase().contains("madagascar"))
         return "img/air-madagascar-mini-logo.png"
-      if (operatorAirline === "Iberia")
+      if (operatorAirline.toLowerCase().contains("iberia"))
         return "img/iberia-mini-logo.png"
-      if (operatorAirline === "United")
+      if (operatorAirline.toLowerCase().contains("united"))
         return "img/united-mini-logo.png"
-      if (operatorAirline === "Delta Airlines")
+      if (operatorAirline.toLowerCase().contains("delta"))
         return "img/delta-airlines-mini-logo.png"
-      if (operatorAirline === "Turkish Airlines")
+      if (operatorAirline.toLowerCase().contains("turkish"))
         return "img/turkish-airlines-mini-logo.png"
+      if (operatorAirline.toLowerCase().contains("france"))
+        return "img/air-france-mini-logo.png"
+      if (operatorAirline.toLowerCase().contains("canada"))
+        return "img/airline-canada-mini-logo.png"
+      if (operatorAirline.toLowerCase().contains("alaska"))
+        return "img/alaska-airlines-mini-logo.png"
+      if (operatorAirline.toLowerCase().contains("alitalia"))
+        return "img/alitalia-mini-logo.png"
+      if (operatorAirline.toLowerCase().contains("cathay"))
+        return "img/cathay-pacific-mini-logo.png"
+      if (operatorAirline.toLowerCase().contains("dragon"))
+        return "img/dragon-air-mini-logo.png"
+      if (operatorAirline.toLowerCase().contains("japan"))
+        return "img/japan-airlines-mini-logo.png"
+      if (operatorAirline.toLowerCase().contains("malaysia"))
+        return "img/malaysia-airlines-mini-logo.png"
+      if (operatorAirline.toLowerCase().contains("northwest"))
+        return "img/northwest-airlines-mini-logo.png"
+      if (operatorAirline.toLowerCase().contains("south"))
+        return "img/south-african-airways-logo.png"
+      if (operatorAirline.toLowerCase().contains("virgin"))
+        return "img/virgin-australia-mini-logo.png"
+
       return "img/other-airline-mini-logo.png"
+
     };
+
   }
 
   api.setIsOtherHosts(true);
