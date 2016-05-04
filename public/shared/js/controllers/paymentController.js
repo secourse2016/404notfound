@@ -166,7 +166,7 @@ var paymentCtrl = function($scope, $location, $http, api) {
         // if (!api.IsOtherHosts())
     }
     $scope.goBack = function() {
-        $location.path('/seating');
+        $location.path('/passenger-details');
     }
 
     if (Type == 'desktop') {
