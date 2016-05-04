@@ -2,11 +2,11 @@
 
   <div class="flights">
 
-    <div class="bar bar-subheader bar-light">
-      <h1 class="title">{{origin}} ✈ {{constructDate(exitDate) | date:'longDate'}} ✈ {{destination}}</h1>
-    </div>
+    <ion-content>
 
-    <ion-content class="has-subheader">
+      <div class="item item-divider text-center">
+        {{origin}} ✈ {{exitDate | date:'longDate'}} ✈ {{destination}}
+      </div>
 
       <ion-list>
 
@@ -20,7 +20,7 @@
 
           <div class="item item-text-wrap">
 
-            <ion-radio ng-model="checked" ng-repeat="flight in flights.outgoingFlights" ng-init="checked = false" ng-click="selectOutgoingFlight(flight)" name="outgoing">
+            <ion-radio ng-model="checked" ng-repeat="flight in flights.outgoingFlights" ng-init="checked = false" ng-click="selectOutgoingFlight(flight, true)" name="outgoing">
 
               <div class="row">
 
@@ -48,7 +48,11 @@
 
       </ion-list>
 
-      <ion-list>
+      <ion-list ng-show="roundTrip">
+
+        <div class="item item-divider text-center">
+          {{destination}} ✈ {{returnDate | date:'longDate'}} ✈ {{origin}}
+        </div>
 
         <div class="list-card">
 
@@ -60,7 +64,7 @@
 
           <div class="item item-text-wrap">
 
-            <ion-radio ng-model="checked" ng-repeat="flight in flights.returnFlights" ng-init="checked = false" ng-click="selectReturningFlight(flight)" name="return">
+            <ion-radio ng-model="checked" ng-repeat="flight in flights.returnFlights" ng-init="checked = false" ng-click="selectReturningFlight(flight, true)" name="return">
 
               <div class="row">
 
@@ -91,7 +95,7 @@
     </ion-content>
 
     <ion-footer-bar>
-      <a href="#/tab/flight-details" class="button button-block button-positive"><h4>Book</h4></a>
+      <a href="" ng-click="goNext()" ng-disabled="!checkNextBtnState()" class="button button-block button-positive"><h4>Book</h4></a>
     </ion-footer-bar>
 
   </div>
