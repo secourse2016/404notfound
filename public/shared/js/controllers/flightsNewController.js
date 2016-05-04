@@ -4,16 +4,31 @@ var flightNewController = function($scope, $location, api, $routeParams) {
   $scope.title = "Choose a Flight";
   $scope.buttonTextNxt = "Next";
   $scope.buttonTextBk = "Back";
-  $scope.isCollapsed = false;
-  $scope.isOutgoingFlightSelected = false;
+
+  if (Type == "desktop") {
+    $scope.isCollapsed = false;
+    $scope.isOutgoingFlightSelected = false;
+  } else {
+    $scope.miniLogoPath = function(operatorAirline) {
+      if (operatorAirline === "Air Berlin")
+        return "img/air-berlin-mini-logo.png"
+      return "img/other-airline-mini-logo.png"
+    };
+  }
 
   api.setIsOtherHosts(true);
 
   $scope.goNext = function() {
+
     api.setOutGoingFlight($scope.selectedOutgoingFlight);
     api.setReturningFlight($scope.selectedReturningFlight);
     api.setBooking($scope.selectedBooking);
-    $location.path('/passenger-details');
+
+    if (Type == "desktop")
+      $location.path('/passenger-details');
+    else
+      $location.go('tab.passenger-details');
+
   }
 
   $scope.goBack = function() {
@@ -40,11 +55,16 @@ var flightNewController = function($scope, $location, api, $routeParams) {
   var destination = $routeParams.destination;
   var exitDate = new Date($routeParams.exitDate * 1000);
 
+  $scope.origin = origin;
+  $scope.destination = destination;
+  $scope.exitDate = exitDate;
+
   var isEconomy = $routeParams.flightClass == "Economy";
   $scope.roundTrip = false;
 
   if ($routeParams.returnDate) {
     var returnDate = new Date($routeParams.returnDate * 1000);
+    $scope.returnDate = returnDate;
     $scope.roundTrip = true;
   }
 
