@@ -153,7 +153,7 @@ App.controller('passengerDetailsCtrl', function($scope, $location, api) {
             if (allpassing == true) {
                 if (!api.IsOtherHosts()) {
                     api.setPassenger($scope.passenger);
-                    $location.path('/seating/outgoing');
+                    $location.path('/payment');
 
                 } else {
                     var booking = api.getBooking();
