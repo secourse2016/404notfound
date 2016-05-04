@@ -7,3 +7,6 @@ public/mobile/platforms/
 public/mobile/plugins/
 
 npm-debug.log
+
+public/desktop/js/generated.js
+public/mobile/www/js/generated.js
