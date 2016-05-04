@@ -1,5 +1,5 @@
 // @abdelrhman-essam
-App.controller('confirmationCtrl', function($scope, $location,api) {
+var confirmationController = function($scope, $location,api, $routeParams) {
       $scope.pageClass = 'page-confirmation';
   $scope.title = "Confirmation";
 
@@ -33,9 +33,7 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
       $location.path('/social');
 
     }
-    $scope.flight = api.getChosenOutGoingFlight();
 
-    $scope.passenger = api.getPassenger()[0];
     $('#quotes-text').typeIt({
       strings: [
         '"Travel and change of place impart new vigor to the mind."-Seneca',
@@ -49,6 +47,11 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
     });
 
   }
+  $scope.flight = api.getChosenOutGoingFlight();
+
+  $scope.passenger = api.getPassenger()[0];
+
+  $scope.booking = $routeParams.booking;
 
 //
 // console.log("chosenOutgoingFlight");
@@ -65,4 +68,11 @@ App.controller('confirmationCtrl', function($scope, $location,api) {
 // console.log(api.getReturnSeat())
 
 
-});
+}
+if (Type == 'mobile') {
+  confirmationController.$inject = ['$scope', '$state', 'api', '$stateParams'];
+} else {
+  confirmationController.$inject = ['$scope', '$location', 'api', '$routeParams'];
+}
+
+App.controller('confirmationCtrl', confirmationController);
