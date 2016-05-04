@@ -2,11 +2,11 @@
 
   <div class="flights">
 
-    <div class="bar bar-subheader bar-light">
-      <h1 class="title">{{origin}} ✈ {{constructDate(exitDate) | date:'longDate'}} ✈ {{destination}}</h1>
-    </div>
+    <ion-content>
 
-    <ion-content class="has-subheader">
+      <div class="item item-divider text-center">
+        {{origin}} ✈ {{exitDate | date:'longDate'}} ✈ {{destination}}
+      </div>
 
       <ion-list>
 
@@ -48,7 +48,11 @@
 
       </ion-list>
 
-      <ion-list>
+      <ion-list ng-show="roundTrip">
+
+        <div class="item item-divider text-center">
+          {{destination}} ✈ {{returnDate | date:'longDate'}} ✈ {{origin}}
+        </div>
 
         <div class="list-card">
 

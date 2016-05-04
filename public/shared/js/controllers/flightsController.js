@@ -12,10 +12,15 @@ var flightController = function($scope, $location, api, $routeParams) {
   var destination = $routeParams.destination;
   var exitDate = new Date($routeParams.exitDate * 1000);
 
+  $scope.origin = origin;
+  $scope.destination = destination;
+  $scope.exitDate = exitDate;
+
   $scope.roundTrip = false;
 
   if ($routeParams.returnDate) {
     var returnDate = new Date($routeParams.returnDate * 1000);
+    $scope.returnDate = returnDate;
     $scope.roundTrip = true;
   }
 
