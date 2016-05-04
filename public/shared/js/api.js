@@ -209,7 +209,7 @@ App.factory('api', function($http) {
             isisOtherHosts = false
 
         },
-        submitBooking: function(otherHosts) {
+        submitBooking: function(otherHosts,url) {
             var price = 0;
             if (this.getCabinetOutgoingClass() == 'Economy')
                 price = this.getChosenOutGoingFlight().economyFare
@@ -243,12 +243,12 @@ App.factory('api', function($http) {
             } else {
                 return $http({
                     method: 'POST',
-                    url: 'http://localhost:8080/booking', // has to be changed !!
+                    url: url + '/booking',
                     headers: {
-                        'x-access-token': accessToken,
-                        'other-hosts': otherHosts
+                      'Content-Type': 'application/x-www-form-urlencoded',
+                        'x-access-token': accessToken
                     },
-                    data: bookingData
+                    data: $.param(bookingData)
                 });
             }
 

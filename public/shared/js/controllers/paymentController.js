@@ -26,8 +26,7 @@ App.controller('paymentCtrl', function($scope, $location, $http, api) {
                     console.log(response.id)
                     api.setStripeToken(response.id)
                     api.submitBooking(api.IsOtherHosts()).then(function(data) {
-                        console.log(data)
-                        $location.path('/confirmation');
+                        $location.path('/confirmation').search('booking',data.data.refNum);
                         // api.clearLocal();
                     }, function(err) {
 
@@ -39,8 +38,23 @@ App.controller('paymentCtrl', function($scope, $location, $http, api) {
                         booking.cost = parseInt(booking.returnCost) + parseInt(booking.outgoingCost);
                     else
                         booking.cost = parseInt(booking.outgoingCost);
-                    api.getStripeKey("http://" + booking.outgoingUrl + '/stripe/pubkey').then(function(data) {
-                      console.log(data)
+                    var url = "http://" + booking.outgoingUrl;
+                    api.getStripeKey(url + '/stripe/pubkey').then(function(data) {
+                      Stripe.setPublishableKey(data.data)
+                      Stripe.card.createToken($scope.form, function(status, response) {
+                        console.log("Stripe Token " + response.id)
+                        booking.paymentToken = response.id;
+                        api.setBooking(booking);
+                        api.submitBooking(true,url).then(function(data){
+                          $location.path('/confirmation').search('booking',data.data.refNum);
+
+                        })
+
+                          }, function(err) {
+
+                          })
+                    },function(status){
+                      console.log(status)
                     })
 
                 }

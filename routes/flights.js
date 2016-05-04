@@ -44,41 +44,37 @@ function searchFlights(req, res) {
 
         request(options,
           function(err, res, body) {
-            // console.log(err + options.uri)
-            if (err)
-              console.log(err)
-            else {
-              console.log(res.body)
               callback(err, res);
-            }
           }
 
         );
       }
 
       async.map(endpointsUrls, httpGet, function(err, res) {
-        if (err) {
-          console.log(err);
-        } else{
           parseResult(res);
-        }
+
       })
 
       function parseResult(res) {
         for (var i = 0; i < res.length; i++) {
-          if (res[i].body.outgoingFlights) {
-            for (var j = 0; j < res[i].body.outgoingFlights.length; j++) {
-              res[i].body.outgoingFlights[j].url = res[i].request.uri.host;
+          if(res[i])
+          if(res[i].body){
+            if (res[i].body.outgoingFlights) {
+              for (var j = 0; j < res[i].body.outgoingFlights.length; j++) {
+                res[i].body.outgoingFlights[j].url = res[i].request.uri.host;
+              }
+              result.outgoingFlights.push(res[i].body.outgoingFlights)
             }
-            result.outgoingFlights.push(res[i].body.outgoingFlights)
-          }
-          if (res[i].body.returnFlights) {
-            for (var j = 0; j < res[i].body.returnFlights.length; j++) {
-              res[i].body.returnFlights[j].url = res[i].request.uri.host;
+            if (res[i].body.returnFlights) {
+              for (var j = 0; j < res[i].body.returnFlights.length; j++) {
+                res[i].body.returnFlights[j].url = res[i].request.uri.host;
+              }
+              result.returnFlights.push(res[i].body.returnFlights)
             }
-            result.returnFlights.push(res[i].body.returnFlights)
           }
-        }
+
+          }
+
         result.outgoingFlights = [].concat.apply([], result.outgoingFlights);
         result.returnFlights = [].concat.apply([], result.returnFlights);
 
