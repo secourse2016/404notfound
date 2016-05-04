@@ -76,7 +76,7 @@ router.post("/booking", function(req, res) {
                         } else {
 
                           res.send({
-                            refNum: bookingID,
+                            refNum: null,
                             errorMessage: err
                           });
 
@@ -100,7 +100,7 @@ router.post("/booking", function(req, res) {
                   } else {
 
                     res.send({
-                      refNum: bookingID,
+                      refNum: null,
                       errorMessage: err
                     });
 
