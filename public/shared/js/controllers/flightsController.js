@@ -55,7 +55,7 @@ var flightController = function($scope, $location, api, $routeParams) {
 
   $scope.constructDate = function(date) {
     var dateOut = new Date(date);
-    return dateOut;
+    return new Date(dateOut.getUTCFullYear(), dateOut.getUTCMonth(), dateOut.getUTCDate(),  dateOut.getUTCHours(), dateOut.getUTCMinutes(), dateOut.getUTCSeconds());
   };
 
   $scope.goNext = function() {
