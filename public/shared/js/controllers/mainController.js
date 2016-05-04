@@ -18,6 +18,7 @@
    $scope.selectedDest = undefined;
 
    function airporsContains(iata) {
+     if( $scope.airports)
      for (var i = 0; i < $scope.airports.length; i++) {
        if (iata == $scope.airports[i]['iata'])
          return true;
