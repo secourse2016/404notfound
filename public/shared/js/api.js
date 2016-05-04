@@ -3,6 +3,8 @@ App.config(function($httpProvider) {
     $httpProvider.defaults.headers.post = {};
     $httpProvider.defaults.headers.put = {};
     $httpProvider.defaults.headers.patch = {};
+    $httpProvider.defaults.useXDomain = true;
+     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 });
 
 App.factory('api', function($http) {
@@ -17,7 +19,8 @@ App.factory('api', function($http) {
                 method: 'GET',
                 url: url,
                 headers: {
-                    'x-access-token': accessToken
+                    'x-access-token': accessToken,
+                    'Content-Type':undefined
                   }
             });
         },

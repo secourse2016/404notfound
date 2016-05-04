@@ -20,18 +20,21 @@ App.controller('paymentCtrl', function($scope, $location, $http, api) {
 
 
 
+
             if (!api.IsOtherHosts())
                 Stripe.card.createToken($scope.form, function(status, response) {
                     console.log(api.getChosenOutGoingFlight());
                     console.log(response.id)
                     api.setStripeToken(response.id)
                     api.submitBooking(api.IsOtherHosts()).then(function(data) {
-                        $location.path('/confirmation').search('booking',data.data.refNum);
+                        $location.path('/confirmation').search('booking', data.data.refNum);
                         // api.clearLocal();
                     }, function(err) {
 
                     })
-                }); {
+                });
+                else
+                 {
                 var booking = api.getBooking();
                 if (booking.returnUrl == booking.outgoingUrl || !booking.returnUrl) {
                     if (booking.returnCost)
@@ -39,23 +42,75 @@ App.controller('paymentCtrl', function($scope, $location, $http, api) {
                     else
                         booking.cost = parseInt(booking.outgoingCost);
                     var url = "http://" + booking.outgoingUrl;
-                    api.getStripeKey(url + '/stripe/pubkey').then(function(data) {
-                      Stripe.setPublishableKey(data.data)
-                      Stripe.card.createToken($scope.form, function(status, response) {
-                        console.log("Stripe Token " + response.id)
-                        booking.paymentToken = response.id;
-                        api.setBooking(booking);
-                        api.submitBooking(true,url).then(function(data){
-                          $location.path('/confirmation').search('booking',data.data.refNum);
+                    api.getStripeKey(url + '/stripe/pubkey/').then(function(data) {
+                        Stripe.setPublishableKey(data.data)
+                        Stripe.card.createToken($scope.form, function(status, response) {
+                            console.log("Stripe Token " + response.id)
+                            booking.paymentToken = response.id;
+                            api.setBooking(booking);
+                            api.submitBooking(true, url).then(function(data) {
+                                $location.path('/confirmation').search('booking', data.data.refNum);
 
+                            })
+
+                        }, function(err) {
+                          console.log(err)
                         })
-
-                          }, function(err) {
-
-                          })
-                    },function(status){
-                      console.log(status)
+                    }, function(status) {
+                        console.log(status)
                     })
+
+                } else {
+                    //here we should send two reqeusts
+                    var outgoingBooking = booking;
+                    var returnBooking = booking;
+                    outgoingBooking.cost = parseInt(booking.outgoingCost);
+                    outgoingBooking.returnFlightId = null;
+                    if (booking.returnUrl) {
+                        returnBooking.cost = parseInt(booking.returnCost);
+                        returnBooking.outgoingFlightId = booking.returnFlightId;
+                    }
+
+                    var url = "http://" + booking.outgoingUrl;
+                    api.getStripeKey(url + '/stripe/pubkey').then(function(data) {
+                        Stripe.setPublishableKey(data.data)
+                        Stripe.card.createToken($scope.form, function(status, response) {
+                            console.log( response)
+                            outgoingBooking.paymentToken = response.id;
+                            api.setBooking(outgoingBooking);
+                            api.submitBooking(true, url).then(function(data) {
+                                // $location.path('/confirmation').search('booking', data.data.refNum);
+                                if( booking.returnUrl){
+                                  var url = "http://" + booking.returnUrl;
+                                  api.getStripeKey(url + '/stripe/pubkey').then(function(data) {
+                                      Stripe.setPublishableKey(data.data)
+                                      Stripe.card.createToken($scope.form, function(status, response) {
+                                          console.log(response)
+                                          returnBooking.paymentToken = response.id;
+                                          api.setBooking(returnBooking);
+                                          api.submitBooking(true, url).then(function(data) {
+                                              // $location.path('/confirmation').search('booking', data.data.refNum);
+
+                                          })
+
+                                      }, function(err) {
+                                        console.log(err)
+                                      })
+                                  }, function(status) {
+                                      console.log(status)
+                                  })
+                                }
+
+
+                            })
+
+                        }, function(err) {
+                          console.log(err)
+                        })
+                    }, function(status) {
+                        console.log(status)
+                    })
+
 
                 }
             }
