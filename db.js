@@ -286,7 +286,7 @@ exports.updateFlight = function(isOtherHosts, flightID, isEconomy, seatNumber, p
         found = false;
         for (i = 0; i < flight.seatmap.length; i++) {
           var seat = flight.seatmap[i];
-          if (seat.isEconomy && isEconomy)||(!seat.isEconomy && !isEconomy) && seat.isEmpty) {
+          if ((seat.isEconomy && isEconomy)||(!seat.isEconomy && !isEconomy) && seat.isEmpty) {
             seat.refPassengerID.push(passengersID[j].toString());
             seat.refBookingID = bookingID.toString();
             seat.isEmpty = false;
