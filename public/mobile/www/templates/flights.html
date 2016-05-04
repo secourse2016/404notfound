@@ -1,0 +1,102 @@
+<ion-view view-title="Choose a flight">
+
+  <div class="flights">
+
+    <ion-content>
+
+      <div class="item item-divider text-center">
+        {{origin}} ✈ {{exitDate | date:'longDate'}} ✈ {{destination}}
+      </div>
+
+      <ion-list>
+
+        <div class="list-card">
+
+          <div class="item item-divider">
+            <p class="text-center">
+              Outgoing flights
+            </p>
+          </div>
+
+          <div class="item item-text-wrap">
+
+            <ion-radio ng-model="checked" ng-repeat="flight in flights.outgoingFlights" ng-init="checked = false" ng-click="selectOutgoingFlight(flight, isEconomy)" name="outgoing">
+
+              <div class="row">
+
+                <div class="col">
+                  <p class="text-center">{{flight.refOriginAirport}}</p>
+                  <p class="text-center" ng-bind="constructDate(flight.departureUTC) | date:'HH:mm'"></p>
+                </div>
+
+                <div class="col">
+                  <img ng-src={{miniLogoPath(flight.operatorAirline)}}>
+                </div>
+
+                <div class="col">
+                  <p class="text-center">{{flight.refDestinationAirport}}</p>
+                  <p class="text-center" ng-bind="constructDate(flight.arrivalUTC) | date:'HH:mm'"></p>
+                </div>
+
+              </div>
+
+            </ion-radio>
+
+          </div>
+
+        </div>
+
+      </ion-list>
+
+      <ion-list ng-show="roundTrip">
+
+        <div class="item item-divider text-center">
+          {{destination}} ✈ {{returnDate | date:'longDate'}} ✈ {{origin}}
+        </div>
+
+        <div class="list-card">
+
+          <div class="item item-divider">
+            <p class="text-center">
+              Return flights
+            </p>
+          </div>
+
+          <div class="item item-text-wrap">
+
+            <ion-radio ng-model="checked" ng-repeat="flight in flights.returnFlights" ng-init="checked = false" ng-click="selectReturningFlight(flight, isEconomy)" name="return">
+              <div class="row">
+
+                <div class="col">
+                  <p class="text-center">{{flight.refOriginAirport}}</p>
+                  <p class="text-center" ng-bind="constructDate(flight.departureUTC) | date:'HH:mm'"></p>
+                </div>
+
+                <div class="col">
+                  <img ng-src={{miniLogoPath(flight.operatorAirline)}}>
+                </div>
+
+                <div class="col">
+                  <p class="text-center">{{flight.refDestinationAirport}}</p>
+                  <p class="text-center" ng-bind="constructDate(flight.arrivalUTC) | date:'HH:mm'"></p>
+                </div>
+
+              </div>
+
+            </ion-radio>
+
+          </div>
+
+        </div>
+
+      </ion-list>
+
+    </ion-content>
+
+    <ion-footer-bar>
+      <a href="" ng-click="goNext()" ng-disabled="!checkNextBtnState()" class="button button-block button-assertive"><h4>Book</h4></a>
+    </ion-footer-bar>
+
+  </div>
+
+</ion-view>

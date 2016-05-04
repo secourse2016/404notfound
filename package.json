@@ -16,6 +16,7 @@
     "async": "^2.0.0-rc.3",
     "body-parser": "^1.15.0",
     "chai": "^3.5.0",
+    "cors": "^2.7.1",
     "express": "^4.13.4",
     "istanbul": "^0.4.2",
     "jwt-simple": "^0.5.0",
@@ -23,6 +24,15 @@
     "moment": "^2.13.0",
     "mongodb": "^2.1.7",
     "request": "^2.72.0",
+    "stripe": "^4.5.0",
     "supertest": "^1.2.0"
+  },
+  "devDependencies": {
+    "angular-translate": "^2.11.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-install": "^0.6.0",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-sourcemaps": "^2.0.0-alpha"
   }
 }

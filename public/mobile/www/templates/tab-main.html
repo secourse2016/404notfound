@@ -1,0 +1,43 @@
+<ion-view view-title="Book Now">
+  <ion-pane>
+    <ion-content class="padding">
+
+      <div class="main text-center">
+          <img src="img/logo.png" />
+      </div>
+
+      <div class="card">
+        <div class="item item-text-wrap">
+          <div class="list list-inset">
+
+            <label class="item item-input">
+              <input name="originAirports" ng-model="$parent.selectedOrigin" placeholder="Flying From" type="text" typeahead-append-to-body="true" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10">
+            </label>
+            <label class="item item-input">
+              <input placeholder="Departure Date" ng-model="$parent.exitDate" type="date">
+            </label>
+
+            <label class="item item-input">
+              <input name="desAirports" ng-model="$parent.selectedDest" placeholder="Flying To" type="text" typeahead-append-to-body="true" uib-typeahead="airport.iata for airport in airports | filter:$viewValue | limitTo:10">
+            </label>
+            <label class="item item-input">
+              <input ng-disabled="flight.type == 'one'" ng-model="$parent.returnDate" placeholder="Re-entry Date" type="date">
+            </label>
+            <label class="item item-input">
+              <ion-checkbox ng-false-value="'one'" ng-model="$parent.flight.type" ng-true-value="'round'">Round Trip</ion-checkbox>
+            </label>
+            <label class="item item-input">
+              <ion-checkbox ng-model="$parent.otherAirline.value">Search other airlines</ion-checkbox>
+            </label>
+            <label class="item item-input">
+              <ion-checkbox ng-model="$parent.isBusiness">Business</ion-checkbox>
+            </label>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+    <ion-footer-bar>
+      <a href="" ng-click="goToFlights()" ng-disabled="buttonState()" class="button button-block button-assertive"><h4>Search for flights</h4></a>
+    </ion-footer-bar>
+  </ion-pane>
+</ion-view>

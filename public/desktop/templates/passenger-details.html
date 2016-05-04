@@ -1,0 +1,134 @@
+<!-- @yassmine -->
+<div class="container page-panel">
+    <div class="col-lg-12 page-content">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+
+                <div class="col-xs-2">
+                    <button ng-click="goBack()" class="btn btn-primary btn-lg pull-left">{{'NAV.BACK' | translate}}</button>
+                </div>
+
+                <div class="col-xs-8">
+                    <div class="center">
+                        <h3 class="panel-title center">{{title}}</h3>
+
+                    </div>
+                </div>
+
+                <div class="col-xs-2 ">
+                    <button ng-click="goNext()" class="btn btn-primary btn-lg pull-right">{{'NAV.NEXT' | translate}}</button>
+                </div>
+
+            </div>
+            <div class="panel-body">
+
+                <!-- Start from here -->
+
+                <div class="container-fluid">
+
+
+
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertFName">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Missing Data! </strong>Please enter your first name.
+                    </div>
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertMName">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Missing Data! </strong>Please enter your middle name.
+                    </div>
+
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertLName">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Missing Data! </strong>Please enter your last name.
+                    </div>
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertPhNumber">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Missing Data! </strong>Please enter your phone number, it must be 10 digits.
+                    </div>
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertPNumber">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Missing Data! </strong>Please enter your passport number, it must be 8 digits.
+                    </div>
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertCountry">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Missing Data! </strong>Please state your nationality.
+                    </div>
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertEmail">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Missing Data! </strong>Please enter your email, it must be in the format "a@xyz.com".
+                    </div>
+
+
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertConfirm">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Attention! </strong>The entered emails do not match.
+                    </div>
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertCheck">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Attention! </strong>Please verify the information you entered.
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class="input-group">
+                            <div class="btn-group " uib-dropdown is-open="status2.isopen">
+                                <button type="button" class="btn btn-success" uib-dropdown-toggle>
+                                    {{titlesBtnText}}
+                                    <span class="caret"></span>
+                                </button>
+                                <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                    <li>
+                                        <a ng-repeat="title in titles" ng-click="changeTitle(title)">{{title}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.FIRST_NAME" | translate}}</span>
+                        <input type="text" class="form-control" ng-model="firstName" placeholder="ex. Jack" aria-describedby="basic-addon1">
+                        <span class="input-group-addon" id="basic-addon2">{{"PASS_DETAILS.MIDDLE_NAME" | translate}}</span>
+                        <input type="text" class="form-control" ng-model="middleName" placeholder="" aria-describedby="basic-addon1">
+                        <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.LAST_NAME" | translate}}</span>
+                        <input type="text" class="form-control" placeholder="ex. Dawson" ng-model="lastName" aria-describedby="basic-addon1">
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.PASS_NO" | translate}}</span>
+                        <input type="number" class="form-control" placeholder="ex. A308641" ng-model="passportNumber" ng-maxlength = "8" ng-minlength = "8" aria-describedby="basic-addon1">
+                        <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.PLACE_OFBIRTH" | translate}}</span>
+                        <input name="originAirports" type="text" placeholder="ex. Egypt" ng-model="nationality" uib-typeahead="country.name for country in countries | filter:$viewValue | limitTo:10" class="form-control">
+                        <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.PHONE_NO" | translate}}</span>
+                        <input type="number" class="form-control" placeholder="ex. +20127628918" ng-model="phoneNumber" ng-maxlength = "10" ng-minlength = "10" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.E_MAIL" | translate}}</span>
+                        <input type="email" class="form-control" placeholder="ex. jackdawson@example.com" ng-model="email1" aria-describedby="basic-addon1">
+                        <span class="input-group-addon" id="basic-addon1">{{"PASS_DETAILS.REPEAT_E_MAIL" | translate}}</span>
+                        <input type="email" class="form-control" placeholder="ex. jackdawson@example.com" ng-model="emailver" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                            <label>
+                                <input type="checkbox" style="margin-right: 8px" ng-model="check">{{"PASS_DETAILS.VERIFY_PARA" | translate}}
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
