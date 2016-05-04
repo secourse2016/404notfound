@@ -3,11 +3,15 @@
       MAIN: {
         BOOK_NOW: 'Book Now',
         FROM: 'From',
+        FLYING_FROM: 'Flying from',
         DEPARTURE_DATE: 'Departure Date',
         TO: 'To',
+        FLYING_TO: 'Flying to',
+        REENTRY_DATE: 'Re-entry Date',
         UNDER_2_YEARS: 'Under 2 years',
         ROUND_TRIP: 'Round Trip',
         ONE_WAY: 'One Way',
+        OTHER_AIRLINES: 'Search other airlines',
         SEARCH_FOR_FLIGHTS: 'Search for flights',
         YEARS: "years",
         CHILDREN: 'children',
@@ -16,6 +20,8 @@
         ADULTS: 'adults',
         INFANTS: 'infants',
         INFANT: 'infant',
+        ECONOMY: 'Economy',
+        BUSINESS: 'Business',
         QUOTES_HOME: {
           ONE: "Simple, convenient, instant confirmation.",
           TWO: "Destinations all around the globe.",
@@ -153,11 +159,15 @@
       MAIN: {
         BOOK_NOW: 'Jetzt buchen',
         FROM: 'von',
+        FLYING_FROM: 'Abflughafen',
         DEPARTURE_DATE: 'Hinflug',
         TO: 'nach',
+        FLYING_TO: 'Zielflughafen',
+        REENTRY_DATE: 'Rückflug',
         UNDER_2_YEARS: 'Jünger als 2 Jahren',
-        ROUND_TRIP: 'Hin-und Rückfahrt',
+        ROUND_TRIP: 'Hin-/Rückfahrt',
         ONE_WAY: 'Nur Hinflug',
+        OTHER_AIRLINES: 'Andere Fluggesellschaften',
         SEARCH_FOR_FLIGHTS: 'Flüge suchen',
         YEARS: "Jahre",
         CHILDREN: 'Kinder',
@@ -166,11 +176,13 @@
         ADULTS: 'Erwachsenen',
         INFANTS: 'Babys',
         INFANT: 'Baby',
+        ECONOMY: 'Economy',
+        BUSINESS: 'Business',
         QUOTES_HOME: {
-          ONE: "Simple, convenient, instant confirmation.",
-          TWO: "Destinations all around the globe.",
-          THREE: "Experience authentic hospitality.",
-          FOUR: "Time to get enchanted."
+          ONE: "Einfach, bequem, sofortige Bestätigung.",
+          TWO: "Zielen auf der Welt.",
+          THREE: "Authentische Gastfreundschaft erleben.",
+          FOUR: "Verwunschene Zeit mit uns."
         }
       },
       FLIGHTS: {
@@ -209,7 +221,7 @@
         CONTACT_US: 'Unser Kontakt',
         CHOOSE_LANGUAGE:'Wähle eine Sprache',
         ENGLISH: 'Englisch',
-        GERMAN:'Deutsche'
+        GERMAN:'Deutsch'
       },
       CONFIRMATION: {
 
