@@ -24,3 +24,7 @@ App = angular.module('starter', ['ionic','ui.bootstrap','pascalprecht.translate'
     }
   });
 })
+.config(function(stripeProvider){
+  stripeProvider.setPublishableKey('pk_test_SiY0xaw7q3LNlpCnkhpo60jt');
+
+})

@@ -49,6 +49,10 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <strong>Missing Data! </strong>Please enter your passport number, it must be 8 digits.
                     </div>
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertCountry">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Missing Data! </strong>Please state your nationality.
+                    </div>
                     <div class="alert alert-danger alert-dismissible" role="alert" ng-show="alertEmail">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <strong>Missing Data! </strong>Please enter your email, it must be in the format "a@xyz.com".

@@ -5,9 +5,9 @@
     <ion-list>
 
   <div class="item item-text-wrap">
-    <label class="item "><i class="icon ion-person"> </i>Name:</label>
-       <label class="item "><i class="icon ion-ios-telephone"> </i>Phone:</label>
-       <label class="item "><i class="icon ion-email"> </i>E-mail</label>
+    <label class="item "><i class="icon ion-person"> </i>Name:    {{passenger.firstName + " " + passenger.lastName}}</label>
+       <label class="item "><i class="icon ion-ios-telephone"> </i>Phone: {{passenger.phoneNumber}}</label>
+       <label class="item "><i class="icon ion-email"> </i>E-mail:   {{passenger.email}}</label>
 
      </ion-list>
   </div>
@@ -15,15 +15,15 @@
 <div class="card">
   <ion-list>
     <div class="item item-text-wrap">
-  <label class="item "><i class="icon ion-star"> </i>Flight NO:</label>
-  <label class="item "><i class="icon ion-ios-time"> </i>Aparteure:</label>
-  <label class="item "><i class="icon ion-ios-time-outline"> </i>Departure:</label>
+  <label class="item "><i class="icon ion-star"> </i>Flight NO: {{flight.number}}</label>
+  <label class="item "><i class="icon ion-ios-time"> </i>Aparteure: {{flight.departureUTC}}</label>
+  <label class="item "><i class="icon ion-ios-time-outline"> </i>Departure: {{flight.arrivalUTC}}</label>
   </ion-list>
 </ion-list>
 </div>
 </div>
   </ion-content>
   <ion-footer-bar>
-    <a href="" class="button button-block button-balanced"><h4>Done</h4></a>
+    <a href="#/tab/home" class="button button-block button-balanced"><h4>Done</h4></a>
   </ion-footer-bar>
 </ion-view>
