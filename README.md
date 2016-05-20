@@ -1,7 +1,7 @@
 # Air Berlin by 404NotFound Team
 
 # Bonus features 
-* Implemented internationalisation using angular-translate our app now works now with English and German but it's really straightforward to add any other language.
+* Implemented internationalisation using angular-translate our app now works with English and German but it's really straightforward to add any other language.
 
 
 ## Installation
