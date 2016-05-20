@@ -1,5 +1,9 @@
 # Air Berlin by 404NotFound Team
 
+# Bonus features 
+* Implemented internationalisation using angular-translate our app now works now with English and German but it's really straightforward to add any other language.
+
+
 ## Installation
 * `git clone https://github.com/secourse2016/404notfound.git` (Clone the project to your machine)
 * `cd 404notfound` (Change directory to the website's folder)
