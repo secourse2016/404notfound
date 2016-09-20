@@ -1,6 +1,9 @@
 # Air Berlin by 404NotFound Team
 
-# Bonus features 
+## Disclaimer
+This app is created for academic purposes only.
+
+# Bonus features
 * Implemented internationalisation using angular-translate our app now works with English and German but it's really straightforward to add any other language.
 
 
