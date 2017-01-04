@@ -2,37 +2,29 @@
   "name": "air-berlin",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha  test/test.js",
-    "start": "node server.js"
+    "start": "nodemon src/app.js --exec babel-node"
   },
-  "author": "",
+  "author": "404notfound",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.0.0-rc.3",
     "body-parser": "^1.15.0",
-    "chai": "^3.5.0",
-    "cors": "^2.7.1",
     "express": "^4.13.4",
-    "istanbul": "^0.4.2",
-    "jwt-simple": "^0.5.0",
-    "mocha": "^2.4.5",
-    "moment": "^2.13.0",
-    "mongodb": "^2.1.7",
-    "request": "^2.72.0",
-    "stripe": "^4.5.0",
-    "supertest": "^1.2.0"
+    "mongodb": "^2.1.7"
   },
   "devDependencies": {
-    "angular-translate": "^2.11.0",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-install": "^0.6.0",
-    "gulp-nodemon": "^2.0.6",
-    "gulp-sourcemaps": "^2.0.0-alpha"
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "babel-register": "^6.18.0",
+    "bower": "^1.8.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "nodemon": "^1.11.0"
   }
 }

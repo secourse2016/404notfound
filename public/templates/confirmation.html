@@ -1,0 +1,34 @@
+<div class="container page-panel">
+    <div class="col-lg-12 page-content">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="col-xs-2">
+                    <button ng-click="goBack()" class="btn btn-primary btn-lg pull-left">{{'NAV.BACK' | translate}}</button>
+                </div>
+
+                <div class="col-xs-8">
+                    <div class="center">
+                        <h3 class="panel-title center">{{title}}</h3>
+
+                    </div>
+                </div>
+
+                <div class="col-xs-2 ">
+                    <button ng-click="goNext()" class="btn btn-primary btn-lg pull-right">{{'NAV.GO_HOME' | translate}}</button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <h1>
+                    {{'CONFIRMATION.THANK_YOU' | translate}}!
+                </h1>
+
+                <br />
+
+                <div>
+                    <h3>Your booking reference number:</h3>
+                    <h4><b>{{referenceNumber}}</b></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
